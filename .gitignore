@@ -1,0 +1,28 @@
+# Generated SDK staging
+/generated/
+
+# .NET build output
+**/bin/
+**/obj/
+
+# Local environment and signing credentials
+.env
+.env.*
+!.env.example
+*.pfx
+*.p12
+
+# Editor and OS state
+.idea/
+.vs/
+.vscode/
+*.suo
+*.user
+.DS_Store
+Desktop.ini
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp

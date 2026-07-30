@@ -52,6 +52,8 @@ SDK linking is all-or-restore: build output is staged as a publish-shaped packag
 
 Candidate and installable-package builds bundle the CLI from `E:\OpenChamber\opencode` with `OPENCODE_CHANNEL=dev`. It stages the verified executable directly in the unpacked Electron app; it never copies an application or CLI into a slot. The OpenCode build clears its own `dist` before compiling, so the staged Candidate app, not `packages\opencode\dist`, is the runnable artifact.
 
+Before any Electron packaging build, the coordinator uses `vswhere` to discover a complete Visual Studio 2022 instance with `Microsoft.VisualStudio.Component.VC.Tools.x86.x64`, then runs its Developer Shell by installation path for the target architecture. Do not hard-code an installation directory or instance ID.
+
 ## Release Contract
 
 Installable packaging is a separate clean-source boundary owned by `scripts\ForkCoordinator.cs`. It requires clean `local` and `dev` worktrees at their current commits, rebuilds OpenCode with channel `dev`, verifies the packaged CLI's `opencode-dev.db` path, validates updater metadata, and stages immutable artifacts under `E:\OpenChamber\release`. It never uploads or installs a package. The user installs a validated package to update Stable.

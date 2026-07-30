@@ -4,7 +4,7 @@ This directory coordinates coupled local-fork API development without modifying 
 
 ## Prerequisites
 
-Use PowerShell Core 7 or newer through `pwsh`, not Windows PowerShell 5.1 through `powershell.exe`. Windows packaging requires the Visual Studio 2022 v143 x64/x86 build tools, a Windows SDK, and the matching Spectre-mitigated libraries. Set `VisualStudioInstallDir` in `local-fork.config.psd1` when the default is not correct.
+Use PowerShell Core 7 or newer through `pwsh`, not Windows PowerShell 5.1 through `powershell.exe`. Windows packaging requires a complete Visual Studio 2022 instance with the VC++ x64/x86 tools and Windows SDK. The coordinator discovers it through `vswhere` and initializes its Developer Shell by the discovered installation path before native Electron modules rebuild.
 
 Candidate isolation requires Sandboxie-Plus. The default launcher is `C:\Program Files\Sandboxie-Plus\Start.exe` and the default box is `OpenChamberCandidate`; both are configurable in `local-fork.config.psd1`.
 

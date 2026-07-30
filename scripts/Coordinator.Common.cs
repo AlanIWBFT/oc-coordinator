@@ -12,7 +12,6 @@ internal sealed class CoordinatorConfig
     public string OpenChamberRoot { get; init; } = "";
     public string OpenCodeRoot { get; init; } = "";
     public string ReleaseRoot { get; init; } = "";
-    public string VisualStudioInstallDir { get; init; } = "";
     public string OpenChamberBranch { get; init; } = "";
     public string OpenCodeBranch { get; init; } = "";
 }
@@ -89,6 +88,27 @@ internal static class Coordinator
         Architecture.Arm64 => "arm64",
         _ => throw new InvalidOperationException($"Unsupported Windows architecture: {RuntimeInformation.ProcessArchitecture}"),
     };
+
+    public static IReadOnlyDictionary<string, string> LoadVisualStudioBuildEnvironment(
+        string coordinatorRoot,
+        string architecture
+    )
+    {
+        var script = Path.Combine(coordinatorRoot, "scripts", "Get-VisualStudioBuildEnvironment.ps1");
+        RequireFile(script);
+        var output = Capture("pwsh", ["-NoProfile", "-File", script, "-Architecture", architecture], coordinatorRoot);
+        const string marker = "__OPENCHAMBER_VS_ENV__";
+        var json = output
+            .Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries)
+            .LastOrDefault(line => line.StartsWith(marker, StringComparison.Ordinal));
+        if (json is null)
+            throw new InvalidOperationException("Visual Studio Developer Shell did not return its build environment.");
+        var environment = JsonSerializer.Deserialize<Dictionary<string, string>>(json[marker.Length..])
+            ?? throw new InvalidOperationException("Unable to parse the Visual Studio Developer Shell environment.");
+        if (!environment.ContainsKey("VSCMD_VER") || !environment.ContainsKey("VCToolsInstallDir"))
+            throw new InvalidOperationException("Visual Studio Developer Shell did not initialize the MSVC toolchain.");
+        return environment;
+    }
 
     public static string Capture(
         string fileName,

@@ -34,6 +34,7 @@ switch (command)
 static void BuildCandidate(CoordinatorConfig config, string coordinatorRoot)
 {
     var environment = BuildEnvironment(config);
+    AddVisualStudioBuildEnvironment(environment, coordinatorRoot);
     Coordinator.Run(
         "pwsh",
         ["-NoProfile", "-File", Path.Combine(coordinatorRoot, "scripts", "Sync-OpenCodeSdk.ps1")],
@@ -89,6 +90,7 @@ static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot
     try
     {
         var environment = BuildEnvironment(config);
+        AddVisualStudioBuildEnvironment(environment, coordinatorRoot);
         Coordinator.Run(
             "pwsh",
             ["-NoProfile", "-File", Path.Combine(coordinatorRoot, "scripts", "Sync-OpenCodeSdk.ps1"), "-SkipTypeCheck"],
@@ -187,14 +189,19 @@ static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot
     }
 }
 
-static Dictionary<string, string?> BuildEnvironment(CoordinatorConfig config) => new()
+static Dictionary<string, string?> BuildEnvironment(CoordinatorConfig config) => new(StringComparer.OrdinalIgnoreCase)
 {
     ["OPENCHAMBER_OPENCODE_SOURCE_DIR"] = config.OpenCodeRoot,
     ["OPENCHAMBER_OPENCODE_CLI_VERSION"] = Coordinator.GetPinnedOpenCodeVersion(config),
-    ["OPENCHAMBER_VS_INSTALL_DIR"] = config.VisualStudioInstallDir,
     ["XDG_CACHE_HOME"] = null,
     ["BUN_RUNTIME_TRANSPILER_CACHE_PATH"] = GetBunRuntimeTranspilerCachePath(),
 };
+
+static void AddVisualStudioBuildEnvironment(Dictionary<string, string?> environment, string coordinatorRoot)
+{
+    foreach (var variable in Coordinator.LoadVisualStudioBuildEnvironment(coordinatorRoot, Coordinator.GetArchitecture()))
+        environment[variable.Key] = variable.Value;
+}
 
 static string GetUnpackedDirectory(CoordinatorConfig config)
 {

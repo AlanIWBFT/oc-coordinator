@@ -11,7 +11,6 @@
     'E:\OpenChamber\openchamber\packages\vscode'
   )
   ReleaseRoot = 'E:\OpenChamber\release'
-  VisualStudioInstallDir = 'C:\Program Files\Microsoft Visual Studio\2022\Community'
   SandboxieStart = 'C:\Program Files\Sandboxie-Plus\Start.exe'
   CandidateSandbox = 'OpenChamberCandidate'
   OpenChamberBranch = 'local'

@@ -23,4 +23,14 @@ if (-not (Test-Path -LiteralPath $sandboxie -PathType Leaf)) {
 
 "Starting sandboxed Candidate: $binary"
 "Sandboxie box: $($config.CandidateSandbox)"
-Start-Process -FilePath $sandboxie -ArgumentList @('/wait', "/box:$($config.CandidateSandbox)", $binary) -Wait
+# This script can run as a child of Stable -> managed OpenCode -> shell tool. Sandboxie
+# isolates files and registry state, but its Start.exe still inherits that process environment.
+# Without a new environment, Candidate can reuse Stable values such as OPENCODE_BINARY,
+# OPENCODE_SERVER_PASSWORD, OPENCODE_PID, OPENCODE_MANAGED_SHUTDOWN, OPENCODE, AGENT,
+# OPENCHAMBER_RUNTIME, OPENCHAMBER_DIST_DIR, OPENCHAMBER_OPENCODE_CWD, and the Stable
+# bundled CLI directory added to PATH. UseNewEnvironment rebuilds the environment from the
+# Windows User and Machine scopes before Sandboxie starts Candidate.
+$p = Start-Process -FilePath $sandboxie -ArgumentList @('/wait', "/box:$($config.CandidateSandbox)", $binary) -UseNewEnvironment -PassThru
+"Candidate started, waiting for it to exit..."
+$p | Wait-Process
+"Candidate exited."

@@ -12,6 +12,8 @@ This workspace coordinates the local OpenCode and OpenChamber forks for coupled 
 
 Treat the repositories as separate edit and validation boundaries. Before editing either repository, read its root `AGENTS.md`, then read every required nearest package README, `DOCUMENTATION.md`, and project skill. Apply changes to each repository only during its explicit phase.
 
+When implementing features or reviewing code, limit the scope to runtime, build, and packaging paths that OpenChamber actually uses. Verify those paths from concrete imports, export mappings, aliases, and packaging behavior; do not modify or review parallel implementations that OpenChamber does not consume.
+
 Do not run git or GitHub commands unless the user explicitly requests them. Never commit, rebase, push, promote a Candidate, or rewrite a branch as an implicit follow-up.
 
 ## Runtime Model

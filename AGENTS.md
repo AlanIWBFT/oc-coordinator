@@ -16,6 +16,8 @@ When implementing features or reviewing code, limit the scope to runtime, build,
 
 Do not run git or GitHub commands unless the user explicitly requests them. Never commit, rebase, push, promote a Candidate, or rewrite a branch as an implicit follow-up.
 
+Commit messages for commits made in the OpenCode and OpenChamber repositories must begin with `Local: `.
+
 ## Runtime Model
 
 - Stable is the release package installed normally by the user. The coordinator does not launch, copy, hash, validate, or promote it.

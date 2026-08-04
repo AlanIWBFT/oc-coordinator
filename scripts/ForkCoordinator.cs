@@ -46,11 +46,13 @@ static void BuildCandidate(CoordinatorConfig config, string coordinatorRoot)
     var unpackedDirectory = GetUnpackedDirectory(config);
     var openChamberBinary = Path.Combine(unpackedDirectory, "OpenChamber.exe");
     var bundledOpenCode = Path.Combine(unpackedDirectory, "resources", "opencode-cli", "opencode.exe");
+    var shutdownProtocolMarker = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "openchamber-shutdown-protocol.capability");
     var openChamberVersion = Coordinator.GetPinnedOpenChamberVersion(config);
     var openCodeVersion = Coordinator.GetPinnedOpenCodeVersion(config);
     if (Coordinator.GetOpenChamberBinaryVersion(openChamberBinary) != openChamberVersion)
         throw new InvalidOperationException("Packaged OpenChamber version does not match the current checkout.");
     Coordinator.AssertOpenCodeBinaryVersion(bundledOpenCode, openCodeVersion, coordinatorRoot);
+    RequireFile(shutdownProtocolMarker);
     Console.WriteLine($"Candidate app ready: {openChamberBinary} (OpenChamber {openChamberVersion}, OpenCode {openCodeVersion})");
 }
 
@@ -124,7 +126,9 @@ static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot
         RequireFile(updateManifestPath);
         var unpackedName = architecture == "x64" ? "win-unpacked" : "win-arm64-unpacked";
         var bundledOpenCode = Path.Combine(distRoot, unpackedName, "resources", "opencode-cli", "opencode.exe");
+        var shutdownProtocolMarker = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "openchamber-shutdown-protocol.capability");
         Coordinator.AssertOpenCodeBinaryVersion(bundledOpenCode, openCodeVersion, coordinatorRoot);
+        RequireFile(shutdownProtocolMarker);
         AssertReleaseDatabasePath(bundledOpenCode, stagingDirectory, coordinatorRoot, "opencode-dev.db");
         Coordinator.Run(
             "node",

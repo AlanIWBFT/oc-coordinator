@@ -9,6 +9,7 @@ This workspace coordinates the local OpenCode and OpenChamber forks for coupled 
 - OpenCode: `E:\OpenChamber\opencode`
 - OpenChamber: `E:\OpenChamber\openchamber`
 - Coordination scripts: `E:\OpenChamber\coordinator`
+- Official Codex source for reference: `D:\Codex`
 
 Treat the repositories as separate edit and validation boundaries. Before editing either repository, read its root `AGENTS.md`, then read every required nearest package README, `DOCUMENTATION.md`, and project skill. Apply changes to each repository only during its explicit phase.
 

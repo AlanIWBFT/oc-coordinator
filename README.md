@@ -54,3 +54,17 @@ dotnet .\scripts\ForkCoordinator.cs -- build-release
 ```
 
 The builder regenerates and links the SDK, runs workspace type-check and lint, bundles OpenCode from local source with channel `dev`, packages with `--publish=never`, verifies the packaged CLI and `opencode-dev.db` default path, validates `latest.yml`, and atomically writes the installer, blockmap, update manifest, and `release.json` under `E:\OpenChamber\release`. It never uploads or installs a package. Install the validated package normally to update Stable.
+
+## Windows GitHub Release
+
+GitHub Draft creation is a separate, explicit step after `build-release`. The dedicated script targets `AlanIWBFT/openchamber`, mirrors the title and release notes from the matching `openchamber/openchamber` release, and uploads only the installer, blockmap, and architecture-appropriate Windows updater manifest from one immutable local release directory. `release.json` is used to revalidate the local files but is not uploaded.
+
+Create or resume the Draft:
+
+```powershell
+dotnet .\scripts\Publish-OpenChamberRelease.cs -- E:\OpenChamber\release\OpenChamber-1.19.0-win-x64
+```
+
+Relative release-directory arguments are resolved from the current working directory, not from the coordinator directory.
+
+Before changing GitHub, the script validates the local release and requires `gh` to be authenticated as `AlanIWBFT`, the target repository to remain public, and the exact OpenChamber source commit recorded in `release.json` to already exist in `AlanIWBFT/openchamber`. It never pushes source. It creates or resumes a matching Draft, pins the Draft target to that exact commit, rejects extra or mismatched assets, and verifies GitHub's uploaded SHA-256 digests. A failed upload intentionally leaves the validated Draft resumable by the same command. The script never publishes the Draft or changes Latest; review and publish it manually on GitHub, which creates the release tag if it does not already exist.

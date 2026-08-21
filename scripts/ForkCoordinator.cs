@@ -2,6 +2,7 @@
 #:property PublishAot=false
 #:include Coordinator.Common.cs
 
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 using LocalFork;
@@ -18,10 +19,20 @@ switch (command)
 {
     case "build-candidate":
         RequireNoArguments(command, commandArgs);
+        var candidateBuildTimer = Stopwatch.StartNew();
         BuildCandidate(Coordinator.LoadConfig(coordinatorRoot), coordinatorRoot);
+        Console.WriteLine($"Build completed in {candidateBuildTimer.Elapsed:hh\\:mm\\:ss}.");
         break;
     case "build-release":
-        BuildReleasePackage(Coordinator.LoadConfig(coordinatorRoot), coordinatorRoot, ReleaseOptions.Parse(commandArgs));
+        var releaseOptions = ReleaseOptions.Parse(commandArgs);
+        if (releaseOptions.ShowHelp)
+        {
+            PrintReleaseHelp();
+            break;
+        }
+        var releaseBuildTimer = Stopwatch.StartNew();
+        BuildReleasePackage(Coordinator.LoadConfig(coordinatorRoot), coordinatorRoot, releaseOptions);
+        Console.WriteLine($"Build completed in {releaseBuildTimer.Elapsed:hh\\:mm\\:ss}.");
         break;
     case "--help":
     case "-h":
@@ -58,12 +69,6 @@ static void BuildCandidate(CoordinatorConfig config, string coordinatorRoot)
 
 static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot, ReleaseOptions options)
 {
-    if (options.ShowHelp)
-    {
-        PrintReleaseHelp();
-        return;
-    }
-
     var openChamberRoot = Path.GetFullPath(config.OpenChamberRoot);
     var openCodeRoot = Path.GetFullPath(config.OpenCodeRoot);
     var electronRoot = Path.Combine(openChamberRoot, "packages", "electron");

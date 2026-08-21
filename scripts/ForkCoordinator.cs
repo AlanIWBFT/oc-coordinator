@@ -58,12 +58,14 @@ static void BuildCandidate(CoordinatorConfig config, string coordinatorRoot)
     var openChamberBinary = Path.Combine(unpackedDirectory, "OpenChamber.exe");
     var bundledOpenCode = Path.Combine(unpackedDirectory, "resources", "opencode-cli", "opencode.exe");
     var shutdownProtocolMarker = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "openchamber-shutdown-protocol.capability");
+    var recycleHelper = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "OpenCode.Windows.RecycleBin.dll");
     var openChamberVersion = Coordinator.GetPinnedOpenChamberVersion(config);
     var openCodeVersion = Coordinator.GetPinnedOpenCodeVersion(config);
     if (Coordinator.GetOpenChamberBinaryVersion(openChamberBinary) != openChamberVersion)
         throw new InvalidOperationException("Packaged OpenChamber version does not match the current checkout.");
     Coordinator.AssertOpenCodeBinaryVersion(bundledOpenCode, openCodeVersion, coordinatorRoot);
     RequireFile(shutdownProtocolMarker);
+    RequireFile(recycleHelper);
     Console.WriteLine($"Candidate app ready: {openChamberBinary} (OpenChamber {openChamberVersion}, OpenCode {openCodeVersion})");
 }
 
@@ -132,8 +134,10 @@ static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot
         var unpackedName = architecture == "x64" ? "win-unpacked" : "win-arm64-unpacked";
         var bundledOpenCode = Path.Combine(distRoot, unpackedName, "resources", "opencode-cli", "opencode.exe");
         var shutdownProtocolMarker = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "openchamber-shutdown-protocol.capability");
+        var recycleHelper = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "OpenCode.Windows.RecycleBin.dll");
         Coordinator.AssertOpenCodeBinaryVersion(bundledOpenCode, openCodeVersion, coordinatorRoot);
         RequireFile(shutdownProtocolMarker);
+        RequireFile(recycleHelper);
         AssertReleaseDatabasePath(bundledOpenCode, stagingDirectory, coordinatorRoot, "opencode-dev.db");
         Coordinator.Run(
             "node",

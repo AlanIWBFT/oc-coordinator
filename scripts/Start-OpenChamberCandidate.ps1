@@ -30,7 +30,7 @@ if (-not (Test-Path -LiteralPath $sandboxie -PathType Leaf)) {
 # OPENCHAMBER_RUNTIME, OPENCHAMBER_DIST_DIR, OPENCHAMBER_OPENCODE_CWD, and the Stable
 # bundled CLI directory added to PATH. UseNewEnvironment rebuilds the environment from the
 # Windows User and Machine scopes before Sandboxie starts Candidate.
-$p = Start-Process -FilePath $sandboxie -ArgumentList @('/wait', "/box:$($config.CandidateSandbox)", $binary) -UseNewEnvironment -PassThru
+$p = Start-Process -FilePath $sandboxie -ArgumentList @('/wait', "/box:$($config.CandidateSandbox)", $binary, "--no-sandbox") -UseNewEnvironment -PassThru
 "Candidate started, waiting for it to exit..."
 $p | Wait-Process
 "Candidate exited."

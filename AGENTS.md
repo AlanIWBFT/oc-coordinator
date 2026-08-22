@@ -55,7 +55,7 @@ SDK linking is all-or-restore: build output is staged as a publish-shaped packag
 
 ## Candidate Build
 
-Candidate and installable-package builds bundle the CLI from `E:\OpenChamber\opencode` with `OPENCODE_CHANNEL=dev`. It stages the verified executable directly in the unpacked Electron app; it never copies an application or CLI into a slot. The OpenCode build clears its own `dist` before compiling, so the staged Candidate app, not `packages\opencode\dist`, is the runnable artifact.
+Candidate and installable-package builds bundle the CLI from `E:\OpenChamber\opencode` with `OPENCODE_CHANNEL=dev`. The Windows bundle is a GUI-subsystem executable used only as an OpenChamber child with redirected standard handles; packaged validation must reject a console-subsystem artifact. It stages the verified executable directly in the unpacked Electron app; it never copies an application or CLI into a slot. The OpenCode build clears its own `dist` before compiling, so the staged Candidate app, not `packages\opencode\dist`, is the runnable artifact.
 
 Before any Electron packaging build, the coordinator uses `vswhere` to discover a complete Visual Studio 2022 instance with `Microsoft.VisualStudio.Component.VC.Tools.x86.x64`, then runs its Developer Shell by installation path for the target architecture. Do not hard-code an installation directory or instance ID.
 

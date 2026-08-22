@@ -3,6 +3,7 @@
 #:include Coordinator.Common.cs
 
 using System.Diagnostics;
+using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 using LocalFork;
@@ -64,6 +65,7 @@ static void BuildCandidate(CoordinatorConfig config, string coordinatorRoot)
     if (Coordinator.GetOpenChamberBinaryVersion(openChamberBinary) != openChamberVersion)
         throw new InvalidOperationException("Packaged OpenChamber version does not match the current checkout.");
     Coordinator.AssertOpenCodeBinaryVersion(bundledOpenCode, openCodeVersion, coordinatorRoot);
+    AssertWindowsGuiSubsystem(bundledOpenCode);
     RequireFile(shutdownProtocolMarker);
     RequireFile(recycleHelper);
     Console.WriteLine($"Candidate app ready: {openChamberBinary} (OpenChamber {openChamberVersion}, OpenCode {openCodeVersion})");
@@ -136,6 +138,7 @@ static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot
         var shutdownProtocolMarker = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "openchamber-shutdown-protocol.capability");
         var recycleHelper = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "OpenCode.Windows.RecycleBin.dll");
         Coordinator.AssertOpenCodeBinaryVersion(bundledOpenCode, openCodeVersion, coordinatorRoot);
+        AssertWindowsGuiSubsystem(bundledOpenCode);
         RequireFile(shutdownProtocolMarker);
         RequireFile(recycleHelper);
         AssertReleaseDatabasePath(bundledOpenCode, stagingDirectory, coordinatorRoot, "opencode-dev.db");
@@ -262,6 +265,16 @@ static void AssertReleaseDatabasePath(string binary, string stagingDirectory, st
     {
         if (Directory.Exists(sandbox)) Directory.Delete(sandbox, recursive: true);
     }
+}
+
+static void AssertWindowsGuiSubsystem(string binary)
+{
+    using var stream = File.OpenRead(binary);
+    using var reader = new PEReader(stream);
+    var subsystem = reader.PEHeaders.PEHeader?.Subsystem
+        ?? throw new InvalidOperationException($"Bundled OpenCode is not a PE executable: {binary}");
+    if (subsystem != Subsystem.WindowsGui)
+        throw new InvalidOperationException($"Bundled OpenCode must use the Windows GUI subsystem, got {subsystem}: {binary}");
 }
 
 static void RequireFile(string path)

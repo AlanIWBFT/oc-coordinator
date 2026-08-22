@@ -45,21 +45,26 @@ switch (command)
 
 static void BuildCandidate(CoordinatorConfig config, string coordinatorRoot)
 {
+    var architecture = Coordinator.GetArchitecture();
     var environment = BuildEnvironment(config);
-    AddVisualStudioBuildEnvironment(environment, coordinatorRoot);
+    if (architecture == "arm64") PrepareX64WindowsProcessBroker(environment, config, coordinatorRoot);
+    AddVisualStudioBuildEnvironment(environment, coordinatorRoot, architecture);
+    environment["OPENCODE_WINDOWS_PROCESS_BROKER_PREBUILT"] = architecture == "arm64" ? "1" : null;
+    var electronRoot = Path.Combine(config.OpenChamberRoot, "packages", "electron");
     Coordinator.Run(
         "pwsh",
         ["-NoProfile", "-File", Path.Combine(coordinatorRoot, "scripts", "Sync-OpenCodeSdk.ps1")],
         coordinatorRoot,
         environment
     );
-    Coordinator.Run("bun", ["run", "--cwd", config.OpenChamberRoot, "electron:build"], coordinatorRoot, environment);
+    Coordinator.Run("bun", ["electron:build"], config.OpenChamberRoot, environment);
 
     var unpackedDirectory = GetUnpackedDirectory(config);
     var openChamberBinary = Path.Combine(unpackedDirectory, "OpenChamber.exe");
     var bundledOpenCode = Path.Combine(unpackedDirectory, "resources", "opencode-cli", "opencode.exe");
     var shutdownProtocolMarker = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "openchamber-shutdown-protocol.capability");
     var recycleHelper = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "OpenCode.Windows.RecycleBin.dll");
+    var processBroker = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "OpenCode.ProcessBroker.exe");
     var openChamberVersion = Coordinator.GetPinnedOpenChamberVersion(config);
     var openCodeVersion = Coordinator.GetPinnedOpenCodeVersion(config);
     if (Coordinator.GetOpenChamberBinaryVersion(openChamberBinary) != openChamberVersion)
@@ -68,6 +73,7 @@ static void BuildCandidate(CoordinatorConfig config, string coordinatorRoot)
     AssertWindowsGuiSubsystem(bundledOpenCode);
     RequireFile(shutdownProtocolMarker);
     RequireFile(recycleHelper);
+    AssertWindowsProcessBroker(processBroker, coordinatorRoot);
     Console.WriteLine($"Candidate app ready: {openChamberBinary} (OpenChamber {openChamberVersion}, OpenCode {openCodeVersion})");
 }
 
@@ -101,7 +107,9 @@ static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot
     try
     {
         var environment = BuildEnvironment(config);
-        AddVisualStudioBuildEnvironment(environment, coordinatorRoot);
+        if (architecture == "arm64") PrepareX64WindowsProcessBroker(environment, config, coordinatorRoot);
+        AddVisualStudioBuildEnvironment(environment, coordinatorRoot, architecture);
+        environment["OPENCODE_WINDOWS_PROCESS_BROKER_PREBUILT"] = architecture == "arm64" ? "1" : null;
         Coordinator.Run(
             "pwsh",
             ["-NoProfile", "-File", Path.Combine(coordinatorRoot, "scripts", "Sync-OpenCodeSdk.ps1"), "-SkipTypeCheck"],
@@ -137,10 +145,12 @@ static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot
         var bundledOpenCode = Path.Combine(distRoot, unpackedName, "resources", "opencode-cli", "opencode.exe");
         var shutdownProtocolMarker = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "openchamber-shutdown-protocol.capability");
         var recycleHelper = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "OpenCode.Windows.RecycleBin.dll");
+        var processBroker = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "OpenCode.ProcessBroker.exe");
         Coordinator.AssertOpenCodeBinaryVersion(bundledOpenCode, openCodeVersion, coordinatorRoot);
         AssertWindowsGuiSubsystem(bundledOpenCode);
         RequireFile(shutdownProtocolMarker);
         RequireFile(recycleHelper);
+        AssertWindowsProcessBroker(processBroker, coordinatorRoot);
         AssertReleaseDatabasePath(bundledOpenCode, stagingDirectory, coordinatorRoot, "opencode-dev.db");
         Coordinator.Run(
             "node",
@@ -209,14 +219,37 @@ static Dictionary<string, string?> BuildEnvironment(CoordinatorConfig config) =>
 {
     ["OPENCHAMBER_OPENCODE_SOURCE_DIR"] = config.OpenCodeRoot,
     ["OPENCHAMBER_OPENCODE_CLI_VERSION"] = Coordinator.GetPinnedOpenCodeVersion(config),
+    ["OPENCODE_WINDOWS_PROCESS_BROKER_PREBUILT"] = null,
     ["XDG_CACHE_HOME"] = null,
     ["BUN_RUNTIME_TRANSPILER_CACHE_PATH"] = GetBunRuntimeTranspilerCachePath(),
 };
 
-static void AddVisualStudioBuildEnvironment(Dictionary<string, string?> environment, string coordinatorRoot)
+static void AddVisualStudioBuildEnvironment(Dictionary<string, string?> environment, string coordinatorRoot, string architecture)
 {
-    foreach (var variable in Coordinator.LoadVisualStudioBuildEnvironment(coordinatorRoot, Coordinator.GetArchitecture()))
+    foreach (var variable in Coordinator.LoadVisualStudioBuildEnvironment(coordinatorRoot, architecture))
         environment[variable.Key] = variable.Value;
+}
+
+static void PrepareX64WindowsProcessBroker(
+    Dictionary<string, string?> environment,
+    CoordinatorConfig config,
+    string coordinatorRoot
+)
+{
+    var brokerEnvironment = new Dictionary<string, string?>(environment, StringComparer.OrdinalIgnoreCase);
+    AddVisualStudioBuildEnvironment(brokerEnvironment, coordinatorRoot, "x64");
+    brokerEnvironment["OPENCODE_WINDOWS_PROCESS_BROKER_PREBUILT"] = null;
+    Coordinator.Run(
+        "bun",
+        [
+            "run",
+            "--cwd",
+            Path.Combine(config.OpenCodeRoot, "packages", "opencode"),
+            "prepare:windows-process-broker"
+        ],
+        coordinatorRoot,
+        brokerEnvironment
+    );
 }
 
 static string GetUnpackedDirectory(CoordinatorConfig config)
@@ -275,6 +308,22 @@ static void AssertWindowsGuiSubsystem(string binary)
         ?? throw new InvalidOperationException($"Bundled OpenCode is not a PE executable: {binary}");
     if (subsystem != Subsystem.WindowsGui)
         throw new InvalidOperationException($"Bundled OpenCode must use the Windows GUI subsystem, got {subsystem}: {binary}");
+}
+
+static void AssertWindowsProcessBroker(string binary, string workingDirectory)
+{
+    RequireFile(binary);
+    AssertWindowsGuiSubsystem(binary);
+    using var stream = File.OpenRead(binary);
+    using var reader = new PEReader(stream);
+    if (reader.PEHeaders.CoffHeader.Machine != Machine.Amd64)
+        throw new InvalidOperationException($"Bundled process broker must be an x64 executable, got {reader.PEHeaders.CoffHeader.Machine}: {binary}");
+    var protocol = Coordinator.Capture(binary, ["--protocol-version"], workingDirectory).Trim();
+    if (protocol != "2")
+        throw new InvalidOperationException($"Bundled process broker protocol mismatch: expected 2, got {protocol}: {binary}");
+    var runtime = Coordinator.Capture(binary, ["--runtime-kind"], workingDirectory).Trim();
+    if (runtime != "nativeaot")
+        throw new InvalidOperationException($"Bundled process broker must be NativeAOT, got {runtime}: {binary}");
 }
 
 static void RequireFile(string path)

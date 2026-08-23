@@ -1,6 +1,8 @@
 #!/usr/bin/env dotnet
 #:property PublishAot=false
+#:package Markdig@1.3.2
 #:include Coordinator.Common.cs
+#:include ReleaseNotesSanitizer.cs
 
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
@@ -152,6 +154,7 @@ static RemoteContext ValidateRemote(LocalRelease localRelease, string workingDir
         throw new InvalidOperationException($"Official release {OfficialRepository}@{localRelease.Tag} must be published and stable.");
     if (official.TagName != localRelease.Tag)
         throw new InvalidOperationException($"Official release tag mismatch: expected {localRelease.Tag}, got {official.TagName}.");
+    var releaseNotes = ReleaseNotesSanitizer.StripGitHubMentionMarkers(official.Body);
 
     var targetCommit = TryResolveCommit(TargetRepository, localRelease.OpenChamberCommit, workingDirectory);
     if (targetCommit is null)
@@ -171,12 +174,12 @@ static RemoteContext ValidateRemote(LocalRelease localRelease, string workingDir
     {
         if (!targetRelease.Draft)
             throw new InvalidOperationException($"Target release {TargetRepository}@{localRelease.Tag} is already published.");
-        ValidateReleaseMetadata(targetRelease, official, requireDraft: true);
+        ValidateReleaseMetadata(targetRelease, official, releaseNotes, requireDraft: true);
         ValidateReleaseTarget(targetRelease, localRelease, tagCommit);
         ValidateAssets(targetRelease.Assets, localRelease.Assets, requireComplete: false);
     }
 
-    return new RemoteContext(official, targetRelease, tagCommit is not null);
+    return new RemoteContext(official, releaseNotes, targetRelease, tagCommit is not null);
 }
 
 static void PrintPlan(LocalRelease localRelease, RemoteContext remote)
@@ -198,7 +201,7 @@ static void CreateDraft(LocalRelease localRelease, RemoteContext remote, string 
     try
     {
         var notesPath = Path.Combine(tempDirectory, "release-notes.md");
-        File.WriteAllText(notesPath, remote.OfficialRelease.Body, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
+        File.WriteAllText(notesPath, remote.ReleaseNotes, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
         var uploadAssets = PrepareUploadAssets(localRelease, tempDirectory);
 
         var targetRelease = FindTargetRelease(localRelease.Tag, workingDirectory);
@@ -231,7 +234,7 @@ static void CreateDraft(LocalRelease localRelease, RemoteContext remote, string 
                 ?? throw new InvalidOperationException($"Draft release {localRelease.Tag} was not visible after creation.");
         }
 
-        ValidateReleaseMetadata(targetRelease, remote.OfficialRelease, requireDraft: true);
+        ValidateReleaseMetadata(targetRelease, remote.OfficialRelease, remote.ReleaseNotes, requireDraft: true);
         var tagCommit = TryResolveCommit(TargetRepository, localRelease.Tag, workingDirectory);
         ValidateReleaseTarget(targetRelease, localRelease, tagCommit);
         ValidateAssets(targetRelease.Assets, localRelease.Assets, requireComplete: false);
@@ -260,7 +263,7 @@ static void CreateDraft(LocalRelease localRelease, RemoteContext remote, string 
             release => release.Assets.Count == localRelease.Assets.Count
         )
             ?? throw new InvalidOperationException($"Draft release {localRelease.Tag} disappeared before final verification.");
-        ValidateReleaseMetadata(targetRelease, remote.OfficialRelease, requireDraft: true);
+        ValidateReleaseMetadata(targetRelease, remote.OfficialRelease, remote.ReleaseNotes, requireDraft: true);
         tagCommit = TryResolveCommit(TargetRepository, localRelease.Tag, workingDirectory);
         ValidateReleaseTarget(targetRelease, localRelease, tagCommit);
         ValidateAssets(targetRelease.Assets, localRelease.Assets, requireComplete: true);
@@ -292,14 +295,14 @@ static IReadOnlyList<UploadFile> PrepareUploadAssets(LocalRelease localRelease, 
     return result;
 }
 
-static void ValidateReleaseMetadata(GitHubRelease target, GitHubRelease official, bool requireDraft)
+static void ValidateReleaseMetadata(GitHubRelease target, GitHubRelease official, string releaseNotes, bool requireDraft)
 {
     if (target.Draft != requireDraft)
         throw new InvalidOperationException($"Target release {target.TagName} draft state mismatch: expected {requireDraft}, got {target.Draft}.");
     if (target.Prerelease) throw new InvalidOperationException($"Target release {target.TagName} must not be a prerelease.");
     if (target.TagName != official.TagName) throw new InvalidOperationException($"Target release tag does not mirror {OfficialRepository}.");
     if (target.Name != official.Name) throw new InvalidOperationException($"Target release title does not mirror {OfficialRepository}.");
-    if (target.Body != official.Body) throw new InvalidOperationException($"Target release notes do not exactly mirror {OfficialRepository}.");
+    if (target.Body != releaseNotes) throw new InvalidOperationException($"Target release notes do not match the mention-safe mirror of {OfficialRepository}.");
 }
 
 static void ValidateReleaseTarget(GitHubRelease target, LocalRelease localRelease, string? tagCommit)
@@ -447,7 +450,7 @@ static void PrintHelp()
 {
     Console.WriteLine("Usage: dotnet .\\scripts\\Publish-OpenChamberRelease.cs -- RELEASE_DIRECTORY");
     Console.WriteLine();
-    Console.WriteLine($"Mirrors release title and notes from {OfficialRepository} and uploads only validated Windows assets to a draft in {TargetRepository}.");
+    Console.WriteLine($"Mirrors release title and mention-safe notes from {OfficialRepository} and uploads only validated Windows assets to a draft in {TargetRepository}.");
     Console.WriteLine("The command never publishes the draft or changes the repository's Latest release.");
 }
 
@@ -544,7 +547,7 @@ sealed class GitHubAsset
 sealed record UploadAsset(string Name, string Path, long Size, string Sha256);
 sealed record UploadFile(string Name, string Path);
 sealed record LocalRelease(string Directory, string Version, string Architecture, string OpenChamberCommit, string Tag, IReadOnlyList<UploadAsset> Assets);
-sealed record RemoteContext(GitHubRelease OfficialRelease, GitHubRelease? TargetRelease, bool TagExists);
+sealed record RemoteContext(GitHubRelease OfficialRelease, string ReleaseNotes, GitHubRelease? TargetRelease, bool TagExists);
 sealed record CommandResult(int ExitCode, string StandardOutput, string StandardError, IReadOnlyList<string> Arguments);
 
 static class Json

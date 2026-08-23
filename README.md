@@ -57,12 +57,18 @@ The builder regenerates and links the SDK, runs workspace type-check and lint, b
 
 ## Windows GitHub Release
 
-GitHub Draft creation is a separate, explicit step after `build-release`. The dedicated script targets `AlanIWBFT/openchamber`, mirrors the title and release notes from the matching `openchamber/openchamber` release, and uploads only the installer, blockmap, and architecture-appropriate Windows updater manifest from one immutable local release directory. `release.json` is used to revalidate the local files but is not uploaded.
+GitHub Draft creation is a separate, explicit step after `build-release`. The dedicated script targets `AlanIWBFT/openchamber`, mirrors the title and release notes from the matching `openchamber/openchamber` release, and uses Markdig source spans to strip literal `@` markers from ordinary Markdown text that can contain GitHub user or team mentions. Markdig-recognized code, explicit Markdown links, and angle-bracket CommonMark autolinks are left untouched; common embedded forms such as email addresses and `git@github.com` are preserved; and the original Markdown is edited in place rather than rendered again. Release notes containing an `@` marker in a raw HTML block, in any Markdown paragraph that also contains inline raw HTML, in mathematics, in an HTML entity, or in a bare `scheme://` or standalone `www.` URL fail before Draft creation instead of being guessed at. The script uploads only the installer, blockmap, and architecture-appropriate Windows updater manifest from one immutable local release directory. `release.json` is used to revalidate the local files but is not uploaded.
 
 Create or resume the Draft:
 
 ```powershell
 dotnet .\scripts\Publish-OpenChamberRelease.cs -- E:\OpenChamber\release\OpenChamber-1.19.0-win-x64
+```
+
+Run the focused release-note sanitizer regression suite:
+
+```powershell
+dotnet .\scripts\Test-ReleaseNotesSanitizer.cs
 ```
 
 Relative release-directory arguments are resolved from the current working directory, not from the coordinator directory.

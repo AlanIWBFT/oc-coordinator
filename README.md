@@ -12,6 +12,7 @@ Candidate isolation requires Sandboxie-Plus. The default launcher is `C:\Program
 
 - `E:\OpenChamber\openchamber`: local OpenChamber fork.
 - `E:\OpenChamber\opencode`: local OpenCode fork and source build input.
+- `E:\OpenChamber\bun-v1.4.0-release\bun.exe`: verified official Bun 1.4.0 runtime selected by `--use-bun-1-4`.
 - `E:\OpenChamber\openchamber\packages\electron\dist\win-unpacked`: x64 Candidate app built from the local checkout.
 - `E:\OpenChamber\openchamber\packages\electron\dist\win-arm64-unpacked`: ARM64 Candidate app built from the local checkout.
 - `E:\OpenChamber\release`: atomically prepared Windows release directories.
@@ -42,6 +43,8 @@ Run `scripts\Get-UpstreamRebaseContext.ps1` to inspect local branches, worktree 
 7. Validate the packaged Candidate inside Sandboxie. Discard or inspect its Sandboxie data as needed; do not promote it.
 
 `build-candidate` regenerates and links the SDK, builds the local OpenCode CLI with channel `dev` and without its unused embedded Web UI, packages OpenChamber, then verifies the versions of the unpacked `OpenChamber.exe` and bundled `opencode.exe`. The Windows bundled CLI uses the GUI PE subsystem because it is an internal non-interactive child with redirected standard handles; the packaged verifier rejects a console-subsystem artifact. Candidate runs that bundled CLI normally, without an external OpenCode server or an injected runtime profile. The launcher uses Sandboxie's `/wait` mode and returns after Candidate exits.
+
+Pass `--use-bun-1-4` to `build-candidate` or `build-release` to run the coordinated Bun build steps with `E:\OpenChamber\bun-v1.4.0-release\bun.exe` and compile the bundled OpenCode CLI against that same Bun runtime. Without the option, the existing default Bun selection remains unchanged.
 
 `scripts\Sync-OpenCodeSdk.ps1` regenerates the OpenCode client outputs, builds the legacy `@opencode-ai/sdk`, stages a publish-shaped package under `generated\opencode-sdk`, installs its production dependencies, and replaces each consumer SDK with an NTFS junction. A partial staging or junction failure triggers a root frozen-lockfile reinstall. `scripts\Restore-OfficialOpenCodeSdk.ps1` removes the local link by restoring dependencies from the frozen lockfile.
 

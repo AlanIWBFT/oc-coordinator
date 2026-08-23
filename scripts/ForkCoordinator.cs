@@ -19,9 +19,14 @@ var commandArgs = args.Skip(1).ToArray();
 switch (command)
 {
     case "build-candidate":
-        RequireNoArguments(command, commandArgs);
+        var candidateOptions = CandidateOptions.Parse(commandArgs);
+        if (candidateOptions.ShowHelp)
+        {
+            PrintCandidateHelp();
+            break;
+        }
         var candidateBuildTimer = Stopwatch.StartNew();
-        BuildCandidate(Coordinator.LoadConfig(coordinatorRoot), coordinatorRoot);
+        BuildCandidate(Coordinator.LoadConfig(coordinatorRoot), coordinatorRoot, candidateOptions);
         Console.WriteLine($"Build completed in {candidateBuildTimer.Elapsed:hh\\:mm\\:ss}.");
         break;
     case "build-release":
@@ -43,12 +48,14 @@ switch (command)
         throw new ArgumentException($"Unknown command: {command}");
 }
 
-static void BuildCandidate(CoordinatorConfig config, string coordinatorRoot)
+static void BuildCandidate(CoordinatorConfig config, string coordinatorRoot, CandidateOptions options)
 {
     var architecture = Coordinator.GetArchitecture();
-    var environment = BuildEnvironment(config);
-    if (architecture == "arm64") PrepareX64WindowsProcessBroker(environment, config, coordinatorRoot);
+    var bunExecutable = ResolveBuildBunExecutable(coordinatorRoot, options.UseBun14);
+    var environment = BuildEnvironment(config, architecture);
+    if (architecture == "arm64") PrepareX64WindowsProcessBroker(environment, config, coordinatorRoot, bunExecutable);
     AddVisualStudioBuildEnvironment(environment, coordinatorRoot, architecture);
+    ConfigureBunBuildEnvironment(environment, bunExecutable);
     environment["OPENCODE_WINDOWS_PROCESS_BROKER_PREBUILT"] = architecture == "arm64" ? "1" : null;
     var electronRoot = Path.Combine(config.OpenChamberRoot, "packages", "electron");
     Coordinator.Run(
@@ -57,7 +64,7 @@ static void BuildCandidate(CoordinatorConfig config, string coordinatorRoot)
         coordinatorRoot,
         environment
     );
-    Coordinator.Run("bun", ["electron:build"], config.OpenChamberRoot, environment);
+    Coordinator.Run(bunExecutable, ["electron:build"], config.OpenChamberRoot, environment);
 
     var unpackedDirectory = GetUnpackedDirectory(config);
     var openChamberBinary = Path.Combine(unpackedDirectory, "OpenChamber.exe");
@@ -85,6 +92,7 @@ static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot
     var distRoot = Path.Combine(electronRoot, "dist");
     var releaseRoot = Path.GetFullPath(options.OutputRoot ?? config.ReleaseRoot);
     var architecture = Coordinator.GetArchitecture();
+    var bunExecutable = ResolveBuildBunExecutable(coordinatorRoot, options.UseBun14);
     EnsureRepositoryReady(openChamberRoot, config.OpenChamberBranch, coordinatorRoot);
     EnsureRepositoryReady(openCodeRoot, config.OpenCodeBranch, coordinatorRoot);
 
@@ -106,9 +114,10 @@ static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot
 
     try
     {
-        var environment = BuildEnvironment(config);
-        if (architecture == "arm64") PrepareX64WindowsProcessBroker(environment, config, coordinatorRoot);
+        var environment = BuildEnvironment(config, architecture);
+        if (architecture == "arm64") PrepareX64WindowsProcessBroker(environment, config, coordinatorRoot, bunExecutable);
         AddVisualStudioBuildEnvironment(environment, coordinatorRoot, architecture);
+        ConfigureBunBuildEnvironment(environment, bunExecutable);
         environment["OPENCODE_WINDOWS_PROCESS_BROKER_PREBUILT"] = architecture == "arm64" ? "1" : null;
         Coordinator.Run(
             "pwsh",
@@ -118,22 +127,22 @@ static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot
         );
         EnsureWorktreeClean(openChamberRoot, coordinatorRoot);
         EnsureWorktreeClean(openCodeRoot, coordinatorRoot);
-        Coordinator.Run("bun", ["run", "--cwd", openChamberRoot, "type-check"], coordinatorRoot, environment);
-        Coordinator.Run("bun", ["run", "--cwd", openChamberRoot, "lint"], coordinatorRoot, environment);
+        Coordinator.Run(bunExecutable, ["run", "--cwd", openChamberRoot, "type-check"], coordinatorRoot, environment);
+        Coordinator.Run(bunExecutable, ["run", "--cwd", openChamberRoot, "lint"], coordinatorRoot, environment);
         if (Directory.Exists(distRoot)) Directory.Delete(distRoot, recursive: true);
 
-        Coordinator.Run("bun", ["run", "--cwd", electronRoot, "build:web-assets"], coordinatorRoot, environment);
-        Coordinator.Run("bun", ["run", "--cwd", electronRoot, "prepare:opencode-cli"], coordinatorRoot, environment);
-        Coordinator.Run("bun", ["run", "--cwd", electronRoot, "verify:opencode-cli"], coordinatorRoot, environment);
-        Coordinator.Run("bun", ["run", "--cwd", electronRoot, "bundle:main"], coordinatorRoot, environment);
-        Coordinator.Run("bun", ["run", "--cwd", electronRoot, "rebuild:native"], coordinatorRoot, environment);
+        Coordinator.Run(bunExecutable, ["run", "--cwd", electronRoot, "build:web-assets"], coordinatorRoot, environment);
+        Coordinator.Run(bunExecutable, ["run", "--cwd", electronRoot, "prepare:opencode-cli"], coordinatorRoot, environment);
+        Coordinator.Run(bunExecutable, ["run", "--cwd", electronRoot, "verify:opencode-cli"], coordinatorRoot, environment);
+        Coordinator.Run(bunExecutable, ["run", "--cwd", electronRoot, "bundle:main"], coordinatorRoot, environment);
+        Coordinator.Run(bunExecutable, ["run", "--cwd", electronRoot, "rebuild:native"], coordinatorRoot, environment);
         Coordinator.Run(
             "node",
             [Path.Combine(electronRoot, "scripts", "package.mjs"), "--win", $"--{architecture}", "--publish=never"],
             electronRoot,
             environment
         );
-        Coordinator.Run("bun", ["run", "--cwd", electronRoot, "verify:opencode-cli:packaged"], coordinatorRoot, environment);
+        Coordinator.Run(bunExecutable, ["run", "--cwd", electronRoot, "verify:opencode-cli:packaged"], coordinatorRoot, environment);
 
         var installerPath = Path.Combine(distRoot, $"OpenChamber-{openChamberVersion}-win-{architecture}.exe");
         var blockmapPath = $"{installerPath}.blockmap";
@@ -215,10 +224,11 @@ static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot
     }
 }
 
-static Dictionary<string, string?> BuildEnvironment(CoordinatorConfig config) => new(StringComparer.OrdinalIgnoreCase)
+static Dictionary<string, string?> BuildEnvironment(CoordinatorConfig config, string architecture) => new(StringComparer.OrdinalIgnoreCase)
 {
     ["OPENCHAMBER_OPENCODE_SOURCE_DIR"] = config.OpenCodeRoot,
     ["OPENCHAMBER_OPENCODE_CLI_VERSION"] = Coordinator.GetPinnedOpenCodeVersion(config),
+    ["OPENCHAMBER_TARGET_ARCH"] = architecture,
     ["OPENCODE_WINDOWS_PROCESS_BROKER_PREBUILT"] = null,
     ["XDG_CACHE_HOME"] = null,
     ["BUN_RUNTIME_TRANSPILER_CACHE_PATH"] = GetBunRuntimeTranspilerCachePath(),
@@ -233,14 +243,16 @@ static void AddVisualStudioBuildEnvironment(Dictionary<string, string?> environm
 static void PrepareX64WindowsProcessBroker(
     Dictionary<string, string?> environment,
     CoordinatorConfig config,
-    string coordinatorRoot
+    string coordinatorRoot,
+    string bunExecutable
 )
 {
     var brokerEnvironment = new Dictionary<string, string?>(environment, StringComparer.OrdinalIgnoreCase);
     AddVisualStudioBuildEnvironment(brokerEnvironment, coordinatorRoot, "x64");
+    ConfigureBunBuildEnvironment(brokerEnvironment, bunExecutable);
     brokerEnvironment["OPENCODE_WINDOWS_PROCESS_BROKER_PREBUILT"] = null;
     Coordinator.Run(
-        "bun",
+        bunExecutable,
         [
             "run",
             "--cwd",
@@ -250,6 +262,30 @@ static void PrepareX64WindowsProcessBroker(
         coordinatorRoot,
         brokerEnvironment
     );
+}
+
+static string ResolveBuildBunExecutable(string coordinatorRoot, bool useBun14)
+{
+    if (!useBun14) return "bun";
+
+    var bunExecutable = Path.GetFullPath(Path.Combine(coordinatorRoot, "..", "bun-v1.4.0-release", "bun.exe"));
+    RequireFile(bunExecutable);
+    var version = Coordinator.Capture(bunExecutable, ["--version"], coordinatorRoot).Trim();
+    if (version != "1.4.0")
+        throw new InvalidOperationException($"Expected Bun 1.4.0 at {bunExecutable}, got {version}.");
+    return bunExecutable;
+}
+
+static void ConfigureBunBuildEnvironment(Dictionary<string, string?> environment, string bunExecutable)
+{
+    if (!Path.IsPathFullyQualified(bunExecutable)) return;
+
+    environment["OPENCHAMBER_OPENCODE_BUN_RUNTIME"] = bunExecutable;
+    environment["npm_execpath"] = bunExecutable;
+    var path = environment.TryGetValue("PATH", out var configuredPath)
+        ? configuredPath
+        : Environment.GetEnvironmentVariable("PATH");
+    environment["PATH"] = string.Join(Path.PathSeparator, new[] { Path.GetDirectoryName(bunExecutable), path }.Where(value => !string.IsNullOrWhiteSpace(value)));
 }
 
 static string GetUnpackedDirectory(CoordinatorConfig config)
@@ -331,35 +367,62 @@ static void RequireFile(string path)
     if (!File.Exists(path)) throw new FileNotFoundException("Required file not found.", path);
 }
 
-static void RequireNoArguments(string command, string[] arguments)
-{
-    if (arguments.Length > 0)
-        throw new ArgumentException($"{command} does not accept arguments: {string.Join(' ', arguments)}");
-}
-
 static void PrintHelp()
 {
     Console.WriteLine("Usage: dotnet ForkCoordinator.cs -- <command> [options]");
     Console.WriteLine();
     Console.WriteLine("Commands:");
-    Console.WriteLine("  build-candidate");
-    Console.WriteLine("  build-release [--output-root PATH]");
+    Console.WriteLine("  build-candidate [--use-bun-1-4]");
+    Console.WriteLine("  build-release [--output-root PATH] [--use-bun-1-4]");
+}
+
+static void PrintCandidateHelp()
+{
+    Console.WriteLine("Usage: dotnet ForkCoordinator.cs -- build-candidate [--use-bun-1-4]");
+    Console.WriteLine();
+    Console.WriteLine("Builds the unpacked Candidate app from the local OpenChamber and OpenCode sources.");
 }
 
 static void PrintReleaseHelp()
 {
-    Console.WriteLine("Usage: dotnet ForkCoordinator.cs -- build-release [--output-root PATH]");
+    Console.WriteLine("Usage: dotnet ForkCoordinator.cs -- build-release [--output-root PATH] [--use-bun-1-4]");
     Console.WriteLine();
     Console.WriteLine("Builds an installable Windows NSIS package without uploading or installing it.");
 }
 
 static string GetSourcePath([CallerFilePath] string path = "") => path;
 
-sealed record ReleaseOptions(string? OutputRoot, bool ShowHelp)
+sealed record CandidateOptions(bool UseBun14, bool ShowHelp)
+{
+    public static CandidateOptions Parse(string[] arguments)
+    {
+        var useBun14 = false;
+        var showHelp = false;
+        foreach (var argument in arguments)
+        {
+            switch (argument)
+            {
+                case "--use-bun-1-4":
+                    useBun14 = true;
+                    break;
+                case "--help":
+                case "-h":
+                    showHelp = true;
+                    break;
+                default:
+                    throw new ArgumentException($"Unknown build-candidate argument: {argument}");
+            }
+        }
+        return new CandidateOptions(useBun14, showHelp);
+    }
+}
+
+sealed record ReleaseOptions(string? OutputRoot, bool UseBun14, bool ShowHelp)
 {
     public static ReleaseOptions Parse(string[] arguments)
     {
         string? outputRoot = null;
+        var useBun14 = false;
         var showHelp = false;
         for (var index = 0; index < arguments.Length; index++)
         {
@@ -369,6 +432,9 @@ sealed record ReleaseOptions(string? OutputRoot, bool ShowHelp)
                     if (++index >= arguments.Length) throw new ArgumentException("--output-root requires a path.");
                     outputRoot = arguments[index];
                     break;
+                case "--use-bun-1-4":
+                    useBun14 = true;
+                    break;
                 case "--help":
                 case "-h":
                     showHelp = true;
@@ -377,6 +443,6 @@ sealed record ReleaseOptions(string? OutputRoot, bool ShowHelp)
                     throw new ArgumentException($"Unknown build-release argument: {arguments[index]}");
             }
         }
-        return new ReleaseOptions(outputRoot, showHelp);
+        return new ReleaseOptions(outputRoot, useBun14, showHelp);
     }
 }

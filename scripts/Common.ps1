@@ -5,11 +5,10 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $PSNativeCommandUseErrorActionPreference = $false
 
-if (-not $IsWindows) {
-  throw 'This local fork coordinator is configured for Windows paths and executables.'
-}
-
 function Get-LocalForkConfig {
+  if (-not $IsWindows) {
+    throw 'The default config contains Windows paths. Use Build-LinuxCandidate.ps1 on Linux.'
+  }
   $configPath = Join-Path (Split-Path $PSScriptRoot -Parent) 'local-fork.config.psd1'
   if (-not (Test-Path -LiteralPath $configPath -PathType Leaf)) {
     throw "Local fork config not found: $configPath"
@@ -129,12 +128,14 @@ function Invoke-InDirectory {
 function Test-LocalOpenCodeSdkLinked {
   param([Parameter(Mandatory)] [hashtable] $Config)
 
-  $expected = [IO.Path]::GetFullPath($Config.OpenCodeSdkLinkRoot).TrimEnd('\')
+  $separator = [IO.Path]::DirectorySeparatorChar
+  $expected = [IO.Path]::GetFullPath($Config.OpenCodeSdkLinkRoot).TrimEnd($separator)
+  $comparison = if ($IsWindows) { [StringComparison]::OrdinalIgnoreCase } else { [StringComparison]::Ordinal }
   foreach ($consumer in $Config.OpenChamberSdkConsumers) {
     $resolved = Invoke-InDirectory -Path $consumer -ScriptBlock {
       Get-ResolvedOpenCodeSdkPath -Consumer $consumer
     }
-    if (-not $resolved.StartsWith("$expected\", [StringComparison]::OrdinalIgnoreCase)) {
+    if (-not $resolved.StartsWith("$expected$separator", $comparison)) {
       return $false
     }
   }

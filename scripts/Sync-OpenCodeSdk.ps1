@@ -2,11 +2,11 @@
 #requires -PSEdition Core
 
 [CmdletBinding()]
-param([switch] $SkipTypeCheck)
+param([switch] $SkipTypeCheck, [hashtable] $Config)
 
 . (Join-Path $PSScriptRoot 'Common.ps1')
 
-function Set-LocalSdkJunction {
+function Set-LocalSdkLink {
   param(
     [Parameter(Mandatory)] [string] $Consumer,
     [Parameter(Mandatory)] [string] $Target
@@ -25,7 +25,8 @@ function Set-LocalSdkJunction {
       Remove-Item -LiteralPath $dependencyPath -Recurse -Force
     }
   }
-  New-Item -ItemType Junction -Path $dependencyPath -Target $Target | Out-Null
+  $linkType = if ($IsWindows) { 'Junction' } else { 'SymbolicLink' }
+  New-Item -ItemType $linkType -Path $dependencyPath -Target $Target | Out-Null
 }
 
 function New-LocalSdkPackage {
@@ -94,7 +95,7 @@ function New-LocalSdkPackage {
   }
 }
 
-$config = Get-LocalForkConfig
+if (-not $Config) { $Config = Get-LocalForkConfig }
 $pinnedVersion = Get-PinnedOpenCodeVersion -Config $config
 $workspacePackagePath = Join-Path $config.OpenCodeRoot 'package.json'
 $workspacePackage = Get-Content -LiteralPath $workspacePackagePath -Raw | ConvertFrom-Json -AsHashtable
@@ -140,7 +141,7 @@ foreach ($relative in $requiredOutputs) {
 try {
   New-LocalSdkPackage -Source $config.OpenCodeSdkRoot -Destination $config.OpenCodeSdkLinkRoot -Catalog $catalog
   foreach ($consumer in $config.OpenChamberSdkConsumers) {
-    Set-LocalSdkJunction -Consumer $consumer -Target $config.OpenCodeSdkLinkRoot
+    Set-LocalSdkLink -Consumer $consumer -Target $config.OpenCodeSdkLinkRoot
   }
   Assert-LocalOpenCodeSdkLinked -Config $config
 } catch {

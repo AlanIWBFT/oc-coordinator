@@ -30,8 +30,9 @@ if (options.ShowHelp)
 }
 
 var config = Coordinator.LoadConfig(coordinatorRoot);
-var releaseDirectory = Path.GetFullPath(options.ReleaseDirectory!, Environment.CurrentDirectory);
-var localRelease = LoadLocalRelease(releaseDirectory, Path.GetFullPath(config.ReleaseRoot));
+var releaseDirectory = Path.TrimEndingDirectorySeparator(Path.GetFullPath(options.ReleaseDirectory!, Environment.CurrentDirectory));
+var releaseRoot = Path.TrimEndingDirectorySeparator(Path.GetFullPath(config.ReleaseRoot));
+var localRelease = LoadLocalRelease(releaseDirectory, releaseRoot);
 var remote = ValidateRemote(localRelease, coordinatorRoot);
 
 PrintPlan(localRelease, remote);

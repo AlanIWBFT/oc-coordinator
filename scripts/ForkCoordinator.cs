@@ -26,7 +26,7 @@ switch (command)
             break;
         }
         var candidateBuildTimer = Stopwatch.StartNew();
-        BuildCandidate(Coordinator.LoadConfig(coordinatorRoot), coordinatorRoot, candidateOptions);
+        BuildCandidate(Coordinator.LoadConfig(coordinatorRoot), coordinatorRoot);
         Console.WriteLine($"Build completed in {candidateBuildTimer.Elapsed:hh\\:mm\\:ss}.");
         break;
     case "build-release":
@@ -48,10 +48,10 @@ switch (command)
         throw new ArgumentException($"Unknown command: {command}");
 }
 
-static void BuildCandidate(CoordinatorConfig config, string coordinatorRoot, CandidateOptions options)
+static void BuildCandidate(CoordinatorConfig config, string coordinatorRoot)
 {
     var architecture = Coordinator.GetArchitecture();
-    var bunExecutable = ResolveBuildBunExecutable(coordinatorRoot, options.UseBun14);
+    var bunExecutable = ResolveBuildBunExecutable(coordinatorRoot);
     var environment = BuildEnvironment(config, architecture);
     if (architecture == "arm64") PrepareX64WindowsProcessBroker(environment, config, coordinatorRoot, bunExecutable);
     AddVisualStudioBuildEnvironment(environment, coordinatorRoot, architecture);
@@ -92,7 +92,7 @@ static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot
     var distRoot = Path.Combine(electronRoot, "dist");
     var releaseRoot = Path.GetFullPath(options.OutputRoot ?? config.ReleaseRoot);
     var architecture = Coordinator.GetArchitecture();
-    var bunExecutable = ResolveBuildBunExecutable(coordinatorRoot, options.UseBun14);
+    var bunExecutable = ResolveBuildBunExecutable(coordinatorRoot);
     EnsureRepositoryReady(openChamberRoot, config.OpenChamberBranch, coordinatorRoot);
     EnsureRepositoryReady(openCodeRoot, config.OpenCodeBranch, coordinatorRoot);
 
@@ -264,10 +264,8 @@ static void PrepareX64WindowsProcessBroker(
     );
 }
 
-static string ResolveBuildBunExecutable(string coordinatorRoot, bool useBun14)
+static string ResolveBuildBunExecutable(string coordinatorRoot)
 {
-    if (!useBun14) return "bun";
-
     var bunExecutable = Path.GetFullPath(Path.Combine(coordinatorRoot, "..", "bun-v1.4.2-release", "bun.exe"));
     RequireFile(bunExecutable);
     var version = Coordinator.Capture(bunExecutable, ["--version"], coordinatorRoot).Trim();
@@ -278,8 +276,6 @@ static string ResolveBuildBunExecutable(string coordinatorRoot, bool useBun14)
 
 static void ConfigureBunBuildEnvironment(Dictionary<string, string?> environment, string bunExecutable)
 {
-    if (!Path.IsPathFullyQualified(bunExecutable)) return;
-
     environment["OPENCHAMBER_OPENCODE_BUN_RUNTIME"] = bunExecutable;
     environment["npm_execpath"] = bunExecutable;
     var path = environment.TryGetValue("PATH", out var configuredPath)
@@ -372,39 +368,35 @@ static void PrintHelp()
     Console.WriteLine("Usage: dotnet ForkCoordinator.cs -- <command> [options]");
     Console.WriteLine();
     Console.WriteLine("Commands:");
-    Console.WriteLine("  build-candidate [--use-bun-1-4]");
-    Console.WriteLine("  build-release [--output-root PATH] [--use-bun-1-4]");
+    Console.WriteLine("  build-candidate");
+    Console.WriteLine("  build-release [--output-root PATH]");
 }
 
 static void PrintCandidateHelp()
 {
-    Console.WriteLine("Usage: dotnet ForkCoordinator.cs -- build-candidate [--use-bun-1-4]");
+    Console.WriteLine("Usage: dotnet ForkCoordinator.cs -- build-candidate");
     Console.WriteLine();
     Console.WriteLine("Builds the unpacked Candidate app from the local OpenChamber and OpenCode sources.");
 }
 
 static void PrintReleaseHelp()
 {
-    Console.WriteLine("Usage: dotnet ForkCoordinator.cs -- build-release [--output-root PATH] [--use-bun-1-4]");
+    Console.WriteLine("Usage: dotnet ForkCoordinator.cs -- build-release [--output-root PATH]");
     Console.WriteLine();
     Console.WriteLine("Builds an installable Windows NSIS package without uploading or installing it.");
 }
 
 static string GetSourcePath([CallerFilePath] string path = "") => path;
 
-sealed record CandidateOptions(bool UseBun14, bool ShowHelp)
+sealed record CandidateOptions(bool ShowHelp)
 {
     public static CandidateOptions Parse(string[] arguments)
     {
-        var useBun14 = false;
         var showHelp = false;
         foreach (var argument in arguments)
         {
             switch (argument)
             {
-                case "--use-bun-1-4":
-                    useBun14 = true;
-                    break;
                 case "--help":
                 case "-h":
                     showHelp = true;
@@ -413,16 +405,15 @@ sealed record CandidateOptions(bool UseBun14, bool ShowHelp)
                     throw new ArgumentException($"Unknown build-candidate argument: {argument}");
             }
         }
-        return new CandidateOptions(useBun14, showHelp);
+        return new CandidateOptions(showHelp);
     }
 }
 
-sealed record ReleaseOptions(string? OutputRoot, bool UseBun14, bool ShowHelp)
+sealed record ReleaseOptions(string? OutputRoot, bool ShowHelp)
 {
     public static ReleaseOptions Parse(string[] arguments)
     {
         string? outputRoot = null;
-        var useBun14 = false;
         var showHelp = false;
         for (var index = 0; index < arguments.Length; index++)
         {
@@ -432,9 +423,6 @@ sealed record ReleaseOptions(string? OutputRoot, bool UseBun14, bool ShowHelp)
                     if (++index >= arguments.Length) throw new ArgumentException("--output-root requires a path.");
                     outputRoot = arguments[index];
                     break;
-                case "--use-bun-1-4":
-                    useBun14 = true;
-                    break;
                 case "--help":
                 case "-h":
                     showHelp = true;
@@ -443,6 +431,6 @@ sealed record ReleaseOptions(string? OutputRoot, bool UseBun14, bool ShowHelp)
                     throw new ArgumentException($"Unknown build-release argument: {arguments[index]}");
             }
         }
-        return new ReleaseOptions(outputRoot, useBun14, showHelp);
+        return new ReleaseOptions(outputRoot, showHelp);
     }
 }

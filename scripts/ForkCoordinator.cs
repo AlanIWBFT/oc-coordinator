@@ -317,7 +317,7 @@ static void AssertReleaseDatabasePath(string binary, string stagingDirectory, st
     var sandbox = Path.Combine(stagingDirectory, "database-verification");
     try
     {
-        var output = Coordinator.Capture(binary, ["db", "path"], workingDirectory, new Dictionary<string, string?>
+        var output = Coordinator.Capture(binary, ["debug", "paths", "db"], workingDirectory, new Dictionary<string, string?>
         {
             ["XDG_DATA_HOME"] = sandbox,
             ["OPENCODE_DB"] = null,

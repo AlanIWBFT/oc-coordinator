@@ -1,0 +1,4173 @@
+# opencode: v1.18.31 to v2.0.15
+
+Local commits: 41; upstream commits: 3731; changed upstream paths: 7045.
+Local paths: 192; overlap: 153; absent at target: 167.
+
+## Local commits and target path availability
+
+### 52286a6ce9 Local: fix(opencode): clear live todos at new turn start
+
+- absent: `packages/opencode/src/session/prompt.ts`
+- absent: `packages/opencode/todo-card-reset-spec.md`
+
+### b4faa8a726 Local: feat(opencode): enable Exa search and code tools by default
+
+- absent: `packages/opencode/src/effect/runtime-flags.ts`
+- absent: `packages/opencode/test/effect/runtime-flags.test.ts`
+
+### 2028c54e3e Local: feat(opencode): prioritize system ripgrep and tweak parameters
+
+- present: `packages/core/src/ripgrep.ts`
+
+### 676b5d4d46 Local: fix(tool): skip extra external_directory prompts for read-only file tools
+
+- absent: `packages/opencode/src/tool/external-directory.ts`
+- absent: `packages/opencode/src/tool/glob.ts`
+- absent: `packages/opencode/src/tool/grep.ts`
+- absent: `packages/opencode/src/tool/read.ts`
+- absent: `packages/opencode/test/tool/external-directory.test.ts`
+- absent: `packages/opencode/test/tool/glob.test.ts`
+- absent: `packages/opencode/test/tool/grep.test.ts`
+- absent: `packages/opencode/test/tool/read.test.ts`
+
+### 82c90a2a2e Local: fix(tool): improve shell command execution and guidance
+
+- absent: `packages/opencode/src/tool/shell.ts`
+- absent: `packages/opencode/src/tool/shell/shell.txt`
+- absent: `packages/opencode/test/tool/shell.test.ts`
+
+### 123f1397ca Local: fix(tool): route PowerShell deletes to recycle bin
+
+- absent: `packages/opencode/src/tool/shell.ts`
+- absent: `packages/opencode/src/tool/shell/prompt.ts`
+- absent: `packages/opencode/test/tool/shell.test.ts`
+
+### 74817794bd Local: fix(tool): read PowerShell stdin as UTF-8
+
+- absent: `packages/opencode/src/tool/shell.ts`
+- absent: `packages/opencode/test/tool/shell.test.ts`
+
+### 735cfbab9c Local: fix(session): match Windows directory separators
+
+- absent: `packages/opencode/src/session/session.ts`
+- absent: `packages/opencode/test/server/session-list.test.ts`
+
+### ed487efa73 Local: docs(opencode): document git editor safeguards
+
+- absent: `packages/opencode/src/tool/shell/shell.txt`
+
+### 2cbe8edf4e Local: feat(plan): recover plan_exit and restore build handoff
+
+- absent: `packages/opencode/src/effect/app-runtime.ts`
+- absent: `packages/opencode/src/effect/runtime-flags.ts`
+- absent: `packages/opencode/src/question/index.ts`
+- absent: `packages/opencode/src/server/routes/instance/httpapi/handlers/question.ts`
+- absent: `packages/opencode/src/session/revert.ts`
+- absent: `packages/opencode/src/tool/plan-state.ts`
+- absent: `packages/opencode/src/tool/plan.ts`
+- absent: `packages/opencode/src/tool/registry.ts`
+- absent: `packages/opencode/test/effect/runtime-flags.test.ts`
+- absent: `packages/opencode/test/question/question.test.ts`
+- absent: `packages/opencode/test/tool/question.test.ts`
+- absent: `packages/opencode/test/tool/registry.test.ts`
+- absent: `specs/v2/plan-mode.md`
+
+### 25d7a95f0a Local: fix(session): preserve Chinese compaction language
+
+- absent: `packages/opencode/src/agent/prompt/compaction.zh.txt`
+- absent: `packages/opencode/src/session/compaction.ts`
+- absent: `packages/opencode/test/session/compaction.test.ts`
+
+### f32fc29553 Local: fix(opencode): preserve user language in reviews
+
+- absent: `packages/opencode/src/session/prompt/gpt.txt`
+
+### a128b16083 Local: feat(opencode): select explicit build targets
+
+- absent: `packages/opencode/script/build.ts`
+- absent: `packages/opencode/script/target-selection.ts`
+- absent: `packages/opencode/test/script/build-target.test.ts`
+
+### f3282c4e8b Local: fix(opencode): preserve apply patch line endings
+
+- absent: `packages/opencode/src/patch/index.ts`
+- absent: `packages/opencode/src/tool/apply_patch.ts`
+- absent: `packages/opencode/test/patch/patch.test.ts`
+- absent: `packages/opencode/test/tool/apply_patch.test.ts`
+
+### a069301e59 Local: refine iterative review guidance
+
+- absent: `packages/opencode/src/session/prompt/gpt-astra.txt`
+- absent: `packages/opencode/src/session/prompt/gpt.txt`
+
+### 21a5a0d037 Local: preserve provider recovery and native error diagnostics
+
+- absent: `packages/core/src/v1/session.ts`
+- absent: `packages/core/test/legacy-event-schema.test.ts`
+- absent: `packages/llm/src/protocols/openai-responses.ts`
+- absent: `packages/llm/src/protocols/shared.ts`
+- absent: `packages/llm/src/route/executor.ts`
+- absent: `packages/llm/src/route/transport/http.ts`
+- absent: `packages/llm/test/executor.test.ts`
+- absent: `packages/llm/test/provider/openai-responses.test.ts`
+- absent: `packages/opencode/src/plugin/openai/codex.ts`
+- absent: `packages/opencode/src/plugin/openai/ws-pool.ts`
+- absent: `packages/opencode/src/provider/error.ts`
+- absent: `packages/opencode/src/provider/provider.ts`
+- absent: `packages/opencode/src/server/routes/instance/httpapi/handlers/session.ts`
+- absent: `packages/opencode/src/session/message-v2.ts`
+- absent: `packages/opencode/src/session/processor.ts`
+- absent: `packages/opencode/src/session/prompt.ts`
+- absent: `packages/opencode/src/session/retry.ts`
+- absent: `packages/opencode/test/plugin/codex.test.ts`
+- absent: `packages/opencode/test/plugin/openai-ws.test.ts`
+- absent: `packages/opencode/test/provider/error.test.ts`
+- absent: `packages/opencode/test/session/message-v2.test.ts`
+- absent: `packages/opencode/test/session/messages-pagination.test.ts`
+- absent: `packages/opencode/test/session/processor-effect.test.ts`
+- absent: `packages/opencode/test/session/retry.test.ts`
+- absent: `packages/opencode/test/session/schema-decoding.test.ts`
+- present: `packages/schema/src/session-status-event.ts`
+- present: `packages/schema/src/v1/session.ts`
+- present: `packages/schema/test/compatibility.test.ts`
+
+### ef019aba85 Local: consolidate unified exec lanes
+
+- present: `SECURITY.md`
+- present: `packages/codemode/src/tool-runtime.ts`
+- present: `packages/codemode/src/tool.ts`
+- present: `packages/core/src/pty.ts`
+- present: `packages/core/test/pty/pty-session.test.ts`
+- absent: `packages/opencode/src/acp/event.ts`
+- absent: `packages/opencode/src/acp/tool.ts`
+- absent: `packages/opencode/src/agent/agent.ts`
+- absent: `packages/opencode/src/agent/prompt/explore.txt`
+- absent: `packages/opencode/src/effect/runtime-flags.ts`
+- absent: `packages/opencode/src/permission/index.ts`
+- absent: `packages/opencode/src/server/routes/instance/httpapi/groups/session.ts`
+- absent: `packages/opencode/src/server/routes/instance/httpapi/handlers/session.ts`
+- absent: `packages/opencode/src/session/message-v2.ts`
+- absent: `packages/opencode/src/session/processor.ts`
+- absent: `packages/opencode/src/session/prompt.ts`
+- absent: `packages/opencode/src/session/run-state.ts`
+- absent: `packages/opencode/src/session/tools.ts`
+- absent: `packages/opencode/src/tool/code-mode.ts`
+- absent: `packages/opencode/src/tool/exec-session.ts`
+- absent: `packages/opencode/src/tool/exec-session/output.ts`
+- absent: `packages/opencode/src/tool/registry.ts`
+- absent: `packages/opencode/src/tool/shell.ts`
+- absent: `packages/opencode/src/tool/shell/prompt.ts`
+- absent: `packages/opencode/src/tool/tool.ts`
+- absent: `packages/opencode/src/tool/unified-exec.ts`
+- absent: `packages/opencode/test/acp/event.test.ts`
+- absent: `packages/opencode/test/acp/tool.test.ts`
+- absent: `packages/opencode/test/agent/agent.test.ts`
+- absent: `packages/opencode/test/permission/next.test.ts`
+- absent: `packages/opencode/test/server/httpapi-exercise/index.ts`
+- absent: `packages/opencode/test/server/httpapi-session.test.ts`
+- absent: `packages/opencode/test/server/session-actions.test.ts`
+- absent: `packages/opencode/test/session/message-v2.test.ts`
+- absent: `packages/opencode/test/session/processor-effect.test.ts`
+- absent: `packages/opencode/test/session/prompt.test.ts`
+- absent: `packages/opencode/test/tool/code-mode-integration.test.ts`
+- absent: `packages/opencode/test/tool/code-mode.test.ts`
+- absent: `packages/opencode/test/tool/parameters.test.ts`
+- absent: `packages/opencode/test/tool/registry.test.ts`
+- absent: `packages/opencode/test/tool/shell.test.ts`
+- absent: `packages/opencode/test/tool/unified-exec.test.ts`
+- absent: `plans/code-mode-native-tools.md`
+- absent: `specs/v2/unified-exec.md`
+
+### 848aa0ed04 Local: stabilize unified exec lane test
+
+- absent: `packages/opencode/test/tool/unified-exec.test.ts`
+
+### be7735d1eb Local: preserve authoritative session ordering
+
+- present: `packages/core/script/migration.ts`
+- present: `packages/core/src/database/database.ts`
+- absent: `packages/core/src/database/local-message-order.ts`
+- absent: `packages/core/src/database/local-migration.ts`
+- absent: `packages/core/src/database/local-migration/0001_message_order.ts`
+- absent: `packages/core/src/database/local-migrations.ts`
+- absent: `packages/core/src/event.ts`
+- present: `packages/core/src/session/projector.ts`
+- absent: `packages/core/src/v1/session.ts`
+- present: `packages/core/test/database-migration.test.ts`
+- absent: `packages/core/test/event.test.ts`
+- present: `packages/core/test/session-projector.test.ts`
+- present: `packages/core/test/session-runner-tool-events.test.ts`
+- absent: `packages/opencode/src/cli/cmd/run/session-replay.ts`
+- absent: `packages/opencode/src/cli/cmd/run/subagent-data.ts`
+- absent: `packages/opencode/src/effect/runner.ts`
+- absent: `packages/opencode/src/event-v2-bridge.ts`
+- absent: `packages/opencode/src/server/routes/instance/httpapi/api.ts`
+- absent: `packages/opencode/src/server/routes/instance/httpapi/groups/global.ts`
+- absent: `packages/opencode/src/server/routes/instance/httpapi/groups/session.ts`
+- absent: `packages/opencode/src/server/routes/instance/httpapi/handlers/event.ts`
+- absent: `packages/opencode/src/server/routes/instance/httpapi/handlers/session.ts`
+- absent: `packages/opencode/src/session/message-v2.ts`
+- absent: `packages/opencode/src/session/prompt.ts`
+- absent: `packages/opencode/src/session/revert.ts`
+- absent: `packages/opencode/src/session/run-state.ts`
+- absent: `packages/opencode/src/session/session.ts`
+- absent: `packages/opencode/src/session/status.ts`
+- absent: `packages/opencode/test/acp/event.test.ts`
+- absent: `packages/opencode/test/acp/service-session.test.ts`
+- absent: `packages/opencode/test/cli/run/runtime.test.ts`
+- absent: `packages/opencode/test/cli/run/session-replay.test.ts`
+- absent: `packages/opencode/test/cli/run/session.shared.test.ts`
+- absent: `packages/opencode/test/cli/run/stream.transport.test.ts`
+- absent: `packages/opencode/test/cli/run/subagent-data.test.ts`
+- absent: `packages/opencode/test/cli/run/variant.shared.test.ts`
+- absent: `packages/opencode/test/effect/runner.test.ts`
+- absent: `packages/opencode/test/server/httpapi-sdk.test.ts`
+- absent: `packages/opencode/test/session/message-v2.test.ts`
+- absent: `packages/opencode/test/session/messages-pagination.test.ts`
+- absent: `packages/opencode/test/session/prompt.test.ts`
+- absent: `packages/opencode/test/session/revert-compact.test.ts`
+- absent: `packages/opencode/test/session/session.test.ts`
+- present: `packages/schema/src/v1/session.ts`
+- absent: `packages/tui/test/cli/cmd/tui/sync-live-hydration.test.tsx`
+- absent: `specs/event-v2-batch-publish.tmp.md`
+
+### 09439d71c9 Local: add managed shutdown protocol
+
+- present: `package.json`
+- absent: `packages/core/src/database/database-file.ts`
+- present: `packages/core/src/database/database.ts`
+- present: `packages/core/test/database-migration.test.ts`
+- absent: `packages/opencode/README.md`
+- absent: `packages/opencode/package.json`
+- absent: `packages/opencode/script/build.ts`
+- absent: `packages/opencode/src/bootstrap.ts`
+- absent: `packages/opencode/src/cli/cmd/serve.ts`
+- absent: `packages/opencode/src/cli/effect-cmd.ts`
+- absent: `packages/opencode/test/cli/serve/serve-process.test.ts`
+- absent: `packages/opencode/test/lib/cli-process.ts`
+- absent: `packages/opencode/test/server/httpapi-control-plane.test.ts`
+- absent: `packages/opencode/test/server/httpapi-global.test.ts`
+
+### bcd418de6c Local: feat(opencode): support OpenAI native compaction
+
+- present: `packages/core/test/session-runner.test.ts`
+- absent: `packages/llm/src/index.ts`
+- absent: `packages/llm/src/protocols/openai-responses-compact.ts`
+- absent: `packages/llm/src/protocols/openai-responses.ts`
+- absent: `packages/llm/src/protocols/utils/openai-options.ts`
+- absent: `packages/llm/src/providers/openai-options.ts`
+- absent: `packages/llm/src/route/client.ts`
+- absent: `packages/llm/src/schema/events.ts`
+- absent: `packages/llm/test/provider/openai-responses.test.ts`
+- absent: `packages/opencode/src/plugin/openai/ws-pool.ts`
+- absent: `packages/opencode/src/plugin/openai/ws.ts`
+- absent: `packages/opencode/src/server/routes/instance/httpapi/handlers/session.ts`
+- absent: `packages/opencode/src/session/compaction.ts`
+- absent: `packages/opencode/src/session/llm.ts`
+- absent: `packages/opencode/src/session/llm/ai-sdk.ts`
+- absent: `packages/opencode/src/session/llm/native-runtime.ts`
+- absent: `packages/opencode/src/session/message-v2.ts`
+- absent: `packages/opencode/src/session/openai-native-compaction.ts`
+- absent: `packages/opencode/src/session/processor.ts`
+- absent: `packages/opencode/src/session/prompt.ts`
+- absent: `packages/opencode/test/plugin/openai-ws.test.ts`
+- absent: `packages/opencode/test/session/compaction.test.ts`
+- absent: `packages/opencode/test/session/llm-native.test.ts`
+- absent: `packages/opencode/test/session/llm.test.ts`
+- absent: `packages/opencode/test/session/processor-effect.test.ts`
+- absent: `packages/opencode/test/session/prompt.test.ts`
+- present: `packages/protocol/src/groups/session.ts`
+- absent: `specs/openai-native-codex-parity-compaction.md`
+- absent: `specs/openai-native-server-compaction.md`
+
+### 67cf32afd4 Local: move OpenAI compaction to AI SDK
+
+- present: `packages/core/test/session-runner.test.ts`
+- absent: `packages/llm/src/index.ts`
+- absent: `packages/llm/src/protocols/openai-responses-compact.ts`
+- absent: `packages/llm/src/protocols/openai-responses.ts`
+- absent: `packages/llm/src/route/client.ts`
+- absent: `packages/llm/test/provider/openai-responses.test.ts`
+- absent: `packages/opencode/src/session/compaction.ts`
+- absent: `packages/opencode/src/session/llm.ts`
+- absent: `packages/opencode/src/session/llm/ai-sdk.ts`
+- absent: `packages/opencode/src/session/llm/native-runtime.ts`
+- absent: `packages/opencode/src/session/openai-native-compaction.ts`
+- absent: `packages/opencode/src/session/prompt.ts`
+- absent: `packages/opencode/test/plugin/openai-ws.test.ts`
+- absent: `packages/opencode/test/session/compaction.test.ts`
+- absent: `packages/opencode/test/session/llm-native.test.ts`
+- absent: `packages/opencode/test/session/llm.test.ts`
+- absent: `patches/@ai-sdk%2Fopenai@3.0.88.patch`
+- absent: `specs/openai-native-codex-parity-compaction.md`
+- absent: `specs/openai-native-server-compaction.md`
+
+### ecd7d14a1e Local: add OpenAI WebSocket continuation and size fallback
+
+- absent: `packages/opencode/src/plugin/openai/README.md`
+- absent: `packages/opencode/src/plugin/openai/codex.ts`
+- absent: `packages/opencode/src/plugin/openai/ws-pool.ts`
+- absent: `packages/opencode/src/plugin/openai/ws.ts`
+- absent: `packages/opencode/test/plugin/openai-ws.test.ts`
+
+### d9ca2a1ad7 Local: isolate PowerShell lane history
+
+- absent: `packages/opencode/src/tool/exec-session.ts`
+- absent: `packages/opencode/src/tool/shell.ts`
+- absent: `packages/opencode/test/tool/unified-exec.test.ts`
+
+### 0446642f9e Local: feat(opencode): diagnose Recycle Bin blockers
+
+- present: `.github/workflows/test.yml`
+- absent: `packages/opencode/README.md`
+- absent: `packages/opencode/package.json`
+- absent: `packages/opencode/script/build.ts`
+- absent: `packages/opencode/script/ensure-windows-recycle.ts`
+- absent: `packages/opencode/src/tool/shell.ts`
+- absent: `packages/opencode/src/windows-recycle/.gitignore`
+- absent: `packages/opencode/src/windows-recycle/LockDiagnostics.cs`
+- absent: `packages/opencode/src/windows-recycle/OpenCode.Windows.RecycleBin.csproj`
+- absent: `packages/opencode/src/windows-recycle/RecycleBin.cs`
+- absent: `packages/opencode/test/tool/shell.test.ts`
+
+### c9ec561bd4 Local: support explicit Bun compile runtime
+
+- absent: `packages/opencode/README.md`
+- absent: `packages/opencode/script/build.ts`
+
+### a32b99b5b9 Local: make session import atomic
+
+- absent: `packages/opencode/src/cli/cmd/import.ts`
+- absent: `packages/opencode/test/cli/import.test.ts`
+
+### ff27061360 Local: make message order repair one-time
+
+- absent: `packages/core/src/database/local-migration.ts`
+- absent: `packages/core/src/database/local-migration/0002_message_order_reconcile_once.ts`
+- absent: `packages/core/src/database/local-migrations.ts`
+- present: `packages/core/test/database-migration.test.ts`
+- absent: `packages/opencode/src/cli/cmd/db.ts`
+- absent: `packages/opencode/test/cli/smokes/database.test.ts`
+
+### ae95b329ec Local: report database migration lifecycle
+
+- present: `packages/core/src/database/database.ts`
+- absent: `packages/core/src/database/local-migration.ts`
+- present: `packages/core/src/database/migration.ts`
+- present: `packages/core/test/database-migration.test.ts`
+- absent: `packages/opencode/README.md`
+- absent: `packages/opencode/test/cli/db/db-process.test.ts`
+
+### d7c614d93b Local: add GUI subsystem build option
+
+- absent: `packages/opencode/README.md`
+- absent: `packages/opencode/script/build.ts`
+
+### 3669af7bdf Local: add Windows process broker
+
+- present: `.gitignore`
+- absent: `packages/core/src/cross-spawn-spawner.ts`
+- absent: `packages/core/src/windows-process-broker.ts`
+- present: `packages/core/test/process/process.test.ts`
+- absent: `packages/core/test/process/windows-process-broker.test.ts`
+- absent: `packages/opencode/README.md`
+- absent: `packages/opencode/package.json`
+- absent: `packages/opencode/script/build.ts`
+- absent: `packages/opencode/script/ensure-windows-process-broker.ts`
+- absent: `packages/opencode/src/windows-process-broker/process-broker.cs`
+
+### a10c959e7f Local: adapt provider recovery to OpenCode v1.18.21
+
+- absent: `packages/opencode/src/plugin/openai/codex.ts`
+- absent: `packages/opencode/src/provider/error.ts`
+
+### 047674c2a3 Local: chore(sdk): regenerate migrated contracts
+
+- absent: `packages/sdk/js/src/v2/gen/sdk.gen.ts`
+- absent: `packages/sdk/js/src/v2/gen/types.gen.ts`
+
+### a1f35757b6 Local: keep OpenCode builds lockfile-clean
+
+- absent: `packages/opencode/script/build.ts`
+
+### d3d6b78219 Local: handle premature readable closure
+
+- present: `bun.lock`
+- present: `package.json`
+- absent: `packages/core/test/effect/node-stream.test.ts`
+- absent: `packages/core/test/process/windows-process-broker.test.ts`
+- absent: `patches/@effect%2Fplatform-node-shared@4.0.0-beta.83.patch`
+
+### 01b8f9f5de Local: align session tool test registry mock
+
+- absent: `packages/opencode/test/session/tools.test.ts`
+
+### b1e87756ee Local: Fix Linux unified exec Bash startup and lane protocol
+
+- absent: `packages/opencode/README.md`
+- absent: `packages/opencode/src/tool/exec-session.ts`
+- absent: `packages/opencode/src/tool/shell.ts`
+- absent: `packages/opencode/src/tool/unified-exec.ts`
+- absent: `packages/opencode/test/tool/unified-exec.test.ts`
+- absent: `specs/v2/unified-exec.md`
+
+### 7fa1a5a7da Local: fix(process-broker): ignore cancellation of inactive commands
+
+- absent: `packages/opencode/src/windows-process-broker/process-broker.cs`
+
+### 88fad5dda7 Local: fix(session): preserve question answers across compaction
+
+- absent: `packages/opencode/README.md`
+- absent: `packages/opencode/src/session/compaction.ts`
+- absent: `packages/opencode/src/session/openai-native-compaction.ts`
+- absent: `packages/opencode/src/session/prompt.ts`
+- absent: `packages/opencode/src/session/question-context.ts`
+- absent: `packages/opencode/test/session/compaction.test.ts`
+- absent: `packages/opencode/test/session/prompt.test.ts`
+- absent: `packages/opencode/test/session/question-context.test.ts`
+
+### 4ca2197fbb Local: fix(windows): isolate late process broker stdin failures
+
+- absent: `packages/opencode/README.md`
+- absent: `packages/opencode/src/windows-process-broker/process-broker.cs`
+
+### 5256082c26 Local: fix(core): break filesystem search initialization cycle
+
+- present: `packages/core/src/filesystem/search.ts`
+- present: `packages/core/test/filesystem/search.test.ts`
+
+## Complete upstream commit inventory
+
+Area labels identify paths only; they do not assert behavior or review completion.
+
+- e6f660fecf [.github, bun.lock, packages/cli, packages/client, packages/core, packages/core/src/public-event-manifest.ts, packages/core/src/session.ts, packages/core/src/session, packages/core/src/tool, packages/core/src/v1, packages/core/test/config, packages/core/test/session-create.test.ts, packages/core/test/session-runner-model.test.ts, packages/core/test/tool-apply-patch.test.ts, packages/core/test/tool-edit.test.ts, packages/opencode/src/cli, packages/opencode/src/plugin, packages/opencode/test/cli, packages/schema, packages/sdk, packages/server, packages/tui] feat(tui): add v2 terminal interface
+- df9ecb8f6a [packages/cli, script] fix(cli): publish v2 package
+- a0afb63ed0 [.github] fix(ci): use v2 npm tag
+- ad4f1c1018 [.github] refactor(ci): use branch npm tag
+- 8b682c42b6 [packages/cli, packages/opencode/src/cli, packages/opencode/test/fixture, packages/tui] refactor(tui): use v2 client transport
+- 9a9bdaba95 [.github, turbo.json] test(ci): drop legacy opencode tests
+- ac2a78391f [.github] fix(ci): publish v2 as next
+- 655adbf46e [.github, package.json, packages/cli, packages/core/src/plugin, packages/core/src/process.ts, packages/core/src/tool, packages/core/test/process, packages/core/test/tool-bash.test.ts, packages/plugin, packages/session-ui, packages/tui, turbo.json] fix: stabilize v2 runtime behavior
+- beb2c52c3f [packages/cli] fix(cli): publish scoped package
+- 62b2bc39df [.github] test(ci): skip v2 end-to-end checks
+- 658cbe9caf [packages/core/src/plugin, packages/core/test/plugin] fix(core): load OpenCode provider config asynchronously
+- a491cbee64 [packages/tui] fix(tui): hide prompt for running shell commands
+- 6a16c41e8f [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): continue after tool defects
+- 573ab9c24b [packages/tui] fix(tui): interrupt v2 sessions with escape
+- 5df049d081 [bun.lock, packages/cli] feat(cli): add self-update service
+- ab0042a666 [packages/opencode] docs(opencode): mark package as v1
+- b6553d14e1 [packages/core/src/session, packages/core/test/session-runner.test.ts, packages/tui] fix(core): fail interrupted session steps
+- f43f066741 [packages/tui] fix(tui): stop bash spinner when tool errors before command received
+- 7edd6c3a1d [packages/cli] feat(cli): use installation version and document API debugging
+- b458dd8c63 [packages/cli] feat(cli): log updater check decisions
+- 4673bfbaa0 [packages/cli] feat(cli): log startup info
+- 4741e3ee6b [packages/tui] fix(tui): remove redundant top spacer in session history
+- cd942d0669 [packages/tui] fix(tui): normalize abbreviated home paths to forward slashes
+- d1d7ebc2c6 [packages/client, packages/core/src/session.ts, packages/core/src/session, packages/opencode/test/server, packages/protocol, packages/schema, packages/sdk, packages/server, packages/tui] feat(tui): wire up undo/redo and revert for V2 sessions (#34263)
+- f4720be08e [] feat(tui): add session rename (#34264)
+- 49e7dc191f [packages/tui] fix(tui): make undo inclusive of last user message and simplify revert banner
+- bceb6d0a9e [packages/tui] feat(tui): add redo hotkey footer and pad file list in revert banner
+- a0a6c9545e [package.json, packages/tui] fix(tui): style redo hotkey as normal text in revert footer
+- 612009e0f1 [packages/tui] fix(tui): use span for inline styled hotkey in revert footer
+- c22973ab9f [packages/server] fix(server): log undo revert operations
+- 11bf8d8a42 [packages/cli] refactor(cli): simplify updater, remove cache and confirmation
+- 41283933ff [bun.lock, nix, package.json, packages/app, packages/client, packages/console, packages/core, packages/core/src/agent.ts, packages/core/src/aisdk.ts, packages/core/src/background-job.ts, packages/core/src/catalog.ts, packages/core/src/command.ts, packages/core/src/config.ts, packages/core/src/credential.ts, packages/core/src/cross-spawn-spawner.ts, packages/core/src/database, packages/core/src/effect, packages/core/src/event.ts, packages/core/src/file-mutation.ts, packages/core/src/filesystem.ts, packages/core/src/filesystem, packages/core/src/fs-util.ts, packages/core/src/git.ts, packages/core/src/global.ts, packages/core/src/image.ts, packages/core/src/instruction-context.ts, packages/core/src/integration.ts, packages/core/src/location-layer.ts, packages/core/src/location-mutation.ts, packages/core/src/location-service-map.ts, packages/core/src/location-services.ts, packages/core/src/location.ts, packages/core/src/models-dev.ts, packages/core/src/npm.ts, packages/core/src/permission.ts, packages/core/src/permission, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/policy.ts, packages/core/src/process.ts, packages/core/src/project.ts, packages/core/src/project, packages/core/src/pty.ts, packages/core/src/pty, packages/core/src/public-event-manifest.ts, packages/core/src/question.ts, packages/core/src/reference.ts, packages/core/src/reference, packages/core/src/repository-cache.ts, packages/core/src/ripgrep.ts, packages/core/src/ripgrep, packages/core/src/session.ts, packages/core/src/session, packages/core/src/skill.ts, packages/core/src/skill, packages/core/src/snapshot.ts, packages/core/src/system-context, packages/core/src/tool-output-store.ts, packages/core/src/tool, packages/core/src/util, packages/core/test/effect, packages/core/test/event.test.ts, packages/core/test/filesystem, packages/core/test/git.test.ts, packages/core/test/integration.test.ts, packages/core/test/location-filesystem.test.ts, packages/core/test/location-layer.test.ts, packages/core/test/location-mutation.test.ts, packages/core/test/move-session.test.ts, packages/core/test/permission.test.ts, packages/core/test/plugin, packages/core/test/process, packages/core/test/project-directories.test.ts, packages/core/test/project.test.ts, packages/core/test/question.test.ts, packages/core/test/ripgrep.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-history.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-todo.test.ts, packages/core/test/skill.test.ts, packages/core/test/system-context, packages/desktop, packages/httpapi-codegen, packages/opencode/src/account, packages/opencode/src/agent, packages/opencode/src/cli, packages/opencode/src/config, packages/opencode/src/control-plane, packages/opencode/src/installation, packages/opencode/src/mcp, packages/opencode/src/provider, packages/opencode/src/server, packages/opencode/src/session, packages/opencode/src/share, packages/opencode/src/skill, packages/opencode/src/tool, packages/opencode/src/worktree, packages/opencode/test/agent, packages/opencode/test/effect, packages/opencode/test/git, packages/opencode/test/mcp, packages/opencode/test/provider, packages/opencode/test/server, packages/opencode/test/session, packages/opencode/test/share, packages/opencode/test/tool, packages/protocol, packages/schema, packages/sdk-next, packages/sdk, packages/server, packages/session-ui, packages/tui, packages/ui, packages/ui/src/components, patches, specs] chore: merge dev into v2 (#34317)
+- 94e3a29d2f [packages/core/src/session.ts, packages/core/src/session, packages/core/src/tool, packages/core/test/session-create.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-wait.test.ts, packages/core/test/tool-subagent.test.ts, packages/opencode/test/session, packages/server] feat(core): wire v2 subagent tool (#34320)
+- 04c6bed240 [packages/client, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner.test.ts, packages/schema] feat(core): restore per-request system prompt (#34335)
+- 42a3cf9645 [packages/core/src/session.ts, packages/core/test/session-prompt.test.ts] fix(core): commit staged revert before admitting new prompt (#34338)
+- 6067019434 [packages/core/src/plugin, packages/core/src/session, packages/core/test/agent.test.ts, packages/core/test/fixtures, packages/core/test/session-runner-system-prompt.test.ts, packages/core/test/session-runner.test.ts, specs] fix(core): restore v2 model prompts (#34275)
+- 53b93b6991 [packages/core/src/plugin, packages/sdk-next] feat(sdk-next): let embedders contribute plugins via opencode.plugin (#34356)
+- f7034a35a8 [packages/client, packages/core/src/location-services.ts, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-compact.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/protocol, packages/sdk, packages/server] feat(core): add v2 manual compaction (#34336)
+- 7073e8797f [packages/client, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner.test.ts, packages/schema] fix(core): remove per-prompt system option (#34361)
+- 595c6bd4a7 [packages/client, packages/core/src/generate.ts, packages/core/src/location-services.ts, packages/core/src/session, packages/protocol, packages/server] feat: add v2 generate text endpoint (#34371)
+- 5ae93092aa [packages/client, packages/core/src/location-services.ts, packages/core/src/plugin, packages/core/src/pty.ts, packages/core/src/shell.ts, packages/core/src/shell, packages/core/src/tool, packages/core/src/v1, packages/core/test/config, packages/core/test/shell.test.ts, packages/core/test/tool-bash.test.ts, packages/core/test/tool-shell.test.ts, packages/opencode/src/server, packages/opencode/src/session, packages/opencode/src/tool, packages/opencode/test/session, packages/opencode/test/tool, packages/protocol, packages/schema, packages/sdk, packages/server, packages/tui] refactor(core): replace bash tool with shell tool
+- e8ac44430b [packages/cli] feat(cli): poll for updates every 10 minutes in serve
+- 381d67572e [bun.lock, packages/cli, packages/client, packages/opencode, packages/opencode/src/cli, packages/tui] refactor(tui): wire generated client reads (#34381)
+- 01edae4a7f [packages/core/src/shell.ts, packages/core/src/shell, packages/core/test/shell.test.ts, packages/opencode/src/session] fix(core): spawn shell non-interactively without sourcing rc files
+- 935ac2db91 [packages/client, packages/core/src/location-services.ts, packages/core/src/project.ts, packages/core/src/project, packages/core/test/location-layer.test.ts, packages/core/test/project-directories.test.ts, packages/core/test/shared-schema.test.ts, packages/core/test/tool-shell.test.ts, packages/protocol, packages/schema, packages/server, packages/tui] feat(client): expose v2 project APIs (#34456)
+- fa73546a86 [packages/tui] feat(tui): add composer tabs
+- c65a7d50c1 [packages/cli, packages/tui] feat(tui): integrate composer picker
+- 360d85a521 [packages/tui] fix(tui): indent subagent empty state
+- b2d46ecd7e [packages/client, packages/core/src/event.ts, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-create.test.ts, packages/protocol, packages/schema, packages/server] feat(core): add durable session fork event
+- ff4cab03c1 [packages/client, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-create.test.ts, packages/schema] refactor(core): simplify session fork event
+- 19a5b5a05d [packages/core/src/session.ts, packages/core/src/tool, packages/core/test/tool-shell.test.ts, packages/server] feat(core): support background shell tool
+- 2fe057324f [packages/core/src/tool] fix(core): provide filesystem to shell tool
+- fe59174c23 [packages/core/src/session.ts] fix(core): resume after synthetic session message
+- f80624cf17 [packages/tui] fix(tui): surface provider error in assistant footer (#34511)
+- ecfa918760 [packages/client, packages/core/src/shell.ts, packages/core/src/tool, packages/core/test/location-layer.test.ts, packages/httpapi-codegen] feat(client): expose fs read in promise client (#34504)
+- f928b5be07 [packages/core/src/tool, packages/core/test/application-tools.test.ts] fix(core): sanitize registered tool names (#34512)
+- 6846542115 [packages/cli, packages/client, packages/tui] fix(client): singularize generated api groups (#34534)
+- 461a1c3ab4 [packages/core/src/background-job.ts, packages/core/src/job.ts, packages/core/src/tool, packages/core/test/background-job.test.ts, packages/core/test/job.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-subagent.test.ts, packages/opencode/src/background, packages/opencode/src/effect, packages/opencode/src/job.ts, packages/opencode/src/server, packages/opencode/src/session, packages/opencode/src/tool, packages/opencode/test/AGENTS.md, packages/opencode/test/background, packages/opencode/test/job.test.ts, packages/opencode/test/server, packages/opencode/test/session, packages/opencode/test/tool, specs] refactor(core): replace background job service (#34559)
+- 4ce830a919 [packages/core/src/session] fix(core): align v2 prompt tool names (#34557)
+- 02cb350880 [packages/core/src/agent.ts, packages/core/src/config, packages/core/src/plugin, packages/core/test/agent.test.ts, packages/core/test/config, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/opencode/test/event-manifest.test.ts, packages/schema, packages/sdk, packages/tui] feat(tui): refresh agents after update events
+- 1b83c08b8a [packages/cli] Update service configuration CLI
+- 0f9719a7b5 [packages/cli] fix(cli): support service autostart setting
+- 524ee8fc03 [packages/core/src/session, packages/core/src/tool, packages/core/test/lib, packages/core/test/location-layer.test.ts, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/tool-apply-patch.test.ts, packages/core/test/tool-subagent.test.ts] fix(core): gate v2 edit tools by model (#34558)
+- 23adaaaeab [AGENTS.md, packages/cli, packages/client, packages/core/src/plugin, packages/core/src/session.ts, packages/core/src/session, packages/core/test/plugin, packages/core/test/session-create.test.ts, packages/protocol, packages/schema, packages/sdk, packages/server, packages/tui] feat(core): add native skill activation
+- a1250cd690 [packages/sdk-next] test(sdk-next): update embedded client namespaces
+- 75715e2115 [packages/core/src/models-dev.ts, packages/core/test/models.test.ts] fix(core): parse models.dev reasoning options (#34618)
+- 12887e572e [packages/core/src/config, packages/core/test/config] fix(core): align agent tests with universal default permissions (#34561)
+- b1ca070b3b [bun.lock, packages/client, packages/core, packages/core/src/location-services.ts, packages/core/src/mcp, packages/core/src/session, packages/core/src/tool, packages/core/src/v1, packages/core/test/config, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/protocol, packages/schema, packages/sdk, packages/server, packages/tui] feat(core): add mcp support (#34513)
+- 8f1db7d06d [packages/tui] fix(tui): align cli model picker behavior (#34571)
+- a5c51e11d0 [packages/core/src/config.ts, packages/core/test/config, specs] fix(core): drop legacy config filename (#34650)
+- 194b0615e0 [bun.lock, packages/client, packages/core/src/agent.ts, packages/core/src/effect, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/tool, packages/core/test/agent.test.ts, packages/core/test/application-tools.test.ts, packages/core/test/config, packages/core/test/effect, packages/core/test/fixture, packages/core/test/lib, packages/core/test/location-layer.test.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-subagent.test.ts, packages/httpapi-codegen, packages/plugin, packages/protocol, packages/sdk-next, packages/server, packages/tui, specs] feat(plugin): support plugin-provided tools (#34619)
+- 0a60662d71 [packages/cli, packages/client, packages/core/src/mcp, packages/schema, packages/sdk, packages/server] feat(cli): add mcp list, add, auth, and logout commands (#34643)
+- 24ab17e718 [packages/core/src/tool, packages/core/test/tool-shell.test.ts, packages/tui] fix(tui): keep background shell spinner active
+- 8dd993d25a [.opencode, packages/cli, packages/core/src/config, packages/core/src/observability, packages/core/src/plugin, packages/core/test/config, packages/core/test/logging.test.ts, packages/core/test/plugin, packages/tui] fix(tui): stabilize reload connection state
+- 6ca6566bd3 [packages/core/src/plugin, packages/core/test/plugin] fix(core): derive reasoning variants from models.dev
+- d77b87ea65 [packages/script] feat(script): use GitHub run number for preview build identifier
+- c26f6f95f7 [packages/core/src/plugin, packages/core/test/agent.test.ts] fix(core): deny subagent tool for default subagents
+- 1ce607c230 [bun.lock, packages/core/src/plugin, packages/core/src/tool, packages/plugin, packages/sdk-next] refactor(plugin): move tool implementation to plugin (#34665)
+- 2324a63fc6 [packages/cli] feat(cli): add session resume flags (#34713)
+- f8626865b9 [packages/core/src/plugin, packages/core/test/plugin] fix(core): expose models.dev modes as models (#34714)
+- 6a91a682e4 [.opencode, packages/client, packages/core/src/plugin.ts, packages/plugin, packages/protocol, packages/schema, packages/sdk-next, packages/server] feat(core): add plugin list endpoint
+- 4617b03ca9 [packages/core/test/tool-shell.test.ts, packages/tui] fix: surface shell stderr output (#34761)
+- 5710064ae1 [packages/core/src/location-services.ts, packages/core/src/session, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts] feat(core): generate session titles from first prompt
+- ae49b21376 [packages/core/src/location-mutation.ts, packages/core/src/project.ts, packages/core/test/tool-write.test.ts] fix(core): save external permissions at project root
+- e1fafa2e54 [packages/cli] fix(cli): start service in home directory
+- b5823d1077 [packages/tui] fix(tui): show queued prompt admissions (#34771)
+- a10733dbf4 [.opencode] docs: add debug opencode skill
+- e2bca216a2 [packages/client, packages/core/src/tool, packages/core/test/tool-shell.test.ts, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/tui] feat: background blocking tools
+- 72ec09cf74 [packages/tui] fix(tui): keep backgrounded subagents spinning
+- 1a06198954 [packages/tui] fix(tui): indent synthetic session notices
+- a6983b65fc [script] fix: skip plugin publish
+- d51ba6ed94 [packages/cli] fix(cli): run update check in background
+- 5e47501b8b [bun.lock, packages/schema, packages/script, script] feat(schema): publish package
+- 98c09884bf [bun.lock, packages/protocol, script] feat(protocol): publish package
+- fb884bb91e [packages/client, packages/core/src/filesystem, packages/core/src/flag, packages/core/src/session.ts, packages/core/src/session, packages/core/src/skill.ts, packages/core/test/filesystem, packages/core/test/move-session.test.ts, packages/core/test/permission.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-history.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-wait.test.ts, packages/core/test/skill.test.ts, packages/desktop, packages/schema, packages/sdk, packages/server, packages/tui] feat: update session notices and skill reloads
+- b3650e2316 [packages/core/src/session.ts] fix(core): provide job service in session default layer
+- 9f1a8f2149 [.opencode] docs: add sample skill
+- 716f6658db [packages/client, packages/core/src/skill.ts, packages/core/src/skill, packages/core/test/skill.test.ts, packages/core/test/skill, packages/schema, packages/web/src/content] feat(core): add skill autoinvoke metadata
+- 932a40cfd9 [packages/tui] fix(tui): pin queued prompts below output (#34791)
+- 8c94e9005f [.github, bun.lock, nix, packages/app, packages/cli, packages/client, packages/console, packages/core, packages/core/src/agent.ts, packages/core/src/aisdk.ts, packages/core/src/catalog.ts, packages/core/src/command.ts, packages/core/src/config.ts, packages/core/src/control-plane, packages/core/src/credential.ts, packages/core/src/cross-spawn-spawner.ts, packages/core/src/database, packages/core/src/effect, packages/core/src/event.ts, packages/core/src/file-mutation.ts, packages/core/src/filesystem.ts, packages/core/src/filesystem, packages/core/src/fs-util.ts, packages/core/src/git.ts, packages/core/src/github-copilot, packages/core/src/global.ts, packages/core/src/image.ts, packages/core/src/instruction-context.ts, packages/core/src/integration.ts, packages/core/src/job.ts, packages/core/src/location-mutation.ts, packages/core/src/location-services.ts, packages/core/src/location.ts, packages/core/src/mcp, packages/core/src/models-dev.ts, packages/core/src/npm.ts, packages/core/src/observability.ts, packages/core/src/permission.ts, packages/core/src/permission, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/policy.ts, packages/core/src/process.ts, packages/core/src/project.ts, packages/core/src/project, packages/core/src/pty.ts, packages/core/src/pty, packages/core/src/question.ts, packages/core/src/reference.ts, packages/core/src/reference, packages/core/src/repository-cache.ts, packages/core/src/ripgrep.ts, packages/core/src/ripgrep, packages/core/src/session.ts, packages/core/src/session, packages/core/src/shell.ts, packages/core/src/skill.ts, packages/core/src/skill, packages/core/src/snapshot.ts, packages/core/src/system-context, packages/core/src/tool-output-store.ts, packages/core/src/tool, packages/core/src/util, packages/core/test/agent.test.ts, packages/core/test/catalog.test.ts, packages/core/test/command.test.ts, packages/core/test/config, packages/core/test/credential.test.ts, packages/core/test/database-migration.test.ts, packages/core/test/effect, packages/core/test/event.test.ts, packages/core/test/file-mutation.test.ts, packages/core/test/filesystem, packages/core/test/fixture, packages/core/test/github-copilot, packages/core/test/instruction-context.test.ts, packages/core/test/job.test.ts, packages/core/test/location-filesystem.test.ts, packages/core/test/location-layer.test.ts, packages/core/test/location-mutation.test.ts, packages/core/test/location.test.ts, packages/core/test/models.test.ts, packages/core/test/move-session.test.ts, packages/core/test/npm.test.ts, packages/core/test/permission.test.ts, packages/core/test/plugin, packages/core/test/policy.test.ts, packages/core/test/project-copy.test.ts, packages/core/test/pty, packages/core/test/reference-guidance.test.ts, packages/core/test/reference.test.ts, packages/core/test/repository-cache.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-history.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts, packages/core/test/session-tool-progress.test.ts, packages/core/test/session-wait.test.ts, packages/core/test/skill-discovery.test.ts, packages/core/test/skill.test.ts, packages/core/test/skill, packages/core/test/snapshot.test.ts, packages/core/test/system-context, packages/core/test/tool-apply-patch.test.ts, packages/core/test/tool-edit.test.ts, packages/core/test/tool-output-store.test.ts, packages/core/test/tool-question.test.ts, packages/core/test/tool-read-filesystem.test.ts, packages/core/test/tool-read.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-skill.test.ts, packages/core/test/tool-subagent.test.ts, packages/core/test/tool-todowrite.test.ts, packages/core/test/tool-webfetch.test.ts, packages/core/test/tool-websearch.test.ts, packages/core/test/tool-write.test.ts, packages/core/test/util, packages/desktop, packages/effect-drizzle-sqlite, packages/effect-sqlite-node, packages/enterprise, packages/function, packages/http-recorder, packages/httpapi-codegen, packages/llm, packages/opencode, packages/opencode/src/account, packages/opencode/src/acp, packages/opencode/src/agent, packages/opencode/src/auth, packages/opencode/src/cli, packages/opencode/src/command, packages/opencode/src/config, packages/opencode/src/control-plane, packages/opencode/src/effect, packages/opencode/src/env, packages/opencode/src/event-v2-bridge.ts, packages/opencode/src/format, packages/opencode/src/git, packages/opencode/src/image, packages/opencode/src/installation, packages/opencode/src/job.ts, packages/opencode/src/lsp, packages/opencode/src/mcp, packages/opencode/src/permission, packages/opencode/src/plugin, packages/opencode/src/project, packages/opencode/src/provider, packages/opencode/src/question, packages/opencode/src/server, packages/opencode/src/session, packages/opencode/src/share, packages/opencode/src/skill, packages/opencode/src/snapshot, packages/opencode/src/storage, packages/opencode/src/tool, packages/opencode/src/worktree, packages/opencode/test/account, packages/opencode/test/acp, packages/opencode/test/agent, packages/opencode/test/auth, packages/opencode/test/cli, packages/opencode/test/config, packages/opencode/test/control-plane, packages/opencode/test/effect, packages/opencode/test/filesystem, packages/opencode/test/fixture, packages/opencode/test/format, packages/opencode/test/image, packages/opencode/test/installation, packages/opencode/test/job.test.ts, packages/opencode/test/lib, packages/opencode/test/lsp, packages/opencode/test/mcp, packages/opencode/test/patch, packages/opencode/test/permission-task.test.ts, packages/opencode/test/permission, packages/opencode/test/plugin, packages/opencode/test/project, packages/opencode/test/provider, packages/opencode/test/question, packages/opencode/test/server, packages/opencode/test/session, packages/opencode/test/share, packages/opencode/test/skill, packages/opencode/test/snapshot, packages/opencode/test/storage, packages/opencode/test/tool, packages/plugin, packages/sdk-next, packages/sdk, packages/server, packages/session-ui, packages/slack, packages/stats, packages/storybook, packages/tui, packages/ui, packages/ui/src/components, packages/ui/src/v2, packages/web, packages/web/src/content, patches, script, sdks] chore: merge dev into v2 (#34788)
+- d0b920e187 [] chore: trigger publish ci
+- 041215996c [] chore: trigger deploy
+- 95cf5039be [packages/tui] fix(tui): color prompt work counts
+- 4a90ffedfb [packages/core/src/effect, packages/core/src/plugin, packages/server] fix(server): restore provider node deps after dev merge
+- 2f4a688790 [.opencode, packages/tui] chore: set up orchestrator plugin and mute prompt status labels
+- eabf85aea2 [packages/tui] fix(tui): wire subagent interrupt and drop granular background commands
+- ce228bfd7c [packages/tui] feat(tui): maintain session family index in data context
+- d544ab4d91 [packages/tui] feat(tui): show background label on subagent line
+- d972aa9d83 [packages/client, packages/core/src/location-services.ts, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/session.ts, packages/core/src/session, packages/core/src/tool, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/core/test/session-instructions.test.ts, packages/core/test/session-projector.test.ts, packages/plugin, packages/protocol, packages/schema, packages/server, specs] feat(core): tool execute hooks, session instructions, synthetic endpoint
+- 6380919fda [packages/core/src/session, packages/core/test/session-instructions.test.ts] fix(core): use relative paths in instruction load description
+- 50a1fe49bc [packages/core/src/session] fix(core): relativize instruction description to project root
+- bea6e1499d [packages/core/src/tool, packages/core/test/session-instructions.test.ts] feat(core): discover instructions on directory reads
+- 02f012f5d1 [packages/tui] fix(tui): clear onboarding after provider connect (#34819)
+- 674d08f9be [packages/core/src/plugin, packages/core/src/session, packages/core/test/plugin, packages/core/test/session-runner-model.test.ts] fix(core): route ChatGPT OAuth to the codex backend (#34843)
+- cfd35c9354 [packages/tui] fix(tui): include variant in model switch notice (#34856)
+- 140224b0fc [packages/client, packages/core/src/catalog.ts, packages/core/src/config, packages/core/src/model.ts, packages/core/src/plugin, packages/core/src/provider.ts, packages/core/src/session, packages/core/test/plugin, packages/core/test/session-runner-model.test.ts, packages/llm, packages/schema, packages/sdk] fix(core): derive models.dev reasoning variants (#34726)
+- f016392368 [packages/client, packages/core/src/session, packages/opencode/src/cli, packages/opencode/src/index.ts, packages/opencode/src/server, packages/opencode/src/temporary.ts, packages/opencode/test/cli, packages/opencode/test/lib, packages/opencode/test/server, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, specs] feat(mini): migrate mini to v2 (#34895)
+- 7ec7413fdb [packages/tui] fix(tui): suppress transient reconnect overlay flashes (#34924)
+- 4045041554 [AGENTS.md, packages/core/src/instruction-context.ts, packages/core/src/location-services.ts, packages/core/src/mcp, packages/core/src/reference, packages/core/src/session.ts, packages/core/src/session, packages/core/src/skill, packages/core/src/system-context, packages/core/test/config, packages/core/test/instruction-context.test.ts, packages/core/test/plugin, packages/core/test/reference-guidance.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/skill, packages/core/test/system-context, packages/llm] refactor(core): simplify system context into a belief model (#34917)
+- 7843f8fb38 [packages/client, packages/core, packages/core/src/database, packages/core/src/location-services.ts, packages/core/src/session, packages/core/test/session-runner.test.ts, packages/plugin, packages/protocol, packages/schema, packages/sdk-next, packages/server] feat(core): API-managed per-session context entries (#34941)
+- dbaa53329c [packages/core/src/session, packages/core/test/session-runner.test.ts] refactor(core): mechanism-neutral context entry rendering (#34945)
+- 016d296f7c [packages/core/src/plugin, packages/core/src/tool, packages/core/test/location-layer.test.ts] refactor(core): migrate glob tool to internal plugin (#34946)
+- c176baee82 [packages/client, packages/core/src/command.ts, packages/core/src/mcp, packages/core/src/plugin, packages/core/src/session.ts, packages/core/test/command.test.ts, packages/core/test/config, packages/core/test/fixture, packages/core/test/plugin, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/tui] feat(core): port v2 command invocation (#34849)
+- ec95694e2f [packages/llm] docs(llm): track native provider parity (#34862)
+- 967c44552e [packages/core/test/command.test.ts] test(core): make command shell test portable (#34972)
+- c9604c86ec [packages/core/test/command.test.ts] test(core): avoid shell PATH in command test (#34980)
+- 0405518180 [packages/opencode/specs/simulation, packages/tui] feat: simulation control surface and architecture spec (#34801)
+- cff2345c12 [packages/core/src/session, packages/core/test/location-layer.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts] fix(core): record selected catalog model identity on assistant steps (#34911)
+- 33705e632a [packages/tui] fix(tui): use catalog display name in model switch notices (#34913)
+- bc2e270f82 [packages/client, packages/core/src/event.ts, packages/core/src/session.ts, packages/core/test/event.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-history.test.ts, packages/core/test/session-log.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/plugin, packages/protocol, packages/schema, packages/sdk-next, packages/server, packages/tui] feat(server): durable log reads, changes feed, and watermarked snapshots (#34962)
+- b0ca5520a1 [packages/server] feat(server): add lazy simulation layer replacements (#35024)
+- 460cdc5aec [packages/llm] fix(llm): remove package retry policy (#35003)
+- 7ebd344fa2 [packages/app, packages/client, packages/core/src/form.ts, packages/core/src/location-services.ts, packages/core/src/question.ts, packages/core/src/session, packages/core/src/tool, packages/core/test/form.test.ts, packages/core/test/question.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-question.test.ts, packages/opencode/script/httpapi-exercise.ts, packages/opencode/src/cli, packages/opencode/src/server, packages/opencode/test/cli, packages/opencode/test/server, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/tui] feat(core): add session form service (#34855)
+- 6555df912a [packages/client, packages/core/src/session.ts, packages/core/test/session-create.test.ts, packages/httpapi-codegen, packages/plugin, packages/protocol, packages/sdk, packages/server, packages/tui] feat(session): filter v2 session list by parent (#35037)
+- 1aae92c42a [packages/core/src/config, packages/core/src/mcp] fix(core): remove mcp tool call timeout (#35043)
+- 57e9e9771d [packages/client, packages/core/src/event.ts, packages/core/src/session.ts, packages/core/test/event.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-log.test.ts, packages/core/test/session-prompt.test.ts, packages/protocol, packages/schema, packages/sdk-next, specs] feat(core): deterministic session log replay with synced watermark (#35040)
+- cd0b274856 [packages/core/src/session, packages/core/test/session-compact.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-run-coordinator.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts] refactor(core): simplify v2 prompt lifecycle and execution coordination (#35047)
+- e65477ab1d [packages/core/src/session, packages/core/test/session-runner.test.ts] refactor(core): polish runner drain and coordinator readability (#35051)
+- efcf2c3f5d [packages/app, packages/core/src/mcp, packages/core/src/tool, packages/tui] feat(core): MCP elicitation support  (#35064)
+- b6c3a8ea7b [.github] fix(ci): run typecheck on v2
+- 1de3c6e4a6 [packages/cli, packages/client, packages/tui] feat(client): self-contained local service discovery and lifecycle
+- ef2140d121 [packages/app, packages/client, packages/core/src/form.ts, packages/core/src/location-services.ts, packages/core/src/mcp, packages/core/src/question.ts, packages/core/src/session, packages/core/src/tool, packages/core/test/form.test.ts, packages/core/test/question.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-question.test.ts, packages/opencode/script/httpapi-exercise.ts, packages/opencode/src/cli, packages/opencode/src/server, packages/opencode/test/cli, packages/opencode/test/server, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/tui] fix(core): revert form service and mcp elicitation (#35080)
+- 0087dd56d9 [packages/client, packages/schema, packages/sdk] fix(schema): expose client-consumed events in the server manifest
+- af5eabcb26 [bun.lock, packages/cli, packages/client, packages/opencode/src/cli, packages/sdk, packages/tui] refactor(client): split package into promise and effect entrypoints
+- 3ce5e9800d [packages/client, packages/core/src/form.ts, packages/core/test/form.test.ts, packages/opencode/test/event-manifest.test.ts, packages/schema] feat(core): add form service (#35094)
+- d9bf30fc22 [.github, packages/client, packages/core/src/location-services.ts, packages/opencode/test/server, packages/plugin, packages/protocol, packages/sdk, packages/server] feat(server): add form routes (#35099)
+- c167bde6a0 [packages/client, packages/core/test/form.test.ts, packages/opencode/src/server, packages/protocol, packages/schema, packages/server] feat(core): global forms support (#35106)
+- 85fde8c11d [packages/client, packages/core/src/form.ts, packages/core/src/mcp, packages/core/test/form.test.ts, packages/schema, packages/sdk, packages/server] feat(core): rework form when conditions (#35115)
+- a1b6c84135 [packages/client, packages/core/src/location-services.ts, packages/core/src/vcs.ts, packages/core/src/vcs, packages/core/test/vcs.test.ts, packages/plugin, packages/protocol, packages/schema, packages/server] feat(core): expose V2 VCS status and diff APIs (#35129)
+- b62d24e40b [packages/opencode/src/cli] fix(run/cli): wait for selected model catalog (#35130)
+- 8d790a9ed5 [packages/tui] fix(tui): keep session running until execution settles (#35136)
+- 5657cec4f2 [packages/core/src/project.ts, packages/core/src/project, packages/core/src/vcs.ts, packages/core/src/vcs, packages/core/test/project.test.ts, packages/core/test/vcs-hg.test.ts, packages/schema, packages/sdk] feat(core): add mercurial adapter for vcs status and diff (#35141)
+- 88dc960af8 [packages/core/src/location-services.ts, packages/core/src/plugin, packages/core/src/tool, packages/core/test/lib, packages/core/test/location-layer.test.ts, packages/core/test/session-instructions.test.ts, packages/core/test/tool-apply-patch.test.ts, packages/core/test/tool-edit.test.ts, packages/core/test/tool-question.test.ts, packages/core/test/tool-read.test.ts, packages/core/test/tool-skill.test.ts, packages/core/test/tool-todowrite.test.ts, packages/core/test/tool-webfetch.test.ts, packages/core/test/tool-websearch.test.ts, packages/core/test/tool-write.test.ts] refactor(core): migrate built-in tools to internal plugins (#34956)
+- 698ef25f33 [packages/opencode/src/cli, packages/opencode/test/cli] fix(run): use parentID filter for subagent hydration (#35168)
+- 1fa605ad5e [packages/opencode/src/cli, packages/opencode/test/cli] fix(run): handle unattended form blockers (#35170)
+- a2769b5ade [packages/core/src/effect, packages/core/src/location-services.ts] fix(core): rewrite replacements while hoisting layers (#35176)
+- 12d9f4b29b [bun.lock, packages/codemode] feat(codemode): add confined execution package (#35118)
+- 5fc4e18b82 [packages/core/test/form.test.ts] test(core): cover when AND semantics and multiselect neq (#35182)
+- bd8d858bf7 [packages/client, packages/core/src/session.ts, packages/core/test/session-create.test.ts, packages/plugin, packages/protocol, packages/sdk, packages/server, packages/tui] feat(core): implement V2 session.shell (#35183)
+- de476aa51b [packages/client, packages/core/src/event.ts, packages/core/src/session, packages/core/test/event.test.ts, packages/core/test/session-log.test.ts, packages/opencode/test/cli, packages/opencode/test/v2, packages/protocol, packages/schema, packages/sdk-next, packages/sdk, packages/tui, specs] refactor(schema): declare event durability at definition level (#35172)
+- dd768e30e2 [packages/cli, packages/client] refactor(client): namespace service exports and share the registration contract
+- 6f47459c68 [bun.lock] chore: update lockfile
+- aad8d90dd1 [packages/core/src/fs-util.ts, packages/core/src/instruction-context.ts, packages/core/src/project, packages/core/src/session, packages/core/src/tool] refactor(core): move path resolve into fs service (#35201)
+- c6a52a39b5 [packages/cli] fix(cli): read OPENCODE_PASSWORD for explicit server auth
+- c22793d5f6 [packages/cli] feat(cli): validate explicit server before starting the tui
+- 24d26365e6 [packages/cli] refactor(cli): manage environment variables with effect config
+- 08293e74a0 [packages/cli] refactor(cli): single password config with legacy fallback
+- 1b88ff8d53 [bun.lock, package.json, packages/core/src/database, packages/core/src/filesystem, packages/core/src/models-dev.ts, packages/core/src/plugin, packages/core/src/project, packages/core/src/ripgrep.ts, packages/core/src/session, packages/server, script] fix(core): clean up Effect audit patterns (#35174)
+- 1401901529 [package.json, packages/cli, packages/core/src/account.ts, packages/core/src/config, packages/core/src/cross-spawn-spawner.ts, packages/core/src/database, packages/core/src/form.ts, packages/core/src/fs-util.ts, packages/core/src/id, packages/core/src/integration.ts, packages/core/src/location-services.ts, packages/core/src/permission.ts, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/policy.ts, packages/core/src/project, packages/core/src/pty, packages/core/src/session, packages/core/src/shell, packages/core/test/session-runner.test.ts, packages/server, script] chore: effect pattern lint infrastructure (#35210)
+- 2ff19171dc [packages/cli, packages/tui] feat(tui): reload command restarts the service
+- 4790a2772c [bun.lock, packages/core/src/effect, packages/core/src/fs-util.ts, packages/llm, packages/opencode/specs/simulation, packages/server, packages/simulation, packages/tui] feat(simulation): add driver controlled backend LLM (#35186)
+- 394e0b9045 [packages/client, packages/core, packages/core/src/control-plane, packages/core/src/database, packages/core/src/event.ts, packages/core/src/event, packages/core/src/session.ts, packages/core/src/session, packages/core/test/database-migration.test.ts, packages/core/test/event.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-instructions.test.ts, packages/core/test/session-log.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner-message.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts, packages/core/test/session-tool-progress.test.ts, packages/core/test/shared-schema.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-subagent.test.ts, packages/opencode/src/cli, packages/opencode/test/cli, packages/opencode/test/v2, packages/schema, packages/sdk-next, packages/sdk, packages/tui, specs] refactor(schema): rename V2 session events and normalize payloads (#35217)
+- bf3ae45439 [packages/core/src/mcp, packages/core/test/mcp.test.ts, packages/schema, packages/sdk] fix(core): clean up mcp event surface (#35221)
+- 34a08cbdb8 [packages/core/src/models-dev.ts, packages/core/test/models.test.ts] fix(core): tolerate missing models.dev temperature
+- ca861fdf43 [AGENTS.md, CONTEXT.md, packages/core/src/session, specs] docs: consolidate session work-unit vocabulary (#35218)
+- a644e0e7a0 [packages/cli] sync
+- 50977dd4fe [packages/cli, packages/server] server: emit logs for every HTTP request to help debug API traffic
+- e66cbf36e9 [packages/cli, packages/core/src/location-services.ts, packages/sdk-next, packages/server] fix(core): constrain location services (#35228)
+- 5d14c7a185 [packages/core/src/session, packages/core/src/system-context, packages/core/test/session-runner-message.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, specs] refactor(core): align runner naming with step vocabulary (#35227)
+- 37b26e495b [packages/simulation] feat(simulation): share control protocol schemas (#35230)
+- 438654768c [packages/codemode] fix(codemode): require exact tool paths in guidance (#35224)
+- d097cc8065 [packages/tui] feat(tui): render execute child calls on v2 (#35231)
+- 64e4f6f91b [packages/opencode/src/cli, packages/opencode/test/cli] cli: route run commands through v2 APIs (#35234)
+- 650d774372 [packages/app, packages/client, packages/core/src/database, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-create.test.ts, packages/core/test/session-log.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner-message.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner.test.ts, packages/opencode/src/cli, packages/opencode/test/cli, packages/opencode/test/server, packages/opencode/test/tool, packages/opencode/test/v2, packages/schema, packages/sdk-next, packages/sdk, packages/tui, packages/ui/src/components, specs] refactor(schema): session shell payloads and event prefix restore (#35229)
+- 6ae2fa5196 [bun.lock, packages/client, packages/core/src/config, packages/core/src/plugin, packages/core/test/config, packages/core/test/plugin, packages/plugin] feat(plugin): align hooks with client APIs
+- 7bd3f8ac83 [bun.lock, packages/client] chore(client): remove cyclic test dependencies
+- b04d8d53e6 [packages/client, packages/core/src/mcp, packages/schema, packages/sdk, packages/tui] fix(tui): expand MCP server errors in dialog (#35243)
+- c9b24ef027 [packages/app, packages/client, packages/core/src/catalog.ts, packages/core/src/config.ts, packages/core/src/config, packages/core/src/filesystem, packages/core/src/location-services.ts, packages/core/src/plugin, packages/core/src/policy.ts, packages/core/src/skill.ts, packages/core/src/v1, packages/core/test/catalog.test.ts, packages/core/test/config, packages/core/test/filesystem, packages/core/test/location-layer.test.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/core/test/policy.test.ts, packages/core/test/skill.test.ts, packages/opencode/src/tool, packages/opencode/test/server, packages/plugin, packages/schema, packages/sdk] feat(core): reload config on filesystem changes
+- 9751615651 [packages/core/src/config, packages/core/test/config] fix(core): reload all config plugins
+- 35ed09ff37 [packages/tui] fix(tui): improve MCP error details (#35263)
+- e2faeb84e5 [packages/core/src/filesystem] fix(core): tolerate minimal FSWatcher typings (#35264)
+- afe3ebbc35 [packages/core/src/config, packages/core/test/config] fix(core): bust external plugin import cache
+- 3baaabede8 [packages/core/src/config.ts, packages/core/src/config, packages/core/test/config] fix(core): resolve mcp header env placeholders (#35236)
+- f66c829231 [packages/core/src/config, packages/core/test/config] Revert "fix(core): bust external plugin import cache"
+- 8e0856c43b [packages/core/src/config, packages/core/test/config] fix(core): disable external plugin hot reload
+- a15afbe8f2 [.opencode] bye bye orchestrator
+- 5b44e5bf41 [packages/core/test/tool-shell.test.ts] test(core): release shell test locations (#35271)
+- 62af66a74f [AGENTS.md, packages/client, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-create.test.ts, packages/core/test/session-projector.test.ts, packages/schema, packages/sdk, packages/tui] fix(tui): distinguish variant switch notices (#35315)
+- 9daa4d85a4 [.opencode, packages/tui] fix(tui): reconcile session state after reconnect (#35262)
+- 610e618bc5 [packages/core/src/tool, packages/core/test/tool-shell.test.ts, packages/tui] fix(tui): clear completed background shell status (#35320)
+- 945d1c8cb2 [packages/core/src/filesystem, packages/core/test/filesystem, packages/web/src/content] fix(core): bound recursive file watching (#35323)
+- 8f4b62eb49 [packages/core/src/tool, packages/core/test/tool-search.test.ts] fix(core): report missing search paths (#35337)
+- c590e27639 [packages/core/src/plugin, packages/core/src/tool, packages/core/test/mcp.test.ts, packages/core/test/plugin.test.ts, packages/plugin] feat(core): add grouped and deferred tool registration (#35232)
+- b99759c7de [packages/core/src/tool, packages/core/test/mcp.test.ts] fix(core): enforce mcp tool permissions (#35345)
+- ba07481b59 [packages/opencode/src/server, packages/opencode/test/cli, packages/opencode/test/lib] fix(run): restore subprocess output contracts
+- 57fb3e5cc5 [packages/core/src/session.ts, packages/core/test/session-skill.test.ts, packages/opencode/src/cli, packages/opencode/test/cli] fix(run): align mini with current session contracts (#35354)
+- d65ecd4a90 [bun.lock, packages/codemode, packages/core, packages/core/src/flag, packages/core/src/mcp, packages/core/src/tool, packages/core/test/mcp.test.ts, packages/core/test/plugin.test.ts] feat(core): expose deferred tools through execute (#35361)
+- b8efb33cde [packages/codemode, packages/protocol] feat(codemode): add OpenAPI tool adapter (#35362)
+- bb3b6a2f65 [packages/client, packages/protocol, packages/schema] fix(protocol): expose MCP tool change events (#35373)
+- 905123b9c0 [packages/client, packages/core/src/event.ts, packages/core/src/plugin, packages/core/test/event.test.ts, packages/protocol, packages/schema, packages/server] fix(protocol): keep internal events off SSE (#35378)
+- 44b182fe23 [packages/core/src/schema.ts, packages/core/test/newtype.test.ts] fix(core): validate scalar newtypes (#35381)
+- 29e8502bb0 [packages/tui] fix(tui): align integration empty state (#35414)
+- 391aa38281 [packages/core/test/skill-discovery.test.ts] test(core): serve skill fixtures locally (#35429)
+- f950497173 [packages/codemode, packages/core/src/tool] refactor(codemode): remove generic agent tool (#35420)
+- f9d1d3b259 [packages/codemode, packages/core/src/tool] refactor(codemode): namespace public types (#35435)
+- a9b7bd9e2f [packages/core/src/config.ts, packages/core/src/config, packages/core/src/event.ts, packages/core/src/location-services.ts, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/state.ts, packages/core/src/tool, packages/core/test/config, packages/core/test/location-layer.test.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/opencode/src/agent, packages/plugin] feat(core): manage configurable plugin generations
+- c3d26c4912 [packages/cli, packages/core/src/event-logger.ts, packages/core/src/filesystem, packages/core/src/snapshot.ts, packages/core/test/event-logger.test.ts, packages/server] feat(core): improve runtime observability
+- a75978815a [packages/client, packages/protocol, packages/sdk, packages/server] feat(server): add loaded locations debug endpoint
+- baacb2e776 [packages/core/src/observability.ts, packages/core/test/effect] fix(core): tolerate invalid OTLP configuration
+- 08741f6b93 [packages/cli, packages/server] fix(core): scope observability to server
+- 6ffecf9345 [packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/test/config, packages/core/test/location-layer.test.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/core/test/shared-schema.test.ts] fix(core): reload local plugins on file changes
+- 33cb536879 [packages/client, packages/core/src/plugin.ts, packages/core/test/plugin.test.ts, packages/schema, packages/sdk, packages/tui] feat(plugin): publish generation updates
+- 7b88de47c3 [script] chore(client): publish client package
+- 652e8ff3fb [bun.lock, packages/httpapi-codegen] fix(client): resolve codegen workspace version
+- 5bcf8d5a0b [packages/tui] feat(tui): render session forms (#35421)
+- 780c99bc2e [packages/core/src/form.ts, packages/core/src/location-services.ts, packages/core/src/plugin, packages/core/src/session, packages/core/src/tool, packages/core/test/form.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-question.test.ts, packages/tui] refactor(core): route questions through forms (#35422)
+- 50a762e7b9 [packages/core/test/mcp.test.ts, packages/opencode/test/mcp, patches] fix(mcp): preserve metadata across paginated tools (#35500)
+- 4e019ba5d9 [packages/core/src/mcp, packages/core/src/tool, packages/core/test/fixture, packages/core/test/mcp.test.ts] fix(core): expose MCP output schemas to code mode (#35502)
+- e6e951b252 [packages/docs] docs: rebuild v2 documentation
+- eed23d8ee9 [packages/client, packages/core/src/project.ts, packages/core/src/project, packages/core/test/effect, packages/core/test/location.test.ts, packages/core/test/project.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-instructions.test.ts, packages/core/test/session-log.test.ts, packages/docs, packages/protocol, packages/server] feat(api): publish v2 reference
+- 147da5d278 [packages/opencode/test/project] test(opencode): update project service stub
+- fb75ea2cf6 [packages/opencode/src/cli, packages/opencode/src/session, packages/opencode/test/cli, packages/tui] mini: fix default model (#35515)
+- 32cf36de9d [bun.lock, packages/cli, packages/client, packages/opencode, packages/opencode/src/cli, packages/opencode/src/index.ts, packages/opencode/src/temporary.ts, packages/opencode/test/cli, packages/protocol, packages/sdk, packages/server, packages/tui] mini migrate to v2 (#35526)
+- 0bba8c780a [packages/cli, packages/client, packages/server, turbo.json] cli/mini: fix run failure handling (#35539)
+- 41d11a8a89 [packages/cli] cli: demote version mismatch to warning for now (#35548)
+- 175d200e53 [bun.lock, package.json, packages/plugin] V2 opentui upgrade (#35544)
+- 7f008df79d [packages/codemode, packages/core/test/mcp.test.ts] fix(codemode): improve prompting (#35509)
+- 04e8801f5b [packages/tui] fix(tui): soften interrupted step styling (#35466)
+- 5b2d90a441 [packages/codemode] feat(codemode): expand standard library support (#35566)
+- f406fed924 [packages/cli] fix(cli): ignore version mismatch on reconnect
+- 4cee5bd824 [packages/codemode] refactor(codemode): split interpreter and stdlib (#35572)
+- ff499c3603 [packages/cli, packages/client, packages/codemode, packages/core/src/event.ts, packages/core/test/event.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/protocol, packages/schema, packages/sdk-next, packages/sdk, packages/server, packages/tui] refactor(api): remove watermark sync surface
+- f9442e7107 [packages/opencode/test/cli] test(opencode): update active session mock
+- 06dcf3f221 [packages/core/src/session, packages/core/test/session-projector.test.ts, packages/core/test/session-prompt.test.ts, packages/tui] fix(tui): remove committed undo messages
+- 2830176972 [packages/core/src/event.ts, packages/core/src/plugin, packages/core/src/tool, packages/core/test/event.test.ts, packages/core/test/lib, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/plugin, packages/sdk-next] fix(plugin): reload late SDK plugins (#35576)
+- f2f62438b8 [packages/core/src/event.ts, packages/core/src/plugin, packages/core/test/event.test.ts, packages/core/test/session-runner-tool-events.test.ts] refactor(core): unify live event subscriptions (#35578)
+- 1a52e1118e [packages/core/src/session.ts, packages/core/test/session-log.test.ts] refactor(core): remove unused session watermarks (#35579)
+- 91f1815732 [AGENTS.md, CONTEXT.md, packages/client, packages/codemode, packages/core, packages/core/src/database, packages/core/src/instruction-context.ts, packages/core/src/instruction-discovery.ts, packages/core/src/instructions, packages/core/src/location-services.ts, packages/core/src/mcp, packages/core/src/reference, packages/core/src/session, packages/core/src/skill, packages/core/src/system-context, packages/core/src/tool, packages/core/test/database-migration.test.ts, packages/core/test/event.test.ts, packages/core/test/instruction-context.test.ts, packages/core/test/instruction-discovery.test.ts, packages/core/test/instructions, packages/core/test/reference-guidance.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/skill, packages/core/test/system-context, packages/httpapi-codegen, packages/protocol, packages/schema, packages/sdk-next, packages/sdk, packages/server, packages/tui, specs] refactor(core): rename system context to instructions (#35583)
+- c13f06c30c [packages/client, packages/core/src/mime.ts, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner-message.test.ts, packages/docs, packages/plugin, packages/schema, packages/sdk, packages/tui] feat(tui): use canonical prompt attachments
+- 4d100de194 [packages/client, packages/core/src/mime.ts, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-compact.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner-message.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts, packages/core/test/shared-schema.test.ts, packages/protocol, packages/schema, packages/sdk, packages/server, packages/tui] feat(core): resolve prompt attachments
+- 36d17c30a7 [packages/cli, packages/client, packages/sdk-next] fix(sdk): expose prompt input contract
+- 6ffe61b9fe [packages/simulation] feat(simulation): isolate filesystem and disconnect llm (#35590)
+- dc99c600b6 [bun.lock, packages/client, packages/core/src/session, packages/core/src/tool, packages/plugin, packages/schema, packages/sdk-next] feat(v2): expose canonical schema contracts (#35595)
+- 0e1c0414c2 [packages/codemode] fix(codemode): align mutable JavaScript semantics (#35598)
+- d603eed5a1 [packages/codemode] feat(codemode): support destructuring assignment (#35600)
+- e57d9ca390 [packages/cli, packages/client, packages/core/src/aisdk.ts, packages/core/src/catalog.ts, packages/core/src/config.ts, packages/core/src/config, packages/core/src/model.ts, packages/core/src/plugin, packages/core/src/provider.ts, packages/core/src/session, packages/core/src/v1, packages/core/test/aisdk.test.ts, packages/core/test/catalog.test.ts, packages/core/test/config, packages/core/test/location-layer.test.ts, packages/core/test/plugin, packages/core/test/session-instructions.test.ts, packages/core/test/session-runner-message.test.ts, packages/core/test/session-runner-model.test.ts, packages/core/test/shared-schema.test.ts, packages/llm, packages/opencode/test/cli, packages/schema, packages/sdk, packages/tui] feat(core): flatten provider config and load native packages (#35563)
+- f87998f37f [packages/cli, packages/opencode/test/cli] fix(cli): align prompt attachment mentions
+- 9e0d3976e1 [README.zh.md, README.zht.md, artifacts, bun.lock, nix, package.json, packages/app, packages/cli, packages/codemode, packages/console, packages/core, packages/core/src/permission.ts, packages/core/src/plugin, packages/core/src/session, packages/core/test/aisdk.test.ts, packages/core/test/command.test.ts, packages/core/test/mcp.test.ts, packages/core/test/permission.test.ts, packages/core/test/plugin, packages/core/test/project.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/skill-discovery.test.ts, packages/core/test/skill.test.ts, packages/core/test/tool-apply-patch.test.ts, packages/core/test/tool-edit.test.ts, packages/core/test/tool-question.test.ts, packages/core/test/tool-read.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-skill.test.ts, packages/core/test/tool-todowrite.test.ts, packages/core/test/tool-write.test.ts, packages/desktop, packages/effect-drizzle-sqlite, packages/effect-sqlite-node, packages/enterprise, packages/function, packages/http-recorder, packages/llm, packages/opencode, packages/opencode/src/cli, packages/opencode/src/effect, packages/opencode/src/mcp, packages/opencode/src/permission, packages/opencode/src/plugin, packages/opencode/src/provider, packages/opencode/src/server, packages/opencode/src/session, packages/opencode/src/tool, packages/opencode/test/fixture, packages/opencode/test/mcp, packages/opencode/test/plugin, packages/opencode/test/provider, packages/opencode/test/server, packages/opencode/test/session, packages/opencode/test/tool, packages/plugin, packages/schema, packages/sdk, packages/server, packages/session-ui, packages/slack, packages/stats, packages/tui, packages/ui, packages/ui/src/components, packages/ui/src/context, packages/ui/src/i18n, packages/ui/src/styles, packages/ui/src/theme, packages/ui/src/v2, packages/web, sdks, specs] chore: merge dev into v2 (#35591)
+- 9c2842b9b0 [packages/tui] fix(tui): track pending session inputs
+- f044def957 [packages/tui] fix(tui): detect backgrounded subagents
+- 754dd57177 [packages/codemode] fix(codemode): preserve async callback semantics (#35603)
+- 8942f97998 [packages/tui] sync
+- df471872de [packages/codemode] fix(codemode): reject Promise.all immediately (#35604)
+- ba24037e64 [packages/codemode] feat(codemode): math parity (#35609)
+- 8dc9ac07a2 [packages/tui] fix(tui): sync v2 terminal title (#35610)
+- b046bbe4e3 [packages/codemode] feat(codemode): support loop sequence syntax (#35618)
+- bf01264661 [packages/cli, packages/client, packages/core/src/database, packages/core/src/permission.ts, packages/core/src/session, packages/core/src/tool, packages/core/test/database-migration.test.ts, packages/core/test/mcp.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-error.test.ts, packages/core/test/session-execution-local.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-run-coordinator.test.ts, packages/core/test/session-runner-message.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-tool-progress.test.ts, packages/core/test/shared-schema.test.ts, packages/core/test/tool-apply-patch.test.ts, packages/core/test/tool-edit.test.ts, packages/core/test/tool-question.test.ts, packages/core/test/tool-read.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-skill.test.ts, packages/core/test/tool-subagent.test.ts, packages/core/test/tool-todowrite.test.ts, packages/core/test/tool-write.test.ts, packages/llm, packages/opencode/test/cli, packages/opencode/test/v2, packages/schema, packages/sdk, packages/tui, specs] feat(core): finalize session event lifecycle (#35272)
+- 984430c97d [.gitignore, package.json, script] chore: add typecheck profiling (#35622)
+- bfdbf43ef8 [packages/core/src/config, packages/core/src/mcp, packages/core/src/v1, packages/core/test/config, packages/core/test/fixture, packages/core/test/mcp.test.ts, specs] fix(core): clarify MCP timeout budgets (#35626)
+- e312f0d775 [packages/tui] fix(tui): provide location for home mentions
+- 96717c1a8c [.opencode, packages/cli, packages/client, packages/core, packages/core/src/database, packages/core/src/session.ts, packages/core/src/session, packages/core/test/database-migration.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner-message.test.ts, packages/schema, packages/sdk, packages/tui] feat(tui): improve session fork handling
+- c0ea1a43f9 [packages/client, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-remove.test.ts, packages/protocol, packages/schema, packages/sdk, packages/server, packages/tui] feat(tui): support session deletion
+- 79301fbed5 [packages/cli] chore(cli): inline build sourcemaps
+- 7668eb728d [packages/tui] fix(tui): normalize attachment labels
+- 59790380de [packages/client, packages/core/src/session.ts, packages/core/src/shell.ts, packages/core/src/tool, packages/core/test/tool-shell.test.ts, packages/protocol, packages/schema, packages/server] fix(core): support unlimited shell timeouts
+- fd4497e6b9 [packages/tui] fix(tui): route shell termination by location
+- bb6ee0a5cc [packages/codemode] docs(codemode): document loop syntax (#35631)
+- bd947658bb [bun.lock, packages/core/src/plugin, packages/core/test/plugin, packages/docs, packages/opencode/src/skill] docs: add v2 configuration reference
+- 04b673432c [packages/app, packages/client, packages/core, packages/core/src/database, packages/core/src/session.ts, packages/core/src/session, packages/core/test/database-migration.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner-message.test.ts, packages/core/test/session-runner.test.ts, packages/protocol, packages/schema, packages/sdk, packages/server, packages/tui, specs] feat(core): add durable compaction barrier (#35371)
+- fcb1d4b418 [packages/opencode/specs/simulation, packages/server, packages/simulation, packages/tui] feat(simulation): add named drive instances (#35648)
+- 93b7ca9b4d [packages/tui] fix(tui): align switch reminders (#35637)
+- b6a2912bb1 [packages/simulation] refactor(simulation): type RPC request payloads (#35734)
+- e3a39b214f [packages/core/src/session, packages/core/test/session-runner-message.test.ts] fix(core): lower failed reasoning to text (#35735)
+- f488089179 [packages/core/src/session, packages/core/test/session-compaction.test.ts, packages/llm, packages/opencode/test/session] fix: preserve compaction files and classify Z.AI overflow (#35747)
+- 8deb0e5780 [packages/client, packages/core/src/plugin, packages/core/test/location-layer.test.ts, packages/protocol, packages/sdk-next, packages/server] fix(core): preserve SDK plugins across location eviction (#35725)
+- dd1c007877 [bun.lock, packages/cli, packages/docs] docs
+- 6c065ca6a5 [bun.lock, packages/simulation] feat(simulation): render driven UI screenshots and videos (#35739)
+- b2ce195bda [packages/core/src/location-services.ts, packages/core/test/location-layer.test.ts] fix(core): normalize Location.Ref keys in LocationServiceMap (#35757)
+- d0733f83bf [packages/codemode] fix(codemode): return final top-level expression (#35759)
+- 66a8d830aa [packages/core/src/mcp, packages/core/test/fixture, packages/core/test/mcp.test.ts, packages/schema] feat(core): support MCP resources (#35656)
+- 1fb2837fd3 [packages/codemode] feat(codemode): expand numeric standard library (#35749)
+- cb18a42a47 [packages/codemode] docs(codemode): clarify implicit return guidance (#35763)
+- 3e57b43a4a [packages/client, packages/core/src/session.ts, packages/protocol, packages/server] feat(session): support admit-only synthetic messages (#35774)
+- 947bbf9490 [packages/client, packages/protocol, packages/schema, packages/server] feat(mcp): expose resource catalog API (#35773)
+- f86e1cc1ff [packages/codemode] fix(codemode): preserve collection value identity (#35776)
+- da68e2865e [packages/client, packages/plugin, packages/protocol, packages/server, packages/tui] feat(tui): wire move session command (#35203)
+- 81f6e06681 [packages/app, packages/cli, packages/opencode/src/effect, packages/opencode/src/server, packages/opencode/src/tool, packages/opencode/test/cli, packages/opencode/test/effect, packages/opencode/test/server, packages/opencode/test/tool, packages/tui, packages/web/src/content] feat: enable background subagents by default
+- 910e37f6d8 [packages/client, packages/core/src/aisdk.ts, packages/core/src/session, packages/core/test/aisdk.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner.test.ts, packages/schema, packages/sdk, packages/tui] fix: update v2 session usage metrics (#35468)
+- 5db320b02d [packages/app, packages/cli, packages/core/src/file-mutation.ts, packages/core/src/tool, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/tool-apply-patch.test.ts, packages/session-ui, packages/tui] refactor: rename apply_patch tool
+- 52ad916ba4 [packages/tui] fix(tui): restore permissions on reconnect
+- 9c54291ae8 [packages/tui] fix(tui): restore forms on reconnect
+- 3100701488 [packages/tui] fix(tui): restore prompt context usage (#35795)
+- 521ea87192 [packages/core/src/session, packages/core/test/session-runner-tool-events.test.ts] fix(core): retain reasoning delta state (#35758)
+- e25a724bc2 [packages/tui] test(tui): cover patch diff display aliases (#35810)
+- 4f976bcf1a [packages/client, packages/codemode, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/session, packages/core/src/tool, packages/core/test/config, packages/core/test/lib, packages/core/test/location-layer.test.ts, packages/core/test/plugin-hooks.test.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/core/test/session-runner-tool-registry.test.ts, packages/docs, packages/httpapi-codegen, packages/plugin, packages/protocol, packages/sdk-next, packages/sdk, packages/tui] feat(plugin): add session request hook (#35794)
+- e1abf59c59 [packages/core/test/plugin] fix(core): provide PluginHooks in plugin test layer (#35811)
+- 3379e44abb [packages/core/src/plugin, packages/core/src/tool, packages/core/test/tool-apply-patch.test.ts, packages/core/test/tool-patch.test.ts] refactor(core): rename ApplyPatchTool to PatchTool
+- eb661e6e6d [packages/core/src/session, packages/core/test/lib, packages/core/test/location-layer.test.ts, packages/core/test/plugin, packages/core/test/tool-subagent.test.ts] fix(core): settle unadvertised tool calls and repair session hook test contexts
+- d27746e5b3 [packages/core/test/session-runner.test.ts] test(core): simplify runner test fixtures (#35832)
+- ed6ad272ec [packages/app, packages/cli, packages/client, packages/codemode, packages/core/src/agent.ts, packages/core/src/config, packages/core/src/database, packages/core/src/file.ts, packages/core/src/git.ts, packages/core/src/models-dev.ts, packages/core/src/plugin, packages/core/src/session.ts, packages/core/src/session, packages/core/src/skill.ts, packages/core/src/skill, packages/core/src/snapshot.ts, packages/core/src/tool, packages/core/test/catalog.test.ts, packages/core/test/config, packages/core/test/database-migration.test.ts, packages/core/test/git.test.ts, packages/core/test/location-layer.test.ts, packages/core/test/plugin, packages/core/test/session-compact.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-instructions.test.ts, packages/core/test/session-log.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner-message.test.ts, packages/core/test/session-runner-model.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-skill.test.ts, packages/core/test/session-tool-progress.test.ts, packages/core/test/shared-schema.test.ts, packages/core/test/skill.test.ts, packages/core/test/skill, packages/core/test/snapshot.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-skill.test.ts, packages/core/test/tool-subagent.test.ts, packages/docs, packages/enterprise, packages/opencode/src/session, packages/opencode/src/share, packages/opencode/src/snapshot, packages/opencode/test/cli, packages/opencode/test/server, packages/opencode/test/v2, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/session-ui, packages/tui] refactor(schema): apply session review decisions (#35793)
+- e96c24ce2e [packages/core/test/config] test(core): fix mutable plugin fixture (#35837)
+- ed4f833813 [packages/core/src/aisdk.ts, packages/core/src/session, packages/core/test/aisdk.test.ts, packages/core/test/session-runner-message.test.ts, packages/core/test/session-runner-model.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner.test.ts, packages/llm] fix(core): preserve provider metadata namespaces (#35817)
+- 8d00a51766 [packages/simulation] feat(simulation): support multiple tool calls (#35861)
+- 86e3828da6 [packages/core/src/filesystem] fix(core): watch location only when vcs is present
+- cc29f86cdc [packages/tui] fix(tui): paginate session history
+- 3cbcd8d727 [packages/llm] feat(llm): complete provider package entrypoints (#35907)
+- bf15c97e4b [packages/tui] Revert "fix(tui): paginate session history"
+- 4d2b06f8cf [AGENTS.md] docs: prohibit bypassing git hooks
+- c6156f171c [packages/simulation] feat(simulation): stream UI recordings (#35909)
+- 8b634e4a58 [packages/tui] refactor(tui): simplify client data state
+- 05e8d5be73 [packages/core/src/session, packages/core/test/session-runner-message.test.ts] fix(core): preserve prompt attachment order (#35921)
+- 3dd29094f4 [bun.lock, packages/core/test/session-runner-recorded.test.ts, packages/http-recorder, packages/llm, packages/opencode/test/session] feat(http-recorder): sync recorder v0.3 (#35619)
+- dd842f9862 [packages/cli, packages/core/src/util, packages/core/test/util] fix(cli): elect one service process
+- b3cf749a7f [packages/tui] fix(tui): show resolved skill name
+- e1d72fa338 [bun.lock, packages/simulation] fix(simulation): stabilize screenshot artifacts (#35933)
+- 09553d46e0 [packages/simulation] refactor(simulation): remove filesystem layers (#35938)
+- 5b39972947 [packages/core/src/location-services.ts, packages/core/src/plugin, packages/core/src/session, packages/core/test/config, packages/core/test/location-layer.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-subagent.test.ts, packages/opencode/src/agent, packages/server] fix(core): await initial plugin readiness (#35755)
+- cedf365674 [packages/cli, packages/tui] feat(tui): add structured logging
+- 88925ec6e6 [packages/tui] fix(tui): allow callers without log sink
+- 99e52303e6 [packages/core/src/config.ts, packages/core/src/config, packages/core/src/plugin, packages/core/test/config] feat(core): discover ecosystem skill directories (#35956)
+- 212c9f99ee [packages/codemode] test(codemode): add Test262 string coverage (#35940)
+- 19f42f7102 [bun.lock, packages/cli, packages/core/src/integration.ts, packages/core/src/plugin, packages/core/test/integration.test.ts, packages/core/test/plugin] feat(v2/cli): add console login (#35969)
+- 79415f625a [packages/tui] feat(tui): revamp session export (#35971)
+- b44a981eef [packages/client, packages/core/src/tool, packages/core/test/form.test.ts, packages/core/test/tool-question.test.ts, packages/opencode/test/cli, packages/schema, packages/sdk, packages/tui] feat(core): global form support (#35959)
+- ec8eea7cbe [packages/codemode] test(codemode): add Test262 array coverage (#35965)
+- 7698a5e6ac [bun.lock, packages/cli, packages/client, packages/protocol, packages/sdk, packages/server, packages/tui] feat: add server link sharing
+- 2347f4d7b4 [packages/tui] fix(tui): simplify server link title
+- 687dbba6a3 [bun.lock, package.json, packages/app, packages/cli, packages/codemode, packages/console, packages/core, packages/core/src/config, packages/core/src/fs-util.ts, packages/core/test/config, packages/core/test/filesystem, packages/desktop, packages/effect-drizzle-sqlite, packages/effect-sqlite-node, packages/enterprise, packages/function, packages/http-recorder, packages/llm, packages/opencode, packages/opencode/src/config, packages/opencode/test/config, packages/plugin, packages/sdk, packages/server, packages/session-ui, packages/slack, packages/stats, packages/tui, packages/ui, packages/ui/src/i18n, packages/ui/src/theme, packages/web, packages/web/src/content, script, sdks] chore: merge dev into v2 (#35962)
+- 0590819090 [packages/server] fix(server): absorb healthy event bursts
+- 7eea97184a [packages/tui] fix(tui): restore prompt after undo (#35987)
+- 984cab7938 [packages/cli, packages/client, packages/core, packages/core/src/database, packages/core/src/session.ts, packages/core/src/session, packages/core/src/tool, packages/core/test/database-migration.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts, packages/core/test/shared-schema.test.ts, packages/core/test/tool-subagent.test.ts, packages/opencode/test/cli, packages/protocol, packages/schema, packages/sdk-next, packages/sdk, packages/server, packages/tui] feat(core): generalize session input inbox (#36005)
+- be7a684791 [packages/cli, packages/client, packages/tui] refactor(cli): unify server endpoint handling
+- cccd013801 [packages/cli, packages/opencode/src/cli] refactor(cli): centralize server resolution
+- 67f2393f83 [packages/cli, packages/core/src/config, packages/opencode/test/cli, packages/schema] refactor(cli): parse variants from model refs
+- d4155f2906 [packages/cli] refactor(cli): simplify mini arguments
+- 7feefb697f [github, packages/app, packages/cli, packages/client, packages/codemode, packages/core, packages/core/src/database, packages/core/src/location-services.ts, packages/core/src/plugin, packages/core/src/session, packages/core/src/tool, packages/core/src/v1, packages/core/test/fixtures, packages/core/test/location-layer.test.ts, packages/core/test/permission.test.ts, packages/core/test/session-todo.test.ts, packages/core/test/shared-schema.test.ts, packages/core/test/tool-todowrite.test.ts, packages/docs, packages/opencode/specs/effect, packages/opencode/specs/tui-plugins.md, packages/opencode/src/agent, packages/opencode/src/cli, packages/opencode/src/effect, packages/opencode/src/server, packages/opencode/src/session, packages/opencode/src/storage, packages/opencode/src/tool, packages/opencode/test/agent, packages/opencode/test/cli, packages/opencode/test/config, packages/opencode/test/event-manifest.test.ts, packages/opencode/test/fixture, packages/opencode/test/server, packages/opencode/test/session, packages/opencode/test/tool, packages/plugin, packages/schema, packages/sdk, packages/session-ui, packages/storybook, packages/tui, packages/ui/src/i18n, packages/web/src/components, packages/web/src/content, packages/web/src/pages, specs] refactor: remove todo tool (#35989)
+- 389c866cac [packages/codemode] docs(codemode): add interpreter doc (#36026)
+- aa0e626b12 [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): defer permission rejection cleanup (#36067)
+- 855a9569b5 [packages/simulation] feat(simulation): add literal screen text matching (#36085)
+- b642f9c7bc [packages/tui] feat(tui): log event stream connections (#35973)
+- 85fdb3bde6 [packages/core/src/agent.ts, packages/core/src/catalog.ts, packages/core/src/command.ts, packages/core/src/integration.ts, packages/core/src/models-dev.ts, packages/core/src/plugin, packages/core/src/reference.ts, packages/core/src/skill.ts, packages/core/src/state.ts, packages/schema] refactor(core): optimize location startup
+- 6fb526741b [packages/cli, packages/tui] refactor(tui): rename link concept to pair
+- a2718177be [packages/core/test/models.test.ts, packages/core/test/plugin] test(core): align models dev snapshot fixtures
+- c91604d519 [packages/opencode/src/cli, packages/opencode/src/provider, packages/opencode/src/server, packages/opencode/test/provider, packages/opencode/test/session] chore(opencode): suppress dead v1 model types
+- 6524dfc818 [packages/cli, packages/core, packages/core/src/database, packages/core/src/session, packages/core/test/database-migration.test.ts, packages/core/test/session-execution-local.test.ts, packages/core/test/session-execution.test.ts, packages/core/test/session-projector.test.ts, packages/opencode/src/server, packages/server, specs] feat(core): resume suspended sessions after service restart (#36105)
+- cc686ab8f6 [packages/cli, packages/tui] fix(cli): unify server resolution
+- 33c0cc2bb6 [packages/core/src/plugin, packages/core/test/plugin, packages/tui] fix: synchronize remote data refreshes
+- 4c80c23e11 [packages/tui] fix(tui): reconcile refreshed messages
+- 0ac8f91ed6 [packages/core/src/models-dev.ts, packages/opencode/src/provider, packages/opencode/test/provider] fix(core): restore catalog status schema export
+- bd0dffd781 [packages/llm] fix(llm): preserve nested OpenAI stream errors (#36130)
+- 8fe78c8f8d [packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/test/location-layer.test.ts, packages/core/test/plugin.test.ts, packages/plugin] fix(core): restore plugins after failed activation
+- 9ff7ef3fb0 [packages/tui] fix(tui): handle session search fetch failures without crashing (#36149)
+- e2eed76101 [packages/client, packages/httpapi-codegen, packages/plugin, packages/tui] refactor(tui): migrate v2 calls to new client
+- f6f0a5c10f [packages/docs] docs: expand user guides
+- 99156c10e6 [packages/cli] feat(cli): export frontend logs over OTLP (#36152)
+- a72992e00f [AGENTS.md, CONTEXT.md, bun.lock, packages/client, packages/core, packages/core/src/database, packages/core/src/session.ts, packages/core/src/session, packages/core/test/database-migration.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/shared-schema.test.ts, packages/core/test/tool-subagent.test.ts, packages/opencode/test/server, packages/protocol, packages/schema, packages/sdk-next, packages/sdk, packages/server, specs] feat(core): session.pending.list API with pending-only session_pending storage (#36126)
+- a7746379d5 [.github, bun.lock, nix, package.json, packages/app, packages/cli, packages/codemode, packages/console, packages/core, packages/core/test/provider-xai-responses.test.ts, packages/desktop, packages/effect-drizzle-sqlite, packages/effect-sqlite-node, packages/enterprise, packages/function, packages/http-recorder, packages/llm, packages/opencode, packages/opencode/src/plugin, packages/opencode/src/provider, packages/opencode/src/session, packages/opencode/test/plugin, packages/opencode/test/provider, packages/opencode/test/session, packages/plugin, packages/sdk, packages/server, packages/session-ui, packages/slack, packages/stats, packages/storybook, packages/tui, packages/ui, packages/ui/src/components, packages/ui/src/styles, packages/ui/src/theme, packages/ui/src/v2, packages/web, patches, sdks] chore: merge dev into v2 (#36144)
+- 1004fbb2f5 [packages/core/src/plugin, packages/docs] docs: expand OpenCode 2 beta guides
+- 629b304c48 [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): continue after configured permission denial (#36155)
+- 2db7ccb453 [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): restore resilient compaction (#36163)
+- 4a006b1210 [packages/core/src/config.ts, packages/core/test/config] refactor(core): derive config watches from entries
+- 3785eddfa0 [packages/core/src/session, packages/core/src/tool, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/session-runner.test.ts] fix(core): preserve admitted tool generations (#36177)
+- b452368b3b [packages/codemode, packages/core/src/session, packages/core/src/tool, packages/core/test/lib, packages/core/test/plugin.test.ts, packages/core/test/session-instructions.test.ts, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-patch.test.ts, packages/core/test/tool-question.test.ts, packages/core/test/tool-subagent.test.ts, specs] refactor(core): simplify tool admission flow (#36180)
+- 761f37370f [packages/core/src/plugin, packages/core/src/session, packages/core/src/tool, packages/core/test/plugin-hooks.test.ts, packages/core/test/plugin, packages/core/test/session-error.test.ts, packages/plugin, script] fix(plugin): restore package publishing
+- 8f04a09d1a [bun.lock, packages/plugin] refactor(plugin): remove protocol dependency
+- d54038b9d2 [AGENTS.md, CONTEXT.md, packages/llm, specs] docs(v2): consolidate specifications (#36186)
+- efeff63749 [packages/core/src/plugin, packages/core/test/plugin, packages/docs, packages/plugin] refactor(plugin): simplify promise tool declarations
+- 2a4b298108 [packages/core/src/plugin, packages/core/test/plugin, packages/docs, packages/plugin] refactor(plugin): include name in promise tools
+- fbb0fdf88a [packages/core/src/plugin, packages/core/test/config, packages/docs] fix(plugin): select plugins by id
+- 6a85f0d3db [packages/client, packages/docs] feat(client): add root promise entrypoint
+- a6449cb45c [packages/client, packages/core/src/form.ts, packages/core/src/mcp, packages/core/src/tool, packages/core/test/form.test.ts, packages/core/test/mcp.test.ts, packages/core/test/tool-question.test.ts, packages/opencode/test/cli, packages/opencode/test/server, packages/protocol, packages/schema, packages/sdk, packages/server, packages/tui] refactor(form): model links as fields (#36129)
+- 39cceeb143 [packages/codemode, packages/core/src/tool, packages/core/test/tool-execute.test.ts] fix(codemode): return promises from combinators (#35782)
+- 0d6ccd2a50 [packages/docs] docs: add build overview
+- 278c510549 [packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-runner-tool-events.test.ts] refactor(core): simplify session runner bookkeeping (#36200)
+- c867e66ab5 [packages/core/src/plugin, packages/core/test/plugin, packages/docs, packages/plugin] feat(plugin): add promise plugin cleanup
+- 76d7a11585 [packages/core/src/plugin] docs: expand opencode skill guidance
+- accaa792d8 [packages/core/src/plugin] docs: clarify opencode skill references
+- 41d0a9f010 [AGENTS.md, packages/tui] fix(tui): hide editor context from transcript (#36264)
+- cf5e0adf02 [packages/core/src/session, packages/core/test/session-compaction.test.ts, packages/core/test/session-runner.test.ts] fix(core): simplify compaction semantics (#36267)
+- b7b941c354 [packages/tui] fix(tui): unify pending tool styling (#36278)
+- 768a69bbbd [packages/core/src/plugin] sync
+- 96a9731947 [AGENTS.md, CONTEXT.md, packages/client, packages/core, packages/core/src/control-plane, packages/core/src/database, packages/core/src/event.ts, packages/core/src/instruction-discovery.ts, packages/core/src/instructions, packages/core/src/mcp, packages/core/src/reference, packages/core/src/session.ts, packages/core/src/session, packages/core/src/skill, packages/core/src/tool, packages/core/test/database-migration.test.ts, packages/core/test/event.test.ts, packages/core/test/instruction-discovery.test.ts, packages/core/test/instructions, packages/core/test/lib, packages/core/test/move-session.test.ts, packages/core/test/reference-guidance.test.ts, packages/core/test/session-instructions.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/skill, packages/docs, packages/protocol, packages/schema, packages/sdk, packages/tui, specs] feat(core): replace instruction checkpoints with value-delta sync (#36254)
+- 6216dbae15 [packages/docs] docs: simplify intro page
+- be18f22842 [packages/simulation] feat(simulation): record viewport resizes (#36306)
+- 9028c2d8f8 [packages/docs] docs: clarify beta binary and MCP route
+- 43ecf3ff1b [artifacts, infra, packages/app, packages/codemode, packages/console, packages/opencode/src/cli, packages/opencode/test/cli, packages/session-ui, packages/stats, packages/ui/src/components, packages/ui/src/v2, packages/web/src/content] chore: merge dev into v2 (#36312)
+- 1c67004999 [packages/cli, packages/client] fix(cli): show background server startup status
+- feaec7a6be [packages/core/src/plugin] fix overloaded models issue
+- b87bb4486f [packages/client, packages/httpapi-codegen] fix(client): generate standalone promise DTOs
+- 20e37e7122 [packages/client, packages/core/src/plugin, packages/httpapi-codegen] fix(plugin): adapt promise host wire values
+- 5b2715d24f [packages/core/src/plugin] refactor(plugin): simplify promise adapter imports
+- d3f4695af3 [.opencode] docs: add opencode-drive skill (#36319)
+- 0bb24a46c1 [packages/core/src/snapshot.ts, packages/core/test/snapshot.test.ts] fix(core): defer snapshot repository discovery (#36290)
+- 8e76adb08f [packages/codemode] feat(codemode): support promise chaining with .then/.catch/.finally (#36304)
+- 6b3c4f5839 [packages/core/src/git.ts, packages/core/test/git.test.ts] refactor(core): combine git discovery queries (#36321)
+- 0eaa75ec0f [packages/tui] fix(tui): total root session family cost
+- aca3b7813d [packages/core/src/skill.ts, packages/core/test/skill.test.ts] fix(core): publish skill source updates
+- a4a948316b [packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/test/location-layer.test.ts, packages/core/test/plugin.test.ts] fix(core): skip unchanged plugin activation
+- 6ce62bd84a [packages/cli, packages/tui] feat(tui): open subagents with down
+- ed6c117184 [packages/tui] fix(tui): retain leader subagent shortcut
+- d1550cb599 [packages/core/src/github-copilot, packages/core/src/plugin, packages/core/test/github-copilot, packages/core/test/plugin] feat(core): port GitHub Copilot OAuth (#36336)
+- 637282f3b9 [packages/tui] fix(tui): make composer close action discoverable (#36337)
+- 59202356fe [packages/tui] fix(tui): fork messages with agent attachments (#36338)
+- fe09a2e9b7 [packages/codemode] feat(codemode): support Promise.any and new Promise construction (#36339)
+- 00ab94c44f [packages/tui] fix(tui): stabilize compaction completion (#36435)
+- c7ceccf869 [packages/core/src/filesystem] fix(core): skip fff for aggregate locations (#36437)
+- 5945a8d429 [packages/tui] fix(tui): restore queued compaction indicator (#36440)
+- e3f7637eb2 [packages/tui] feat(tui): add semantic file path truncation (#36352)
+- 66b9cc7931 [packages/client, packages/httpapi-codegen] fix(client): accept larger SSE events (#36442)
+- 04f9b15178 [packages/core/src/tool, packages/core/test/tool-subagent.test.ts] fix(core): include child session id in background subagent start text (#36447)
+- 1ccaca826e [packages/cli, packages/client] feat(cli): update preflight UI while replacing the background service (#36448)
+- 6eeeb4bfcf [packages/codemode] feat(codemode): make search a global built-in and rewrite README (#36450)
+- b9f39dd751 [packages/core/src/filesystem] fix(core): disable unused fff content caches (#36452)
+- 75e8fd4da2 [packages/codemode] test(codemode): drop leftover $codemode references (#36451)
+- 56a7c06a80 [packages/cli] fix(cli): hand update completion directly to the TUI (#36455)
+- 2a7e32c416 [packages/client, packages/core/src/integration.ts, packages/core/src/reference.ts, packages/core/test/integration.test.ts, packages/core/test/plugin, packages/core/test/reference-guidance.test.ts, packages/core/test/reference.test.ts, packages/httpapi-codegen, packages/schema, packages/tui] refactor(tui): remove legacy sdk surfaces
+- 1956497f42 [packages/client, packages/httpapi-codegen] fix(client): loosen opaque promise outputs
+- c073387723 [packages/tui] refactor(tui): use default client export
+- 0fa9e5039e [packages/client, packages/protocol, packages/tui] refactor(tui): reduce legacy sync usage
+- de86d73d19 [packages/plugin, packages/tui] feat(tui): add v2 plugin context
+- ec07ee56f4 [packages/plugin] feat(tui): add plugin route api
+- 8f904c8e9a [packages/cli] fix(cli): load v2 tui config (#36466)
+- ac1ddc3f83 [packages/cli, packages/opencode/script/schema.ts, packages/opencode/src/config, packages/opencode/test/cli, packages/opencode/test/fixture, packages/tui] refactor(tui): simplify config and tool display
+- 02e2277057 [packages/tui] fix(tui): lower durable event log level (#36479)
+- 8e657c7db5 [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): settle malformed tool input on failure (#36477)
+- e22e3b8f2c [packages/cli, packages/tui] fix(cli): keep update preflight through TUI loading (#36475)
+- 5414697bd1 [packages/core/src/tool, packages/core/test/tool-subagent.test.ts, packages/tui] fix(tui): show background subagent completion (#36530)
+- 7913c4a490 [packages/core/src/event.ts, packages/core/test/event.test.ts, packages/server, specs] refactor(server): share event stream encoding (#36484)
+- 430750e2f8 [packages/tui] fix(tui): remove unsupported MCP toggle (#36531)
+- 49cb73b348 [packages/codemode] refactor(codemode): split runtime into focused interpreter modules (#36540)
+- 1e17202413 [packages/opencode/src/plugin, packages/opencode/test/plugin, packages/opencode/test/provider, packages/opencode/test/tool] chore: merge dev into v2 (#36556)
+- 3568dd1b99 [bun.lock, packages/cli, packages/plugin, packages/tui] feat(tui): add managed config interface
+- b2bdab24e6 [packages/plugin, packages/tui] fix(tui): preserve legacy host compatibility
+- 3c60470269 [packages/codemode] refactor(codemode): remove tool concurrency cap (#36545)
+- f8f8cc9546 [packages/cli, packages/tui] refactor(tui): simplify config context
+- 6e55ddd078 [packages/opencode/src/config, packages/opencode/test/config, packages/web/src/content] fix(config): load configs across git boundaries (#36568)
+- 09a6cecf23 [packages/tui] refactor(tui): remove code concealment toggle
+- 7e9b9cb0fd [packages/docs] docs: document TUI config migration
+- f112a73c06 [packages/core/src/config.ts, packages/core/test/config, packages/opencode/src/config, packages/opencode/test/config, packages/web/src/content] fix(core): load config across git boundaries (#36577)
+- c0ed0106b1 [packages/core/src/tool, packages/core/test/tool-shell.test.ts, packages/tui] fix(tui): show background shell completion (#36534)
+- 397993e898 [.changeset, packages/client] fix(client): preserve compatible background service (#36583)
+- a4b91d33d9 [packages/tui] fix(tui): align skills dialog copy (#36592)
+- 64ca9b8d77 [packages/codemode, packages/core/src/flag, packages/core/src/mcp, packages/core/src/tool, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/session-runner.test.ts, packages/docs, packages/plugin] refactor(core): replace deferred tool option with codemode (#36560)
+- 58201a32c1 [packages/app, packages/tui, packages/web/src/content] fix: standardize MCP server copy (#36598)
+- 3d545f960b [packages/tui] fix(tui): restore clicked reverted prompt (#36567)
+- 8daf912fbf [packages/tui] feat(tui): add settings dialog
+- 20af1f5e79 [packages/tui] refactor(tui): compact settings values
+- fe3b2e8f90 [bun.lock, package.json, packages/www] sync
+- a43de3f86d [packages/opencode/script/build.ts, packages/opencode/src/cli, packages/opencode/src/index.ts, packages/opencode/src/plugin, packages/opencode/src/temporary.ts, packages/opencode/test/cli, packages/tui] tui: remove legacy V1 CLI TUI integration to simplify startup
+- 828a4b3f15 [packages/codemode] fix(codemode): align array callback behavior (#36584)
+- 339fd50cb9 [packages/tui] fix(tui): preserve modal focus across dialog replacement (#36656)
+- 823bc20427 [packages/tui] fix(tui): use gray list highlights (#36669)
+- 3533047421 [packages/www] sync
+- 50a1add183 [packages/tui] fix(tui): open model selector at top (#36679)
+- 2987c30238 [packages/tui] revert(tui): restore list highlights (#36680)
+- b980f74ed9 [packages/tui] refactor(tui): reuse dialog select for settings
+- 4e74f77e44 [CONTEXT.md] delete context.md
+- 775fce0177 [packages/cli, packages/plugin, packages/tui] refactor(tui): consolidate settings in cli config
+- 9db5073eab [packages/plugin, packages/tui] fix(plugin): retain legacy kv api shape
+- 685f887771 [packages/docs] docs: clarify embedded sdk roadmap
+- 8c1808ab74 [packages/tui] fix(tui): standardize OpenCode product casing (#36717)
+- 3bc924252b [packages/www] fix(www): generate collections before typecheck (#36730)
+- a2f5a0df5d [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): compact after tool settlement (#36718)
+- 41349ff20a [packages/tui] fix(tui): run dialog actions without selection (#36711)
+- 2096adae12 [packages/tui] refactor(tui): remove unused subagent formatters (#36732)
+- af8480b2e2 [packages/tui] fix(tui): pin queued compaction below output (#36738)
+- 90a87b2a0c [packages/tui] refactor(tui): remove legacy sync context
+- ed1636e3bd [packages/tui] fix(tui): clamp dialog selection after options shrink (#36712)
+- 748b0d8836 [packages/cli, packages/opencode/test/cli, packages/tui] refactor(tui): remove subtle syntax styles (#36746)
+- 4c45a5cf23 [packages/tui] refactor(tui): extract system theme generation (#36753)
+- 36f8cb7054 [bun.lock, packages/tui] refactor(tui): remove legacy sdk client
+- ecb5754f4c [packages/codemode] refactor(codemode): rename Sandbox terminology to CodeMode (#36768)
+- fbe7f26e71 [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): clamp compaction output budget (#36745)
+- ce2e301e24 [packages/tui] feat(tui): style background subagent indicator (#36751)
+- 358d4746a9 [bun.lock, packages/cli] refactor(cli): remove legacy sdk dependency
+- 547e0148c7 [turbo.json] chore(codemode): run tests in CI (#36772)
+- 6963f2f6da [packages/opencode/test/cli] fix(cli): update mini tests for v2 types (#36779)
+- c15e3487b2 [packages/codemode] test(codemode): make promise tests deterministic (#36780)
+- 5cf24bf185 [packages/tui] tui: prevent crash when opening session switcher from an active session
+- 2a08cd3b96 [packages/core/src/npm.ts, packages/core/src/plugin, packages/core/test/config, packages/core/test/npm.test.ts] refactor(core): simplify plugin entrypoint resolution
+- 9b8282ad3d [packages/plugin] feat(plugin): add v2 tui entrypoint
+- aa8fc4234d [packages/core/src/session, packages/core/test/session-runner.test.ts, packages/tui] fix(core): add session correlation header (#36842)
+- ea386fba1f [packages/llm] feat(llm): add compatible responses provider (#35908)
+- 26e27c7a7f [packages/tui] fix(tui): distinguish asynchronous UI states (#36759)
+- 634386fe0f [.opencode, bun.lock, nix, package.json, packages/app, packages/codemode, packages/console, packages/core, packages/desktop, packages/effect-drizzle-sqlite, packages/effect-sqlite-node, packages/enterprise, packages/function, packages/http-recorder, packages/llm, packages/opencode, packages/opencode/src/account, packages/opencode/src/plugin, packages/opencode/src/provider, packages/opencode/test/account, packages/opencode/test/plugin, packages/opencode/test/provider, packages/opencode/test/session, packages/plugin, packages/sdk, packages/server, packages/session-ui, packages/slack, packages/stats, packages/storybook, packages/tui, packages/ui, packages/ui/src/components, packages/ui/src/context, packages/ui/src/v2, packages/web, patches, sdks] chore: merge dev into v2 (#36770)
+- a6b5cf94b0 [packages/tui] fix(tui): refresh MCP status for active location (#36882)
+- 40fedf086e [packages/core/test/session-runner.test.ts, packages/llm] fix(llm): port provider retry classification (#36887)
+- cd9be63484 [packages/core/src/session, packages/core/test/session-runner.test.ts, packages/tui] fix(tui): hide initial instruction sync (#36891)
+- 5c5579e90c [packages/llm] fix(llm): reject unterminated provider streams (#36881)
+- 4a93972a78 [packages/cli, packages/plugin, packages/tui] feat(tui): add v2 plugin runtime
+- b2741d2f97 [packages/tui] fix(tui): preserve legacy keybind lookup
+- b67bed061a [packages/plugin, packages/tui] feat(tui): port diff viewer to v2 plugins
+- 016545513f [artifacts, packages/tui] feat(tui): group sequential thinking (#36901)
+- 6039f54126 [packages/tui] fix(tui): refine thinking block styling
+- 915be9b54d [packages/core/src/plugin, packages/core/src/session, packages/core/src/tool-output-store.ts, packages/core/src/tool, packages/core/test/lib, packages/core/test/mcp.test.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/core/test/session-instructions.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-execute.test.ts, packages/core/test/tool-output-store.test.ts, packages/core/test/tool-question.test.ts, packages/core/test/tool-subagent.test.ts, packages/plugin, packages/tui] feat(plugin): add tool progress reporting
+- f4f761246a [packages/core/src/aisdk.ts, packages/core/src/plugin, packages/core/test/aisdk.test.ts, packages/core/test/plugin] fix(core): support OpenAI pro mode (#36896)
+- a32c480d45 [packages/plugin, packages/tui] refactor(tui): centralize active location
+- 0d4f9797f4 [.github, nix, packages/app, packages/console, packages/core/test/session-runner-tool-events.test.ts, packages/desktop, packages/session-ui, packages/stats, packages/ui/src/i18n, packages/ui/src/v2] chore: merge dev into v2 (#36918)
+- ea89a2f619 [packages/codemode] feat(codemode): unify callback acceptance and support built-in references (#36771)
+- ece2b16cdf [.changeset, .github, bun.lock, docs, packages/cli, packages/client, packages/core/src/util, packages/core/test/fixture, packages/core/test/util, packages/protocol, packages/server, packages/tui] feat: expose background service lifecycle (#36895)
+- a149a61a89 [packages/tui] fix(tui): harden reasoning groups (#36913)
+- 947566f611 [bun.lock, packages/opencode/specs/simulation, packages/server, packages/simulation, packages/tui] refactor(simulation): scope Drive lifecycle with Effect (#36908)
+- 2508a74956 [packages/plugin, packages/tui] refactor(tui): make data sync owner-driven
+- d88faeb6da [packages/core/src/plugin, packages/core/test/plugin] fix(core): restore xAI OAuth in v2 (#36955)
+- fca3bca19d [packages/tui] test(tui): wait for connection before tool event (#36958)
+- 563f6a65de [packages/codemode] refactor(codemode): simplify tools types (#36941)
+- 9a25673c37 [packages/tui] feat(tui): add V2 theme system (#36950)
+- 387bff8fd9 [packages/core/src/tool, packages/core/test/tool-shell.test.ts, packages/tui] feat(tui): stream shell tool output
+- 05fdbcce04 [packages/cli] fix(cli): rename bash tool to shell
+- ba1f3d3d32 [packages/codemode] perf(codemode): batch OpenAPI query parameters (#36978)
+- 72cf7f12f3 [packages/core/src/session, packages/core/test/session-compaction.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts] fix(core): restore default model headers (#36975)
+- ff3442ce34 [packages/tui] refactor(tui): extract V1 theme definitions (#36969)
+- 94a23b8537 [packages/tui] refactor(tui): centralize location state
+- 2cb2f9d538 [packages/plugin, packages/tui] refactor(tui): simplify location and command contexts
+- 7eb7fe0763 [packages/core/src/aisdk.ts, packages/core/src/models-dev.ts, packages/core/src/provider.ts, packages/core/test/aisdk.test.ts, packages/core/test/models.test.ts, packages/core/test/plugin] fix(core): expand reasoning option variants (#36894)
+- 00093c70c1 [packages/tui] feat(tui): show session location below prompt
+- e8964ce672 [packages/plugin, packages/tui] refactor(tui): remove hidden command metadata
+- c1d2d7aba3 [packages/client, packages/core/src/control-plane, packages/core/src/session.ts, packages/core/src/session, packages/core/test/move-session.test.ts, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/tui] feat(session): support directory moves from slash commands
+- ce636daf04 [packages/core/src/instructions, packages/core/src/session, packages/core/test/instructions] feat(core): include session ID in instructions
+- 39f1336621 [packages/cli, packages/plugin, packages/tui, packages/web/src/content] refactor(tui): remove home screen tips
+- 09cd7445f1 [packages/tui] tui: remove "Plugins reloaded" toast to reduce UI noise during plugin updates
+- 83cfafc884 [packages/tui] fix(tui): mount toast at app root
+- 35f14900ae [packages/simulation] feat(simulation): expose normalized terminal frames (#37135)
+- 36f8a1e6e5 [packages/tui] fix(tui): summarize deleted patch files (#37134)
+- e8bd386973 [packages/simulation] fix(simulation): align vertical box drawing (#37137)
+- f5dd181443 [docs, packages/cli, packages/docs, packages/tui, packages/www] refactor(cli): define server connection boundary (#37133)
+- 22334b94c8 [packages/codemode] fix(codemode): canonicalize dotted tool paths (#36994)
+- 4f1298063b [bun.lock, packages/core/src/session, packages/core/test/session-runner-model.test.ts, packages/llm] feat(llm): add compatible and vertex provider entrypoints (#36900)
+- 75bc611ef1 [packages/cli, packages/client, packages/docs, packages/protocol, packages/sdk, packages/server, packages/tui, packages/www] refactor(client): simplify local service lifecycle
+- ec8ee60e0b [packages/cli, packages/client, packages/docs, packages/www] refactor(client): rename service start to ensure
+- b6ccb66610 [packages/core/src/filesystem.ts, packages/core/src/filesystem, packages/core/src/tool, packages/core/test/tool-search.test.ts] fix(core): bound default search results (#37154)
+- bb15b16499 [bun.lock, packages/ai, packages/core, packages/core/src/aisdk.ts, packages/core/src/effect, packages/core/src/generate.ts, packages/core/src/provider.ts, packages/core/src/session, packages/core/src/tool-output-store.ts, packages/core/src/tool, packages/core/test/aisdk.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-error.test.ts, packages/core/test/session-execution.test.ts, packages/core/test/session-instructions.test.ts, packages/core/test/session-runner-message.test.ts, packages/core/test/session-runner-model.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner-system-prompt.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts, packages/core/test/shared-schema.test.ts, packages/docs, packages/llm, packages/opencode, packages/opencode/src/provider, packages/opencode/src/server, packages/opencode/src/session, packages/opencode/test/session, packages/simulation, packages/www, specs] refactor(ai): rename llm package
+- 3fdd12fa81 [bun.lock, packages/ai, script] feat(ai): publish package
+- b95a5dc259 [packages/tui] fix(tui): remove shell expansion hint
+- f2f5eb6f16 [bun.lock, packages/core/src/plugin, packages/core/src/session, packages/core/src/tool, packages/core/test/lib, packages/core/test/plugin-hooks.test.ts, packages/core/test/plugin, packages/core/test/session-runner.test.ts, packages/plugin] feat(plugin): restore ai request hook
+- f92d84746b [packages/core/src/plugin, packages/core/src/session, packages/core/src/tool, packages/core/test/lib, packages/core/test/plugin-hooks.test.ts, packages/core/test/plugin, packages/core/test/session-runner.test.ts, packages/plugin] refactor(plugin): scope context hook to session (#37175)
+- 5e2e0d6965 [packages/opencode/specs/simulation, packages/simulation] feat(simulation): add endpoint handshake protocol (#37157)
+- 0cfa7b39db [AGENTS.md] ignore: adjust agents md
+- fd19fa89c4 [packages/codemode] fix(codemode): linearize reference walks (#37179)
+- a772767e9b [packages/cli, packages/client, packages/core/src/integration.ts, packages/core/src/plugin, packages/core/test/integration.test.ts, packages/core/test/mcp.test.ts, packages/core/test/plugin, packages/protocol, packages/sdk, packages/server, packages/tui] refactor(api): scope oauth operations by integration
+- b5177adb5b [packages/client, packages/core/src/integration.ts, packages/core/src/plugin, packages/core/test/integration.test.ts, packages/core/test/mcp.test.ts, packages/core/test/plugin, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/tui] feat(api): add command authentication attempts
+- 720f062cd0 [.gitattributes, bun.lock, packages/core/src/plugin, packages/core/src/session, packages/core/test/fixtures, packages/core/test/plugin, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner-system-prompt.test.ts, packages/core/test/session-runner.test.ts, packages/docs, packages/plugin] refactor(core): select system prompts through plugins (#37181)
+- 7624c4f7b3 [bun.lock, packages/app, packages/cli, packages/codemode, packages/console, packages/core, packages/core/src/fs-util.ts, packages/core/src/v1, packages/desktop, packages/effect-drizzle-sqlite, packages/effect-sqlite-node, packages/enterprise, packages/function, packages/http-recorder, packages/opencode, packages/opencode/src/provider, packages/opencode/src/tool, packages/opencode/test/tool, packages/plugin, packages/sdk, packages/server, packages/session-ui, packages/slack, packages/stats, packages/tui, packages/ui, packages/web, packages/web/src/content, sdks] chore: merge dev into v2 (#37170)
+- b4be28d4c3 [packages/core/src/session] tweak: adjust compaction to clearly indicate the convo history (#37195)
+- dc7e0f6d2e [packages/core/src/session, plans] refactor(core): extract session context loading (#37203)
+- 0a5530d0be [bun.lock, packages/core/src/tool, packages/core/test/session-runner-tool-registry.test.ts, packages/plugin, specs] fix(plugin): make tool values structural (#37202)
+- 6bf92aa7de [packages/tui] feat(tui): suggest settings command (#37205)
+- 5fb0470b44 [packages/cli, packages/client, packages/core, packages/core/src/config.ts, packages/core/src/database, packages/core/src/integration.ts, packages/core/src/kv.ts, packages/core/src/kv, packages/core/src/plugin, packages/core/src/wellknown.ts, packages/core/src/wellknown, packages/core/test/config, packages/core/test/integration.test.ts, packages/core/test/kv.test.ts, packages/core/test/wellknown.test.ts, packages/opencode/test/session, packages/plugin, packages/protocol, packages/sdk, packages/server, packages/tui] feat(api): add experimental wellknown connections
+- 4678bd1049 [packages/core/src/plugin, packages/core/test/plugin, packages/docs, packages/plugin] feat(plugin): expose synthetic session input (#37212)
+- 282f3f7eb2 [packages/ai, packages/core/test/session-runner-model.test.ts] refactor(ai): separate Vertex API routes (#37275)
+- 75f9fd5208 [packages/ai, packages/core/test/session-runner-model.test.ts] feat(ai): add Vertex Chat entrypoint (#37281)
+- 198ca749fd [packages/ai, packages/core/test/session-runner-model.test.ts] feat(ai): add Vertex Responses entrypoint (#37286)
+- d01dfa57b7 [packages/core/src/config.ts, packages/core/src/config, packages/core/src/tool, packages/core/src/v1, packages/core/test/config, packages/core/test/tool-subagent.test.ts] fix(core): limit v2 subagent nesting depth (#37291)
+- a5b28c2af2 [packages/core/src/location-services.ts, packages/core/src/mcp, packages/core/src/reference, packages/core/src/session, packages/core/src/skill, packages/core/test/reference-guidance.test.ts, packages/core/test/reference-instructions.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/skill] refactor(core): rename guidance modules (#37207)
+- 5fcef6773c [packages/tui, specs] feat(tui): migrate core surfaces to V2 themes (#37145)
+- fc37ae4452 [packages/core/src/session, packages/core/test/instruction-state.test.ts] refactor(core): split instruction observation and commit (#37208)
+- eec6cd5234 [packages/core/test/mcp-instructions.test.ts] test(core): cover mcp instruction producer (#37303)
+- 4829308f2d [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): preserve logical step across retries (#37316)
+- 06a2592836 [packages/tui] fix(tui): align subagent navigation copy (#37319)
+- 56c0658e6f [packages/core/src/session, plans] refactor(core): extract session model request preparation (#37210)
+- 7388e69b5c [packages/codemode] chore(codemode): update interpreter support
+- 7ab8a08efa [packages/core/script/wellknown-server.ts] sync
+- 60c7f847c1 [packages/codemode] feat(codemode): support void and Object.is (#37332)
+- 2ad6c42143 [packages/core/src/session.ts, packages/core/src/tool, packages/core/test/lib, packages/core/test/mcp.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/tool-question.test.ts, packages/core/test/tool-read.test.ts, packages/core/test/tool-skill.test.ts, packages/core/test/tool-webfetch.test.ts, packages/core/test/tool-websearch.test.ts] feat(core): normalize tool and attachment images at settlement (#37141)
+- 041cda905d [packages/tui] fix(tui): label only detached subagents as background (#37306)
+- ad8e6b1fb6 [packages/codemode] feat(codemode): support property deletion (#37335)
+- 65a42fd549 [packages/core/src/state.ts, packages/core/test/agent.test.ts, packages/core/test/catalog.test.ts, packages/core/test/state.test.ts] fix(core): debounce state reloads
+- 72af084dc1 [packages/core/src/state.ts, packages/core/test/state.test.ts] refactor(core): make state transforms synchronous
+- c764732aea [packages/codemode] feat(codemode): expand destructuring support (#37342)
+- 7a7075d86f [packages/tui] feat(tui): refine V2 theme colors (#37346)
+- 103f764624 [packages/core/src/config.ts, packages/core/src/config, packages/core/src/plugin, packages/core/src/v1, packages/core/src/wellknown.ts, packages/core/src/wellknown, packages/core/test/config, packages/core/test/wellknown.test.ts, specs] feat(core): add provider policy enforcement
+- e4a16830f1 [packages/core/src/location-services.ts, packages/core/src/session.ts, packages/core/src/session, packages/core/test/instruction-state.test.ts, packages/core/test/session-generate.test.ts, plans] feat(core): add transient session generation (#37330)
+- a7cf21e157 [packages/core/src/config.ts, packages/core/src/wellknown.ts, packages/core/test/wellknown.test.ts] refactor(core): move wellknown refresh to config
+- 0d3b6d430e [packages/tui] fix(tui): restore expandable tool hover state
+- 4f60bde502 [packages/tui] feat(tui): add message navigation shortcuts
+- 91b4634363 [packages/tui] fix(tui): remove debug theme toggle (#37359)
+- 8a70d70006 [packages/tui] revert(tui): remove message navigation shortcuts
+- 5ee4c1082a [packages/tui] feat(tui): add message navigation shortcuts (#37362)
+- ac1b802820 [packages/tui] fix(tui): restore selected action styling, fix subagent list (#37371)
+- 88b8883122 [packages/tui] feat(tui): resolve action state priority (#37373)
+- e916b99742 [bun.lock, packages/app, packages/cli, packages/codemode, packages/console, packages/core, packages/desktop, packages/effect-drizzle-sqlite, packages/effect-sqlite-node, packages/enterprise, packages/function, packages/http-recorder, packages/opencode, packages/opencode/src/provider, packages/opencode/test/cli, packages/plugin, packages/sdk, packages/server, packages/session-ui, packages/slack, packages/stats, packages/tui, packages/ui, packages/ui/src/components, packages/web, sdks] chore: merge dev into v2 (#37370)
+- b4a4ef0b3c [packages/cli, packages/opencode/test/cli, packages/plugin, packages/tui] refactor(tui): remove legacy keymap layer (#37206)
+- 309860558d [packages/tui] refactor(tui): remove secondary action styles (#37378)
+- 331533deff [packages/cli, packages/server] fix(cli): isolate server request traces (#37395)
+- f76e18201a [packages/tui] fix(tui): derive session surface colors from hues (#37401)
+- 4a7f760d25 [packages/tui] fix(tui): preserve prompt footer actions (#37180)
+- faf964691b [packages/core/src/plugin, packages/core/test/plugin] fix(core): initialize provider state before catalog transforms (#37419)
+- 91238441a6 [packages/codemode] fix(codemode): enforce lexical temporal dead zones (#37358)
+- 73567f3570 [packages/client, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-compaction.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts, packages/schema] feat(core): record title and compaction usage in session totals (#37441)
+- 27e1692848 [packages/core/src/config, packages/core/test/config] fix: rm used config
+- a1b274e6f8 [.github, .gitignore, bun.lock, package.json, packages/cli, packages/core, packages/core/src/filesystem, packages/core/src/image, packages/core/src/node-ffi.d.ts, packages/core/src/npm.ts, packages/core/src/plugin, packages/core/src/provider.ts, packages/core/src/pty, packages/core/src/runtime, packages/core/src/skill, packages/core/src/util, packages/plugin, packages/tui] node v2 cli support (#36309)
+- 42e2dde739 [packages/cli] fix(cli): prevent Node stdout EPIPE failures
+- 3db4458e6c [.changeset, packages/client, packages/core/src/plugin, packages/core/test/plugin, packages/plugin, packages/protocol, packages/server] feat(session): expose transient generation API (#37433)
+- 2180fb8e7b [.github] ci: fix node publish multi-arch install (#37497)
+- b26d948b76 [packages/tui] feat(tui): add hovered theme state (#37404)
+- 44f7bb71c1 [bun.lock, package.json, packages/cli, packages/client, packages/core/src/config, packages/core/src/database, packages/core/src/fs-util.ts, packages/core/src/plugin, packages/core/src/session, packages/core/src/skill.ts, packages/core/src/tool, packages/core/src/util, packages/core/test/filesystem, packages/effect-sqlite-node, packages/http-recorder, packages/httpapi-codegen, packages/opencode/src/agent, packages/opencode/src/project, packages/opencode/src/server, packages/opencode/src/session, packages/opencode/src/storage, packages/opencode/test/filesystem, packages/opencode/test/lib, packages/opencode/test/storage, packages/protocol, packages/sdk, patches] chore: upgrade Effect to beta.98 (#37498)
+- 651751405d [packages/tui] test(tui): await diff tree context readiness (#37501)
+- f8470404e3 [.github, packages/cli] fix(cli): stabilize Windows ARM64 Node builds (#37503)
+- d67e035c18 [packages/tui] refactor(tui): migrate leaf views to V2 themes (#37510)
+- bd79e24842 [packages/tui] fix(tui): raise neutral permission backgrounds (#37513)
+- 9b3a4655f1 [packages/core/src/session, packages/core/test/session-runner-message.test.ts] fix(core): clarify user-executed shell history (#37515)
+- 48adb9521c [.changeset, packages/tui] feat(tui): expose session header slot (#37520)
+- bce9c639d1 [.changeset, packages/tui] feat(tui): expose session composer top slot (#37518)
+- 677526d72e [packages/tui] refactor(tui): migrate dialog views to V2 themes (#37516)
+- 3fc06accbd [packages/simulation] fix(simulation): normalize named key presses (#37523)
+- 5d5b33f195 [packages/cli] cli: rename node package to opencode-node (#37528)
+- 4bc8faa01c [packages/core/src/mcp, packages/core/src/tool, packages/core/test/mcp.test.ts, packages/core/test/plugin.test.ts, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/tool-execute.test.ts, packages/plugin] feat(core): add tool namespaces (#37529)
+- f2a4011371 [packages/cli, packages/core/src/plugin, packages/core/test/config] fix(cli): restore plugin list diagnostics (#37540)
+- c7a7900ff2 [packages/tui] refactor(tui): migrate workflow views to V2 themes (#37526)
+- 87d5b27668 [packages/codemode] feat(codemode): project OpenAPI schema directions (#37361)
+- fafb04ed59 [packages/tui] feat(tui): track hue source identity (#37550)
+- 987242b3e8 [packages/core/src/integration.ts, packages/core/src/plugin, packages/core/test/integration.test.ts, packages/plugin] fix(core): honor OAuth attempt expiration (#37557)
+- 6ea8247e0f [packages/cli, packages/client] fix(cli): elect managed service by port bind (#37572)
+- 60ce33cde8 [packages/cli, packages/client, packages/server] fix(cli): simplify service registration lease (#37576)
+- 22c23cb44c [packages/cli] fix(cli): reduce startup overhead
+- c4830c147d [packages/core/src/effect, packages/core/src/session.ts, packages/core/test/effect] fix(core): defer cyclic layer dependencies
+- f2579c41b6 [packages/docs] docs: allow trusted cli installation
+- 08a7080e11 [packages/tui] fix(tui): exit composer picker with up arrow (#37601)
+- cd3cca0006 [packages/core/src/mcp, packages/core/test/fixture, packages/core/test/mcp.test.ts] feat(core): add runtime MCP controls (#37308)
+- deb5b144c3 [packages/ai] test(ai): record MiniMax messages compatibility (#37604)
+- 529d55b1c3 [packages/core/src/effect, packages/core/src/permission.ts, packages/core/src/session.ts, packages/core/src/session, packages/core/test/effect] fix(core): remove session import cycle (#37596)
+- 1f2de535aa [packages/ai] fix(ai): parse compatible reasoning deltas (#37558)
+- 7d4496eafc [packages/core/test/tool-shell.test.ts] test(core): stabilize shell progress test (#37643)
+- 5f437a09b0 [packages/codemode] feat(codemode): native coercion parity in interpreter (#37608)
+- d625bc86fc [packages/core/src/mcp] feat(core): publish pending MCP status during connect (#37605)
+- 4e56998d3c [packages/cli] fix(cli): harden managed service election (#37645)
+- 0d68b0bb20 [packages/core/src/session, packages/core/test/session-runner.test.ts, packages/tui] fix(tui): style interrupted compaction neutrally (#37655)
+- 33f1b269e9 [packages/codemode] fix(codemode): stop leaking undefined into tool arguments (#37652)
+- fe9b051d1a [packages/core/src/config, packages/core/src/mcp, packages/core/src/tool, packages/core/test/config, packages/core/test/mcp.test.ts, packages/docs] feat(core): allow MCP Code Mode opt-out (#37681)
+- 4e85a37590 [packages/tui] fix(tui): auto-approve permissions in auto mode
+- c310ef82f4 [packages/core/src/location-mutation.ts, packages/core/test/location-mutation.test.ts, packages/core/test/tool-patch.test.ts, specs] fix(core): authorize relative external paths (#37689)
+- 584fdefe6f [bun.lock, packages/simulation] fix(simulation): render screenshot symbol glyphs (#37691)
+- 57ff57595a [packages/ai, packages/client, packages/core/src/aisdk.ts, packages/core/src/session, packages/core/test/aisdk.test.ts, packages/core/test/session-runner-message.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner.test.ts, packages/schema] fix(core): safely recover malformed tool input (#37698)
+- a288cb5a0c [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): continue after malformed tool input (#37701)
+- ba0bbdafaa [packages/ai, packages/core/src/aisdk.ts, packages/core/src/session, packages/core/test/aisdk.test.ts, packages/core/test/session-runner.test.ts] fix(core): preserve the first terminal failure (#37705)
+- cbcf191fdb [packages/core/src/mcp] fix(core): detach disposed MCP registrations from root scope (#37660)
+- cf6e5b3604 [packages/cli] mini: fix shell tool output display (#37711)
+- 3f5ad8441f [packages/cli, packages/opencode/src/cli, packages/opencode/test/cli] cli: extract run from mini package (#37737)
+- c50554d907 [bun.lock, packages/cli, packages/opencode/test/cli, packages/tui] mini: move frontend into tui package (#37754)
+- 04f0a771a3 [packages/ai] feat(ai): add OpenAI image generation (#37714)
+- d5669ca934 [packages/codemode] docs(codemode): streamline README (#37769)
+- fe9a936867 [packages/client, packages/core/src/config, packages/protocol, packages/schema, packages/server, packages/tui] feat(server): expose runtime MCP controls over HTTP (#37712)
+- bef6cfbffe [packages/httpapi-codegen] feat(client): support opaque payload schemas (#37773)
+- f05d2ab551 [packages/tui] fix(tui): load root sessions in switcher (#37784)
+- 86a468c4d8 [packages/tui] fix(tui): move agent cycling to shift-tab (#37706)
+- edc93ceff1 [packages/simulation, packages/tui] feat(simulation): expose semantic UI snapshots (#37802)
+- 71cb419570 [packages/simulation] fix(simulation): validate semantic click identity (#37808)
+- 925c2423de [packages/cli, packages/tui] mini: add reconnect, forms, and shared targets (#37811)
+- 6d32bc9cb0 [bun.lock, packages/core/src/plugin, packages/core/src/tool, packages/core/test/session-runner-tool-registry.test.ts, packages/simulation] feat(simulation): control arbitrary tool lifecycles (#37816)
+- fe0c74f4df [packages/cli] fix(cli): accept updated service on restart
+- 391cfbcfe7 [packages/codemode] fix(codemode): align string, array, and Date behavior (#37775)
+- 2b8d1998d6 [packages/ai] fix(ai): buffer partial tool call identity (#37847)
+- b9525b5878 [packages/ai] fix(ai): expand context overflow patterns (#37848)
+- 8b5655ed53 [packages/ai] fix(ai): preserve compatible reasoning details (#37708)
+- deee40c572 [packages/codemode] fix(codemode): parse canonical index keys (#37851)
+- 0eb71d0fc7 [packages/cli, packages/core/test/snapshot.test.ts, packages/tui] refactor(tui): extract shared frontend helpers (#37868)
+- 75c7ac6a2c [packages/cli, packages/tui] tui/mini: consolidate stream and panel internals (#37903)
+- a9895a1e8a [packages/tui] fix(tui/mini): idle footer when session idles (#37910)
+- 6702ce0d3f [packages/tui] fix(tui): soften theme scale extremes (#37555)
+- 3f4fb3f9db [packages/tui] fix(tui): show opencode2 continuation command (#37933)
+- 7be95bcd6a [packages/tui] feat(tui): support single-mode themes (#37930)
+- c7aa47c144 [packages/tui] feat(tui): implement session timeline
+- 3da0dea8e7 [packages/codemode] feat(codemode): expand standard library parity (#37943)
+- e8b19afa8f [packages/tui] fix(tui): adapt file badge accent to theme mode (#37953)
+- 6d50023457 [packages/codemode] feat(codemode): complete regexp and math parity (#37955)
+- 98c29075b4 [packages/codemode] feat(codemode): complete date parity (#37960)
+- 61b7caa0b5 [packages/tui] fix(tui): make migrated selected background transparent (#37967)
+- f971aa0719 [packages/cli, packages/core/src/database, packages/core/test/database-migration.test.ts, packages/core/test/session-create.test.ts, packages/opencode/src/cli, packages/opencode/src/installation, packages/opencode/test/fixture, packages/sdk-next, packages/server] refactor(server): inject database options
+- 0aa4031dd0 [packages/cli, packages/core/src/database, packages/core/src/models-dev.ts, packages/core/test/models.test.ts, packages/core/test/plugin, packages/sdk-next, packages/server] refactor(core): inject models options
+- 79d0077f63 [packages/tui] feat(tui): add categorical theme hues (#37985)
+- 0b2e2cbab0 [packages/core/src/session, packages/core/test/session-runner-model.test.ts] fix(core): ignore empty provider api keys
+- 17c1e9b083 [packages/ai] refactor(ai): infer image provider options (#37948)
+- 0c18d06c9f [packages/codemode] feat(codemode): add groupBy parity (#37992)
+- df1f42d80f [packages/ai] feat(ai): add xAI image generation (#37778)
+- 642950a763 [packages/cli] fix(cli): isolate bun updater cache
+- 8cb9361149 [packages/ai] feat(ai): add Google image generation (#37781)
+- c0ba62b972 [packages/tui] refactor(tui): expose theme colors as properties (#37995)
+- 4c9a4309ce [.opencode, bun.lock, infra, nix, packages/app, packages/cli, packages/codemode, packages/console, packages/core, packages/desktop, packages/effect-drizzle-sqlite, packages/effect-sqlite-node, packages/enterprise, packages/function, packages/http-recorder, packages/opencode, packages/opencode/src/cli, packages/opencode/src/provider, packages/opencode/src/session, packages/opencode/test/cli, packages/opencode/test/provider, packages/plugin, packages/sdk, packages/server, packages/session-ui, packages/slack, packages/stats, packages/storybook, packages/tui, packages/ui, packages/ui/src/components, packages/ui/src/v2, packages/web, packages/web/src/content, sdks] chore: merge dev into v2 (#37996)
+- fa4ec98e1d [packages/ai] feat(ai): add Z.ai image generation (#37780)
+- e93fa06d05 [packages/ai] feat(ai): support image-guided generation (#37998)
+- a2c4c7a64b [packages/tui] refactor(tui): migrate diff viewer to V2 theme (#37999)
+- 455b5d3165 [packages/core/src/patch.ts, packages/core/src/plugin, packages/core/src/tool, packages/core/test/fixtures, packages/core/test/patch.test.ts, packages/core/test/tool-patch.test.ts] fix(core): match dev patch behavior (#37709)
+- f5a487ffcd [packages/codemode] feat(codemode): add Set method parity (#38000)
+- ace77a5cf7 [packages/cli, packages/server] refactor(server): centralize server options
+- 0409e6884d [packages/cli, packages/core/src/database, packages/core/src/effect, packages/core/src/filesystem, packages/core/src/models-dev.ts, packages/core/src/observability.ts, packages/core/src/observability, packages/core/test/effect, packages/opencode/src/effect, packages/opencode/src/server, packages/sdk-next, packages/server] refactor(server): inject runtime options
+- 9445b4d940 [packages/cli, packages/core/src/config.ts, packages/core/src/effect, packages/core/src/filesystem, packages/core/src/global.ts, packages/core/src/instruction-discovery.ts, packages/core/src/models-dev.ts, packages/core/test/config, packages/core/test/effect, packages/core/test/instruction-discovery.test.ts, packages/core/test/models.test.ts, packages/core/test/plugin, packages/server] refactor(server): inject config options
+- 407ac2d8aa [packages/cli, packages/core/src/command.ts, packages/core/src/config.ts, packages/core/src/database, packages/core/src/effect, packages/core/src/filesystem, packages/core/src/flag, packages/core/src/instruction-discovery.ts, packages/core/src/models-dev.ts, packages/core/src/pty.ts, packages/core/src/shell.ts, packages/core/src/shell, packages/core/test/config, packages/core/test/effect, packages/core/test/instruction-discovery.test.ts, packages/core/test/models.test.ts, packages/core/test/plugin, packages/server] refactor(server): migrate host options
+- 43c08387f1 [packages/cli, packages/core/src/config.ts, packages/core/src/flag, packages/core/src/models-dev.ts, packages/core/src/observability.ts, packages/core/src/observability, packages/core/src/session, packages/core/src/tool, packages/core/test/config, packages/core/test/effect, packages/core/test/session-compact.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts, packages/opencode/src/cli, packages/opencode/src/config, packages/opencode/src/flag, packages/opencode/src/installation, packages/opencode/src/plugin, packages/opencode/src/project, packages/opencode/src/server, packages/opencode/src/session, packages/opencode/test/fixture, packages/opencode/test/server, packages/server, packages/simulation, packages/tui] refactor: isolate legacy flags
+- fc7e4cf93e [packages/server] fix(server): preserve v1 auth compatibility
+- 44b6938b2a [bun.lock, packages/opencode, packages/opencode/bin/opencode, packages/opencode/migration/20260511173437_session-metadata, packages/opencode/script/bench-search.ts, packages/opencode/script/bench-test-suite.ts, packages/opencode/script/build-node.ts, packages/opencode/script/build.ts, packages/opencode/script/generate.ts, packages/opencode/script/httpapi-exercise.ts, packages/opencode/script/postinstall.mjs, packages/opencode/script/profile-test-files.ts, packages/opencode/script/publish.ts, packages/opencode/script/run-workspace-server, packages/opencode/script/schema.ts, packages/opencode/script/time.ts, packages/opencode/script/trace-imports.ts, packages/opencode/specs/effect, packages/opencode/specs/openapi-translation-cleanup.md, packages/opencode/specs/simulation, packages/opencode/specs/tui-plugins.md, packages/opencode/specs/v2, packages/opencode/src/account, packages/opencode/src/acp, packages/opencode/src/agent, packages/opencode/src/audio.d.ts, packages/opencode/src/auth, packages/opencode/src/bus, packages/opencode/src/cli, packages/opencode/src/command, packages/opencode/src/config, packages/opencode/src/control-plane, packages/opencode/src/effect, packages/opencode/src/env, packages/opencode/src/event-manifest.ts, packages/opencode/src/event-v2-bridge.ts, packages/opencode/src/flag, packages/opencode/src/format, packages/opencode/src/git, packages/opencode/src/id, packages/opencode/src/ide, packages/opencode/src/image, packages/opencode/src/index.ts, packages/opencode/src/installation, packages/opencode/src/job.ts, packages/opencode/src/lsp, packages/opencode/src/markdown.d.ts, packages/opencode/src/mcp, packages/opencode/src/node.ts, packages/opencode/src/patch, packages/opencode/src/permission, packages/opencode/src/plugin, packages/opencode/src/project, packages/opencode/src/provider, packages/opencode/src/question, packages/opencode/src/server, packages/opencode/src/session, packages/opencode/src/share, packages/opencode/src/skill, packages/opencode/src/snapshot, packages/opencode/src/sql.d.ts, packages/opencode/src/storage, packages/opencode/src/sync, packages/opencode/src/temporary.ts, packages/opencode/src/tool, packages/opencode/src/util, packages/opencode/src/worktree, packages/opencode/test/AGENTS.md, packages/opencode/test/EFFECT_TEST_MIGRATION.md, packages/opencode/test/account, packages/opencode/test/acp, packages/opencode/test/agent, packages/opencode/test/auth, packages/opencode/test/cli, packages/opencode/test/config, packages/opencode/test/control-plane, packages/opencode/test/effect, packages/opencode/test/event-manifest.test.ts, packages/opencode/test/fake, packages/opencode/test/filesystem, packages/opencode/test/fixture, packages/opencode/test/fixtures, packages/opencode/test/format, packages/opencode/test/git, packages/opencode/test/ide, packages/opencode/test/image, packages/opencode/test/installation, packages/opencode/test/job.test.ts, packages/opencode/test/lib, packages/opencode/test/lsp, packages/opencode/test/mcp, packages/opencode/test/patch, packages/opencode/test/permission-task.test.ts, packages/opencode/test/permission, packages/opencode/test/plugin, packages/opencode/test/preload.ts, packages/opencode/test/project, packages/opencode/test/provider, packages/opencode/test/question, packages/opencode/test/server, packages/opencode/test/session, packages/opencode/test/share, packages/opencode/test/skill, packages/opencode/test/snapshot, packages/opencode/test/storage, packages/opencode/test/tool, packages/opencode/test/util, packages/opencode/test/v2, packages/web] removed packages/opencode
+- 39fdd67123 [bun.lock, packages/core, packages/sdk] fix: remove legacy sdk from ci builds
+- 065b108bba [packages/codemode] feat(codemode): support JSON callbacks (#38006)
+- 09a38f1984 [packages/server] fix(server): allow authenticated CORS preflight (#38026)
+- 63e2054f50 [packages/core/src/patch.ts, packages/core/src/tool, packages/core/test/patch.test.ts, packages/core/test/tool-patch.test.ts] fix(core): improve patch errors (#38016)
+- a81c04fd31 [packages/codemode] feat(codemode): support labeled control flow (#38035)
+- eb4ff91c2d [packages/core/src/tool, packages/core/test/tool-patch.test.ts] fix(core): compose successive patch updates (#38034)
+- 96dc560833 [packages/core/src/patch.ts, packages/core/test/patch.test.ts] fix(core): accept padded patch markers (#38036)
+- e770415fd5 [packages/core/src/patch.ts, packages/core/test/patch.test.ts] fix(core): normalize CRLF patch lines (#38038)
+- 7111f93836 [packages/codemode] feat(codemode): support bounded async iteration (#38040)
+- fd97d789ef [packages/app] test(app): stabilize offset observer test (#38044)
+- 592ef7433a [packages/cli, packages/tui] mini: settle on wait and durable pending (#37984)
+- dd50d457b0 [packages/tui] refactor(tui): simplify mini footer status line (#38112)
+- 7243bd9e12 [packages/core/src/models-dev.ts, packages/core/test/models.test.ts, packages/server] fix: preserve runtime option defaults (#38118)
+- e0810753f2 [bun.lock, package.json, packages/cli, packages/core, packages/core/src/agent.ts, packages/core/src/aisdk.ts, packages/core/src/catalog.ts, packages/core/src/command.ts, packages/core/src/config.ts, packages/core/src/config, packages/core/src/control-plane, packages/core/src/credential.ts, packages/core/src/cross-spawn-spawner.ts, packages/core/src/database, packages/core/src/effect, packages/core/src/event-logger.ts, packages/core/src/event.ts, packages/core/src/file-mutation.ts, packages/core/src/filesystem.ts, packages/core/src/filesystem, packages/core/src/form.ts, packages/core/src/fs-util.ts, packages/core/src/generate.ts, packages/core/src/git.ts, packages/core/src/global.ts, packages/core/src/image.ts, packages/core/src/installation, packages/core/src/instruction-discovery.ts, packages/core/src/instructions, packages/core/src/integration.ts, packages/core/src/job.ts, packages/core/src/kv.ts, packages/core/src/location-mutation.ts, packages/core/src/location-service-map.ts, packages/core/src/location-services.ts, packages/core/src/location.ts, packages/core/src/mcp, packages/core/src/models-dev.ts, packages/core/src/npm-config.ts, packages/core/src/npm.ts, packages/core/src/observability.ts, packages/core/src/observability, packages/core/src/permission.ts, packages/core/src/permission, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/process.ts, packages/core/src/project.ts, packages/core/src/project, packages/core/src/provider.ts, packages/core/src/pty.ts, packages/core/src/pty, packages/core/src/question.ts, packages/core/src/reference.ts, packages/core/src/reference, packages/core/src/repository-cache.ts, packages/core/src/ripgrep.ts, packages/core/src/ripgrep, packages/core/src/runtime, packages/core/src/session.ts, packages/core/src/session, packages/core/src/shell.ts, packages/core/src/shell, packages/core/src/skill.ts, packages/core/src/skill, packages/core/src/snapshot.ts, packages/core/src/tool-output-store.ts, packages/core/src/tool, packages/core/src/util, packages/core/src/vcs.ts, packages/core/src/vcs, packages/core/src/wellknown.ts, packages/core/test/agent.test.ts, packages/core/test/catalog.test.ts, packages/core/test/config, packages/core/test/credential.test.ts, packages/core/test/database-migration.test.ts, packages/core/test/effect, packages/core/test/event-logger.test.ts, packages/core/test/event.test.ts, packages/core/test/file-mutation.test.ts, packages/core/test/filesystem, packages/core/test/fixture, packages/core/test/form.test.ts, packages/core/test/git.test.ts, packages/core/test/global.test.ts, packages/core/test/instruction-discovery.test.ts, packages/core/test/instruction-state.test.ts, packages/core/test/instructions, packages/core/test/integration.test.ts, packages/core/test/kv.test.ts, packages/core/test/location-filesystem.test.ts, packages/core/test/location-layer.test.ts, packages/core/test/location-mutation.test.ts, packages/core/test/logging.test.ts, packages/core/test/mcp.test.ts, packages/core/test/models.test.ts, packages/core/test/move-session.test.ts, packages/core/test/npm-config.test.ts, packages/core/test/npm.test.ts, packages/core/test/permission.test.ts, packages/core/test/plugin, packages/core/test/process, packages/core/test/project-copy.test.ts, packages/core/test/project-directories.test.ts, packages/core/test/project.test.ts, packages/core/test/pty, packages/core/test/question.test.ts, packages/core/test/reference.test.ts, packages/core/test/repository-cache.test.ts, packages/core/test/ripgrep.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-execution.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-instructions.test.ts, packages/core/test/session-log.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-remove.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-skill.test.ts, packages/core/test/session-title.test.ts, packages/core/test/session-tool-progress.test.ts, packages/core/test/session-wait.test.ts, packages/core/test/shell.test.ts, packages/core/test/skill-discovery.test.ts, packages/core/test/skill.test.ts, packages/core/test/snapshot.test.ts, packages/core/test/tool-edit.test.ts, packages/core/test/tool-output-store.test.ts, packages/core/test/tool-patch.test.ts, packages/core/test/tool-question.test.ts, packages/core/test/tool-read-filesystem.test.ts, packages/core/test/tool-read.test.ts, packages/core/test/tool-search.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-skill.test.ts, packages/core/test/tool-subagent.test.ts, packages/core/test/tool-webfetch.test.ts, packages/core/test/tool-websearch.test.ts, packages/core/test/tool-write.test.ts, packages/core/test/util, packages/core/test/vcs-hg.test.ts, packages/core/test/vcs.test.ts, packages/core/test/wellknown.test.ts, packages/server, packages/simulation, packages/tui, packages/util] refactor: extract shared util package (#37828)
+- cf2c1bf425 [packages/core/src/plugin] refactor(core): break plugin host cycle (#38120)
+- 3304e79827 [packages/tui] fix(tui): prevent autocomplete search flicker (#38128)
+- 3ea8895299 [packages/core/src/patch.ts, packages/core/test/patch.test.ts, packages/core/test/tool-patch.test.ts] fix(core): enforce patch EOF anchors (#38039)
+- 8d80365ef4 [packages/codemode] refactor(codemode): simplify model-facing wording (#38042)
+- cf651bc41b [bun.lock, packages/cli, packages/core, packages/core/src/patch.ts, packages/core/src/plugin, packages/core/src/provider.ts, packages/core/src/tool, packages/core/test/patch.test.ts, packages/util] feat(cli): port ACP to V2 (#37907)
+- 69d7c2add7 [bun.lock, packages/core/src/effect, packages/core/src/generate.ts, packages/core/src/session, packages/core/test/session-compaction.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts, packages/util, script] feat(util): configure package publishing (#38129)
+- 023f76f6fc [packages/core/src/models-dev.ts] fix(core): refresh model catalog every five minutes (#38142)
+- 99b2e78d75 [packages/tui] fix(tui): improve responsive footer details (#38116)
+- dbfbb13ccc [packages/core/src/tool, packages/core/test/patch.test.ts, packages/core/test/tool-patch.test.ts, packages/util] fix(core): authorize patch move destinations (#38133)
+- 6f4b9504e5 [packages/codemode] feat(codemode): support custom async iterators (#38141)
+- dd6c95fdc7 [packages/cli, packages/tui] mini: add quiet transcript settings (#38152)
+- 9c38358197 [packages/cli, packages/core/src/models-dev.ts, packages/core/src/session, packages/core/test/session-compact.test.ts, packages/sdk-next, packages/server, packages/util] refactor: centralize client identity (#38148)
+- caf727ecb7 [packages/core/src/session, packages/core/test/session-compact.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-model-request.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts] fix(core): filter unsupported media inputs (#38145)
+- 0405670cab [packages/cli, packages/core/src/database] refactor(core): move database path policy (#38159)
+- 6ec17e5d55 [packages/core/test/patch.test.ts, packages/util] fix(core): align patch Unicode matching (#38160)
+- c4fa5e6619 [packages/cli, packages/tui] mini: add turn summary visibility setting (#38153)
+- 7ec1b6e580 [packages/core/src/codemode.ts, packages/core/src/codemode, packages/core/src/location-services.ts, packages/core/src/session, packages/core/src/tool, packages/core/test/codemode.test.ts, packages/core/test/codemode, packages/core/test/mcp.test.ts, packages/core/test/session-runner-tool-registry.test.ts] feat(core): deliver CodeMode catalog through instructions (#38003)
+- e8d273ae5b [packages/cli, packages/tui] mini: add monochrome ASCII mode (#38173)
+- 128e2550ef [packages/core/src/codemode.ts, packages/core/src/codemode] fix(core): use shared app node import (#38181)
+- e6607fb58d [packages/core/src/location-mutation.ts, packages/core/test/location-mutation.test.ts, packages/core/test/tool-edit.test.ts, packages/core/test/tool-write.test.ts] fix(core): authorize symlinks by lexical path (#38180)
+- 77d3289d27 [packages/app, packages/console, packages/session-ui, packages/ui/src/v2, packages/web/src/content] chore: merge dev into v2 (#38182)
+- 1ea9137c01 [packages/core/src/tool, packages/core/test/tool-subagent.test.ts] fix(core): identify spawned subagents (#38189)
+- 2ed8fe5960 [packages/tui] mini: add hideable footer details (#38192)
+- 8de40be6ea [packages/cli, packages/core/src/app.ts, packages/core/src/mcp, packages/core/src/models-dev.ts, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/session.ts, packages/core/src/session, packages/core/src/tool, packages/core/test/app.test.ts, packages/core/test/effect, packages/core/test/mcp.test.ts, packages/core/test/models.test.ts, packages/core/test/plugin, packages/core/test/session-compaction.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts, packages/plugin, packages/sdk-next, packages/server, packages/simulation, packages/tui, packages/util] feat(plugin): expose app metadata (#38179)
+- c2351e308f [.github] fix(ci): skip legacy artifacts on v2
+- c944048bcf [bun.lock, packages/cli, packages/updates, script] feat(updates): add release control service
+- da35eac93f [packages/sdk] fix(sdk): build without legacy sources
+- a0a6963beb [packages/core/src/plugin, packages/core/test/plugin] fix(core): discover Copilot API endpoint (#38184)
+- f683eef5f9 [packages/core/src/config.ts, packages/core/src/config, packages/core/src/plugin, packages/core/test/config] feat(core): add session warming
+- c821d49386 [packages/updates] feat(updates): add artifact build endpoints
+- e84938b309 [packages/core/src/plugin, packages/core/src/session, packages/docs, packages/server] fix(core): make session warming observable
+- c8a40450e5 [packages/codemode] feat(codemode): support generator functions (#38172)
+- 80dc21d8f7 [packages/cli] fix(cli): use hosted updater API (#38223)
+- 6b9136e797 [packages/tui] fix(tui): inherit elevated tool theme (#38224)
+- 59ad593d9c [packages/core/src/git.ts, packages/core/test/git.test.ts] fix(core): reduce snapshot repository setup (#38162)
+- 69c05ae3fc [packages/codemode] feat(codemode): assimilate promise thenables (#38237)
+- 23483ea013 [packages/ai, packages/client, packages/core/src/aisdk.ts, packages/core/src/config, packages/core/src/model.ts, packages/core/src/models-dev.ts, packages/core/src/plugin, packages/core/src/session, packages/core/src/v1, packages/core/test/config, packages/core/test/models.test.ts, packages/core/test/session-runner-model.test.ts, packages/docs, packages/httpapi-codegen, packages/plugin, packages/schema] feat(ai): support custom reasoning fields (#38227)
+- ca6da05d07 [packages/tui] fix(tui): show skill name in mini tool output (#38250)
+- 691a7d93c8 [packages/tui] feat(tui): add compact command to mini (#38251)
+- 8bb1cfaa3b [packages/cli, packages/protocol, packages/tui] fix: defer catalog validation to session execution (#38258)
+- 6e826f3e22 [packages/tui] fix(tui): hide project commands from mini palette (#38259)
+- ced3d5e02a [packages/cli, packages/tui] fix(tui): submit prompt when resuming session (#38260)
+- 0e08b7330f [packages/tui] fix(tui): set mini terminal title on Linux (#38261)
+- 794137b33b [packages/cli, packages/tui] refactor(tui): narrow mini compatibility surfaces (#38262)
+- dc9fd126a0 [packages/cli] test(cli): cover interactive command flags (#38273)
+- 58d18be590 [packages/tui] oc mini v2 (#38278)
+- 648183cecb [packages/tui] fix(tui): quiet hidden mini footer (#38279)
+- a3e2cc0dcd [packages/cli, packages/tui] feat(tui): add mini agent switching (#38287)
+- e12ec8681b [packages/tui] fix(tui): render mini markdown in mono mode (#38313)
+- 5841b04fe7 [packages/tui] tui: resolve default mini footer agent (#38315)
+- 8fad13365b [packages/cli, packages/tui] feat(tui): add mini splash setting (#38317)
+- 4204b9d087 [packages/tui] fix(tui): show providers in Mini model search (#38321)
+- 5a9ed4d350 [packages/cli, packages/client, packages/core/src/database, packages/core/src/session, packages/core/src/tool, packages/core/test/database-migration.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-tool-progress.test.ts, packages/core/test/tool-shell.test.ts, packages/schema, packages/tui] fix: make tool progress live-only (#38217)
+- 03474816ea [packages/core/test/wellknown.test.ts] test(core): stabilize wellknown event subscriptions (#38331)
+- aea36d7630 [packages/tui] fix(tui): prevent duplicate message forks (#38240)
+- dba5da7c10 [packages/tui] fix(tui): restore shell mode styling (#38231)
+- b91dd78ab3 [packages/core/test/tool-edit.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-write.test.ts] test(core): remove source text assertions (#38342)
+- 7a1f9764a2 [packages/cli, packages/core/src/tool, packages/core/test/tool-search.test.ts, packages/core/test/tool-skill.test.ts, packages/core/test/tool-subagent.test.ts, packages/core/test/tool-webfetch.test.ts, packages/core/test/tool-websearch.test.ts, packages/tui] feat(core): compact durable tool metadata (#38343)
+- 89e3141079 [packages/core/src/session, packages/core/test/session-generate.test.ts] fix(core): preserve cache for session generation
+- 532292b5f3 [packages/core/test/patch.test.ts, packages/util] fix(core): reject malformed patch hunks (#38188)
+- 8a36abd328 [packages/tui] feat(tui): add developer debug bar (#38359)
+- 2271f9b222 [packages/ai] feat(ai): support PDF inputs (#38253)
+- 88f572cfce [packages/tui] refactor(tui): migrate selection views to V2 theme (#38001)
+- 5913c1db0b [packages/app, packages/console, packages/session-ui, packages/web/src/content] chore: merge dev into v2 (#38377)
+- 4e067a2014 [packages/core/test/tool-patch.test.ts] test(core): remove duplicate patch integration tests (#38389)
+- 36979c9641 [packages/core/test/plugin] test(core): consolidate provider factory coverage (#38390)
+- b6e14b5a74 [packages/client, packages/codemode, packages/core/src/config, packages/core/src/v1, packages/core/test/config, packages/docs, packages/schema, packages/tui, packages/www] refactor(tui): finish V2 theme migration (#38383)
+- 381f6c47b4 [.github, packages/docs, packages/tui, script] docs(tui): add generated V2 theme reference (#38396)
+- a817fe5e6c [packages/client, packages/schema] fix(schema): loosen agent color response
+- d86f732df3 [packages/tui] refactor(tui): generate syntax from V2 theme (#38397)
+- 48bcbd09ef [packages/ai] fix(ai): handle incomplete responses without reasons (#38374)
+- 203b9f59b7 [packages/core/src/generate.ts, packages/core/src/location-services.ts, packages/core/src/model-resolver.ts, packages/core/src/plugin, packages/core/src/session, packages/core/test/generate.test.ts, packages/core/test/model-resolver.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-runner-model.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-search.test.ts] fix(core): load dynamic models for generation (#38401)
+- f1f0f47ee2 [packages/core/src/v1] fix(core): migrate named agent colors (#38414)
+- 6e8aefcfa0 [packages/ai] fix(ai): normalize Bedrock cache usage (#38427)
+- b6f85c2250 [packages/core/src/catalog.ts, packages/core/src/github-copilot, packages/core/test/aisdk.test.ts, packages/core/test/config, packages/core/test/generate.test.ts, packages/core/test/github-copilot, packages/core/test/plugin, packages/core/test/shared-schema.test.ts, packages/docs, packages/schema] fix(core): default custom model capabilities (#38449)
+- 52c98a4eeb [packages/cli, packages/tui] mini: add replay settings to cli config (#38487)
+- 5b1321a8ca [packages/tui] feat(tui): add turn token usage diagnostics (#38398)
+- bbe985b4d0 [bun.lock, packages/cli] chore(cli): upgrade acp sdk (#38316)
+- 833dd2ed7f [packages/tui] refactor(tui): simplify turn usage reduction (#38514)
+- 466b75b19d [packages/cli] feat(cli): expand acp v1 support (#38325)
+- 8f3465c951 [packages/docs, packages/tui] refactor(tui): load native V2 themes (#38430)
+- 74e92f73e0 [packages/ai, packages/core/src/aisdk.ts] refactor(ai): remove unused response format (#38540)
+- ad596fb42b [bun.lock, package.json, packages/core, patches] chore(core): upgrade fff to 0.10.1 (#38545)
+- 360e7b412d [packages/tui] feat(tui): expose debug settings (#38546)
+- 18fccac6ff [packages/tui] fix(tui): preserve first message in new sessions (#38542)
+- 2c814120c7 [packages/ai] fix(ai): keep tools when Anthropic tool_choice is none (#38553)
+- 2a9f8e3a2c [packages/tui] fix(tui): manage focus in devtools panels (#38555)
+- 193f6be99c [packages/ai] fix(ai): keep tools when Gemini tool choice is none (#38556)
+- 8cac010bac [packages/core/src/session, packages/core/test/session-generate.test.ts] fix(core): stop forcing toolChoice none on session.generate (#38557)
+- 79c1544072 [.changeset, packages/ai, packages/cli, packages/client, packages/codemode, packages/core/src/codemode.ts, packages/core/src/database, packages/core/src/plugin, packages/core/src/session, packages/core/src/tool-output-store.ts, packages/core/src/tool, packages/core/test/codemode.test.ts, packages/core/test/database-migration.test.ts, packages/core/test/lib, packages/core/test/mcp.test.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/core/test/session-generate.test.ts, packages/core/test/session-instructions.test.ts, packages/core/test/session-runner-message.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-tool-progress.test.ts, packages/core/test/tool-edit.test.ts, packages/core/test/tool-execute.test.ts, packages/core/test/tool-output-store.test.ts, packages/core/test/tool-patch.test.ts, packages/core/test/tool-question.test.ts, packages/core/test/tool-read.test.ts, packages/core/test/tool-search.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-skill.test.ts, packages/core/test/tool-subagent.test.ts, packages/core/test/tool-webfetch.test.ts, packages/core/test/tool-websearch.test.ts, packages/core/test/tool-write.test.ts, packages/docs, packages/plugin, packages/schema, packages/sdk-next, packages/simulation, packages/tui, packages/www, specs] refactor(tools): unify tool APIs and result handling (#38367)
+- 02f2725154 [bun.lock, nix, package.json, packages/app, packages/core, packages/core/test/provider-mistral.test.ts, packages/desktop, packages/session-ui, patches] chore: merge dev into v2 (#38563)
+- e7ecee5df2 [packages/codemode, packages/core/src/plugin, packages/core/src/session, packages/core/test/plugin.test.ts, packages/core/test/session-runner-tool-events.test.ts] fix(core): isolate tool hook outcomes (#38571)
+- 6401eeaea0 [packages/ai, packages/core/src/aisdk.ts, packages/core/src/session, packages/core/test/aisdk.test.ts, packages/core/test/generate.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts] feat(ai): preserve raw finish reasons (#38423)
+- 8d9727be9f [packages/core/src/tool, packages/core/test/patch.test.ts, packages/core/test/tool-patch.test.ts, packages/util] fix(core): improve patch errors (#38369)
+- bb3f4cc3c7 [packages/codemode, packages/core/test/codemode] fix(codemode): stabilize catalog ordering (#38588)
+- c228fc4886 [packages/core/src/tool, packages/core/test/plugin.test.ts, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/session-runner.test.ts] fix(core): stabilize tool definition ordering (#38590)
+- 7456598cde [packages/core/src/codemode, packages/core/src/location-services.ts, packages/core/src/session, packages/core/src/tool, packages/core/test/codemode, packages/core/test/location-layer.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/session-runner.test.ts] fix(core): share one tool snapshot per request (#38596)
+- ee69a91f26 [.opencode] docs: add ideal pseudocode skill (#38611)
+- 65c5c7e3f6 [packages/ai] feat(ai): round-trip Anthropic redacted thinking blocks (#38614)
+- ea010ab3a4 [packages/ai] feat(ai): round-trip Bedrock redacted reasoning (#38623)
+- 00f063b381 [packages/tui] mini: pack statusline by content width (#38646)
+- 4184149b90 [packages/tui] mini: monochrome rendered markdown only (#38656)
+- edaee143d9 [packages/tui] mini: reserve headroom before showing usage (#38659)
+- c5680a206e [packages/ai] refactor(ai): make OpenAI Responses extend Open Responses (#38681)
+- c06186a9d9 [packages/ai] fix(ai): forward Anthropic provider options (#38694)
+- d90da82be2 [packages/ai] refactor(ai): normalize provider option parsing (#38695)
+- 0374d29232 [packages/ai] refactor(ai): colocate provider options (#38698)
+- 35d31d8ec1 [packages/ai] refactor(ai): remove dead LLM exports (#38700)
+- 0f3c30118c [packages/core/src/session, packages/core/test/session-create.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-subagent.test.ts] refactor(core): simplify session runner loop and pending input scopes (#38602)
+- 835149e42b [packages/core/src/catalog.ts] refactor(core): select small model without sorting (#38707)
+- 6e4a972bb9 [packages/core/src/session] refactor(core): clean up callModel readability (#38706)
+- c64d813347 [packages/core/src/tool, packages/core/test/tool-search.test.ts] fix(core): report truncated glob results (#38631)
+- 4605308be2 [packages/codemode, packages/core/src/codemode.ts, packages/core/src/codemode, packages/core/src/session, packages/core/src/tool, packages/core/test/codemode.test.ts, packages/core/test/codemode, packages/core/test/session-generate.test.ts, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/session-runner.test.ts] feat(core): render CodeMode catalog deltas from structured snapshots (#38183)
+- 5aa276c117 [packages/core/src/session, packages/core/test/session-runner-tool-events.test.ts] refactor(core): mint assistant message identity before the step runs (#38717)
+- 4f201f87a9 [packages/ai] fix(ai): align Bedrock stream handling (#38712)
+- 7ab3dd04ad [packages/core/src/session] refactor(core): unify tool fiber bookkeeping into one owned structure (#38719)
+- 68ef893818 [packages/core/src/session, packages/core/test/session-execution.test.ts] fix(core): start all suspended sessions promptly (#38720)
+- 2200d100d0 [packages/core/src/session] refactor(core): name the unsettled-tool sweep scope and untangle hosted settlement (#38724)
+- 9b640cf97d [packages/core/test/npm.test.ts] test(core): remove flaky npm install test (#38729)
+- 993f046dd9 [.changeset, packages/ai] fix(ai): layer prompt cache breakpoints (#38725)
+- 5ae2d6d3f6 [packages/core/src/permission.ts, packages/core/src/session, packages/core/src/tool, packages/core/test/session-runner.test.ts] refactor(core): settle declined tool calls durably with typed reasons (#38734)
+- 423fad730c [packages/core/src/tool, packages/core/test/tool-search.test.ts] fix(core): authorize external glob paths (#38714)
+- b09a066fb5 [.changeset, packages/ai] fix(ai): report OpenAI cache writes (#38735)
+- ee5460a152 [packages/codemode] fix(codemode): report interrupted tool calls (#38741)
+- 3193f3aa95 [packages/tui] fix(tui): flag likely cache busts accurately (#38727)
+- d66d0cb904 [packages/core/src/codemode, packages/core/test/codemode] fix(core): clarify Code Mode tool availability (#38745)
+- 49bec25ae5 [packages/ai] fix(ai): align Anthropic stream handling (#38733)
+- b31747124b [packages/core/src/tool, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/tool-execute.test.ts, packages/tui] fix(core): stream Code Mode tool progress (#38718)
+- d1d97014b4 [packages/core/src/codemode, packages/core/src/tool, packages/core/test/codemode, packages/core/test/tool-execute.test.ts] refactor(core): move static Code Mode guidance (#38746)
+- 13b6845e7e [packages/core/src/mcp, packages/core/test/mcp-instructions.test.ts] fix(core): scope MCP execute guidance to Code Mode (#38753)
+- c7d7f61146 [packages/ai] fix(ai): preserve Anthropic usage metadata (#38751)
+- 1291dc1f11 [packages/core/src/codemode, packages/core/src/tool, packages/core/test/codemode, packages/core/test/tool-execute.test.ts] fix(core): clarify code mode tool boundary (#38785)
+- 454145fe65 [packages/tui] fix(tui): preserve workspace while reconnecting (#38788)
+- 828148909d [] fix(tui): preserve workspace while reconnecting (#38788)
+- b2afb35527 [packages/core/src/session, packages/core/test/session-runner-tool-events.test.ts] refactor(core): settle steps lock-free by joining tool fibers first (#38743)
+- 33390cc457 [packages/core/src/codemode.ts, packages/core/src/codemode, packages/core/test/codemode, packages/core/test/lib, packages/core/test/mcp.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-edit.test.ts, packages/core/test/tool-patch.test.ts, packages/core/test/tool-question.test.ts, packages/core/test/tool-read.test.ts, packages/core/test/tool-webfetch.test.ts, packages/core/test/tool-websearch.test.ts, packages/core/test/tool-write.test.ts] fix(core): keep execute tool cache stable (#38783)
+- 02c66c5fc1 [packages/core/src/plugin] docs(core): fix OpenCode skill links
+- cce8bb0e1c [packages/core/src/codemode, packages/core/test/codemode] fix(core): clarify empty Code Mode guidance (#38883)
+- c5bf4edb10 [packages/ai, packages/client, packages/core/src/session, packages/core/test/session-runner-message.test.ts, packages/core/test/session-runner.test.ts, packages/schema] fix(ai): preserve response message phases (#38777)
+- 1e35d33ecb [packages/codemode] fix(codemode): search nested namespaces (#38887)
+- f753103e82 [packages/core/src/tool, packages/core/test/tool-search.test.ts] fix(core): reject file glob roots (#38890)
+- 9eea5bc925 [packages/core/src/tool] fix(core): tweak glob tool description/parameters (#38899)
+- 7d8f1bdab3 [packages/core/src/tool] tweak(core): simplify skill tool description (#38900)
+- 203a0613b8 [.github, bun.lock, packages/core/src/plugin, packages/docs, packages/www, script] feat(www): migrate docs to Blume
+- 56a9c0150a [packages/www] fix(www): mark deploy script as module
+- 9840f63b12 [packages/www] chore(www): simplify worker routes
+- c7871e14d4 [.github] fix(www): remove deployment environment gate
+- 2ddc91a0e8 [packages/tui] fix(tui): show shell working directory in prompt
+- efb629a33a [AGENTS.md, packages/client, packages/core/src/config.ts, packages/core/src/config, packages/core/src/location-services.ts, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/tool, packages/core/src/websearch.ts, packages/core/test/config, packages/core/test/lib, packages/core/test/plugin, packages/core/test/tool-websearch.test.ts, packages/core/test/websearch.test.ts, packages/plugin, packages/protocol, packages/schema, packages/sdk-next, packages/server, packages/tui] feat(core): add pluggable web search (#35558)
+- 79c7e9446e [packages/core/src/tool] fix(core): clarify custom question answers (#38919)
+- 7affee529b [packages/core/src/tool, packages/core/test/tool-search.test.ts] fix(core): harden grep search behavior (#38922)
+- 28f4284bd7 [packages/www] fix(www): canonicalize production routes
+- 80865407e0 [.changeset, bun.lock, bunfig.toml, github, package.json, packages/app, packages/console, packages/plugin, packages/protocol, packages/sdk, packages/session-ui, packages/slack, packages/www, script] refactor(sdk): remove local legacy package
+- 0fd73a2976 [packages/core/src/tool, packages/core/test/tool-search.test.ts] fix(core): align grep behavior and guidance (#38999)
+- 8db7487c89 [bun.lock, package.json, packages/ai, packages/app, packages/cli, packages/client, packages/core, packages/core/src/account.ts, packages/core/src/account, packages/core/src/agent.ts, packages/core/src/aisdk.ts, packages/core/src/bus.ts, packages/core/src/catalog.ts, packages/core/src/codemode.ts, packages/core/src/codemode, packages/core/src/command.ts, packages/core/src/config.ts, packages/core/src/config, packages/core/src/control-plane, packages/core/src/credential.ts, packages/core/src/database, packages/core/src/event-logger.ts, packages/core/src/event.ts, packages/core/src/event, packages/core/src/file-mutation.ts, packages/core/src/filesystem.ts, packages/core/src/filesystem, packages/core/src/form.ts, packages/core/src/generate.ts, packages/core/src/git.ts, packages/core/src/github-copilot, packages/core/src/instruction-discovery.ts, packages/core/src/instructions, packages/core/src/integration.ts, packages/core/src/kv.ts, packages/core/src/location-mutation.ts, packages/core/src/location-services.ts, packages/core/src/mcp, packages/core/src/model-resolver.ts, packages/core/src/model.ts, packages/core/src/models-dev.ts, packages/core/src/permission.ts, packages/core/src/permission, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/project.ts, packages/core/src/project, packages/core/src/provider.ts, packages/core/src/pty.ts, packages/core/src/pty, packages/core/src/question.ts, packages/core/src/reference.ts, packages/core/src/reference, packages/core/src/ripgrep.ts, packages/core/src/session.ts, packages/core/src/session, packages/core/src/shell.ts, packages/core/src/skill.ts, packages/core/src/skill, packages/core/src/snapshot.ts, packages/core/src/tool-output-store.ts, packages/core/src/tool.ts, packages/core/src/tool, packages/core/src/v1, packages/core/src/v2-schema.ts, packages/core/src/vcs.ts, packages/core/src/websearch.ts, packages/core/src/wellknown.ts, packages/core/src/wellknown, packages/core/src/workspace.ts, packages/core/test/agent.test.ts, packages/core/test/aisdk.test.ts, packages/core/test/bus.test.ts, packages/core/test/catalog.test.ts, packages/core/test/codemode.test.ts, packages/core/test/codemode, packages/core/test/command.test.ts, packages/core/test/config, packages/core/test/database-migration.test.ts, packages/core/test/event-logger.test.ts, packages/core/test/event.test.ts, packages/core/test/filesystem, packages/core/test/form.test.ts, packages/core/test/generate.test.ts, packages/core/test/github-copilot, packages/core/test/instruction-state.test.ts, packages/core/test/integration.test.ts, packages/core/test/lib, packages/core/test/location-layer.test.ts, packages/core/test/location.test.ts, packages/core/test/mcp-instructions.test.ts, packages/core/test/mcp.test.ts, packages/core/test/model-resolver.test.ts, packages/core/test/model.test.ts, packages/core/test/models.test.ts, packages/core/test/move-session.test.ts, packages/core/test/permission.test.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/core/test/project-copy.test.ts, packages/core/test/project.test.ts, packages/core/test/pty, packages/core/test/question.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-error.test.ts, packages/core/test/session-execution.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-instructions.test.ts, packages/core/test/session-log.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-remove.test.ts, packages/core/test/session-runner-message.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-skill.test.ts, packages/core/test/session-title.test.ts, packages/core/test/session-tool-progress.test.ts, packages/core/test/session-wait.test.ts, packages/core/test/shared-schema.test.ts, packages/core/test/skill.test.ts, packages/core/test/skill, packages/core/test/tool-edit.test.ts, packages/core/test/tool-execute.test.ts, packages/core/test/tool-output-store.test.ts, packages/core/test/tool-patch.test.ts, packages/core/test/tool-question.test.ts, packages/core/test/tool-read.test.ts, packages/core/test/tool-schema.test.ts, packages/core/test/tool-search.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-skill.test.ts, packages/core/test/tool-subagent.test.ts, packages/core/test/tool-webfetch.test.ts, packages/core/test/tool-websearch.test.ts, packages/core/test/tool-write.test.ts, packages/core/test/websearch.test.ts, packages/core/test/wellknown.test.ts, packages/http-recorder, packages/httpapi-codegen, packages/plugin, packages/protocol, packages/schema, packages/sdk-next, packages/server, packages/simulation, packages/tui, packages/util, packages/www, patches] refactor(core): consolidate tool architecture
+- 5592f5225b [packages/app, packages/enterprise, packages/session-ui] fix(app): update remote sdk contracts
+- 863645c671 [packages/core/test/tool-search.test.ts] test(core): update grep error assertion
+- 4216d35e4b [bun.lock, packages/server] fix(server): declare schema dependency (#39043)
+- 93cb113cef [bun.lock, packages/util] fix(util): declare node tracing dependency (#39050)
+- 9b49e7bec9 [packages/core/test/plugin] test(core): implement catalog host model list (#39053)
+- 0261f04b90 [packages/core/src/ripgrep.ts, packages/core/test/ripgrep.test.ts] fix(core): handle oversized ripgrep matches
+- f14d78afeb [packages/tui] tui: skip abort on mini session close (#39067)
+- 766aaf448d [packages/tui] tui: add settings to command palette search (#39058)
+- 9a55d125f6 [packages/tui] tui: render mini compaction boundaries (#39103)
+- 9977ef0160 [packages/core/src/tool, packages/core/test/tool-read.test.ts] refactor(core): tag read outputs (#39122)
+- 7d4de3d9e4 [packages/core/src/tool] fix(core): clarify web search provider prompt (#39123)
+- 65d2a4e00c [packages/cli, packages/core/src/location-mutation.ts, packages/core/src/tool, packages/core/test/tool-read-filesystem.test.ts, packages/core/test/tool-read.test.ts] feat(core): improve read tool parity (#39126)
+- 1f2c59a1b6 [packages/core/src/state.ts, packages/core/test/state.test.ts] fix(core): commit state before finalize publishes (#38983)
+- 33e3d1ebca [packages/core/src/tool, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/tool-schema.test.ts] fix(core): tolerate missing tool input schemas (#39130)
+- 02c37c401a [packages/core/src/config.ts, packages/core/test/config, packages/core/test/filesystem, packages/core/test/fixture, packages/core/test/mcp.test.ts, packages/core/test/plugin, packages/core/test/session-instructions.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-read.test.ts, packages/simulation] feat(core): expose config changes stream (#39131)
+- 7eb51d0507 [packages/core/src/session, packages/core/test/prompt-cache-diagnostics.test.ts, packages/core/test/session-runner.test.ts] feat(core): diagnose prompt cache prefix changes (#39139)
+- f5700808c5 [packages/tui] fix(tui): preserve subagent list position (#39156)
+- 713658c07b [packages/core/src/config.ts, packages/core/src/filesystem, packages/core/test/config, packages/core/test/filesystem, packages/core/test/fixture, packages/core/test/mcp.test.ts, packages/core/test/plugin, packages/core/test/session-instructions.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-read.test.ts, packages/simulation] test(core): add config and watcher test services (#39157)
+- 92807d0bb9 [packages/core/src/config, packages/core/test/config] feat(core): reload commands from config change feed (#39160)
+- 856c569458 [packages/core/src/config, packages/core/test/config, packages/core/test/lib] feat(core): reload agents from config change feed (#39167)
+- 1b39d364bd [packages/core/src/config, packages/core/test/config] fix(core): align command reload pipeline and repair plugin fixture (#39171)
+- 6da2f3c38f [packages/core/src/tool, packages/core/test/tool-read.test.ts] feat(core): improve read model output (#39146)
+- 4e4cf9e25e [packages/tui] refactor(tui): extract event stream connection (#38872)
+- 4f622fa7cd [packages/tui] fix(tui): reference inferred hues in migrated themes (#39183)
+- 31124312f6 [packages/core/src/filesystem.ts, packages/core/src/tool, packages/core/test/tool-schema.test.ts] fix(core): simplify tool schemas (#39184)
+- 9200e353bf [packages/core/src/tool, packages/core/test/tool-edit.test.ts] feat(core): improve edit tool guidance (#39198)
+- 8b4b0d67d7 [packages/core/src/plugin, packages/core/test/config] feat(core): reload discovered plugins from source edits (#39174)
+- 4333a44e65 [packages/core/src/filesystem, packages/core/test/filesystem] refactor(core): manage watcher lifecycle with RcMap (#39203)
+- f15398efc3 [packages/core/src/tool, packages/core/test/tool-edit.test.ts] feat(core): improve edit tool output (#39211)
+- 470e360942 [packages/cli, packages/client, packages/core/src/tool, packages/core/test/codemode.test.ts, packages/core/test/codemode, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/core/test/session-runner.test.ts, packages/www] test(core): align tool contract expectations (#39172)
+- 775f24f049 [packages/core/test/config, packages/core/test/fixture] test(core): add native watcher command reload test (#39216)
+- debdea40ea [packages/core/src/plugin, packages/core/test/config] feat(core): reload configured plugins from source edits (#39224)
+- abcbdad530 [packages/core/src/plugin, packages/core/test/plugin] fix(core): refresh Meta system prompt (#39237)
+- 5bd3da40a5 [packages/core/src/config.ts, packages/core/test/config] fix(core): keep config root watches alive and ignore vendored trees (#39239)
+- b14adcaf83 [AGENTS.md] docs: forbid type-position import references (#39234)
+- 0cb9bb567e [packages/core/src/plugin] fix(core): align Meta system prompt (#39240)
+- 62320947d9 [packages/core/src/plugin, packages/core/src/session, packages/core/test/fixtures, packages/core/test/plugin] fix(core): refresh system prompt references (#39245)
+- 3bda0ce123 [packages/core/src/filesystem.ts, packages/core/src/tool] fix(core): bound search tool execution (#39238)
+- 7211c9934a [packages/core/src/tool, packages/core/test/tool-edit.test.ts] feat(core): make edit matching forgiving (#39258)
+- 302e9b45ab [bun.lock, nix, packages/app, packages/console, packages/core/src/reference.ts, packages/core/src/repository-cache.ts, packages/core/src/repository.ts, packages/core/test/reference.test.ts, packages/core/test/repository-cache.test.ts, packages/core/test/repository.test.ts, packages/desktop, packages/effect-drizzle-sqlite, packages/effect-sqlite-node, packages/enterprise, packages/function, packages/http-recorder, packages/plugin, packages/session-ui, packages/slack, packages/stats, packages/storybook, packages/ui, packages/ui/src/v2, packages/web, packages/web/src/content, sdks] chore: merge dev into v2 (#39290)
+- 1be6d94267 [packages/desktop] fix(desktop): bootstrap v2 background service (#39309)
+- 4d59b059ee [packages/tui] feat(tui): add verbose turn token usage (#39281)
+- 3b0d8f0e6f [packages/tui] fix(tui): clear rehydrated compaction state (#39336)
+- 010133f6df [packages/plugin, packages/tui] feat(tui): expand v2 plugin context
+- ee02fb4fce [packages/core/src/tool] Websearch tweaks
+- 30d09a7d7e [packages/core/src/tool, packages/core/test/tool-websearch.test.ts] fix(core): improve web search consent flow
+- b671a77145 [packages/tui] fix(tui): simplify form field labels
+- 077338fcc8 [packages/app] fix(app): hide delete for provided servers (#39363)
+- 73bd8a264b [packages/app] fix(app): keep new tab button visible (#39366)
+- e556aca833 [packages/core/src/plugin] refactor(core): simplify plugin reload loop (#39356)
+- fb975eeb7c [packages/ai, packages/core/test/generate.test.ts, packages/core/test/session-runner.test.ts] test(ai): add scoped test LLM (#39223)
+- 27e7b0558a [packages/core/src/plugin] fix(core): preserve plugin update order (#39372)
+- c445d98188 [bun.lock, packages/theme, packages/tui, packages/www, script] feat(theme): extract TUI theme package (#39378)
+- 44cd984589 [packages/plugin, packages/tui] feat(tui): refine plugin context slots
+- 771174b5c3 [packages/cli, packages/tui] fix(cli): align auto permission flags (#39384)
+- 5bcc0016a6 [bun.lock, packages/plugin, packages/tui] feat(tui): add plugin context hook
+- f6fb1a7cdd [packages/ai] fix(ai): retry transient client statuses (#39391)
+- 08b80da931 [packages/tui] refactor(tui): split theme hooks (#39395)
+- f95d04fea0 [packages/core/src/shell.ts, packages/core/src/tool, packages/core/test/tool-shell.test.ts] feat(core): improve shell tool guidance (#39401)
+- 37a1b80d5a [packages/tui] feat(tui): add adaptive session tabs (#39396)
+- 754ea99d86 [packages/core/src/tool, packages/core/test/tool-shell.test.ts] fix(core): preserve shell output tail (#39403)
+- 40c4c3918a [bun.lock, packages/cli, packages/core, packages/core/src/filesystem] feat(core): enable fff in node runtimes (#38776)
+- 43383d4fba [packages/tui] fix(tui): hide single session tab (#39408)
+- 38a3dbb4c4 [packages/tui] fix(tui): fade full-width tab titles (#39409)
+- a2885d1662 [packages/tui] feat(tui): add session tab history (#39411)
+- 068c32df39 [.opencode, packages/tui] feat(tui): discover project plugins
+- fe91698ed6 [packages/tui] fix(tui): initialize external plugin runtime
+- 1c8175a61a [packages/tui] fix(tui): preserve tab context on home and close (#39421)
+- 06290907a9 [packages/plugin, packages/tui] feat(tui): restore plugin manager dialog
+- 139c9febe4 [packages/tui] refactor(tui): group tab settings
+- 90100c1365 [packages/web/src/content, packages/www] docs: clarify side-by-side V1 and V2 installs
+- 12a931a220 [packages/tui] feat(tui): filter subagents by activity
+- 7b775c2582 [packages/cli, packages/core/src/filesystem] fix(cli): embed native watcher binding
+- a7b2ea94e5 [packages/tui] fix(tui): always show session tab (#39429)
+- f64b50d71b [packages/tui] feat(tui): add unread tab glow (#39428)
+- 5504245f7b [packages/tui] feat(tui): add session tab playground (#39432)
+- b47cfbee7c [packages/tui] fix(tui): reduce tab pulse allocations (#39433)
+- d9555f138b [packages/ai, packages/core/test/aisdk.test.ts, packages/core/test/model-resolver.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-title.test.ts] refactor(ai): internalize request compilation (#39132)
+- 309c4fe6f0 [packages/ai] feat(ai): infer model provider options (#39493)
+- 5882b64612 [packages/ai] feat(ai): type Anthropic-compatible request options (#39497)
+- 8c3e06798c [packages/ai] refactor(ai): limit provider option inference (#39510)
+- 9d6af6afa4 [packages/ai] feat(ai): type compatible request options (#39509)
+- 5a78a17e49 [packages/ai] feat(ai): type OpenRouter request options (#39508)
+- 333a090975 [packages/ai] feat(ai): type Vertex Responses request options (#39500)
+- 8a96b80aec [packages/ai] feat(ai): type OpenAI request options (#39495)
+- b4ac939537 [packages/ai] feat(ai): type xAI request options (#39505)
+- cb80f47112 [packages/ai] feat(ai): type Vertex Messages request options (#39501)
+- ce2c9e7e26 [packages/ai] feat(ai): type Google request options (#39504)
+- 224feff7c4 [packages/ai] feat(ai): type compatible Responses options (#39506)
+- f5cdf0f056 [packages/ai] feat(ai): type Anthropic request options (#39502)
+- 3b8299e3f2 [packages/ai] feat(ai): type Azure request options (#39498)
+- 9038e44a68 [packages/ai] feat(ai): type Copilot request options (#39496)
+- fea17b4a0e [packages/ai] feat(ai): type Cloudflare request options (#39507)
+- d72b428061 [packages/ai] feat(ai): type Vertex Chat request options (#39503)
+- 9554f9a16e [packages/ai] feat(ai): type Vertex request options (#39499)
+- 2a85c861e0 [packages/app, packages/cli, packages/client, packages/core/src/session, packages/core/test/plugin, packages/core/test/session-create.test.ts, packages/schema, packages/tui] fix(session): hide pending admission sequence
+- fc11ed3838 [packages/app, packages/cli, packages/client, packages/core, packages/core/src/database, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-create.test.ts, packages/core/test/session-runner.test.ts, packages/protocol, packages/schema, packages/server, packages/tui, packages/www] feat(session): define explicit fork boundaries
+- bd906d468d [packages/core/src/config.ts, packages/core/src/filesystem, packages/core/src/plugin, packages/core/test/filesystem] refactor(core): make watcher subscription effectful
+- 247f14f955 [.opencode, packages/plugin, packages/tui] feat(tui): add replaceable prompt footer slot
+- 813c41ff6c [packages/core/src/shell, packages/core/src/tool, packages/core/test/shell.test.ts, packages/core/test/tool-shell.test.ts] fix(core): simplify shell execution boundary (#39530)
+- 9ee337469d [packages/plugin, packages/tui] feat(tui): add persistent storage context
+- 4bd16d6f47 [packages/tui] feat(tui): default tabs to cwd scope
+- 5438dfb751 [packages/tui] fix(tui): remove invalid model toasts
+- 8f1e3ff75c [docs] docs: record v1 to v2 database migration decisions
+- 6aa250ee5d [packages/tui] refactor(tui): flatten state storage path
+- c2e975c4e6 [bun.lock, packages/plugin, packages/theme, packages/tui] refactor(plugin): expose resolved TUI theme (#39536)
+- b2010220f9 [packages/core/src/codemode, packages/core/test/codemode, packages/core/test/tool-execute.test.ts] fix(core): clarify Code Mode tool boundary (#39540)
+- f599f8f3d3 [packages/tui] fix(tui): guard Bun runtime plugin support
+- 014908a8d7 [packages/tui] feat(tui): reload config file changes
+- b985d2eb8e [packages/tui] feat(tui): polish session tab animations (#39542)
+- 5cb633a48e [packages/core/src/codemode, packages/core/test/codemode.test.ts, packages/core/test/codemode, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/session-runner.test.ts, packages/schema] feat(core): support pinned Code Mode tools (#39550)
+- f7ea2fc346 [packages/cli] test(cli): update ACP fork expectation (#39554)
+- 4f871906bc [packages/tui] fix(tui): support cd before session creation (#39555)
+- c8dca936b1 [packages/core/src/plugin, packages/core/src/shell.ts, packages/core/src/tool, packages/core/test/plugin-hooks.test.ts, packages/core/test/plugin, packages/plugin] feat(plugin): add shell.create.before hook (#39547)
+- 464649e67e [packages/tui] feat(tui): batch event delivery (#39551)
+- 210be4b749 [packages/core/src/tool, packages/core/test/tool-shell.test.ts] fix(core): preserve shell output on timeout (#39559)
+- 3c259fc552 [packages/tui] feat(tui): replace scrap screen with component storybook (#39548)
+- 94ee274aeb [packages/core/src/file-mutation.ts, packages/core/src/formatter.ts, packages/core/src/formatter, packages/core/src/location-services.ts, packages/core/src/plugin, packages/core/src/tool, packages/core/test/formatter.test.ts, packages/core/test/tool-edit.test.ts, packages/core/test/tool-patch.test.ts, packages/core/test/tool-write.test.ts, packages/util] feat(core): add V2 formatter runtime (#39564)
+- d1a02b149c [packages/core/src/tool] fix(core): clarify subagent tool guidance (#39572)
+- 0ece10af43 [packages/core/src/tool, packages/core/test/tool-edit.test.ts, packages/core/test/tool-write.test.ts] fix(core): add mutation permission previews (#39578)
+- b1a5e8a6ae [packages/tui] test(tui): restore compaction event lifecycle (#39581)
+- 97786afdd8 [packages/core/src/tool] refactor(core): share file diff construction (#39586)
+- 488445a679 [packages/app, packages/cli, packages/client, packages/core/src/location.ts, packages/core/src/project.ts, packages/core/src/session.ts, packages/core/test/effect, packages/core/test/fixture, packages/core/test/location.test.ts, packages/core/test/move-session.test.ts, packages/core/test/plugin, packages/core/test/project.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-instructions.test.ts, packages/core/test/session-log.test.ts, packages/core/test/session-remove.test.ts, packages/core/test/session-skill.test.ts, packages/core/test/session-wait.test.ts, packages/plugin, packages/schema, packages/server, packages/tui] fix(tui): correct project-aware session lists
+- cb37a7166a [packages/tui] feat(tui): make session tab switching fast for long transcripts (#39568)
+- c161978852 [packages/tui] feat(tui): prefetch open session tabs after connect (#39589)
+- 78c139b8b5 [packages/plugin, packages/tui] feat(plugin): add ui.tabs API for session tab control (#39591)
+- 12971935ab [bun.lock, packages/cli, packages/core, packages/core/src/shell, packages/core/src/tool, packages/core/test/shell-parse.test.ts, packages/core/test/tool-shell.test.ts] feat(core): parse shell permission commands (#39567)
+- 906dc8f5b2 [packages/ai] fix(ai): apply catalog settings to provider models (#39613)
+- f9de608dea [bun.lock] chore: refresh bun lockfile (#39617)
+- a618946b7e [packages/tui] fix(tui): reload plugins with config
+- 77aa85c589 [packages/tui] feat(tui): project picker with footer crossfade (#39566)
+- f23ee5e4a8 [packages/core/src/formatter.ts, packages/core/src/formatter] refactor(core): simplify formatter selection (#39575)
+- 02f3504055 [packages/tui] fix(tui): hide redundant session directory labels (#39686)
+- dcb0df4ac1 [packages/core/test/mcp.test.ts, patches] fix(core): stop MCP SSE error reconnect loops (#39671)
+- bd132f2614 [packages/core/src/project.ts, packages/core/test/project.test.ts] refactor(core): skip redundant worktree lookup (#39692)
+- 0ffec67ca3 [packages/core/src/plugin, packages/tui] refactor: remove unused V2 code (#39699)
+- 7625cbdf47 [packages/ai, packages/core/src/model-resolver.ts, packages/core/test/generate.test.ts, packages/core/test/model-resolver.test.ts] feat(core): route providers through native AI (#39615)
+- d6371f2fcd [packages/core/src/session, packages/core/test/session-create.test.ts] fix(session): update activity on prompt (#39539)
+- 49081a4e24 [packages/tui] fix(tui): flash tabs on prompt admission (#39702)
+- cba5ba03e3 [packages/tui] fix(tui): show shells from session location (#39691)
+- ce7a7e4e23 [packages/tui] fix(tui): truncate project picker paths (#39678)
+- 9d55b223bb [packages/core/src/git.ts, packages/core/src/project.ts, packages/core/test/filesystem, packages/util] fix(core): stop repository discovery at nearest marker (#39714)
+- 188c642d8c [packages/tui] refactor(tui): flatten project picker list (#39726)
+- e1c04dcce6 [packages/tui] feat(tui): add temporary new session tab (#39735)
+- b0ed9990b3 [packages/tui] feat(tui): add option tab shortcuts (#39725)
+- 8ebc4c6f85 [packages/tui] fix(tui): call session tabs just tabs (#39730)
+- cc883058df [packages/tui] feat(tui): reopen closed session tabs (#39731)
+- 22d2012f75 [packages/tui] fix(tui): register storybook only for story runs (#39733)
+- 9abd9594de [packages/simulation] fix(simulation): mirror kitty keyboard protocol (#39741)
+- 16b247f756 [packages/tui] fix(tui): smooth new session tab handoff (#39745)
+- 7814568ba0 [packages/tui] feat(tui): delete current session (#39750)
+- cc1289048e [packages/ai, packages/core/src/aisdk-native.ts, packages/core/src/model-resolver.ts] refactor(core): isolate AI SDK native mappings (#39761)
+- 8e3e94aa26 [packages/tui] fix(tui): focus palette settings after layout (#39585)
+- b866900417 [packages/tui] fix(tui): name deleted session in toast (#39768)
+- 146fdb9de1 [packages/tui] feat(tui): add open menu for sessions and projects (#39752)
+- a460f02f67 [packages/tui] feat(tui): inherit session directory when creating a new session (#39753)
+- 865f512a44 [packages/tui] fix(tui): preserve current selection across list updates (#39774)
+- eb95bd27fe [packages/app, packages/cli, packages/client, packages/core, packages/core/src/database, packages/core/src/session.ts, packages/core/src/session, packages/core/test/database-migration.test.ts, packages/core/test/session-create.test.ts, packages/core/test/tool-subagent.test.ts, packages/enterprise, packages/schema, packages/tui] feat(session): make generated titles optional (#39747)
+- 0a6a5d3e80 [packages/core/src/session, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts] fix(session): retry failed title generation (#39748)
+- 5c7e2b5042 [packages/tui] fix(tui): clarify open menu project labels (#39780)
+- 98229d466d [packages/ai, packages/core/src/session, packages/plugin] feat(plugin): add session request hook (#39764)
+- 5b4ebf3e9d [packages/core/src/aisdk-native.ts, packages/core/test/aisdk-native.test.ts] fix(core): map xAI native options (#39787)
+- 671e164f8d [packages/core/src/model-resolver.ts, packages/core/src/plugin, packages/core/test/model-resolver.test.ts, packages/core/test/plugin] refactor(core): contain Codex in OpenAI plugin (#39734)
+- ff2b184af1 [packages/ai, packages/core/src/aisdk-native.ts, packages/core/test/aisdk-native.test.ts, packages/core/test/model-resolver.test.ts] feat(ai): support Gemini thinking levels (#39796)
+- 77df98db51 [packages/tui] Revert "feat(tui): delete current session (#39750)"
+- db45026c6c [packages/tui] fix(tui): default tabs to global scope (#39783)
+- 1d18459cdc [packages/tui] fix(tui): align session picker scope (#39784)
+- d07d9ae0da [packages/tui] fix(tui): remove shells from their location (#39885)
+- 1311d909a7 [packages/tui] fix(tui): preserve session location during handoff (#39886)
+- 7aaf4e7750 [bun.lock, packages/app, packages/cli, packages/core/src/session, packages/enterprise, packages/tui, packages/util] refactor(session): centralize fallback title policy (#39890)
+- 7fd12c560c [packages/tui] fix(tui): fit project paths in open menu (#39887)
+- dc3c996892 [packages/tui] fix(tui): stabilize generated session titles (#39894)
+- 6c37842520 [packages/cli] fix(cli): deduplicate Node asset destinations (#39900)
+- 7129ed6e62 [packages/ai, packages/core/src/aisdk.ts, packages/core/src/model-resolver.ts, packages/core/src/plugin, packages/core/src/session, packages/core/test/model-resolver.test.ts, packages/core/test/plugin, packages/core/test/session-compaction.test.ts, packages/www] fix(core): respect model input limits (#39797)
+- 7757f712a2 [packages/app] test(app): restore stable offset observer ordering (#39901)
+- 3468aa0140 [packages/ai] feat(ai): configure chat max tokens field (#39909)
+- 0e26116f68 [packages/tui] fix(tui): stabilize open picker
+- db9e942398 [packages/core/src/session.ts, packages/core/test/session-prompt.test.ts] fix(core): resize large image attachments (#39919)
+- b498a5c6c4 [packages/ai, packages/core/src/aisdk-native.ts, packages/core/src/model-resolver.ts, packages/core/src/session, packages/core/test/aisdk-native.test.ts, packages/core/test/model-resolver.test.ts] feat(ai): expand OpenRouter native support (#39907)
+- 3bfce3fd2d [packages/tui] feat(tui): expand pasted text (#39920)
+- e60e8d9387 [packages/core/src/config.ts, packages/core/src/config, packages/core/src/image.ts, packages/core/src/v1, packages/core/test/config, packages/core/test/tool-read.test.ts, packages/www] refactor(core): rename attachments config to media (#39927)
+- b69e51d835 [packages/ai, packages/core/src/session] refactor(ai): simplify provider options (#39924)
+- dd0e41c633 [packages/tui] fix(tui): render plugin slots and routes with component semantics (#39917)
+- 0481dba88e [packages/tui] fix(tui): improve narrow layouts (#39918)
+- f92e490bb6 [packages/tui] fix(tui): preserve diff hunk boundaries (#39693)
+- 84dd56ed34 [packages/core/src/session, packages/core/test/session-model-request.test.ts] fix(core): bound outbound image history (#39929)
+- 06e26d89ad [packages/client, packages/protocol, packages/server] feat(protocol): accept title on session create (#39935)
+- 102086c50f [packages/plugin, packages/tui] feat(tui): hot-reload local TUI plugins (#39776)
+- 2cfe8883ea [packages/core/src/plugin, packages/core/test/plugin, packages/plugin, packages/www] feat(plugin): expose session rename and wait to plugins (#39932)
+- 56c6add5c3 [packages/core/src/aisdk.ts, packages/core/src/github-copilot, packages/core/src/util] refactor(core): remove unused helpers (#39943)
+- 90c84639e3 [packages/theme] feat(theme): export expandTheme (#39967)
+- 92567700f6 [packages/tui] refactor(tui): remove unused stop voice operation (#39969)
+- 6c567dc745 [packages/core/src/plugin] refactor(core): remove unreferenced layer map example (#39971)
+- 3b6ab392ac [packages/core/src/v1] refactor(core): remove unused console state model (#39972)
+- a484f87680 [bun.lock, packages/core] refactor(core): remove unused dependencies (#39973)
+- fe0eb4ea8f [packages/core/src/control-plane, packages/core/test/move-session.test.ts] refactor(core): remove orphaned move service (#39974)
+- f99469bdf8 [packages/core/src/location-services.ts, packages/core/src/plugin] refactor(core): remove unused layer exports (#39975)
+- 80874c241f [packages/tui] refactor(tui): remove dead assistant renderer (#39945)
+- 25b6a179e2 [packages/cli] refactor(cli): remove no-op migrate command (#39946)
+- 255e9bbf06 [packages/cli, packages/tui] refactor(tui): remove onboarding hint residue (#39947)
+- 6d3f84b4ff [packages/tui] refactor(tui): remove dialog show helpers (#39948)
+- 5b84e39f6d [packages/tui] refactor(tui): remove stub child cycling commands (#39949)
+- 02df1e9737 [packages/tui] refactor(tui): reuse canonical logo (#39951)
+- f6b5f6b6b3 [packages/tui] refactor(tui): remove prompt re-export barrels (#39953)
+- 8846336e11 [packages/tui] refactor(tui): remove unused fade file path (#39954)
+- 9eb9c1db7d [packages/tui] refactor(tui): remove placeholder LSP panel (#39955)
+- 18843682ad [packages/tui] refactor(tui): remove ignored attention kv option (#39956)
+- 97f5fb3399 [packages/tui] Remove unused subagent retry formatter (#39952)
+- b5afaed053 [packages/tui] Remove unused config optional hook (#39957)
+- 4569659b03 [packages/tui] Remove unused Zed helpers (#39958)
+- eab59ea021 [packages/tui] Remove unused locale helpers (#39959)
+- 70393a1d18 [packages/tui] Remove unused error data serializer (#39960)
+- c2db18c59b [packages/tui] refactor(tui): remove unwired file selection helper (#39961)
+- cfcd8de62a [packages/cli] refactor(cli): remove unused warning helper (#39962)
+- 8285a18f18 [bun.lock, packages/tui] refactor(tui): remove unused revert diff parser (#39963)
+- ee6577936d [packages/tui] refactor(tui): remove unused duration formatter (#39964)
+- 14e4c3dfd7 [packages/tui] fix(tui): ignore hidden tab close hitbox (#39940)
+- 47c6840752 [packages/tui] fix(tui): harden session tab state hygiene (#39941)
+- 6a543791b6 [packages/tui] fix(tui): persist tab reorder once per drag (#39942)
+- 85ea15e56d [packages/tui] test(tui): wait for mini prompt readiness (#39980)
+- e872bd3c8f [packages/tui] feat(tui): prioritize favorite model search results (#40049)
+- d5f6c088f0 [packages/tui] fix(tui): prevent sidebar scrollbar flash (#40056)
+- 003b22edda [packages/ai, packages/client, packages/core/src/session, packages/core/test/session-error.test.ts, packages/schema] fix: preserve provider error status (#39976)
+- 0e3da4b4f1 [AGENTS.md, package.json, packages/cli, packages/tui] feat(tui): add vertical session tabs (#40072)
+- f158abd694 [packages/tui] fix(tui): make vertical tabs responsive (#40080)
+- c391983ae0 [packages/tui] fix(tui): discover plugins across config roots (#39988)
+- 5d729521d3 [packages/tui] refactor(tui): remove redundant code (#40081)
+- 634b9b21dd [packages/ai, packages/core/src/aisdk.ts, packages/core/src/generate.ts, packages/core/src/model-resolver.ts, packages/core/src/session, packages/core/test/aisdk.test.ts, packages/core/test/generate.test.ts, packages/core/test/model-resolver.test.ts, packages/core/test/prompt-cache-diagnostics.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-error.test.ts, packages/core/test/session-execution.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts, packages/core/test/shared-schema.test.ts, packages/schema] refactor(ai): align multimodal naming (#40073)
+- adbd22833c [packages/tui] fix(tui): reserve home and end for navigation (#40123)
+- bf7f0cb521 [packages/ai, packages/core/src/aisdk-native.ts, packages/core/src/model-resolver.ts, packages/core/src/provider.ts, packages/core/test/aisdk-native.test.ts, packages/core/test/model-resolver.test.ts] feat(ai): add native Bedrock Mantle support (#40119)
+- dd014120cd [packages/core/src/aisdk-native.ts, packages/core/src/model-resolver.ts, packages/core/test/aisdk-native.test.ts, packages/core/test/model-resolver.test.ts] fix(core): route Bedrock packages natively (#40165)
+- 3f30203b72 [packages/core/test/tool-shell.test.ts] test(core): stabilize shell integration timing (#40084)
+- 8ce850e142 [packages/ai] fix(ai): expose client service requirements (#40275)
+- 8df03aa1bc [packages/core/src/config, packages/core/test/config] fix(core): ignore empty agent files (#40302)
+- 93e8b75cca [packages/core/src/agent.ts, packages/core/test/agent.test.ts, packages/core/test/mcp-instructions.test.ts, packages/core/test/shared-schema.test.ts, packages/core/test/skill, packages/schema] refactor(schema): rename agent default constructor (#40324)
+- a4ad17347f [packages/core/src/agent.ts, packages/core/src/instructions, packages/core/src/plugin, packages/core/test/agent.test.ts, packages/core/test/config, packages/core/test/global.test.ts, packages/core/test/instructions, packages/schema, packages/tui, packages/util, packages/www] fix(core): apply safe defaults to all agents (#40316)
+- 28d784b83a [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): execute tools renamed by context hooks (#40359)
+- 42e8d11552 [packages/client, packages/core/src/vcs.ts, packages/core/src/vcs, packages/core/test/vcs-hg.test.ts, packages/core/test/vcs.test.ts, packages/protocol, packages/schema, packages/server, packages/www] feat(vcs): expose branch info (#40368)
+- aa820db18d [packages/ai, packages/core/src/plugin, packages/core/src/session, packages/core/test/plugin, packages/core/test/session-runner-recorded.test.ts, packages/plugin, packages/www] feat(plugin): add session HTTP middleware (#40327)
+- 94fcb119a3 [packages/core/src/aisdk.ts, packages/core/test/aisdk.test.ts] fix(core): avoid implicit output limits (#40488)
+- 9bd99b4c91 [packages/core/src/filesystem, packages/core/src/vcs.ts, packages/core/test/filesystem, packages/core/test/vcs-hg.test.ts, packages/core/test/vcs.test.ts] feat(vcs): publish branch updates (#40371)
+- 0b1ec457dc [packages/plugin, packages/tui] fix(tui): show branch beside directory (#40500)
+- d1c9e39978 [packages/tui] fix(tui): update tab titles immediately (#40318)
+- b9c118e0fe [bun.lock, package.json, packages/console, packages/core, packages/core/src/plugin, packages/core/test/plugin, packages/core/test/provider-xai-responses.test.ts, packages/web, patches] chore(core): drop unreachable AI SDK provider packages (#40504)
+- 1fd817ffcf [packages/client] fix(client): wait for live service contenders (#40515)
+- 53b8111121 [packages/ai, packages/cli, packages/client, packages/core/src/session, packages/core/src/tool.ts, packages/core/src/tool, packages/core/test/database-migration.test.ts, packages/core/test/mcp.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-tool-progress.test.ts, packages/core/test/tool-execute.test.ts, packages/core/test/tool-question.test.ts, packages/plugin, packages/schema, packages/simulation, packages/tui, packages/www] refactor: rename tool call ID fields
+- 6d2eb2240a [packages/app] fix(app): finish tool call ID rename (#40539)
+- 4ed343706d [packages/ai, packages/cli, packages/core/src/session, packages/core/test/session-runner.test.ts] fix: retry empty incomplete streams (#40535)
+- ad9a95f6ee [packages/ai] fix(ai): preserve Gemini tool finish semantics (#40546)
+- ab20a7b4a3 [packages/tui] feat(tui): streamline tab navigation shortcuts (#40551)
+- 62e5d73d45 [packages/ai] fix(ai): classify malformed Responses tool calls (#40549)
+- f9ac6f3171 [packages/ai] fix(ai): restore Responses tool input semantics (#40553)
+- 330ef108ce [packages/core/src/tool, packages/core/test/tool-shell.test.ts] fix(core): report missing shell workdir (#40542)
+- c74a0d8529 [packages/app] test(app): migrate e2e fixtures to v2 (#40374)
+- daa998f9c3 [packages/core/src/plugin, packages/core/test/plugin] fix(core): make xAI OAuth device-only (#40538)
+- f2b3a12910 [packages/app] refactor(app): own rendering contracts (#40375)
+- 4eb1b37d9b [packages/app] fix(app): reconcile v2 session projections (#40376)
+- b1c1b79d15 [packages/app] refactor(app): migrate supported v2 APIs (#40378)
+- c0ab35c3c2 [packages/session-ui] fix(app): show active search details (#40597)
+- 76b318e990 [packages/app] refactor(app): gate unsupported v2 capabilities (#40381)
+- 143a776373 [packages/cli] fix(acp): surface subagent activity (#40438)
+- 3b0195e045 [packages/core/src/filesystem] fix(core): avoid eager directory snapshots (#40552)
+- ed8e1f4654 [packages/core/src/session, packages/core/test/session-create.test.ts, packages/core/test/session-prompt.test.ts] fix(core): reconcile promoted prompt retries from messages (#40664)
+- 6f4c199629 [packages/tui] fix(tui): wait for diff request in tests (#40670)
+- 5aa0413fea [packages/core/src/session] refactor(core): remove dead fork pending copy (#40675)
+- 0a0fc09533 [packages/core/src/file-mutation.ts, packages/core/test/file-mutation.test.ts] refactor(core): remove unused file mutation methods (#40667)
+- 3e253c589e [packages/client, packages/core/src/session.ts, packages/core/src/session, packages/core/test/instruction-state.test.ts, packages/core/test/session-runner.test.ts, packages/schema] refactor(core): persist instruction updates as messages (#40679)
+- faadc05c88 [packages/core/src/git.ts, packages/core/src/snapshot.ts, packages/core/test/git.test.ts, packages/core/test/snapshot.test.ts] refactor(core): remove unused snapshot operations (#40687)
+- 5ea62ab05f [packages/core/src/git.ts] refactor(core): remove orphaned git change operations (#40683)
+- cae7a139bc [packages/server] refactor(server): remove obsolete auth header helpers (#40682)
+- 25aaea3d31 [packages/core/src/shell] refactor(core): remove unused shell tree killer (#40680)
+- b03ca0d4e2 [packages/core/src/bus.ts, packages/core/test/bus.test.ts, packages/core/test/session-log.test.ts] refactor(core): remove unused bus sequences (#40681)
+- d10b652637 [packages/core/src/formatter.ts, packages/core/test/formatter.test.ts] refactor(core): remove unused formatter methods (#40684)
+- 5256655c4d [packages/core/src/project.ts, packages/core/test/effect, packages/core/test/location.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-instructions.test.ts, packages/core/test/session-log.test.ts, packages/core/test/session-remove.test.ts] refactor(core): remove obsolete project commit bridge (#40701)
+- 686127f809 [packages/core/src/repository-cache.ts, packages/core/src/repository.ts, packages/core/test/repository-cache.test.ts] refactor(core): remove unreachable repository validation (#40700)
+- 0af6c82563 [packages/core/src/session, packages/core/test/session-projector.test.ts] refactor(core): remove orphaned message projector paths (#40705)
+- 74e3155ef0 [packages/session-ui] refactor(session-ui): remove unused exported components (#40685)
+- 45d58717a4 [packages/core/src/filesystem, packages/core/src/ripgrep.ts, packages/core/test/filesystem, packages/core/test/ripgrep.test.ts] fix(core): bound protected home searches (#40518)
+- f3912a2a8a [packages/app] refactor(app): remove unused UI helpers (#40686)
+- 934935963d [packages/core/src/filesystem.ts, packages/core/src/filesystem, packages/core/test/filesystem, packages/core/test/ripgrep.test.ts] refactor(core): remove unused filesystem search methods (#40703)
+- e78869c849 [packages/core/src/agent.ts] refactor(core): remove unused agent default method (#40725)
+- 681526d348 [packages/core/src/project] refactor(core): remove duplicate directory query (#40731)
+- 2fd1660b4d [packages/core/src/filesystem, packages/core/test/filesystem] refactor(core): remove test-only ignore helper (#40733)
+- 732bb9c3cb [packages/core/src/mcp] refactor(core): remove discarded MCP connection details (#40726)
+- b40ed3aa85 [packages/console] refactor(console): remove unused mail helpers (#40740)
+- 693a1bff81 [packages/core/src/project, packages/core/test/project-copy.test.ts] refactor(core): remove unused copy strategy registry (#40735)
+- 887673310b [packages/core/src/session.ts] refactor(core): remove unused session exports (#40730)
+- 0df96ddeb0 [packages/codemode] refactor(codemode): remove unused spread helper (#40729)
+- 0726a25142 [packages/console] refactor(console): remove abandoned desktop promo (#40737)
+- 3acaa5a359 [packages/core/src/shell, packages/core/test/shell.test.ts] refactor(core): remove unused shell posix metadata (#40734)
+- fb47f06228 [packages/desktop] refactor(desktop): remove superseded local sidecar (#40743)
+- 8646587c95 [packages/web/src/components] refactor(web): remove unused share anchor (#40742)
+- 6e4d01f846 [packages/session-ui] refactor(session-ui): remove unused panel title (#40741)
+- 73581b3c3b [packages/web/src/components] refactor(web): remove unused icons (#40744)
+- 56c33e84a3 [packages/tui] fix(tui): keep model search order stable (#40753)
+- 285444aab4 [packages/web/src/assets] refactor(web): remove superseded ornate logos (#40750)
+- c46f6ae112 [packages/app] refactor(app): remove unused help placeholder (#40756)
+- 6f91bc7415 [packages/tui] fix(tui): load sidebar project names sooner (#40763)
+- 120e4e7388 [packages/core/src/bus.ts, packages/core/test/bus.test.ts, packages/core/test/instruction-state.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-log.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-tool-progress.test.ts, packages/sdk-next, packages/server] fix(core): make event persistence opt-in
+- bd2f37bc90 [packages/core/src/instructions, packages/core/test/instructions] fix(core): clarify current session label
+- 3839aafa25 [bun.lock, packages/effect-sqlite-node] refactor: remove orphaned sqlite package (#40766)
+- 1bfc23f503 [packages/console] refactor(console): remove unused landing assets (#40757)
+- f297bd3b8b [packages/desktop] refactor(desktop): remove disconnected CLI installer (#40751)
+- 0c558a6856 [packages/console] refactor(console): remove unused mail assets (#40758)
+- 03e9789064 [packages/core/test/database-migration.test.ts, packages/core/test/session-log.test.ts] test(core): align event persistence expectations (#40783)
+- 0fbe489e35 [docs, packages/cli, packages/client, packages/core, packages/core/script/benchmark-location.ts, packages/core/script/migration.ts, packages/core/src/data-migration.sql.ts, packages/core/src/database, packages/core/src/event, packages/core/src/session.ts, packages/core/src/session, packages/core/src/share, packages/core/src/v1, packages/core/test/bus.test.ts, packages/core/test/database-migration.test.ts, packages/core/test/legacy-event-schema.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-move.test.ts, packages/core/test/v1-migration.test.ts, packages/protocol, packages/schema, packages/server, packages/tui, packages/www] feat(core): migrate v1 data to v2 (#40723)
+- 9314992f98 [bun.lock, packages/app] refactor(app): remove v1 compatibility (#40382)
+- 25c2150baf [packages/app] refactor(app): use native v2 types (#40608)
+- ae494ffce5 [packages/ai, packages/core/src/aisdk-native.ts, packages/core/src/catalog.ts, packages/core/src/config, packages/core/src/plugin, packages/core/src/session, packages/core/src/v1, packages/core/test/aisdk-native.test.ts, packages/core/test/config, packages/core/test/location-layer.test.ts, packages/core/test/model-resolver.test.ts, packages/core/test/plugin] fix(core): retire legacy provider aliases (#40487)
+- a15ec425de [bun.lock, packages/app, packages/core/test/config, packages/core/test/event-logger.test.ts, packages/core/test/session-log.test.ts, packages/core/test/session-projector.test.ts] test: repair v2 CI failures (#40803)
+- 0cce215de4 [packages/ai] fix(ai): harden compatible chat parsing (#40798)
+- a38d44265b [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): continue interrupted responses (#40576)
+- 30d140008f [packages/cli] feat(cli): add models command
+- e62918224f [packages/cli, packages/core/script/wellknown-server.ts] fix(cli): rename auth connect to login
+- a0c77b71ae [packages/app, packages/session-ui] refactor(app): use native session info (#40824)
+- 51cef27579 [packages/core/src/plugin] refactor(core): deduplicate Copilot endpoint routing (#40765)
+- 0f27ee7b4c [packages/cli] fix(cli): reuse server for noninteractive commands
+- 939da6a5e7 [packages/cli, packages/client, packages/core/src/config.ts, packages/core/src/config, packages/core/src/filesystem, packages/core/src/mcp, packages/core/src/plugin, packages/core/src/session, packages/core/src/v1, packages/core/test/config, packages/core/test/formatter.test.ts, packages/core/test/mcp.test.ts, packages/core/test/pty, packages/core/test/session-runner.test.ts, packages/core/test/tool-read.test.ts, packages/protocol, packages/schema, packages/sdk-next, packages/server, packages/www] feat(cli): add debug config command (#40895)
+- 1539bd6794 [packages/client] fix(client): evict unresponsive service (#40896)
+- 0215498f63 [packages/core/src/config.ts] fix(core): load well-known config first (#40897)
+- 912a801060 [packages/effect-drizzle-sqlite] refactor(drizzle): declare query variance (#40891)
+- be2f74d44a [packages/core/src/plugin, packages/core/src/session, packages/core/test/plugin, packages/core/test/session-runner-recorded.test.ts, packages/plugin, packages/www] refactor(plugin): split session HTTP hooks (#40724)
+- ec95b27308 [packages/core/src/plugin, packages/core/test/model-resolver.test.ts, packages/core/test/plugin] fix(core): align ChatGPT context limits (#40902)
+- 8864b01d0b [packages/core/src/session, packages/www] feat(core): increase retained compaction context (#40906)
+- 7dbe8c4c13 [packages/app, packages/cli, packages/client, packages/protocol, packages/schema, packages/tui, packages/www] refactor(mcp): remove unused registration status (#40904)
+- c66d84169a [packages/tui] fix(tui): open authorization links (#40912)
+- 20fa444f31 [packages/client, packages/core/src/v1, packages/core/test/config, packages/protocol, packages/schema, packages/server, packages/www] fix(config): omit unset optional values (#40918)
+- a779027303 [packages/tui] fix(tui): compact single-line prompts (#40924)
+- 65c6a71903 [packages/tui] fix(tui): simplify MCP status rows (#40916)
+- 5cf97f1b96 [packages/core/src/config.ts, packages/core/src/config, packages/core/src/v1, packages/core/test/config, packages/www, plans] feat(core): normalize mixed config formats (#40919)
+- d35ca49c31 [packages/tui] feat(tui): enable cwd-scoped session tabs by default
+- cd64a17e37 [packages/core/test/config] test(core): cover config precedence
+- 727beae2d5 [packages/core/src/tool, packages/core/test/tool-websearch.test.ts] fix(core): deduplicate websearch consent prompts (#40869)
+- 0cc507b8a9 [packages/cli, packages/client, packages/core/src/session, packages/core/test/session-create.test.ts, packages/protocol, packages/schema, packages/server, packages/tui] feat(cli): add session import and export (#40914)
+- dcae95e2bb [packages/ai, packages/client, packages/core/test/config, packages/core/test/model-resolver.test.ts, packages/schema] feat(ai): expose model compatibility options (#40942)
+- 1eb3a43add [packages/tui] fix(tui): keep model selection session scoped (#40913)
+- d7651519f3 [packages/core/src/config, packages/core/test/config, packages/tui] fix(tui): use tab layout setting (#40952)
+- 047d434aa2 [packages/tui] fix(tui): dismiss stale permission prompts (#40960)
+- 439ed66c7b [packages/core/src/config, packages/core/src/v1, packages/core/test/config, packages/www] fix(core): migrate legacy small model (#40966)
+- 76e4d88d21 [packages/core/test/agent.test.ts, packages/schema, packages/www] fix(core): default custom agents to primary (#40880)
+- cc7827fe08 [packages/core/src/file-mutation.ts, packages/core/src/location-mutation.ts, packages/core/src/tool, packages/core/test/file-mutation.test.ts, packages/core/test/location-mutation.test.ts, packages/core/test/tool-read-filesystem.test.ts, packages/core/test/tool-read.test.ts, packages/core/test/tool-write.test.ts] refactor(core): simplify file tools to lexical paths (#40962)
+- a1b4843a33 [packages/app, packages/desktop] refactor(app): remove legacy layout (#40947)
+- 5fb0d7c99c [packages/core/src/location-services.ts, packages/core/src/session, packages/core/src/tool-output.ts, packages/core/src/tool, packages/core/test/tool-output.test.ts, packages/core/test/tool-read.test.ts] feat(core): bound tool output (#40929)
+- 2092350cfa [packages/core/src/tool, packages/core/test/tool-shell.test.ts] fix(core): align shell output limits (#41007)
+- e6c9b6bef7 [packages/core/src/plugin, packages/session-ui, packages/tui] feat(core): add firecrawl web search (#41042)
+- 8977881e09 [packages/app, packages/client, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-prompt.test.ts, packages/protocol, packages/schema, packages/server, packages/tui] feat(tui): queue prompts with option enter (#40922)
+- 3bb0d7fda0 [packages/core, packages/core/src/environment, packages/core/test/environment.test.ts, packages/core/test/lib] feat(core): add workspace environment foundation (#40967)
+- 292dfa3036 [packages/core/src/session, packages/core/test/session-execution.test.ts] feat(core): add restart continuation message (#40989)
+- c9cbd2b1f4 [packages/core/src/environment, packages/core/test/environment.test.ts] feat(core): add local environment driver (#41076)
+- e6d20440f9 [packages/core/test/tool-shell.test.ts, packages/tui] test: fix cross-platform unit failures (#41075)
+- bc47030d4d [packages/core/src/file-mutation.ts, packages/core/src/tool, packages/core/test/file-mutation.test.ts, packages/core/test/tool-edit.test.ts, packages/core/test/tool-patch.test.ts] fix(core): serialize edit and patch transactions (#40641)
+- 48d1a6e5b9 [artifacts, packages/tui] fix(tui): mute expanded thinking content (#41082)
+- 6e82f5d3b9 [packages/core/src/config, packages/core/test/config] fix(core): connect custom providers (#40761)
+- 8ba8af1dd9 [bun.lock, packages/core, packages/core/src/environment, packages/core/src/location-services.ts, packages/core/src/tool, packages/core/test/lib, packages/core/test/tool-read-filesystem.test.ts, packages/core/test/tool-read.test.ts] refactor(core): move read tool onto environment (#41084)
+- c79ced174e [packages/core/src/skill.ts, packages/core/test/skill.test.ts] fix(core): reload changed skill sources (#40954)
+- db31c42e39 [packages/core/src/file-mutation.ts, packages/core/src/plugin, packages/core/src/tool, packages/core/test/file-mutation.test.ts, packages/core/test/tool-edit.test.ts, packages/core/test/tool-patch.test.ts, packages/core/test/tool-write.test.ts, packages/util] refactor(core): move mutation path onto environment (#41091)
+- 917d6449e3 [packages/core/src/environment, packages/core/src/ripgrep.ts, packages/core/src/shell.ts, packages/core/src/tool, packages/core/test/environment.test.ts, packages/core/test/tool-search.test.ts] refactor(core): move exec tools onto environment (#41095)
+- e5ef00b8b8 [packages/app, packages/core/src/filesystem, packages/core/src/skill.ts, packages/core/test/filesystem, packages/core/test/skill.test.ts] fix(core): bound project filesystem watches (#41096)
+- b4f769f695 [packages/core/src/tool.ts, packages/core/test/session-runner-tool-registry.test.ts] fix(core): normalize tool images once (#41097)
+- db3b54a30d [packages/ai] fix(ai): preserve Gemini agent loop parity (#41109)
+- 9ca650f97c [packages/ai, packages/core/src/aisdk-native.ts, packages/core/src/session, packages/core/test/aisdk-native.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-runner.test.ts] refactor(ai): promote prompt cache key (#39965)
+- 6f3a3600b9 [packages/ai] fix(ai): forward chat cache keys (#41131)
+- d2c99ba97c [packages/app, packages/core, packages/core/script/migration.ts, packages/core/src/codemode, packages/core/src/database, packages/core/src/instruction-discovery.ts, packages/core/src/instructions, packages/core/src/mcp, packages/core/src/reference, packages/core/src/session, packages/core/src/skill, packages/core/src/util, packages/core/test/instruction-state.test.ts, packages/core/test/lib, packages/effect-drizzle-sqlite, packages/enterprise, packages/plugin, packages/sdk-next, packages/server, packages/session-ui, packages/simulation, packages/tui, turbo.json] chore: improve incremental typecheck performance (#40925)
+- 3776975d5c [packages/tui] fix(tui): unify integration connection copy (#41137)
+- 0b84e24e65 [packages/tui] fix(tui): standardize compact terminology (#41141)
+- 952d4d446f [bun.lock, packages/core, packages/server] feat(server): add modal environment driver (#41118)
+- 79a493e7f5 [packages/tui] fix(tui): show external worktree session labels (#41147)
+- b3aea1c39d [packages/console] feat(console): add workspace unblock endpoint (#41170)
+- f3f1204802 [bun.lock, packages/merman, packages/plugin, packages/tui] feat(tui): render Mermaid diagrams (#41113)
+- 2cf65c025a [packages/merman, packages/tui] fix(merman): support undirected edges and place multiline state labels (#41171)
+- 3a4772abb4 [packages/merman] fix(merman): separate sibling subgraphs (#41178)
+- fd09760903 [packages/tui] fix(tui): open sessions by exact ID (#41180)
+- aa05fd23b3 [packages/core/src/account.ts, packages/core/src/account] refactor(core): remove legacy account runtime schemas (#41173)
+- 0df6aed6ca [packages/merman] fix(merman): derive neutral diagram palette (#41181)
+- 8c758e443b [packages/core/src/tool, packages/core/test/tool-patch.test.ts] fix(core): reuse shared patch diff (#41186)
+- dd6020656e [packages/merman] fix(merman): tighten flowchart spacing (#41191)
+- 5e6370363b [packages/ai, packages/tui] fix(tui): refine provider failure presentation (#41179)
+- 9b7b402737 [packages/server] feat(server): run modal sandboxes on the vm runtime (#41177)
+- b274db88b0 [packages/core, packages/core/script/benchmark-location.ts, packages/core/src/bus.ts, packages/core/src/catalog.ts, packages/core/src/codemode, packages/core/src/command.ts, packages/core/src/config.ts, packages/core/src/config, packages/core/src/database, packages/core/src/event-logger.ts, packages/core/src/filesystem, packages/core/src/form.ts, packages/core/src/formatter.ts, packages/core/src/formatter, packages/core/src/instruction-discovery.ts, packages/core/src/instructions, packages/core/src/mcp, packages/core/src/mime.ts, packages/core/src/models-dev.ts, packages/core/src/permission.ts, packages/core/src/permission, packages/core/src/plugin, packages/core/src/project.ts, packages/core/src/pty.ts, packages/core/src/session.ts, packages/core/src/session, packages/core/src/shell, packages/core/src/snapshot.ts, packages/core/src/tool-output.ts, packages/core/src/tool, packages/core/src/vcs.ts, packages/core/src/vcs, packages/core/test/agent.test.ts, packages/core/test/app.test.ts, packages/core/test/bus.test.ts, packages/core/test/codemode.test.ts, packages/core/test/codemode, packages/core/test/config, packages/core/test/effect, packages/core/test/formatter.test.ts, packages/core/test/instruction-state.test.ts, packages/core/test/lib, packages/core/test/mcp.test.ts, packages/core/test/patch.test.ts, packages/core/test/permission.test.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/core/test/project.test.ts, packages/core/test/pty, packages/core/test/ripgrep.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/shell-parse.test.ts, packages/core/test/snapshot.test.ts, packages/core/test/tool-execute.test.ts, packages/core/test/tool-output.test.ts, packages/core/test/tool-schema.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-skill.test.ts, packages/core/test/util, packages/core/test/vcs-hg.test.ts, packages/core/test/vcs.test.ts] chore(core): format package (#41205)
+- f0d1029719 [.github] Add v2 branch to workflow triggers (#41207)
+- 4194d55522 [.opencode, packages/ai, packages/app, packages/cli, packages/client, packages/codemode, packages/httpapi-codegen, packages/merman, packages/plugin, packages/protocol, packages/schema, packages/sdk-next, packages/server, packages/simulation, packages/theme, packages/tui, packages/updates, packages/www, plans, script, specs] chore: generate
+- bc93da4a46 [packages/core/src/mcp, packages/core/test/mcp.test.ts] fix(core): reload changed MCP config (#41204)
+- e566c082f1 [packages/core/src/mcp, packages/core/test/mcp.test.ts] chore: generate
+- 7afe537c69 [packages/ai] fix(ai): align chat assistant content (#41210)
+- 1ca86ad973 [packages/ai] fix(ai): break ToolResultValue type circularity (#41303)
+- 83b47693c3 [packages/core, packages/core/src/control-plane, packages/core/src/database, packages/core/src/environment, packages/core/src/session, packages/core/src/workspace.ts, packages/core/src/workspace, packages/core/test/file-mutation.test.ts, packages/core/test/fixture, packages/core/test/ripgrep.test.ts, packages/core/test/tool-edit.test.ts, packages/core/test/tool-patch.test.ts, packages/core/test/tool-write.test.ts, packages/core/test/workspace.test.ts, packages/server] feat(core): add workspace domain and placement binding (#41187)
+- c2ba0bef6b [packages/client, packages/core/src/plugin, packages/core/src/session.ts, packages/core/src/session, packages/core/src/skill.ts, packages/core/src/tool, packages/core/test/session-runner-message.test.ts, packages/core/test/session-skill.test.ts, packages/core/test/tool-skill.test.ts, packages/protocol, packages/schema, packages/server, packages/theme, packages/tui] feat: attach skills to prompts (#41188)
+- f43f2b354c [packages/core, packages/core/src/session.ts, packages/protocol, packages/tui, packages/www] chore: generate
+- cc0061f88b [packages/core/test/fixtures] fix(core): update recorded prompt cache key (#41307)
+- 4eff0ee2db [packages/core/src/plugin, packages/core/test/location-layer.test.ts] fix(core): flush plugin reload generations (#41309)
+- ff0a0b0786 [packages/tui] fix(tui): isolate lifecycle and theme tests (#41310)
+- bc51baa9a4 [packages/tui] fix(tui): align session tab shortcut labels (#41308)
+- 445af9ce70 [packages/www] docs: fix install command rendering (#41340)
+- e8f215bfbc [packages/www] chore: generate
+- 84fd347afa [packages/httpapi-codegen] fix(codegen): write prettier-stable generated manifests (#41343)
+- ab872ffb0e [packages/ai] fix(ai): reduce message lowering trace overhead
+- 7bd6d002bb [packages/ai] chore: generate
+- 68b2b08853 [packages/cli, packages/server] fix(server): remove duplicate observability layer
+- 9bc4eea79a [packages/ai, packages/app, packages/cli, packages/client, packages/core/src/form.ts, packages/core/src/github-copilot, packages/core/src/integration.ts, packages/core/src/model-resolver.ts, packages/core/src/plugin, packages/core/test/github-copilot, packages/core/test/integration.test.ts, packages/core/test/model-resolver.test.ts, packages/core/test/plugin, packages/core/test/shared-schema.test.ts, packages/plugin, packages/protocol, packages/schema, packages/server, packages/tui] refactor(core): replace integration prompts with forms (#40997)
+- e9c55a15d4 [packages/protocol, packages/www] chore: generate
+- 0dcedc199c [.github, .opencode, CONTRIBUTING.md, bun.lock, infra, nix, package.json, packages/ai, packages/app, packages/cli, packages/console, packages/core, packages/core/src/models-dev.ts, packages/core/test/models.test.ts, packages/desktop, packages/effect-drizzle-sqlite, packages/enterprise, packages/function, packages/http-recorder, packages/plugin, packages/session-ui, packages/simulation, packages/slack, packages/stats, packages/storybook, packages/tui, packages/ui, packages/ui/src/assets, packages/ui/src/components, packages/ui/src/context, packages/ui/src/i18n, packages/ui/src/theme, packages/ui/src/v2, packages/web, packages/web/src/components, packages/web/src/content, patches, script, sdks] chore: merge dev into v2 (#41460)
+- ec11d6ed03 [packages/app, packages/cli, packages/desktop, packages/session-ui, packages/tui] chore: generate
+- f64b024f46 [packages/core/src/plugin, packages/core/test/plugin] fix(core): resolve models.dev URL env vars (#41474)
+- b2f0f45c9e [packages/core/src/plugin] chore: generate
+- d97aca139f [packages/util] fix(cli): keep OTLP failures best effort (#41479)
+- 5053c1bfdd [packages/util] chore: generate
+- b5b87deaa2 [packages/app] refactor(app): split server management controllers (#39229)
+- c29968bf08 [packages/app] refactor(app): extract provider connection controller (#39230)
+- 60cd82aec8 [packages/app] refactor(app): extract session timeline controller (#39232)
+- c7852ef0fd [packages/app] refactor(app): establish v2 session controller (#39233)
+- 5e16a5dc66 [packages/core/src/session, packages/core/src/tool, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/tool-websearch.test.ts, packages/tui] fix(tui): restore web search failure details (#41545)
+- 3c9f857bf1 [bun.lock, packages/merman] fix(tui): sync Mermaid renderer fixes (#41347)
+- 9ab3029947 [packages/merman] chore: generate
+- 16aad9e6ad [packages/ai, packages/core/src/aisdk.ts, packages/core/test/aisdk.test.ts] fix(core): derive fallback message for empty AI SDK provider errors (#41450)
+- 6895728add [packages/theme, packages/tui] fix(tui): support single-color themes (#41572)
+- c22942c1f3 [packages/core/src/config.ts, packages/core/test/config] fix(core): tolerate unavailable wellknown config
+- be53e3bd81 [packages/core/src/config.ts] chore: generate
+- f0b8ad1242 [packages/tui] feat(tui): marquee hovered tab titles (#41566)
+- bbb1b5e7d0 [packages/tui] fix(tui): delay background work hint (#41577)
+- ceec9f5b66 [packages/tui] fix(tui): measure complete turn duration (#41508)
+- b62dc4a636 [packages/tui] fix(tui): show empty state when a flat picker has no matches (#41585)
+- 7ff27ca8cf [packages/core/src/generate.ts, packages/core/src/model-resolver.ts, packages/core/src/plugin, packages/core/src/session, packages/core/test/model-resolver.test.ts, packages/core/test/plugin, packages/core/test/session-error.test.ts] fix(core): resolve provider URL variables at runtime (#41580)
+- eec55fa5f8 [packages/tui] fix(tui): keep model variant across new session (#41591)
+- d7a7256bb6 [packages/cli, packages/core/test/config, packages/core/test/tool-shell.test.ts] test: stabilize Windows CI timing (#41600)
+- 283258e95b [bun.lock, package.json, packages/plugin, packages/tui] feat(tui): add clipboard image previews and transcript rendering (#41603)
+- 33296e7959 [packages/app] test(app): make offset observer scheduling deterministic (#41602)
+- 9d34029cd9 [packages/core/src/database, packages/core/test/database-migration.test.ts] fix(core): runtime-neutral legacy credential import (#41607)
+- 2580f880a8 [packages/merman, scripts] feat(merman): refine sequence diagram styling (#41617)
+- b49bad9a86 [packages/merman] fix(merman): remove sequence lifeline fade (#41623)
+- 71f5e4189d [packages/core/src/config, packages/core/src/plugin, packages/core/test/config] refactor(core): move plugin discovery and watching to the config side (#41618)
+- 6afff5a55f [packages/core/test/global.test.ts, packages/core/test/instruction-discovery.test.ts, packages/core/test/instructions, packages/util] fix(util): no filesystem side effects at global module load (#41619)
+- 1113adfd5e [packages/core/src/config, packages/core/src/plugin, packages/core/src/skill.ts, packages/core/test/config, packages/core/test/plugin, packages/core/test/skill.test.ts, packages/core/test/tool-skill.test.ts, packages/plugin] refactor(core): skill service stores values, config plugin owns the filesystem (#41622)
+- d99a268ea5 [packages/core/test/config] chore: generate
+- 753fa4cd60 [packages/core/test/config, packages/core/test/fixture, packages/core/test/location-layer.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-subagent.test.ts] fix(core): isolate config plugin tests from ambient user config (#41631)
+- 8d989f6829 [packages/tui] fix(tui): collapse execute child details (#41624)
+- 41c5853739 [packages/cli, packages/core/src/command.ts, packages/core/src/database, packages/core/src/formatter.ts, packages/core/src/formatter, packages/core/src/models-dev.ts, packages/core/src/pty.ts, packages/core/src/ripgrep, packages/core/src/shell.ts, packages/core/src/shell, packages/core/src/util, packages/core/test/database-migration.test.ts, packages/core/test/session-create.test.ts, packages/core/test/v1-migration.test.ts, packages/server, packages/tui] refactor: route Global path consumers through the service (#41632)
+- 5d8c48718b [packages/core/src/config, packages/core/src/instruction-discovery.ts, packages/core/src/plugin, packages/core/test/instruction-discovery.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts] refactor(core): move instruction discovery to the config side (#41629)
+- 518af92c5b [packages/core/src/models-dev.ts, packages/core/test/models.test.ts] refactor(core): move the models.dev catalog cache from disk to KV (#41649)
+- 4df276b9e8 [packages/client, packages/core/src/session, packages/core/test/session-create.test.ts, packages/core/test/session-projector.test.ts, packages/protocol, packages/schema, packages/www] feat(session): persist previous agent on switch (#41621)
+- a5f7f8d3b5 [packages/core/src/session, packages/core/test/session-runner-message.test.ts, packages/tui] fix(tui): deduplicate repeated image attachments (#41651)
+- 2372edd5eb [packages/tui] feat(tui): show previous agent in switch notices (#41661)
+- c2b754bb03 [.github, bun.lock, packages/desktop, script] feat(desktop): publish v2 beta desktop (#41626)
+- 9c94634515 [packages/tui] fix(tui): use active model for compaction (#41608)
+- 1aef4de853 [.github] chore(desktop): skip unused beta CLI builds (#41673)
+- c401076b6f [packages/core/src/aisdk.ts, packages/core/test/aisdk.test.ts] fix(core): preserve AI SDK tool media (#41672)
+- 47c8d85904 [packages/core/src/plugin, packages/core/test/plugin.test.ts, packages/plugin] feat(plugin): allow tool hooks to fail with tool errors (#41668)
+- 306204bad8 [packages/app] fix(app): handle untitled session tab info (#41700)
+- 3441b95afc [packages/core/src/models-dev.ts, packages/core/test/models.test.ts] fix(core): models.dev catalog population must survive KV cache write failures (#41735)
+- 1dbfc7cfab [packages/core/test/models.test.ts] chore: generate
+- 7b9734593a [packages/core/script/migration.ts, packages/core/src/database] refactor(core): generate static imports for the migration manifest (#41657)
+- e9f5842f29 [packages/core/src/session, packages/tui] refactor: simplify attachment identity tracking (#41756)
+- 5d32845b02 [packages/tui] refactor(tui): simplify marquee reset (#41758)
+- 5cc7811ec2 [packages/core/src/database] refactor(core): defer database global lookup (#41755)
+- c581b59b7f [packages/merman] refactor(merman): simplify spatial span assembly (#41757)
+- 026e0c634f [packages/core/src/config] refactor(core): reuse plugin directory names (#41754)
+- 6721ff5328 [packages/core/src/plugin, packages/core/test/plugin] fix(core): omit deprecated models.dev models (#41769)
+- 8c27c8485e [packages/app, packages/client, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-create.test.ts, packages/protocol, packages/schema, packages/www] feat(session): persist previous selections (#41771)
+- 964f7f4254 [packages/protocol, packages/www] chore: generate
+- 961b51b509 [packages/core/src/database, packages/core/test/v1-migration.test.ts] fix(core): yield while clearing migration events (#41775)
+- db9a3b6c41 [packages/core/src/tool, packages/core/test/tool-question.test.ts] refactor(core): compact question tool schema (#41772)
+- d0dd49bd84 [packages/core/src/tool] chore: generate
+- 23b0688a7f [packages/server] fix(server): await models before listing (#41783)
+- 37a8c6c916 [packages/ai] fix(ai): merge Bedrock tool result messages (#41780)
+- fa5ca85e30 [packages/core/src/plugin, packages/core/test/plugin] refactor(core): reuse plugin source discovery (#41794)
+- 9e082c2d43 [packages/core/src/project.ts, packages/core/src/project, packages/core/src/session.ts, packages/core/src/session] refactor(core): centralize project upsert (#41795)
+- 2c1596ca80 [packages/core/src/plugin] refactor(core): share AI SDK provider factory (#41796)
+- a183fb5615 [packages/core/src/database] refactor(core): share SQLite client adapter (#41797)
+- 315bc6ac2e [packages/cli] fix(acp): avoid implicit model variant (#41782)
+- 17536a9237 [packages/core/src/config, packages/core/test/config] fix(core): discover local plugin packages (#41784)
+- 136bad9f17 [packages/core/src/config, packages/core/test/instruction-discovery.test.ts, packages/www] feat(core): discover AGENTS.md up to the home directory (#41652)
+- eeb870b0cc [packages/core/src/plugin.ts, packages/sdk-next] feat(sdk): configure embedded logging (#41809)
+- 7300e7e10f [packages/core, packages/core/src/database, packages/core/src/session, packages/core/test/session-execution.test.ts, packages/core/test/v1-migration.test.ts, packages/server] core: write-ahead execution claims replace shutdown-hook suspension (#41800)
+- a69a372f27 [packages/util] fix(util): defer module-scope randomness and import.meta path derivation (#41765)
+- 3954d7979d [packages/core/test/session-execution.test.ts] chore: generate
+- a5d6969f6f [packages/core/src/plugin, packages/core/test/agent.test.ts] feat(core): extract plan agent into a plugin (#41665)
+- d8b3e528e8 [packages/core/src/plugin, packages/core/test/plugin] fix(core): use standard web search key dialogs (#41821)
+- a253c0437e [packages/core/test/tool-shell.test.ts] test(core): await shell tool registration (#41825)
+- 2621dde1c9 [packages/core/src/config] refactor(core): unify config collection decoding (#41826)
+- 8486bbcdc1 [packages/core/src/filesystem] refactor(core): unify fff runtime adapters (#41827)
+- ff3ecefd24 [.github, packages/cli] fix(cli): sign macOS preview binaries (#40662)
+- e3336725db [packages/core/src/aisdk-native.ts, packages/core/src/model-resolver.ts, packages/core/test/aisdk-native.test.ts, packages/core/test/model-resolver.test.ts] fix(core): normalize provider endpoint templates (#41816)
+- c5704d3e3b [packages/core, packages/core/src/database, packages/core/test/database-migration.test.ts, packages/core/test/sqlite-workerd.test.ts] feat(core): sqlite driver for durable object storage (#41659)
+- baa54a5150 [packages/core/test/tool-shell.test.ts] test(core): speed up shell tool suite (#41831)
+- 2b7bd84867 [packages/core/test/tool-subagent.test.ts] test(core): speed up subagent tool suite (#41835)
+- 2b6dd2559c [packages/core/src/config.ts, packages/core/test/config] fix(core): prefer nearest skill source (#41788)
+- ab6e18e4ff [packages/core/src/aisdk-native.ts, packages/core/test/aisdk-native.test.ts, packages/core/test/model-resolver.test.ts] fix(core): route Vertex Anthropic natively (#41836)
+- 14deb6baf7 [packages/www] docs: clarify skill source precedence (#41844)
+- b4abeb4788 [packages/core/test/fixture, packages/core/test/util] test(core): narrow effect flock harness (#41837)
+- 3fd3e28690 [packages/core/src/plugin, packages/core/src/session, packages/core/test/plugin] fix(core): classify copilot utility requests (#41840)
+- b97d964e5c [packages/core/src/session] chore: generate
+- 627e67323c [.opencode] docs: remove ideal-pseudocode project skill (#41851)
+- b35c5fc985 [packages/core/src/github-copilot, packages/core/test/github-copilot] fix(core): detect copilot PDF input support (#41854)
+- 59970699d0 [packages/core/test/plugin] test(core): narrow plugin test layer (#41852)
+- 549a8f826b [packages/core/src/plugin] fix(core): log Plan reminder failures (#41856)
+- f1366d80c8 [packages/core, packages/core/test/sqlite-bundle.test.ts] fix(core): default #sqlite resolution to the node driver (#41834)
+- b00d8d65fe [packages/plugin, packages/tui] feat(tui): hierarchical slot tree for plugin UI placement (#41189)
+- 492ae1fdfa [packages/www] feat(www): match legacy docs theme
+- 3507bd10b6 [packages/www] fix(www): match OG images to docs theme
+- f1399dcb65 [packages/app, packages/desktop] fix(desktop): orchestrate update restarts (#41865)
+- 20df2fdba6 [packages/cli, packages/client, packages/codemode, packages/protocol, packages/server, packages/tui, packages/www] feat(cli): embed web ui (#41525)
+- 6072fc5c1b [packages/cli, packages/server] chore: generate
+- 456c26a012 [packages/tui] feat(tui): show localhost on pair screen
+- 055a380e66 [packages/core/src/database, packages/core/test/v1-migration.test.ts] fix(core): parameterize v1 migration messages (#41877)
+- 1190ef3818 [packages/desktop] feat(desktop): support local server builds (#41486)
+- c4bea9d558 [packages/app, packages/session-ui] fix(app): stabilize markdown worker startup (#41487)
+- dc82a446b9 [patches] fix(core): guard Deferred waiter cleanup in vendored effect patch (#41858)
+- 4acdeffbe9 [packages/core/src/account, packages/core/src/agent.ts, packages/core/src/aisdk-native.ts, packages/core/src/aisdk.ts, packages/core/src/app.ts, packages/core/src/bus.ts, packages/core/src/catalog.ts, packages/core/src/codemode, packages/core/src/command.ts, packages/core/src/config.ts, packages/core/src/config, packages/core/src/credential.ts, packages/core/src/credential, packages/core/src/database, packages/core/src/effect, packages/core/src/environment, packages/core/src/event-logger.ts, packages/core/src/file-mutation.ts, packages/core/src/file.ts, packages/core/src/filesystem.ts, packages/core/src/filesystem, packages/core/src/form.ts, packages/core/src/formatter.ts, packages/core/src/formatter, packages/core/src/generate.ts, packages/core/src/git.ts, packages/core/src/github-copilot, packages/core/src/id, packages/core/src/image.ts, packages/core/src/image, packages/core/src/instruction-discovery.ts, packages/core/src/instructions, packages/core/src/integration.ts, packages/core/src/integration, packages/core/src/job.ts, packages/core/src/kv.ts, packages/core/src/kv, packages/core/src/location-mutation.ts, packages/core/src/location-service-map.ts, packages/core/src/location-services.ts, packages/core/src/location.ts, packages/core/src/mcp, packages/core/src/model-resolver.ts, packages/core/src/model.ts, packages/core/src/models-dev.ts, packages/core/src/oauth, packages/core/src/permission.ts, packages/core/src/permission, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/project.ts, packages/core/src/project, packages/core/src/provider.ts, packages/core/src/pty.ts, packages/core/src/pty, packages/core/src/question.ts, packages/core/src/reference.ts, packages/core/src/reference, packages/core/src/repository-cache.ts, packages/core/src/repository.ts, packages/core/src/ripgrep.ts, packages/core/src/ripgrep, packages/core/src/session.ts, packages/core/src/session, packages/core/src/shell.ts, packages/core/src/shell, packages/core/src/skill.ts, packages/core/src/skill, packages/core/src/snapshot.ts, packages/core/src/state.ts, packages/core/src/tool-output.ts, packages/core/src/tool.ts, packages/core/src/tool, packages/core/src/util, packages/core/src/v1, packages/core/src/vcs.ts, packages/core/src/vcs, packages/core/src/websearch.ts, packages/core/src/wellknown.ts, packages/core/src/wellknown, packages/core/src/workspace.ts, packages/core/src/workspace, packages/core] refactor(core): require explicit import extensions
+- c217ebe2ad [packages/cli, packages/desktop] fix(desktop): skip web ui build in dev (#41881)
+- 0df3070d6d [packages/client] test(client): accelerate service lifecycle tests (#41879)
+- 7987aed8f3 [packages/tui] feat(tui): autocomplete cd directories (#41870)
+- d8e126b817 [packages/plugin, packages/tui] feat(tui): hidden experiments section with per-tab prompt drafts (#41862)
+- c254ba8a7f [.gitattributes, packages/cli, packages/core, packages/core/script/update-models-snapshot.ts, packages/core/src/models-dev.ts, packages/core/src/models-dev, packages/core/test/models.test.ts] core: embed models.dev snapshot instead of compile-time define (#41838)
+- 5da7eaa6eb [packages/client, packages/core/src/session.ts, packages/core/test/session-prompt.test.ts, packages/protocol, packages/server, packages/tui] feat(api): continue pending work after interrupt (#41888)
+- 9c4e6b500e [packages/core/src/models-dev.ts, packages/protocol, packages/www] chore: generate
+- 3d23c907eb [packages/core/script/migration.ts, packages/core] fix(core): restore bundler resolution for source-imported deps (#41885)
+- 51512862a5 [install, packages/www] feat: add V2 curl installer
+- b50b8268f2 [packages/codemode, script] feat(codemode): configure package publishing
+- 49a4175a34 [bun.lock, package.json, packages/ai, packages/client, packages/effect-drizzle-sqlite, packages/httpapi-codegen, patches] fix: make workspace imports NodeNext compatible
+- 3489abedc0 [packages/ai, packages/effect-drizzle-sqlite] chore: generate
+- 57b636df00 [packages/tui] test(tui): resolve autocomplete paths per platform (#41893)
+- f6611a1f56 [bun.lock, packages/core, packages/core/src/database, packages/core/src/project, packages/core/test/database-drizzle.test.ts, packages/core/test/database-migration.test.ts, packages/core/test/v1-migration.test.ts, packages/effect-drizzle-sqlite] refactor(core): internalize effect sqlite adapter
+- c858986b08 [packages/server] feat(server): web-standard fetch handler entry (#41896)
+- 96a74ffcc6 [packages/codemode, patches] chore(core): drop obsolete StreamSse hunk from effect patch (#41892)
+- d6ed520c25 [packages/server] chore: generate
+- 9322f5d2c9 [packages/client] fix(client): surface managed startup stderr (#41793)
+- 452335a78d [packages/tui] fix(tui): truncate fractional mtimes in fresh plugin specifiers (#41891)
+- f0333e0eea [.opencode] chore(tui): remove leftover discovery smoke plugin (#41897)
+- 93965df860 [packages/client, packages/core/src/session, packages/core/test/session-move.test.ts, packages/core/test/session-runner-message.test.ts, packages/core/test/shared-schema.test.ts, packages/schema, packages/tui] feat(session): record location switches (#41899)
+- 04ad06e2e3 [packages/app, packages/desktop] fix(desktop): align local development identity (#41889)
+- 07bcd290c2 [packages/protocol, packages/tui, packages/www] chore: generate
+- 1b45061afb [packages/plugin, packages/tui] feat(tui): experiments via devtools bar, drafts stay put (#41917)
+- 5c0cc8e617 [packages/tui] fix(tui): align running shell output (#41880)
+- c86f1c41ff [packages/tui] fix(tui): show completed write output (#41883)
+- c83933d1d4 [packages/core/src/session, packages/core/src/tool] fix(core): gate tool snapshot on initial MCP registration (#41884)
+- caae28e0d4 [packages/client, packages/core/src/session, packages/schema, packages/tui] fix(tui): render instruction updates as compact notices (#41900)
+- 08dcf7d731 [packages/protocol, packages/www] chore: generate
+- 99166f7c17 [packages/tui] feat(tui): add plus button to session tab bar (#41887)
+- d3eecf7ba2 [packages/tui] feat(tui): compact turn token usage with expandable steps (#41922)
+- 94bc0fc6fa [packages/tui] chore: generate
+- d853ff8848 [packages/tui] fix(tui): configure new session location (#41929)
+- a8fc664b6d [packages/tui] fix(tui): pad markdown table cells (#41937)
+- 5b7b1830d2 [packages/server] refactor(server): resume suspended sessions unconditionally in the fetch entry (#41938)
+- 90b6fa0eab [packages/core/src/session, packages/core/test/session-runner-message.test.ts] fix(core): expose local attachment paths (#41789)
+- e3bd82013c [packages/ai, packages/core/src/aisdk.ts, packages/core/test/aisdk.test.ts, packages/core/test/session-error.test.ts, packages/core/test/session-execution.test.ts, packages/core/test/session-runner.test.ts] fix(ai): preserve stream transport failures (#41779)
+- 9d63ca8f90 [packages/ai] chore: generate
+- bf751a907d [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): jitter session retry delays (#41942)
+- 01cbdcb8e4 [packages/ai] fix(ai): batch Anthropic parallel tool results (#41948)
+- c8dffb6893 [packages/app] test(app): deflake cached tab paint probe (#41965)
+- 5fd28cffc5 [packages/cli, packages/tui] refactor(tui): use command IDs for v2 keybinds (#41882)
+- 9769e7012c [bun.lock, packages/core, packages/core/script/build.ts, packages/core/script/publish.ts, packages/core/src/database, packages/core/test/file-mutation.test.ts, packages/core/test/fixture, packages/core/test/instruction-discovery.test.ts, packages/core/test/instruction-state.test.ts, packages/core/test/instructions, packages/core/test/lib, packages/core/test/session-execution.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-edit.test.ts, packages/core/test/tool-patch.test.ts, packages/core/test/tool-read-filesystem.test.ts, packages/core/test/tool-read.test.ts, packages/core/test/tool-search.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-write.test.ts, packages/core/test/workspace.test.ts, packages/server, script] feat(core): configure package publishing
+- b990f9a5c1 [packages/core/script/build.ts, packages/core/script/publish.ts, packages/core/src/database] chore: generate
+- 1da591b84d [packages/core/src/codemode, packages/core/test/mcp.test.ts, packages/core/test/plugin] fix(core): return content-only Code Mode results (#41954)
+- 1fea1c2ebc [packages/core/src/plugin, packages/core/test/plugin] fix(core): route Muse models to Meta prompt (#42036)
+- 70853b1e5b [packages/tui] feat(tui): surface plugin failures (#41940)
+- bef795b2fe [packages/tui] fix(tui): smooth session tab marquees (#42055)
+- 0777e84598 [packages/tui] fix(tui): fill image message background (#42062)
+- 70ce0d0970 [packages/tui] feat(tui): jump between open menu sections (#42061)
+- 653b7d79cd [packages/tui] fix(tui): restore navigation keybind defaults (#42066)
+- f06a86eeac [packages/client, packages/www] feat(client): support service version ranges (#42023)
+- 930b0751b1 [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): generate session titles before model execution (#42067)
+- b24b1b3f16 [packages/tui] fix(tui): keep exact-fit tab titles stationary (#42073)
+- b50924b993 [packages/core/test/snapshot.test.ts, packages/core/test/tool-shell.test.ts, packages/tui] test: stabilize Windows integration coverage (#42079)
+- 10ebf70a07 [packages/tui] feat(tui): add session tab context menu (#42068)
+- a20d945245 [AGENTS.md] docs: base worktrees on v2
+- fd30b9765d [packages/core/src/mcp, packages/core/test/fixture, packages/core/test/mcp.test.ts] refactor(core): spawn stdio MCP servers through the location environment (#42076)
+- 17cae23dce [packages/tui] fix(tui): stabilize repeated open menu (#42086)
+- 723f5e0028 [packages/tui] fix(tui): consolidate developer tools controls (#42088)
+- a841fc22bb [bun.lock, package.json, packages/core, packages/core/src/database, packages/core/src/filesystem, packages/core/src/image, packages/core/src/mcp, packages/core/src/models-dev.ts, packages/core/src/plugin, packages/core/src/pty, packages/core/src/shell, packages/core/src/util, packages/core/test/fixture, packages/core/test/sqlite-workerd.test.ts, packages/protocol, packages/sdk-next, packages/server, packages/util, packages/workerd-spike, patches, turbo.json] feat(server): workerd runtime profile and SDK workerd entrypoint (#41918)
+- 912a1c4e8a [packages/tui] fix(tui): move debug overlay into developer tools (#42098)
+- f8f50ee375 [packages/protocol, packages/server, packages/www] chore: generate
+- c86b3079ac [packages/merman] fix(tui): render Mermaid rich labels compactly (#42103)
+- c80472b6d5 [.github, .opencode] chore: add neriousy to team members (#42106)
+- f713d39c61 [packages/tui] fix(tui): keep interrupt confirmation visible (#42096)
+- 3251bff6ff [packages/tui] chore: generate
+- dff6eb631b [packages/tui] fix(tui): show worktree names in session list (#42108)
+- 0dec446ee6 [packages/tui] fix(tui): restore tab marquee hover (#42093)
+- a3625cd2cb [packages/tui] chore: generate
+- c7bee09632 [packages/core/src/plugin, packages/core/test/plugin] fix(core): preserve Copilot fallback provider (#42099)
+- c6a86acb0b [packages/merman] fix(tui): harden Mermaid rendering limits (#42123)
+- 8d5dd206a6 [packages/core/src/tool.ts, packages/core/test/session-runner-tool-registry.test.ts] fix(core): validate tool definitions on registration (#42117)
+- c081e12c60 [packages/core/src/tool.ts, packages/merman] chore: generate
+- a7642737c7 [packages/app, packages/cli, packages/client, packages/core, packages/core/src/bus.ts, packages/core/src/database, packages/core/src/session.ts, packages/core/src/session, packages/core/test/bus.test.ts, packages/core/test/plugin, packages/core/test/session-compact.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-move.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-skill.test.ts, packages/core/test/session-title.test.ts, packages/core/test/shared-schema.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-subagent.test.ts, packages/plugin, packages/protocol, packages/schema, packages/sdk-next, packages/server, packages/tui, packages/workerd-spike, packages/www] feat(core): add generic session inbox (#42109)
+- 2025ed939a [packages/core/src/environment, packages/core/src/mcp, packages/core/src/session.ts, packages/core/src/shell.ts, packages/core/test/environment.test.ts, packages/core/test/mcp.test.ts, packages/server, packages/workerd-spike] feat(server): typed no-execution-plane environment for workerd profile (#42113)
+- f5e6b8c769 [packages/core, packages/core/test/environment.test.ts, packages/protocol, packages/www] chore: generate
+- c9539979bd [packages/tui] fix(tui): highlight moved session location
+- d8f62cfdcb [packages/core/src/filesystem] fix(core): resolve watcher binding require lazily (#42122)
+- 56197e621a [packages/codemode] refactor(codemode): route transpilation through a #transpile conditional import (#42121)
+- b75dd58f7c [packages/tui] fix(tui): continue pending work after interrupt (#42131)
+- 7a22ac865d [packages/tui] fix(tui): navigate filtered plugins (#42127)
+- 0859f77153 [packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-execution.test.ts, packages/core/test/session-move.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts] fix(core): continue sessions after location move (#42138)
+- f6aa1a67f0 [packages/tui] fix(tui): improve selected spinner contrast (#42141)
+- fc5c781085 [packages/core/test/session-execution.test.ts, packages/core/test/session-runner.test.ts, packages/tui] chore: generate
+- c894f87771 [packages/tui] feat(tui): refine session tab activity indicators (#42144)
+- b034154e09 [packages/tui] chore: generate
+- bc2251d6d8 [bun.lock, packages/sdk-next, packages/server] feat(sdk): configure external workspace providers (#42142)
+- 0d703d39e7 [packages/app, packages/client, packages/core/src/bus.ts, packages/core/src/project.ts, packages/core/src/session, packages/core/test/session-create.test.ts, packages/core/test/session-move.test.ts, packages/schema, packages/tui] fix(core): adopt pre-project sessions on directory resolution (#42100)
+- 883c9e3cb4 [packages/protocol, packages/www] chore: generate
+- 66c2967520 [bun.lock, package.json, packages/plugin] deps: update OpenTUI to 0.5.2 (#42148)
+- 69a465d33b [.github, .opencode, bun.lock, package.json, packages/drive, packages/lab, packages/protocol, packages/simulation, script, turbo.json] feat: adopt drive and TUI catalog (#42133)
+- 9dd0e39867 [packages/drive, packages/lab, packages/protocol, script] chore: generate
+- 76dbaf20ad [packages/lab] fix(catalog): serve app shell at lab route (#42159)
+- 76640a5c9c [packages/sdk-next] feat(sdk): re-export Event schema from sdk-next (#42175)
+- d31a994c27 [packages/merman] feat(tui): render Mermaid timelines (#42130)
+- 9b805c140f [packages/merman] feat(tui): render Mermaid GitGraph diagrams (#42179)
+- 9d6e05b6e4 [packages/cli] fix(cli): inset update footer (#42189)
+- b17fbf41e3 [packages/lab] feat(catalog): click-to-annotate captures with GitHub issue handoff (#42183)
+- a2ed936283 [packages/lab] chore: generate
+- 77aa1cfede [packages/tui] fix(tui): truncate queued prompt preview (#42196)
+- af127a643b [packages/desktop] refactor(desktop): run local server from source (#42194)
+- 550e9cc636 [bun.lock, packages/lab] feat(catalog): auto-generated Open Graph cards per capture (#42201)
+- 3125f67708 [packages/lab] chore: generate
+- 91ba9f2412 [packages/drive, packages/tui] fix(tui): repair baseline unit failures (#42198)
+- a31058d76c [packages/core/src/permission.ts, packages/core/src/tool, packages/core/test/permission.test.ts, packages/core/test/session-instructions.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-edit.test.ts, packages/core/test/tool-patch.test.ts, packages/core/test/tool-question.test.ts, packages/core/test/tool-read.test.ts, packages/core/test/tool-search.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-skill.test.ts, packages/core/test/tool-webfetch.test.ts, packages/core/test/tool-websearch.test.ts, packages/core/test/tool-write.test.ts] fix(core): skip shell parsing when permissions allow all (#42203)
+- 4358a02cf4 [packages/core/src/tool] chore: generate
+- 9c8b50b989 [packages/cli, packages/desktop] feat(deskltop): use opencode2 in WSL (#42199)
+- 664b0ba2d6 [packages/cli] chore: generate
+- bac3631ded [packages/app, packages/session-ui, packages/ui/src/components, packages/ui/src/v2] refactor(app): align UI packages with solid best practices (#41977)
+- a78c8d8972 [packages/core/test/lib, packages/core/test/session-instructions.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-edit.test.ts, packages/core/test/tool-patch.test.ts, packages/core/test/tool-question.test.ts, packages/core/test/tool-read.test.ts, packages/core/test/tool-search.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-skill.test.ts, packages/core/test/tool-webfetch.test.ts, packages/core/test/tool-websearch.test.ts, packages/core/test/tool-write.test.ts] test(core): reuse permission service stub (#42205)
+- 230b2f8488 [packages/tui] fix(tui): omit implicit cd autocomplete prefix (#42206)
+- 20197c6b8a [packages/core/test/lib, packages/core/test/session-compact.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-instructions.test.ts, packages/core/test/session-log.test.ts, packages/core/test/session-move.test.ts, packages/core/test/session-remove.test.ts] test(core): reuse project service stub (#42208)
+- 33a1bd2e90 [packages/desktop] docs(desktop): add Solid best practices guidance (#42211)
+- c253d4d311 [packages/tui] fix(tui): highlight queued prompts on hover (#42219)
+- 56973e0ca4 [packages/core/src/workspace, packages/core/test/workspace.test.ts] fix(core): reject inherited workspace providers (#42227)
+- 721f9bfcff [packages/www] docs: remove beta data deletion warnings
+- aec4b711f6 [.github, script] ci: make v2 publishing manual
+- 75c82e046b [packages/app, packages/ui/src/components, packages/ui/src/v2] feat(app): redesign non-modal settings (#40845)
+- 154f298fe9 [packages/app, packages/core/src/tool, packages/desktop, packages/session-ui] fix(app): unify v2 server and session lifecycle (#41930)
+- 1288161528 [packages/app] chore: generate
+- a6a712a3ac [packages/stats] fix(stats): keep tablet chart tooltips above bars (#42197)
+- 8bcc245142 [packages/core/src/agent.ts, packages/core/test/agent.test.ts] fix(core): list default agent first (#42243)
+- 20929b3081 [packages/core/src/filesystem, packages/core/test/filesystem] fix(core): refresh fallback file search (#42348)
+- 595e4c8c96 [packages/core/src/filesystem, packages/core/test/filesystem] chore: generate
+- 642772e2a5 [packages/tui] feat(tui): graduate per-tab prompt drafts (#42358)
+- c7de57ee0e [packages/simulation] fix(drive): serialize unfocused UI state (#42360)
+- 1b587823b6 [packages/tui] feat(tui): label worktree session tabs (#41342)
+- fb8b4c4ce6 [packages/tui] chore: generate
+- 2cf20e660e [packages/tui] fix(tui): restore composer shell kill shortcut (#42366)
+- 9fff6e2b4f [packages/tui] fix(tui): prioritize composer keybinds (#42384)
+- f2408060b7 [packages/core/src/instruction-discovery.ts, packages/core/test/instruction-discovery.test.ts] fix(core): render granular instruction updates (#42383)
+- ed708f9dc2 [packages/tui] fix(tui): keep shell commands full width (#42339)
+- d2b8cb8081 [packages/www] fix: docs light theme (#42395)
+- b66f01b37c [packages/tui] feat(tui): prototype tab scroll memory (#42375)
+- e5d79ae187 [packages/tui] fix(tui): load transcript history on demand (#42388)
+- 90fd61225e [bun.lock, packages/core, packages/core/src/tool, packages/core/test/tool-webfetch.test.ts] feat(core): replace webfetch markdown renderer (#42229)
+- 4836356c17 [packages/tui] fix(tui): stop disabled tab pulse rendering (#42346)
+- b882ccc57d [.changeset, AGENTS.md, packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): preserve instruction state on move (#42398)
+- 3a41ee8817 [packages/tui] fix(tui): stop attention glow breathing (#42404)
+- 7b89f06402 [packages/drive, packages/tui] feat(tui): prototype missing location recovery (#42353)
+- 40cd6989d2 [packages/core/src/plugin] fix(core): update console server URL
+- 95be07463b [packages/tui] feat(tui): add interactive toast actions (#42407)
+- d9700c4cd5 [packages/tui] chore: generate
+- 8f3e86cf4e [packages/app, packages/session-ui, packages/ui/src/v2] fix(app): support bidi text input (#42413)
+- e8101ef7fe [.changeset, .github, bun.lock, package.json, packages/app, packages/cli, packages/client, packages/core, packages/core/script/build.ts, packages/core/src/permission.ts, packages/core/src/shell, packages/core/src/tool, packages/core/test/permission.test.ts, packages/core/test/shell-parse.test.ts, packages/core/test/tool-shell.test.ts, packages/protocol, packages/schema, packages/server, packages/shell-scan, packages/www] feat(core): add portable shell permission scanner (#42351)
+- 97a6bc19e7 [packages/protocol, packages/www] chore: generate
+- ad8ed9b367 [packages/app, packages/client, packages/core, packages/core/src/database, packages/core/src/location-services.ts, packages/core/src/project.ts, packages/core/src/project, packages/core/src/session, packages/core/src/worktree.ts, packages/core/src/worktree, packages/core/test/database-migration.test.ts, packages/core/test/effect, packages/core/test/lib, packages/core/test/location.test.ts, packages/core/test/project-copy.test.ts, packages/core/test/project-directories.test.ts, packages/core/test/project.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-move.test.ts, packages/core/test/shared-schema.test.ts, packages/core/test/worktree.test.ts, packages/protocol, packages/schema, packages/sdk-next, packages/server, packages/tui, packages/www] refactor(core): replace project copies with worktrees (#42149)
+- 1bd1eb0e0b [packages/app, packages/core, packages/protocol, packages/www] chore: generate
+- 8023ba378b [packages/cli] fix(cli): defer update check until service resolves (#42446)
+- 655b3c4c22 [packages/app, packages/enterprise, packages/session-ui, packages/ui, packages/ui/src/components, packages/ui/src/context, packages/ui/src/i18n, packages/ui/src/v2] feat(app): add workspace flows to new layout (#38790)
+- 5816fcbc61 [packages/tui] fix(tui): preserve toast hover state (#42419)
+- 5cd7705036 [packages/tui] fix(tui): correct tab context menu behavior (#42453)
+- 28b630477d [packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-move.test.ts, packages/tui] fix(tui): recover sessions from missing locations (#42455)
+- 146aeef830 [packages/core/test/generate.test.ts, packages/core/test/plugin, packages/util] refactor(util): remove unused npm install (#42454)
+- 85988b957b [packages/core/src/database] refactor(core): trim sqlite adapter paths (#42457)
+- 304c85fb2b [bun.lock, packages/util, packages/workerd-spike] refactor(util): remove xdg-basedir dependency (#42462)
+- 7a73aad0a2 [packages/core/src/instructions, packages/core/test/instructions, packages/core/test/lib, packages/schema] chore: remove orphaned v2 exports (#42459)
+- a5b6ead43e [packages/util, packages/workerd-spike] perf(util): load npm config lazily (#42458)
+- 0e28d651a5 [packages/core/src/form.ts, packages/core/src/job.ts, packages/core/src/util] refactor(core): remove unused API members (#42463)
+- 9d9e57941c [bun.lock, packages/ui] chore(ui): remove stale motion pins (#42465)
+- de28ca9f0e [packages/core/test/npm.test.ts, packages/util, packages/workerd-spike] refactor(util): load npm package parser lazily (#42467)
+- 23b7632743 [packages/core/src/bus.ts, packages/core/test/bus.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner.test.ts] refactor(core): remove bus replay all (#42460)
+- 7909817fba [bun.lock, packages/app, packages/session-ui, packages/ui] chore(app): remove stale frontend dependencies (#42464)
+- 82b96eb495 [packages/tui] fix(tui): scope unread updates to focused terminal (#42471)
+- 71caa7d406 [packages/tui] fix(tui): isolate tab scroll state (#42456)
+- 979ac810af [.opencode, packages/app, packages/desktop, packages/ui/src/i18n, script] feat(app): add Hebrew locale (#42475)
+- 28f6968dda [packages/www] fix(www): point edit links to v2 (#42472)
+- 49d07ffe5f [packages/core/src/tool-output.ts, packages/core/test/tool-output.test.ts] fix(core): use file times for tool output cleanup (#42450)
+- fec4f20736 [packages/core/src/mcp, packages/core/test/mcp-import-boundary.test.ts] perf(core): load MCP client lazily (#42468)
+- 9ad482aab9 [packages/tui] feat(tui): diffuse unread tab glow on resolve (#42487)
+- ae14e78ba6 [packages/app, packages/desktop, packages/session-ui] refactor(app): consolidate desktop server data contexts (#42256)
+- 72d37cda81 [packages/app, packages/desktop] feat(desktop): show migration progress (#42495)
+- d698746951 [packages/app, packages/session-ui, packages/ui/src/hooks] fix(app): stabilize session navigation (#42477)
+- c0b4a0ce91 [bun.lock, package.json, packages/plugin] tui: update OpenTUI to 0.5.3 (#42568)
+- 8d71099577 [bun.lock] chore: generate
+- 3a4c8cdf9d [.changeset, .github, bun.lock, package.json, packages/app, packages/cli, packages/client, packages/core, packages/core/script/build.ts, packages/core/src/permission.ts, packages/core/src/shell, packages/core/src/tool, packages/core/test/permission.test.ts, packages/core/test/shell-parse.test.ts, packages/core/test/tool-shell.test.ts, packages/protocol, packages/schema, packages/server, packages/shell-scan, packages/www] revert(core): remove portable shell permission scanner (#42571)
+- b6b313943f [packages/protocol, packages/www] chore: generate
+- 4a899bb730 [packages/tui] refactor(tui): rebuild tab pulse on gated envelopes (#42496)
+- a1a663d60e [bun.lock, packages/cli] refactor(cli): replace updater semver dependency (#42492)
+- 70efd3fb38 [packages/tui] fix(tui): preserve background hint timing (#42577)
+- baf5ce3b7e [packages/tui] fix(tui): debounce shared storage reloads (#42579)
+- 9872fb8a54 [.changeset, packages/app, packages/cli, packages/client, packages/core/src/location-services.ts, packages/core/src/question.ts, packages/core/src/session, packages/core/src/tool, packages/core/test/question.test.ts, packages/protocol, packages/schema, packages/server, packages/session-ui, packages/tui, packages/www] refactor(api): remove legacy question service (#42562)
+- 51f0b499f9 [packages/app, packages/session-ui] chore: generate
+- 3d3bbd48f9 [packages/core/src/plugin, packages/core/test/plugin, packages/session-ui, packages/tui] feat(core): add tavily web search (#42591)
+- bdbccca1f3 [AGENTS.md, packages/tui] feat(tui): refine question form interactions (#42493)
+- b0480a6f93 [.changeset, bun.lock, packages/client, packages/core, packages/core/script/build.ts, packages/core/src/config, packages/core/src/shell, packages/core/src/tool, packages/core/test/config, packages/core/test/shell-parse-parity.test.ts, packages/core/test/shell-parse.test.ts, packages/core/test/tool-shell.test.ts, packages/schema, packages/shell-scan, packages/www] feat(core): make portable shell scanner authoritative (#42581)
+- f7d21babb6 [packages/protocol, packages/www] chore: generate
+- 1cf97fac5c [packages/merman] fix(tui): optimize Mermaid terminal rendering (#42595)
+- 6d0c30a125 [packages/tui] fix(tui): defer background work hint (#41563)
+- e3bbfdf270 [bun.lock, packages/cli, packages/drive, packages/protocol, packages/simulation] feat(simulation): slim production bridge (#42584)
+- 2d953a69de [packages/ai, packages/core/src/session, packages/core/test/session-error.test.ts] fix(ai): harden websocket error contracts (#40695)
+- de32afe358 [packages/ai, packages/core/src/aisdk.ts] refactor(ai): add sequential websocket channel seam (#41045)
+- c0ae362996 [packages/ai] refactor(ai): unify OpenAI Responses transport (#41048)
+- 810156d081 [packages/core/src/plugin, packages/core/src/session, packages/core/test/plugin] refactor(core): expose session transport eligibility (#41558)
+- a2a53032d4 [packages/ai, packages/core/src/effect, packages/core/src/location-services.ts, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-model-transport.test.ts, packages/core/test/session-remove.test.ts] feat(core): manage session websocket channels (#41564)
+- 445aacf92e [packages/ai, packages/core/src/session, packages/core/test/session-model-transport.test.ts, packages/core/test/session-runner.test.ts] feat(ai): add Responses websocket continuation (#42596)
+- 638cb414c4 [packages/ai, packages/core/src/session, packages/core/test/lib, packages/core/test/session-model-transport-live.test.ts, packages/core/test/session-model-transport.test.ts, packages/core/test/session-runner.test.ts, packages/www] test(ai): harden websocket lifecycle coverage (#42600)
+- e79f3e8ca2 [packages/tui] feat(tui): animate interrupt confirmation (#42602)
+- 923cb28a0a [packages/ai] chore: generate
+- 737b6eb7b7 [.github, .opencode, bun.lock, package.json, packages/cli, packages/drive, packages/lab, packages/simulation, script, scripts, turbo.json] chore: extract Drive and catalog (#42612)
+- d6c299cee7 [packages/ai, packages/core/test/aisdk.test.ts] fix(ai): remove over-safe provider error handling (#42610)
+- 2ca6d8ee49 [packages/ai] chore: generate
+- 23258ada86 [packages/tui] feat(tui): resize vertical tab rail (#42615)
+- f4620939aa [bun.lock, package.json, packages/core/test/fixture, packages/server, packages/workerd-spike, patches, turbo.json] test(server): remove workerd spike (#42618)
+- a609acbb67 [packages/tui] fix(tui): refine tab marquee motion (#42617)
+- 9adc9bb5df [packages/tui] fix(tui): preserve full-width tab hover
+- 1d44d56d9c [AGENTS.md, packages/tui] fix(tui): use semantic form tokens (#42599)
+- f75244d795 [packages/tui] fix(tui): preserve tab drag source (#42619)
+- a7288d231e [packages/plugin, packages/tui] feat(tui): add working directory actions (#42624)
+- f7b222e95a [packages/tui] fix(tui): open footer status dialogs on click
+- b6ea0c2209 [packages/tui] chore: generate
+- 182fe17f12 [packages/tui] fix(tui): remove shadow scrim under horizontal tab strip (#42650)
+- 62b67f2761 [packages/app, packages/client, packages/protocol, packages/server, packages/tui] refactor(protocol): move worktree routes out of experimental namespace (#42656)
+- e6a3b951b5 [packages/protocol, packages/tui, packages/www] chore: generate
+- 8640ea3374 [packages/core/src/session, packages/core/test/plugin, packages/core/test/session-runner.test.ts, packages/core/test/session-system-prompt.test.ts] minimize system prompt (#42638)
+- 1580e7cc3a [packages/core/src/session] chore: generate
+- 08a6d7b619 [packages/www] docs: fix package manager code blocks (#42313)
+- 5c7f5840ee [packages/cli, packages/client, packages/core/src/config.ts, packages/core/src/config, packages/core/src/plugin, packages/core/src/tool, packages/core/src/websearch.ts, packages/core/test/config, packages/core/test/formatter.test.ts, packages/core/test/mcp.test.ts, packages/core/test/plugin, packages/core/test/tool-output.test.ts, packages/core/test/tool-websearch.test.ts, packages/core/test/websearch.test.ts, packages/plugin, packages/schema, packages/server] feat(core): persist web search provider selection (#42663)
+- 650f7e8cdd [packages/core/src/config.ts, packages/core/src/plugin, packages/core/test/mcp.test.ts, packages/core/test/plugin, packages/core/test/tool-websearch.test.ts, packages/protocol, packages/schema, packages/www] chore: generate
+- 7484e32f62 [packages/protocol, packages/simulation] refactor(protocol): harden simulation wire contract (#42628)
+- a45b12cfa4 [packages/app] fix(app): use location VCS state (#42666)
+- 014a364dfd [AGENTS.md, docs, packages/www, specs] docs(core): refresh session architecture
+- 8afcb3870e [.changeset, bun.lock, packages/core/src/plugin, packages/core/test/plugin, packages/plugin] fix(plugin): derive promise adapter from protocol schemas (#42669)
+- 552fd40ef8 [CONTRIBUTING.md] docs: update contributing guide
+- ab7a0bf65c [packages/tui] fix(tui): ignore stray releases on new session controls (#42673)
+- c42c7f7793 [specs] docs(tui): remove completed extraction plan
+- 98f5e86122 [packages/tui] fix(tui): refresh moved tab metadata (#42696)
+- e57a1c7930 [.opencode, AGENTS.md, packages/ai, packages/app, packages/cli, packages/schema, packages/www] docs: refresh agent guidance
+- d5a58e756f [docs] docs: remove obsolete migration plan
+- a01cd34acc [specs] docs: remove completed storage plan
+- 7c4fbdd291 [specs] docs: remove obsolete sqlite proposal
+- 082423126c [specs] docs: remove obsolete project api sketch
+- b57c1cc47c [specs] docs: align v2 specification index
+- 7086df5b11 [specs] docs(tui): move theme work to issue
+- 6a69aa752f [plans] docs: remove completed implementation plans
+- 1d59884434 [specs] docs: remove pre-release schema ledger
+- 8e66f83a50 [specs] docs: retire superseded session design
+- 66012fe65f [docs] docs: remove stale service lifecycle design
+- e8fa6985bc [packages/core/src/location-mutation.ts, packages/core/src/tool, packages/core/test/location-mutation.test.ts, packages/core/test/tool-patch.test.ts] fix(core): unify patch path resolution (#42667)
+- 41f70bfbb1 [packages/app] fix(app): generate blob ids without crypto.subtle in non-secure contexts (#42706)
+- 7301c5e798 [packages/app, packages/desktop] fix(desktop): keep staged updates fresh with silent re-checks (#42707)
+- c8584ec0c8 [packages/app] fix(app): derive popular providers from integrations (#42713)
+- 51091be7e4 [packages/desktop] fix(desktop): verify updates before install (#42715)
+- 57b050e9fc [packages/session-ui] fix(desktop): render v2 patch metadata (#42716)
+- 8610d90838 [packages/app] fix(app): project sent messages through inbox events (#42714)
+- d24a24a2ca [packages/app] fix(app): route global events without directory sentinel (#42719)
+- a5f3e9e735 [packages/app] fix(app): preserve assistant content order (#42721)
+- 6564d1442a [packages/app] chore: generate
+- f63f912178 [packages/app] test(app): typecheck complete e2e suite (#42728)
+- 4d021b4660 [packages/app] fix(app): fade tab titles beneath close button (#42730)
+- d35c6f04ed [packages/ui/src/v2] fix(ui): add keybind label padding (#42726)
+- cae205a3d9 [packages/core/src/filesystem, packages/core/test/filesystem] fix(core): bound fuzzy search memory (#42741)
+- f725443e30 [packages/core/src/location-services.ts, packages/core/test/location-layer.test.ts] fix(core): normalize Windows location keys (#42745)
+- 30dfe5352c [packages/app, packages/session-ui] fix(app): show read tool filenames (#42740)
+- 79fc74afbf [packages/app, packages/session-ui] fix(app): show skill names (#42749)
+- f4baba2824 [packages/app] fix(app): use fixed message page size (#42743)
+- 75ec0b454c [packages/app] chore: generate
+- 0d7904c91f [packages/client, packages/core/src/catalog.ts, packages/core/src/config, packages/core/src/model-resolver.ts, packages/core/src/models-dev.ts, packages/core/src/plugin, packages/core/test/catalog.test.ts, packages/core/test/config, packages/core/test/model-resolver.test.ts, packages/core/test/models.test.ts, packages/core/test/plugin, packages/schema, packages/tui] refactor(core): model provider activation explicitly (#42791)
+- c054bb183e [packages/protocol, packages/www] chore: generate
+- 3d782efee4 [packages/core/src/plugin] docs(core): fix opencode skill source link (#42792)
+- 58a36a1560 [packages/tui] fix(tui): preserve path suffix in prompt footer (#42800)
+- 55be895e14 [packages/tui] fix(tui): scope session picker by directory (#42804)
+- 07a82a442e [packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-prompt.test.ts, packages/core/test/session-run-coordinator.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-subagent.test.ts, packages/protocol] fix(core): keep queued work parked after interrupt (#42682)
+- 73700065bf [packages/protocol, packages/www] chore: generate
+- 64b9ba339e [packages/console] docs(console): prohibit abusive multi-account use (#42813)
+- fcc1e9c42f [packages/core/src/plugin] docs(core): add MCP setup guidance
+- d94d520f45 [packages/core/src/tool, packages/core/test/tool-subagent.test.ts] fix(tui): make running subagents clickable (#42797)
+- d8e1753330 [.github, packages/cli] chore(cli): build binaries with Bun 1.4
+- 61d7f942b5 [packages/app] fix(app): show new session header immediately (#42822)
+- 4fee4d7d86 [packages/core/src/session, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner.test.ts] fix(core): batch streamed session deltas
+- d9dfceddf8 [packages/app] fix(app): release virtualized timeline elements (#42825)
+- 467722c2f9 [packages/app] fix(app): use tree directory picker everywhere (#42820)
+- 9e22c40fff [.github, AGENTS.md, install, package.json, packages/cli, packages/desktop, packages/script, packages/updates, packages/www, script] feat: align V2 beta release channels
+- 6a7d6c5adc [packages/client, packages/core/src/bus.ts, packages/core/src/session, packages/core/test/bus.test.ts, packages/core/test/mcp.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner.test.ts, packages/protocol, packages/schema, packages/server] refactor(core): use numeric event timestamps (#42828)
+- 42e345e1bc [packages/cli] fix(cli): resolve Bun canary compile assets
+- 8251934007 [packages/core/src/session, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner.test.ts] fix(core): batch initial streamed delta
+- a48d44955e [packages/cli] fix(cli): suppress compiled runtime warnings
+- 613c570a3b [packages/cli] feat(cli): add heap snapshot signal
+- 01b7b53eeb [packages/cli] chore: generate
+- 0d7fe6e074 [packages/cli] fix(cli): omit undefined compile executable path
+- b080f216a5 [packages/cli] feat(cli): add native CPU profiling (#42862)
+- 174c0a742c [packages/cli] chore: generate
+- 7731d1235d [packages/cli] fix(cli): clarify debug config output (#42860)
+- 0e99cb987a [.github] fix(desktop): use built CLI during beta build
+- 08dd3f51ed [packages/app] fix(app): space no git status (#42868)
+- d4f10fa9be [packages/cli, script] fix(release): stop advancing next npm tags
+- 75a979ec5c [packages/ai] fix(ai): pass media through protocol lowering (#42921)
+- ca589273c7 [packages/core/src/aisdk.ts, packages/core/test/aisdk.test.ts] fix(core): preserve tool-result images for AI SDK providers (#42849)
+- ec10d71f22 [packages/core/src/plugin, packages/core/test/plugin] fix(core): keep plan mode reminders in sync with session agent (#42652)
+- fd2699b4d7 [packages/tui] fix(tui): clarify saved permission copy (#41144)
+- e73fa8f4b7 [packages/app, packages/session-ui] fix(app): clarify skill timeline presentation (#42945)
+- 9241a79dc9 [packages/session-ui] chore: generate
+- 01c8bf20f9 [packages/app, packages/session-ui] fix(app): correct background subagent status (#42944)
+- 39810da936 [bun.lock, bunfig.toml, install, packages/cli, packages/tui, packages/www] docs: reorganize v2 documentation (#42947)
+- 45771a7e39 [packages/util] chore(util): log spawned processes (#42948)
+- c7abb340f1 [packages/www] chore: generate
+- be8f975a99 [packages/session-ui] fix(app): reduce session spinner CPU usage (#42952)
+- 1f86a6d3f0 [packages/core/src/plugin, packages/core/test/plugin] fix(core): restore OpenAI request headers (#42959)
+- c5e58b38a8 [packages/session-ui] fix(app): omit shell prompts when copying commands (#42958)
+- e3ce37899d [packages/core/src/session, packages/core/test/session-generate.test.ts] fix(core): run HTTP hooks for session generate (#42965)
+- c400746dd5 [packages/session-ui, packages/ui/src/i18n] fix(app): render code mode executions (#42949)
+- c786ab92d3 [packages/cli] test(cli): ignore logs before standalone readiness (#42968)
+- 6106cb64c7 [packages/cli] chore: generate
+- 100487719b [bun.lock, packages/app, packages/session-ui, packages/storybook, packages/ui/src/components, packages/ui/src/v2] refactor(app): remove legacy layout (#42993)
+- 9b4b36dfd0 [bun.lock] chore: generate
+- e26473f0bc [packages/app, packages/session-ui, packages/ui/src/i18n] fix(app): show search result counts (#42992)
+- 6359623e24 [packages/ui/src/components] fix(ui): align settled animated numbers (#42998)
+- a3e69a967b [packages/core/src/plugin, packages/core/test/plugin, packages/www] feat(core): discover LM Studio models (#42607)
+- ecda3779fa [packages/core/test/plugin] chore: generate
+- e1ff217e44 [bun.lock, packages/client, packages/tui] refactor(client): share Solid server data (#42999)
+- 3b5837d354 [packages/client] chore: generate
+- f0ae3b9569 [packages/core/src/plugin, packages/core/test/plugin] fix(core): activate discovered LM Studio provider (#43015)
+- 0e022036fb [packages/app] refactor(app): use shared client connection (#43016)
+- 875b28658f [packages/tui] fix(tui): preserve scroll position across tabs (#43013)
+- fa055143ea [packages/core/src/plugin, packages/core/test/plugin, packages/www] feat(core): discover Ollama models (#43021)
+- cc53db4406 [packages/core/src/plugin, packages/core/test/plugin, packages/www] feat(core): discover vLLM models (#43022)
+- f14724dfb1 [packages/core/src/plugin] docs(core): reference CLI configuration
+- 759695d87c [packages/tui] fix(tui): show full tab numbers (#43081)
+- cf606660fb [packages/core/src/shell.ts, packages/core/test/tool-shell.test.ts] fix(core): settle externally signaled shells (#43086)
+- 238ce304a9 [packages/tui] fix(tui): expose queued prompt shortcut (#43083)
+- 45a49ae32a [packages/core/src/database, packages/core/test/database-migration.test.ts] fix(core): preserve previous V2 database lineage (#43092)
+- c53f4cfb09 [packages/core/src/instructions, packages/core/test/instructions] fix(core): clarify temporary directory guidance (#43095)
+- 996b05432f [packages/ai] fix(ai): preserve Gemini prompt safety blocks (#43070)
+- 3d13b6c5b6 [packages/ai] chore: generate
+- 43dd33842e [packages/ai] fix(ai): default Gemini function args (#43111)
+- 42fc297d30 [packages/cli, packages/client, packages/core/src/session.ts, packages/core/src/session, packages/core/src/shell.ts, packages/core/test/session-create.test.ts, packages/core/test/session-environment.test.ts, packages/core/test/session-remove.test.ts, packages/core/test/tool-shell.test.ts, packages/protocol, packages/server, packages/tui] feat(tui): inherit terminal environment per session (#42957)
+- 728ae7c949 [packages/stats] fix(stats): prefer Go catalog pricing (#43120)
+- f161c90057 [packages/protocol, packages/www] chore: generate
+- 8fc65b3038 [packages/ai] test(ai): cover Gemini parallel signatures (#43114)
+- d9b81d2233 [bun.lock, package.json, packages/ai, packages/app, packages/cli, packages/client, packages/codemode, packages/core/src/aisdk.ts, packages/core/src/bus.ts, packages/core/src/command.ts, packages/core/src/config.ts, packages/core/src/database, packages/core/src/environment, packages/core/src/form.ts, packages/core/src/generate.ts, packages/core/src/git.ts, packages/core/src/image.ts, packages/core/src/instructions, packages/core/src/integration.ts, packages/core/src/mcp, packages/core/src/model-resolver.ts, packages/core/src/permission.ts, packages/core/src/plugin, packages/core/src/provider.ts, packages/core/src/pty.ts, packages/core/src/repository-cache.ts, packages/core/src/repository.ts, packages/core/src/ripgrep.ts, packages/core/src/schema.ts, packages/core/src/session.ts, packages/core/src/session, packages/core/src/shell.ts, packages/core/src/snapshot.ts, packages/core/src/tool.ts, packages/core/src/tool, packages/core/src/util, packages/core/src/v1, packages/core/src/websearch.ts, packages/core/src/workspace.ts, packages/core/src/workspace, packages/core/src/worktree.ts, packages/core/src/worktree, packages/core/test/config, packages/core/test/session-runner-tool-registry.test.ts, packages/http-recorder, packages/httpapi-codegen, packages/protocol, packages/schema, packages/server, packages/simulation, packages/theme, packages/tui, packages/util, patches] chore(effect): update to beta.107 (#43109)
+- aca42423d3 [packages/ai, packages/cli, packages/core/src/generate.ts, packages/core/src/repository-cache.ts, packages/core/src/session, packages/core/src/websearch.ts, packages/httpapi-codegen, packages/protocol, packages/simulation, packages/www] chore: generate
+- 8644db2c2a [bun.lock, packages/app, packages/session-ui, packages/ui] feat(app): render Mermaid code blocks (#43024)
+- eb22768a23 [packages/app, packages/desktop, packages/ui/src/theme] refactor(app): remove V1 client compatibility (#43045)
+- f5917726d3 [packages/ai] feat(ai): support Vertex request labels (#43129)
+- 5e11cf5fc9 [packages/ai] chore: generate
+- 2f8fa6afef [packages/core/test/mcp-oauth.test.ts, patches] fix(core): serialize MCP token refresh (#43074)
+- e55a91eadd [.github, packages/app, packages/client, packages/core/test/session-generate.test.ts, packages/core/test/vcs-hg.test.ts, packages/desktop, packages/storybook, packages/tui] refactor(app): use shared server data (#43017)
+- cd3133038b [packages/app, packages/core/test/session-generate.test.ts, packages/core/test/vcs-hg.test.ts] chore: generate
+- 15f0fc9e00 [.github] chore: disable generate workflow
+- 1f96af5ea7 [.opencode] docs: document heap snapshot debugging
+- 1430a460f1 [packages/ui/src/components, packages/ui/src/v2] fix(ui): smooth shimmer loop (#43144)
+- 3facbe1dd3 [packages/core/src/database, packages/core/test/v1-migration.test.ts] fix(core): support older previous-channel databases (#43142)
+- 006a0a4b34 [packages/client, packages/core/src/config, packages/core/src/mcp, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/test/fixture, packages/core/test/location-layer.test.ts, packages/core/test/mcp.test.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/plugin] feat(plugin): expose MCP server transforms (#43125)
+- 616aba7bbd [packages/desktop] refactor(desktop): establish typed ipc contract (#43150)
+- 30d778cf5f [packages/tui] fix(tui): clarify web search provider labels (#43155)
+- 839343e5de [packages/cli] fix(cli): skip missing node distribution (#43156)
+- 5252cefab2 [packages/core/src/plugin, packages/core/test/plugin] fix(core): exclude native code mode MCP servers (#43157)
+- a1eca087d4 [packages/tui] fix(tui): streamline generic tool rendering (#43158)
+- a888ba4da7 [packages/app, packages/session-ui] refactor(app): use current session messages (#42766)
+- 76e7b556b6 [packages/desktop] refactor(desktop): modularize main process (#43159)
+- 8cacf150db [.github] chore: skip node cli publish build
+- b6a8d99da5 [packages/cli] fix(cli): align automatic update methods
+- 93cdfafa78 [packages/desktop] refactor(desktop): extract renderer platform (#43164)
+- b968a314d3 [packages/tui] fix(tui): hide empty tab bar
+- cd156f9f1c [packages/tui] test(tui): update web search label expectation (#43166)
+- 18c25ae406 [packages/app] refactor(app): use one server event model (#43168)
+- 401a154ec3 [packages/app] fix(app): keep server details editable (#43170)
+- 4d79337d42 [bun.lock, package.json] chore: remove root vitest dependency (#43167)
+- 9391987443 [packages/ai] fix(ai): settle pending Anthropic tool calls (#43136)
+- 7188d42b99 [packages/core/src/plugin, packages/core/src/tool, packages/core/test/tool-subagent.test.ts] feat(core): resume subagent sessions (#43172)
+- eb3c4c82fe [packages/ai] fix(ai): support newer Anthropic system updates (#43180)
+- ea1ff90e42 [packages/core/src/tool, packages/core/test/tool-read-filesystem.test.ts] perf(fs): use augmented rope for text pagination (#42972)
+- 1f61eb5ca9 [bun.lock, packages/app, packages/core/src/util, packages/enterprise, packages/session-ui, packages/util, turbo.json] refactor(frontend): enforce package boundaries (#43177)
+- 28b4cade9e [packages/client] fix(client): remove order from message list query (#43204)
+- 5105913568 [packages/app] perf(app): keep home session index query-local (#43191)
+- dfb60e37a3 [bun.lock, packages/cli] feat(cli): add interactive auth commands (#43127)
+- a76ab93673 [bun.lock, package.json, packages/plugin] tui: update OpenTUI to 0.5.4 (#43220)
+- 47af7462ea [packages/cli] feat(cli): improve session export flow (#43229)
+- c3a6721de2 [packages/tui] refactor(tui): standardize builtin plugin ids
+- 643eed300d [packages/cli] fix(cli): log managed service lease loss
+- 16390ca47d [packages/cli] fix(cli): log background service startup
+- 958308c913 [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): ignore malformed model costs (#43251)
+- c92fb2d41b [packages/cli] fix(cli): improve process failure logging
+- 8df039d261 [packages/cli] fix(cli): limit source maps to development channels
+- b38d9d812f [packages/cli, packages/client, packages/protocol, packages/server, packages/www] refactor(client): move service shutdown client-side (#43252)
+- 46378dda50 [packages/core/src/plugin, packages/core/test/plugin] refactor(core): standardize builtin plugin ids
+- d5e83fefda [packages/core/src/session] fix(core): reuse prompt cache for forks
+- 5c8d46ab4b [packages/core/src/plugin, packages/core/src/provider.ts, packages/core/test/plugin, packages/core/test/provider.test.ts] fix(core): make Google Vertex models work with ADC credentials (#43077)
+- 98c717cb5b [packages/core/src/config, packages/core/test/config] fix(core): migrate standalone small model (#43260)
+- bac474aaa0 [packages/tui] fix(tui): scope session picker to active location (#43264)
+- 67fe76057e [packages/cli, packages/client] feat(cli): configure service environment (#43269)
+- 3f79699bce [packages/core/src/tool, packages/core/src/websearch.ts, packages/core/test/tool-websearch.test.ts, packages/core/test/websearch.test.ts] feat(core): persist websearch provider selection (#43268)
+- b7402c264d [packages/core/src/agent.ts, packages/core/src/config.ts, packages/core/src/database, packages/core/src/job.ts, packages/core/src/location-mutation.ts, packages/core/src/permission.ts, packages/core/src/permission, packages/core/src/plugin, packages/core/src/session, packages/core/src/shell.ts, packages/core/src/shell, packages/core/src/state.ts, packages/core/src/tool-output.ts, packages/core/src/tool.ts, packages/core/src/tool, packages/core/test/database-drizzle.test.ts] fix(core): reduce noisy tracing spans
+- 594c395576 [packages/tui] fix(tui): restore MCP sign-in flow (#43274)
+- b0c3a16ead [packages/app, packages/cli, packages/client, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/test/config, packages/core/test/location-layer.test.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/plugin, packages/protocol, packages/schema, packages/tui] feat(plugin): expose server plugin status
+- 02f3f3cb3e [packages/core/test/tool-webfetch.test.ts] test(core): remove flaky webfetch checks (#43278)
+- 56e66656b8 [.github] fix(ci): limit cli publish build time
+- 97265f8ac5 [packages/ai] fix(ai): ignore orphaned Anthropic tool deltas (#43289)
+- ff9452bf03 [packages/core/src/config, packages/core/src/formatter.ts, packages/core/src/plugin, packages/core/test/formatter.test.ts] refactor(core): move formatter config into state (#43087)
+- cb39ea1136 [.changeset, packages/core/src/plugin, packages/core/src/session, packages/core/test/plugin, packages/core/test/session-generate.test.ts, packages/core/test/session-runner.test.ts, packages/plugin] fix(core): prefer websocket with request hooks (#43234)
+- 511b4556a2 [packages/tui] fix(tui): navigate nested subagents (#43290)
+- 5ff6bb87cf [packages/core/src/session, packages/core/test/session-compact.test.ts] fix(core): coalesce queued compactions (#43292)
+- 4b9d89e943 [packages/core/src/config, packages/core/src/image.ts, packages/core/src/plugin, packages/core/src/session.ts, packages/core/test/config, packages/core/test/session-prompt.test.ts, packages/core/test/tool-read.test.ts] refactor(core): move image config into state (#43090)
+- 044d04df06 [packages/cli] fix(cli): preserve clean build manifest (#43287)
+- 3b8d3ca639 [packages/app, packages/desktop, packages/enterprise, packages/session-ui, packages/storybook, packages/ui, packages/ui/script/build-oc2-v2-overrides.ts, packages/ui/src/actions, packages/ui/src/components, packages/ui/src/data-display, packages/ui/src/feedback, packages/ui/src/forms, packages/ui/src/icons, packages/ui/src/layout, packages/ui/src/navigation, packages/ui/src/overlays, packages/ui/src/styles, packages/ui/src/typography, packages/ui/src/v2] refactor(ui): promote current design system (#43200)
+- 30cb420900 [packages/ai] feat(ai): lower system updates as developer (#43326)
+- 4df0591025 [packages/ai, packages/client, packages/core/src/session, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner.test.ts, packages/schema] feat(core): retain provider finish details (#43332)
+- 0762d63b6a [packages/core/src/tool, packages/core/test/tool-webfetch.test.ts] fix(core): identify user-initiated web fetches (#43330)
+- 6baad7fc3e [packages/ai] feat(ai): support Responses truncation policy (#43339)
+- f6f64d7ece [packages/cli, packages/core/test/npm.test.ts, packages/core/test/plugin, packages/tui, packages/util, packages/www] feat(cli): manage plugin packages (#43283)
+- d5bf8799c0 [packages/cli] fix(cli): keep run event stream alive (#43348)
+- daf3f9ed08 [packages/ai] feat(ai): support Responses tool controls (#43329)
+- 33567c5792 [packages/desktop] fix(desktop): connect wildcard service through loopback (#43171)
+- 8a402d3f03 [packages/core/src/config, packages/core/src/plugin, packages/core/src/tool-output.ts, packages/core/test/config, packages/core/test/tool-output.test.ts] refactor(core): move tool output config into state (#43422)
+- 1e867c228a [packages/core/src/config, packages/core/src/plugin, packages/core/src/snapshot.ts, packages/core/test/config, packages/core/test/snapshot.test.ts] refactor(core): move snapshot config into state (#43425)
+- a207253242 [packages/core/src/session.ts, packages/core/test/session-prompt.test.ts] fix(core): await snapshot state readiness (#43435)
+- c40c306170 [packages/core/src/command.ts, packages/core/src/config, packages/core/src/location-services.ts, packages/core/src/plugin, packages/core/src/pty.ts, packages/core/src/session.ts, packages/core/src/shell.ts, packages/core/src/shell, packages/core/test/command.test.ts, packages/core/test/config, packages/core/test/pty, packages/server] refactor(core): move shell config into state (#43430)
+- dcc7de2e47 [packages/app] test(app): stabilize reconnect offset timing (#43438)
+- 3edcb3ca2b [packages/core/src/aisdk-native.ts, packages/core/test/aisdk-native.test.ts] fix(core): route Vertex Gemini through native provider (#43433)
+- 241a88a5d9 [packages/tui] fix(tui): open subagent panel from footer (#43325)
+- 7700faad81 [packages/cli, packages/core/src/plugin] feat(cli): capture CPU profiles with SIGPROF (#43446)
+- 1556b74082 [packages/core/src/aisdk-native.ts, packages/core/test/aisdk-native.test.ts] fix(core): preserve Vertex billing labels (#43449)
+- bfe9917ee7 [packages/core/src/aisdk.ts, packages/core/test/aisdk.test.ts] fix(core): lower AI SDK system updates (#43440)
+- 728053b645 [packages/tui] fix(tui): avoid retrying broken plugin setup (#43441)
+- ace822308f [packages/core/src/config, packages/core/src/plugin, packages/core/src/session, packages/core/test/config, packages/core/test/session-compaction.test.ts] refactor(core): move compaction config into state (#43442)
+- d8debaa449 [packages/tui] fix(tui): stabilize plugin reload generations (#43447)
+- c1583ddcbb [.opencode, packages/core/src/plugin] docs: move CPU profiling to dev skill (#43448)
+- 16b77e5b50 [packages/theme, packages/tui, packages/www] fix(tui): soften jump to latest action (#43457)
+- 5d453752f0 [packages/core/src/config, packages/core/src/filesystem, packages/core/src/plugin, packages/core/test/filesystem] refactor(core): move location watcher config into state (#43464)
+- 9292bfbe49 [nix] feat(nix): update cli packaging (#43469)
+- fbf45f2384 [packages/ai, packages/core/src/aisdk-native.ts, packages/core/src/model-resolver.ts, packages/core/src/plugin, packages/core/test/aisdk-native.test.ts, packages/core/test/model-resolver.test.ts, packages/core/test/plugin] fix(core): centralize native provider mapping (#43468)
+- 1df9092f07 [.github] feat(ci): enable nix-hashes ci in v2 branch (#43482)
+- 173e3b0d48 [nix] chore: update nix node_modules hashes
+- 8a03b87c1f [packages/ai] fix(ai): avoid azure chat v1 url duplication (#43505)
+- e0be1c0e13 [packages/ai] fix(ai): match AI SDK Azure URL handling (#43506)
+- a9caf9154e [packages/ai, packages/core/test/shared-schema.test.ts, packages/schema] fix: move around ai pkg logic (#43504)
+- d4a0f163a9 [packages/core/test/model-resolver.test.ts] test(core): isolate model resolver auth config (#43509)
+- 8fb534d03e [packages/tui] feat(tui): close tabs with middle click (#43497)
+- 83ffd292f8 [packages/ai] docs(ai): remove stale design documents (#43512)
+- 6adb98c266 [packages/ai, packages/core/src/aisdk-native.ts, packages/core/src/aisdk.ts, packages/core/test/aisdk-native.test.ts, packages/core/test/aisdk.test.ts, packages/core/test/model-resolver.test.ts] refactor(ai): flatten provider request options (#43513)
+- 98a9d864e6 [packages/core/src/kv.ts, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/test/kv.test.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/plugin] feat(plugin): add durable storage API (#43525)
+- c4afbc4aae [packages/tui] fix(tui): handle form clipboard shortcut (#43526)
+- f8c46684eb [packages/cli, packages/core/test/effect, packages/core/test/filesystem, packages/core/test/process, packages/core/test/tool-shell.test.ts, packages/core/test/util, packages/core/test/worktree.test.ts, packages/tui] fix: eliminate flaky CI races (#43522)
+- d912202cf2 [packages/client, packages/core/src/session.ts, packages/core/src/session, packages/core/src/skill, packages/core/src/tool, packages/core/test/session-runner-message.test.ts, packages/core/test/session-skill.test.ts, packages/core/test/skill, packages/schema, packages/tui] feat: better skill ux  (#43523)
+- 3876f7aad6 [packages/desktop] fix(desktop): show window on did-finish-load fallback for wayland (#42681)
+- 6b09b9e6a2 [packages/app, packages/client, packages/tui] feat(client): optimistic prompt admission with client-minted IDs (#43520)
+- b6966177fa [.changeset, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-execution.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-run-coordinator.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-subagent.test.ts, packages/protocol] refactor(core): simplify interrupt continuation (#42810)
+- 30db9dd86e [packages/app] chore(app): use schema ID minting instead of hand-rolled encoder (#43542)
+- c85b09de6f [packages/core/test/config, packages/schema, packages/www] fix(core): default unknown model token limits (#43541)
+- 1d89e911e8 [.changeset, AGENTS.md, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-prompt.test.ts] refactor(core): make prompt ID reuse idempotent (#43548)
+- d6deed6752 [bun.lock, packages/app, packages/enterprise, packages/session-ui, packages/storybook, packages/ui/src/i18n] refactor(session-ui): render current messages directly across surfaces (#43345)
+- 730e1935cf [nix] chore: update nix node_modules hashes
+- ea7fa43243 [.changeset, packages/core/src/session, packages/core/test/plugin, packages/core/test/session-generate.test.ts, packages/core/test/session-runner.test.ts] refactor(core): share session model requests (#42680)
+- 9a1de86d9c [packages/core/src/model-resolver.ts, packages/core/src/session, packages/core/test/config, packages/core/test/generate.test.ts, packages/core/test/model-resolver.test.ts, packages/core/test/plugin, packages/core/test/session-compact.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts] refactor(core): own resolved model limits (#43545)
+- 5a0ba34d64 [packages/core/src/file-retention.ts, packages/core/src/shell.ts, packages/core/src/tool-output.ts, packages/core/test/shell-cleanup.test.ts] fix(core): expire stale shell output (#43554)
+- f43474043a [packages/core/src/session, packages/core/test/session-run-coordinator.test.ts, packages/tui] feat(core): acknowledge session interruption immediately (#43552)
+- 20ff543ff2 [packages/tui] fix(tui): honest reconnect overlay copy without a managed service (#43561)
+- a51622a0e7 [bun.lock, package.json, packages/client, packages/http-recorder] chore: upgrade Effect to rc.110 (#43567)
+- 08f26a2d2e [packages/ai] feat(ai): support Responses request options (#43360)
+- dbc7d0ee09 [nix] chore: update nix node_modules hashes
+- 394b5ac5fd [packages/stats] feat(stats): combine free and go usage (#43577)
+- 393b43a881 [packages/stats] Revert "feat(stats): combine free and go usage (#43577)"
+- 39f4adb4dc [packages/ai] fix(ai): settle pending Responses tool calls (#43575)
+- e37c7be434 [packages/app] fix(app): resolve branch from active directory (#43579)
+- 99490f289b [packages/ai, packages/core/src/aisdk.ts, packages/core/src/model-resolver.ts, packages/core/test/model-resolver.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-title.test.ts] refactor(ai): remove model limits (#43581)
+- 5b1e8450e7 [packages/ai] feat(ai): preserve streamed refusals as text (#43343)
+- 98ad4465f8 [packages/core/src/plugin, packages/core/test/plugin] fix(core): preserve discovered model limits (#43589)
+- afe4c5d23a [packages/tui] fix(tui): utilize TUI cursor style config in `opencode2 mini` (#43529)
+- f288d7e107 [packages/ai] fix(ai): isolate Gemini function-response turns (#43479)
+- e2d9376614 [packages/ai, packages/core/test/session-runner.test.ts] fix(ai): preserve response item ids (#43590)
+- 2a7d0729d0 [bun.lock, package.json, packages/app, packages/client, packages/desktop, packages/session-ui, packages/ui/src/styles, script] feat(desktop): optimize cold development startup (#42722)
+- ab77fb080a [nix] chore: update nix node_modules hashes
+- d6625397d9 [packages/tui] tui: remove the win32 ENABLE_PROCESSED_INPUT ffi shim (#43604)
+- 879766aee7 [packages/core/src/aisdk.ts, packages/core/test/aisdk.test.ts] fix(core): ignore SSE comment heartbeats (#43618)
+- 838d747514 [packages/core/src/aisdk.ts, packages/core/test/aisdk.test.ts] fix(core): revert SSE heartbeat handling (#43625)
+- cb25ed8cc8 [packages/tui] fix(tui): restore option return newlines (#43655)
+- b453c2016c [packages/core/src/plugin] refactor(core): use Latch for plugin supervisor ready gate (#43569)
+- 38eeed56cd [packages/core/src/mcp] refactor(core): use Latch for MCP startup gate (#43570)
+- ad7ebe84a0 [packages/tui] refactor(tui): use Latch for renderer shutdown gate (#43572)
+- 4651bd15de [packages/server] refactor(server): use Latch for shutdown gate (#43571)
+- 6f629c2a9d [packages/core/src/shell.ts] refactor(core): use Latch for shell output gate (#43573)
+- a71884dfdf [packages/ai, packages/http-recorder] test(ai): record responses websocket flows (#43660)
+- 22f2604ffa [packages/core/src/session, packages/core/test/session-compaction.test.ts] fix(core): preserve unicode in compaction truncation
+- 82d2c6133e [packages/tui] fix(tui): stop registering one resize listener per transcript row (#43562)
+- 2970b7a6a8 [packages/core/src/session, packages/core/src/tool, packages/core/test/tool-execute.test.ts] fix(core): settle foreign typed tool failures instead of dropping them (#43576)
+- c33c9bf2b9 [packages/core/src/tool, packages/core/test/tool-shell.test.ts] fix(core): preserve background shell status (#43663)
+- ebc2504ef3 [.changeset, packages/core/src/session, packages/core/test/session-compaction.test.ts, packages/core/test/session-title.test.ts] refactor(core): route title and compaction through shared model requests (#43555)
+- cc15c2a488 [.github, packages/posts] feat(posts): add Astro posts site (#43720)
+- 58f909d5b9 [bun.lock, package.json, packages/plugin] chore: upgrade opentui 0.5.6 (#43725)
+- 5970537a8a [packages/core/src/plugin, packages/core/test/plugin, packages/plugin] feat(plugin): expose session selection methods (#43718)
+- 384cff3768 [packages/app] refactor(app): establish session vertical slice (#43637)
+- 749d24ebc0 [packages/app, packages/client, packages/protocol] fix(client): authenticate PTY websocket connections (#43735)
+- 2938ac3298 [packages/core/src/shell.ts, packages/core/test/tool-shell.test.ts] fix(core): prevent shell eviction loop (#43650)
+- 67e87f534e [packages/app, packages/client] fix(app): speed up cold home navigation (#43738)
+- fdc4fd8268 [packages/core/src/aisdk.ts] refactor(core): remove dead AI SDK ID stripping (#43741)
+- 4db272ff64 [packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-compact.test.ts, packages/core/test/session-runner.test.ts, packages/protocol] fix(core): steer manual compaction by default (#43724)
+- 960b1ca284 [bun.lock, packages/desktop] refactor(desktop): move IPC to Effect RPC (#43207)
+- ea43a16b7d [packages/core/src/plugin, packages/core/test/plugin] refactor(core): remove legacy Gemini system prompt (#43752)
+- e5eabc446d [nix] chore: update nix node_modules hashes
+- 212139ff95 [packages/ai] fix(ai): accept nullable Anthropic input usage (#43761)
+- 5c4f6ef1e3 [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): continue interrupted model streams (#43757)
+- f6fcbaad5e [packages/app, packages/client, packages/session-ui, packages/storybook, packages/tui, packages/ui/src/components] refactor(app): establish composer flow (#43768)
+- d993f1b8ed [packages/ai] fix(ai): ignore unknown Anthropic SSE events (#43767)
+- b84f5ad2fb [packages/core/src/session, packages/core/test/session-error.test.ts] fix(core): honor provider retry header (#43773)
+- b7343edaf3 [packages/core/src/session] fix(core): skip equal snapshot comparisons (#43781)
+- d19f58c5df [packages/core/src/catalog.ts, packages/core/src/session, packages/core/test/catalog.test.ts, packages/core/test/plugin, packages/core/test/session-title.test.ts] fix(core): use small model for titles (#43702)
+- 9be3aa92b5 [package.json, packages/app, packages/desktop, packages/storybook, script] refactor(app): organize product slices (#43789)
+- d158f2cd39 [packages/ai] fix(ai): scrub Anthropic tool call IDs (#43796)
+- b0ab1e2992 [packages/core/src/session, packages/core/test/session-model-request.test.ts, packages/core/test/session-runner-message.test.ts] fix(core): forward PDF prompt attachments (#43799)
+- 876459788f [packages/app] feat(app): warn about V1 servers (#43790)
+- 9a89851cea [packages/app] fix(app): preserve timeline bottom after session switch (#43801)
+- 858caa6848 [packages/ai] fix(ai): classify network error variants (#43807)
+- 0d2684b673 [packages/ai] fix(ai): align Vertex Anthropic version headers (#43804)
+- e756e497c2 [packages/ai] fix(ai): merge parallel gemini tool results into one turn (#43814)
+- 8b93bc395d [packages/core/src/plugin, packages/core/test/plugin] feat(core): allow plan mode to write/edit PLAN files exclusively (#43710)
+- 4d22d4e75f [packages/desktop] fix(desktop): use Effect platform subpath imports (#43817)
+- 9be9dd737c [packages/app] fix(app): restore project menu spacing (#43810)
+- 5e77c494c7 [packages/app] fix(app): show folder names in file tree (#43835)
+- 876a4a2586 [packages/stats] fix(stats): merge renamed model data (#43812)
+- 1e6bfaf3d7 [packages/tui] feat: /skills command (#43869)
+- e4178886fa [bun.lock, packages/core, packages/core/src/effect, packages/core/test/effect-app-node-platform.test.ts, packages/core/test/session-model-transport-live.test.ts, packages/core/test/session-model-transport.test.ts] fix(core): align websocket network policy (#43875)
+- e461fdc2d0 [nix] chore: update nix node_modules hashes
+- e03a147b71 [packages/app, packages/core/test/config] test(app): route e2e mocks through HttpApi (#43138)
+- 9a3a1732f1 [packages/client, packages/core/src/plugin, packages/core/src/session, packages/core/test/plugin, packages/schema] refactor(ai): declare responses websocket capability (#43885)
+- e673807e39 [packages/app] fix(app): hide built-in plugins (#43890)
+- 2636797c65 [packages/ai, packages/core/src/plugin, packages/core/src/session, packages/core/test/plugin] feat(ai): enable xai responses websocket (#43889)
+- 8676dcf705 [packages/ai, packages/core/src/plugin, packages/core/test/plugin] feat(ai): enable azure responses websocket (#43896)
+- b731b11184 [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): recover unknown finish responses (#43900)
+- ea3e0dde19 [packages/app, packages/desktop] feat(desktop): restore CLI installer menu item (#43906)
+- 94f9d32040 [.changeset, packages/core/src/session, packages/core/test/session-instructions.test.ts] fix(core): re-inject nested instructions after compaction (#43723)
+- 8fec7e0e91 [packages/core/src/form.ts, packages/core/src/session, packages/core/src/state.ts] refactor(session): simplify execution and state workflows (#43933)
+- b58f29a4ef [packages/core/src/config.ts, packages/core/src/config, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/skill, packages/core/src/wellknown.ts] refactor(core): simplify plugin and config boundaries (#43930)
+- 2524e6be8b [packages/core/src/credential.ts, packages/core/src/database, packages/core/src/mcp, packages/core/src/provider.ts, packages/core/src/ripgrep.ts, packages/core/src/worktree.ts] refactor(core): simplify persistence boundaries (#43929)
+- e81450809d [packages/ai] fix(ai): gemini legacy tool media (#43920)
+- b2551b4e5d [packages/tui] fix(tui): stop tab marquee after one cycle (#43936)
+- 2e5ec616d2 [packages/client, packages/tui] feat(tui): optimistic session creation on first prompt (#43687)
+- 0eaa04718c [packages/core/src/catalog.ts, packages/core/src/config.ts, packages/core/src/config] refactor(config): clarify discovery workflows (#43942)
+- 2a83911c7e [packages/core/src/plugin] refactor(plugin): simplify websearch effects (#43943)
+- e312d261a8 [packages/core/src/session] refactor(session): simplify history projection (#43944)
+- 15864304a5 [packages/core/src/bus.ts, packages/core/src/event-logger.ts, packages/core/src/id] refactor(core): clarify guards and constants (#43946)
+- 1dea4b9391 [packages/core/src/config, packages/core/src/skill.ts, packages/core/src/skill, packages/core/src/wellknown.ts] refactor(config): simplify utility workflows (#43947)
+- 3d2652d7b9 [packages/core/src/file-retention.ts, packages/core/src/git.ts, packages/core/src/state.ts, packages/core/src/vcs, packages/core/src/worktree.ts] refactor(core): simplify vcs state helpers (#43953)
+- 7b349654e3 [packages/core/src/aisdk.ts, packages/core/src/codemode, packages/core/src/plugin, packages/core/test/aisdk.test.ts] refactor(core): simplify provider runtime code (#43952)
+- 6c3c4bc50f [packages/core/src/integration.ts, packages/core/src/mcp, packages/core/src/util] refactor(core): simplify mcp utility flows (#43955)
+- b3d6063329 [packages/core/src/credential.ts, packages/core/src/database, packages/core/src/effect, packages/core/src/kv.ts, packages/core/src/permission.ts, packages/core/src/permission, packages/core/src/project.ts] refactor(core): simplify persistence runtime code (#43954)
+- 3a1fb5ae65 [packages/core/src/session] refactor(session): simplify projection state (#43957)
+- e5da5bfab2 [packages/core/src/session.ts, packages/core/src/session] refactor(session): simplify effect workflows (#43956)
+- e68144cb67 [packages/core/src/session] refactor(core): fold single-consumer request modules into model-request (#43958)
+- 9a4bd2ba16 [packages/core/src/shell, packages/core/src/tool] refactor(core): simplify tool and shell code (#43948)
+- 79d5436d2a [packages/core/src/session, packages/core/test/session-title.test.ts] refactor(session): simplify model preparation (#43966)
+- 08d52be8c2 [packages/core/src/database, packages/core/src/effect, packages/core/src/filesystem.ts, packages/core/src/tool, packages/core/src/worktree.ts] refactor(core): simplify tool infrastructure (#43967)
+- d633d794c2 [packages/core/src/git.ts, packages/core/src/mcp, packages/core/src/model-resolver.ts, packages/core/src/plugin, packages/core/test/mcp-oauth.test.ts] refactor(core): simplify domain helpers (#43968)
+- 88788941df [packages/enterprise, packages/slack, packages/updates] refactor: simplify cloud package state (#43970)
+- 77c7a7def7 [packages/stats] refactor(stats): share unique-users fallback (#43971)
+- 238e1903df [packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-projector.test.ts, packages/core/test/session-sql.types.ts] refactor(session): tighten persisted state (#43969)
+- ed08f0e691 [packages/cli, packages/tui] refactor(tui): simplify selection helpers (#43972)
+- 2eecf076c4 [packages/core/src/config.ts, packages/core/src/config, packages/core/test/config] refactor(config): share entry observer (#43973)
+- 7fd1eee35a [packages/app, packages/desktop, packages/session-ui, packages/ui/src/actions] refactor(app): remove redundant UI state (#43975)
+- 97d3cd0b3a [packages/client, packages/protocol, packages/sdk-next, packages/server] refactor: simplify server client helpers (#43976)
+- fa1b4ef7ec [packages/tui] fix(tui): scope prompt history by session (#43977)
+- e945ddf80e [.github, package.json, packages/ai, packages/cli, packages/core/src/config.ts, packages/core/src/config, packages/core/src/filesystem, packages/core/src/models-dev.ts, packages/core/src/plugin, packages/core/src/project.ts, packages/core/src/session.ts, packages/core/src/session, packages/core/src/shell.ts, packages/core/src/tool-output.ts, packages/core/src/tool, packages/core/src/vcs.ts, packages/core/src/vcs, packages/core/test/config, packages/core/test/effect-simplification-types.test.ts, packages/desktop, packages/http-recorder, packages/util, script] chore: enforce effect simplifications (#43979)
+- 87ef814190 [packages/ai, packages/core/src/session, packages/core/test/session-runner-message.test.ts] fix(ai): preserve thought signatures on visible text parts (#43984)
+- 1864bc4161 [packages/tui] fix(tui): preserve model label during location boot (#43974)
+- 97ccafce3b [bun.lock, package.json, packages/cli, packages/core, packages/core/test/filesystem, patches] fix(core): honor wildcard gitignore rules in FFF (#43988)
+- f28c10aa4d [.opencode, AGENTS.md, bun.lock, package.json, packages/core, packages/core/script/build.ts, packages/core/src/plugin, packages/enterprise, packages/plugin, packages/schema, packages/sdk-next, packages/sdk, packages/server, packages/shell-scan, packages/simulation, packages/slack, packages/tui, packages/www, script, turbo.json] feat(sdk): prepare v2 packages for publishing
+- 656c4cc7fa [bun.lock, packages/sdk] fix(sdk): declare protocol test dependency
+- 59f0e3a378 [packages/core/src/session, packages/core/test/session-create.test.ts] fix(core): omit active assistants from forks (#43994)
+- 9e9eac81e3 [nix] chore: update nix node_modules hashes
+- 2c8e2a2b28 [packages/core/src/location-services.ts, packages/core/src/session.ts, packages/core/test/location-layer.test.ts, packages/core/test/session-move.test.ts, packages/server] fix(core): retry recreated locations (#44005)
+- 667c274c7f [packages/tui] fix(tui): contain MCP sidebar errors (#44003)
+- c4eeefe0f1 [packages/ai, packages/codemode, packages/core/src/config, packages/core/src/file-mutation.ts, packages/core/src/location-mutation.ts, packages/core/src/models-dev.ts, packages/core/src/permission.ts, packages/core/src/plugin, packages/core/src/ripgrep.ts, packages/core/src/snapshot.ts, packages/core/src/tool, packages/core/src/worktree, packages/core/test/fixture, packages/core/test/generate.test.ts, packages/core/test/instruction-discovery.test.ts, packages/core/test/integration.test.ts, packages/core/test/model-resolver.test.ts, packages/core/test/plugin, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/httpapi-codegen, packages/util] refactor: reuse undefined effect (#44010)
+- 3694149135 [.changeset, packages/core/src/plugin, packages/core/test/plugin] fix(core): resolve device verification URL (#44021)
+- 2937f0e635 [packages/core/src/session, packages/core/test/session-create.test.ts] fix(core): omit running shells from forks (#44001)
+- fb703ede73 [packages/core/src/session, packages/core/test/session-create.test.ts] fix(core): transfer only settled history (#44008)
+- fa4c5b26dc [packages/core/src/session, packages/core/test/session-create.test.ts] fix(core): stabilize forked message IDs (#44011)
+- c29a7c152d [bun.lock, packages/client, packages/core, packages/core/src/database, packages/core/src/session.ts, packages/core/src/session, packages/core/test/database-migration.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-view.test.ts, packages/core/test/v1-migration.test.ts, packages/protocol, packages/schema, packages/server, packages/tui, packages/www] feat(session): add viewed state (#42811)
+- 7c6ecaaca8 [packages/client, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-create.test.ts, packages/schema] fix(core): inherit fork instruction entries (#44004)
+- e2758b9945 [nix] chore: update nix node_modules hashes
+- f69f78ec6b [bun.lock, packages/core, packages/core/src/shell, packages/core/test/shell-parse-parity.test.ts, packages/core/test/shell-scan, packages/shell-scan, script] refactor(core): inline portable shell scanner (#44026)
+- e33d688428 [packages/client, packages/httpapi-codegen, packages/protocol, packages/schema, packages/www] fix(codegen): stabilize generated contract names (#44000)
+- b4fabf5984 [packages/session-ui] fix(desktop): align webfetch link styling with figma (#44037)
+- d3eee25ee2 [packages/session-ui] fix(session-ui): scope context row keys (#44043)
+- a84b1c15ce [packages/app] fix(app): wait for session route id (#44048)
+- e7177a8764 [packages/session-ui, packages/ui/src/components, packages/ui/src/i18n, packages/ui/src/icons] fix(desktop): align web search results presentation with figma (#44039)
+- 030b2d9543 [packages/session-ui, packages/ui/src/i18n] feat(desktop): align instructions updated notice presentation with figma (#44050)
+- a1d0f43531 [packages/ai] fix(ai): preserve unique Gemini function call IDs (#44051)
+- 87d2488c78 [packages/session-ui] feat(desktop): apply left border rail styling to all tool disclosures (#44052)
+- 346689fb43 [packages/session-ui, packages/storybook] fix(storybook): use production styles and remove synthetic tool stories (#44058)
+- 9b17449e88 [packages/session-ui] fix(desktop): match instructions notice typography to figma (#44059)
+- aa2dd5040f [packages/session-ui] fix(desktop): omit shared rail from framed disclosures (#44061)
+- 80ef4f454f [packages/session-ui, packages/ui/src/i18n] feat(desktop): align loaded resource calls with figma (#44060)
+- 7032a096bf [packages/desktop] fix(desktop): configure app before instance lock (#44067)
+- 0d2c865c93 [packages/app, packages/storybook] feat(app): move background work to session summary (#44068)
+- 6258c1943a [packages/app, packages/session-ui] feat(app): group adjacent patch calls (#43901)
+- 97536add75 [packages/app] fix(app): preserve bottom scroll anchoring (#44077)
+- 3c70f6df28 [packages/app] fix(app): enforce single titlebar action owner (#44075)
+- 4566395d42 [packages/app, packages/session-ui, packages/ui/src/i18n, packages/ui/src/styles, packages/ui/src/theme] feat(app): show subagent delegation state (#44078)
+- 8062b5455a [packages/app, packages/session-ui, packages/ui/src/i18n, packages/ui/src/overlays] feat(app): align moved location notice (#44085)
+- 85f32fa0da [packages/app] fix(app): load workspace sessions by directory (#44027)
+- 8f54597ef2 [packages/session-ui] fix(app): collapse failed patch cards (#44105)
+- 100f23ca99 [packages/app, packages/session-ui, packages/ui/src/i18n] feat(app): show writing command state (#44095)
+- 4aca1be945 [packages/app] fix(app): prevent duplicate web mounts (#44119)
+- 8a2966fdbe [packages/session-ui] fix(app): avoid duplicate retry errors (#44124)
+- b94ba27f00 [packages/app, packages/session-ui] feat(app): fade the background move hint (#44109)
+- 992446e85d [packages/app] feat(app): add copy session ID command (#44125)
+- e4924ebf64 [packages/app] feat(app): add copy project ID command (#44126)
+- 93e1f383dd [packages/session-ui] fix(app): allow selecting diff text (#44140)
+- 75efc9d833 [packages/tui] fix(tui): seed moved worktree location (#44143)
+- ada4f1bee6 [packages/app, packages/session-ui] feat(app): merge repeated file edits (#44107)
+- 2bbaeb0d4b [bun.lock, package.json, packages/app, packages/session-ui, patches] fix(app): simplify timeline anchoring (#44147)
+- 320da4256d [packages/app] fix(app): preserve home during server switch (#44178)
+- 784042202e [nix] chore: update nix node_modules hashes
+- 2ae3b82c24 [packages/app, packages/session-ui] feat(app): add bottom terminal panel (#44175)
+- a7106ae023 [packages/app] fix(app): clear terminal line with command delete (#44183)
+- d9c9c50809 [packages/app] fix(app): pin background hint to timeline spacer (#44187)
+- beb6216343 [packages/app, packages/ui/src/context] fix(ui): constrain focus trap to top dialog (#44188)
+- d0d0ada4a9 [bun.lock, packages/app, packages/cli] feat(app): cache mobile web startup assets (#44205)
+- d35f81ef92 [nix] chore: update nix node_modules hashes
+- bdec7a4f87 [packages/app] fix(app): lighten background move hint (#44217)
+- 1f60ad6e2f [packages/www] feat(www): use OpenTUI Mono font for docs
+- a859d48b08 [packages/www] fix(www): use OpenCode favicon instead of blume placeholder
+- f282a22d98 [packages/www] feat(www): bold doc headings and header nav links
+- c3f21fb5fb [packages/ai] fix(ai): normalize Responses file inputs (#44234)
+- 95235df4c8 [packages/ai] refactor(ai): accept nullable response phases (#44235)
+- b190b778d4 [packages/client, packages/tui] fix(tui): avoid premature environment sync (#44270)
+- 55f490b898 [packages/tui] fix(tui): flatten autocomplete descriptions (#44261)
+- 917051a881 [.github, bun.lock, packages/core/src/plugin, packages/www] feat(www): rebuild site with Astro (#44274)
+- 9a716609c6 [packages/www] fix(www): redirect root to docs (#44276)
+- da850f18da [nix] chore: update nix node_modules hashes
+- 4fee1bcf3c [packages/tui] fix(tui): preserve rollback-compatible tab state (#44277)
+- 282b644cde [packages/core/src/location-activity.ts, packages/core/src/location-services.ts, packages/core/test/location-layer.test.ts, packages/server] fix(core): expire locations from session activity (#44275)
+- 54e2eef182 [.github] ci: use bun 1.4.0 instead of canary for publish builds
+- 358a53cb1f [packages/core/src/models-dev.ts, packages/core/test/models.test.ts] fix(core): skip models.dev refresh event when the catalog is unchanged (#44282)
+- 92658e4389 [packages/ai] fix(ai): preserve raw provider error payload on responses streams (#44271)
+- 1ce7e90d3e [packages/app] fix(app): register service worker after load (#44294)
+- e9d58abd99 [packages/app] test(app): stabilize file expansion anchor (#44293)
+- a82318019f [packages/app] fix(app): skip service worker in development (#44302)
+- ad59ccc2e2 [packages/app, packages/session-ui, packages/ui, packages/ui/src/data-display, packages/ui/src/forms, packages/ui/src/navigation, packages/ui/src/styles] fix(ui): standardize safe text metrics (#44106)
+- b7167aaab0 [packages/app] feat(app): add project icon setting (#44323)
+- b8fb894ec7 [packages/cli, packages/server] fix(server): compress responses with correct content types (#44321)
+- d144c81d17 [packages/app] fix(app): preserve session shell while loading (#44315)
+- 6ba707d305 [packages/app] fix(app): synchronize composer model controls (#44316)
+- 0fda7d1b33 [packages/session-ui] fix(session-ui): reduce tool error spacing (#44318)
+- 7a72e51710 [packages/app] fix(app): reuse global model state (#44319)
+- b9ca77c5ff [packages/app] fix(app): suspend composer until restored (#44320)
+- 79d5359d11 [packages/app] fix(app): align background hint spacing (#44329)
+- 9692bcbc21 [packages/session-ui] fix(session-ui): align status tool typography (#44330)
+- 6cd3da1d4c [packages/app, packages/client, packages/session-ui, patches] fix(app): preserve scroll across history prepends (#44317)
+- 853d3534e5 [.github, packages/cli] cli: share app archive across Node builds (#44331)
+- 7420903859 [nix] chore: update nix node_modules hashes
+- 1e3d3fcaca [packages/app, packages/session-ui] fix(app): complete leading paginated turns (#44322)
+- 27a53969d6 [packages/app, packages/session-ui] fix(app): stabilize initial timeline rendering (#44333)
+- 68e3888bc3 [packages/app] fix(app): preserve session header while loading (#44346)
+- 17a445de3e [bun.lock, package.json, packages/plugin] tui: update OpenTUI to 0.5.7 (#44345)
+- 3fd93b659b [nix] chore: update nix node_modules hashes
+- 0a5349c51c [packages/app, packages/session-ui] fix(session-ui): restore compaction summaries (#44311)
+- 708e4d8867 [packages/app] fix(app): refine mobile error page (#44353)
+- 1cf61593b5 [.github] ci: fix node build (#44349)
+- 750f3384ff [packages/app] fix(app): defer service worker takeover (#44374)
+- e765349865 [bun.lock, packages/session-ui] feat(session-ui): render streaming markdown with Solid (#44354)
+- 8cbfac3184 [packages/app, packages/desktop] fix(desktop): smooth startup hydration (#44377)
+- 3b5b5aee0c [nix] chore: update nix node_modules hashes
+- d7c3a95368 [bun.lock, packages/app, packages/session-ui, packages/ui/src/styles] feat(app): refine expanded shell output (#44368)
+- 2c99b549db [packages/app] fix(app): redesign model selection dialog (#44383)
+- 62e3b6ad78 [nix] chore: update nix node_modules hashes
+- de11122c96 [packages/app] feat(app): search sessions by ID (#44387)
+- 1def4aa35a [packages/session-ui] fix(app): avoid replaying streamed markdown fade (#44396)
+- 4c786f0ff8 [packages/app] fix(app): preserve subagent tab lineage (#44404)
+- fb9c9a2cbd [packages/app] fix(desktop): restore session completion alerts (#44412)
+- dd780ca882 [packages/app] fix(app): hand off optimistic attachments (#44411)
+- da4ab56801 [packages/session-ui] fix(session-ui): hide empty file diffs (#44425)
+- 8e71c8425f [packages/app] fix(app): hide empty terminal cursor (#44435)
+- ad7d515d50 [packages/session-ui] fix(session-ui): avoid replaying thinking summary animation (#44440)
+- 89451c3e32 [packages/app] fix(app): navigate parent with escape (#44441)
+- 697e3e13cc [packages/app, packages/session-ui] fix(app): simplify session max width (#44468)
+- e012a57d1d [packages/ai] fix(ai): harden Gemini tool call id handling on Vertex and duplicate streams (#44454)
+- be6abc02b5 [packages/app] fix(app): preserve session panes across navigation (#44477)
+- 67e99993f5 [packages/ai] fix(ai): align Responses compatibility (#44482)
+- c7c22b9d7e [packages/app] fix(app): stabilize pane transitions (#44484)
+- ccd2135e7a [packages/ai] fix(ai): tolerate explicit nulls in Gemini stream payloads (#44490)
+- c7f2f367e3 [packages/ai, packages/core/src/github-copilot] refactor(ai): remove deprecated local shell (#44497)
+- b22c182406 [packages/ai] fix(ai): preserve inline file data URLs (#44499)
+- 0d24ebdbbe [packages/tui] tui: preserve selection after copy (#44496)
+- 6020f36862 [packages/ai] fix(ai): handle anthropic error events and ping frames (#44500)
+- 049f0b0c3b [packages/ai] fix(ai): handle additional usage locations and tool history for OpenAI Chat (#44502)
+- 890735c1d7 [packages/core/src/tool.ts, packages/core/test/plugin.test.ts, packages/plugin] feat(plugin): expose tool input schema (#44510)
+- 2e67cee75b [.changeset, packages/client, packages/plugin, packages/tui] fix(tui): recover from terminal forms (#44516)
+- b1a0ef91bb [packages/core/src/session, packages/core/test/session-runner.test.ts] refactor(core): use FiberMap for title generation (#44519)
+- 771c0f5850 [packages/core/src/mcp] fix(core): avoid stale MCP OAuth snapshots destroying rotated credentials (#44527)
+- 9e50d76416 [packages/core/script/migration.ts] fix(codegen): write prettier-stable schema snapshot (#43985)
+- e0cdf1ed09 [packages/tui] fix(tui): restore global prompt history (#44416)
+- 59d0d64a6b [bun.lock, package.json, packages/client, packages/core/src/session, packages/core/test/session-run-coordinator.test.ts, packages/core/test/tool-schema.test.ts, packages/desktop, packages/http-recorder] chore: upgrade Effect to rc.111 (#44518)
+- 481125f617 [nix] chore: update nix node_modules hashes
+- d80b0a1e7e [packages/app, packages/desktop] fix(desktop): reconnect to elected service (#44369)
+- 7da10aa65d [packages/ai] fix(ai): retry detail-free response errors (#44537)
+- 64c0411edb [packages/session-ui] fix(session-ui): align tool error card with figma (#44543)
+- e867a21ea5 [bun.lock, packages/core, packages/core/src/database, packages/core/src/filesystem, packages/core/src/plugin, packages/core/src/workspace.ts, packages/core/src/workspace, packages/core/test/filesystem, packages/core/test/plugin, packages/core/test/workspace.test.ts, packages/sdk] feat(core): decouple workspace identity from provisioning (#44526)
+- 6f238feeff [nix] chore: update nix node_modules hashes
+- f9bc948912 [packages/core/src/location-services.ts, packages/core/test/location-layer.test.ts] fix(core): skip local liveness check for workspace locations (#44560)
+- d3e5d6d268 [bun.lock, packages/app, packages/session-ui, packages/ui/src/components, packages/ui/src/i18n] feat(desktop): add model change notices (#43288)
+- ddaf9ff433 [nix] chore: update nix node_modules hashes
+- 8887c2ffa9 [packages/core/src/filesystem.ts, packages/core/test/location-filesystem.test.ts, packages/core/test/location-layer.test.ts] fix(core): skip host realpath canonicalization for workspace locations (#44564)
+- c505c91438 [.github, packages/codemode] fix(codemode): package conditional transpilers (#44565)
+- c6f4fa0d1f [packages/core/src/filesystem, packages/core/test/filesystem] fix(core): never build fff index for workspace locations (#44563)
+- 9f9184b002 [packages/ai] fix(ai): preserve OpenAI tool schemas (#44546)
+- 89281dcd01 [packages/ai] fix(ai): preserve display on enabled thinking (#44544)
+- d4935360c5 [packages/ai] fix(ai): keep stateless hosted tool results and tolerate WS keepalives (#44488)
+- 6d57667168 [packages/ai] fix(ai): clamp prompt_cache_key to 64 chars for all chat protocols (#44571)
+- 378a7b7be1 [packages/cli] fix: stream Bun runtime downloads to disk to avoid Bun.write GC hang (#44572)
+- 971681c567 [packages/core/src/image] fix(image): degrade photon resizer load failure to typed error on workerd (#43894)
+- 1593479454 [bun.lock, package.json, packages/console, packages/core/src/database, packages/stats, patches] chore(core): upgrade drizzle orm to rc5 (#44573)
+- 73974dc668 [nix] chore: update nix node_modules hashes
+- dbc178c3cc [packages/cli] fix: add DOM.AsyncIterable lib so ReadableStream iteration typechecks (#44580)
+- 4876f416cc [packages/ai] fix(ai): fail loudly on missing anthropic tool_use id (#44569)
+- 3f807d8836 [bun.lock, packages/app] feat(desktop): add home session actions (#43245)
+- 89a51a088a [packages/ai] fix(ai): ignore orphan response deltas (#44575)
+- 1ea4584f67 [nix] chore: update nix node_modules hashes
+- 89026373bb [packages/desktop] fix(desktop): ignore late draft flushes (#44584)
+- 1dee7e05b5 [packages/ai] fix(ai): support disable_parallel_tool_use and send beta query (#44583)
+- 8b65bd53bf [packages/ai] fix(ai): drop invalid item ids when replaying responses history (#44587)
+- 76027fe3da [packages/ai] fix(ai): expand anthropic media lowering to match SDK (#44593)
+- 299e314a28 [packages/ai] fix(ai): passthrough anthropic top-level body fields (#44604)
+- 3eb07e38ae [packages/app] fix(app): use a deletable cursor for draft blob cleanup (#44594)
+- 1c03f08512 [packages/app, packages/desktop] fix(desktop): copy IDs through native clipboard (#44599)
+- b23e4c3118 [packages/app] fix(app): cap workspace settings list height (#44603)
+- d8f59d312b [packages/app] feat(desktop): hide local server from projects (#44598)
+- 7102c487c9 [packages/app] fix(app): sync project list between windows (#44600)
+- 297f5298cc [packages/app] fix(app): deduplicate notification sounds across tabs (#44612)
+- e63aba48bc [packages/ai] fix(ai): reconcile reasoning finals that arrive without deltas (#44595)
+- 6704f34cad [packages/app] fix(app): handle Windows menu accelerators (#44607)
+- e282066cf8 [packages/app, packages/session-ui] fix(app): place thinking above queued prompts (#44616)
+- 46d1f1fed1 [packages/app, packages/storybook] refactor(app): make auto-accept permissions an app-level setting (#44608)
+- 5cd40ad66f [packages/app] fix(app): remember submitted workspace choice (#44620)
+- 0a410e404b [packages/session-ui] fix(session-ui): show tool errors inline (#44632)
+- 279062d3c9 [packages/session-ui] feat(app): align execute tool with shell treatment (#44642)
+- 3dd84d629d [packages/session-ui] fix(session-ui): preserve timeline message order (#44652)
+- 97daae9b77 [packages/session-ui] feat(app): align context search rows with figma (#44654)
+- 3b8949b1ee [packages/tui] fix(tui): load paginated session history (#44656)
+- 2e1d7c84ab [packages/cli, packages/client, packages/core/src/session, packages/core/test/session-stats.test.ts, packages/protocol, packages/schema, packages/server, packages/www] feat(cli): add shareable stats command (#43653)
+- ea85118516 [packages/tui] tui: preserve transcript window while scrolling (#44679)
+- 11e2bde399 [packages/cli, packages/client, packages/core/src/session, packages/core/test/session-stats.test.ts, packages/protocol, packages/schema, packages/server, packages/www] fix(stats): correct aggregation boundaries (#44682)
+- 0a60910208 [packages/cli] fix(cli): preserve stats server errors (#44685)
+- 156cb7dd10 [packages/merman] feat(tui): render Mermaid Gantt diagrams (#44534)
+- 40380ad9b5 [bun.lock, package.json, packages/plugin] tui: update OpenTUI to 0.5.8 (#44698)
+- 793ea52fa7 [.github, packages/core/script/build.ts, packages/core/src/models-dev.ts, packages/core/src/session, packages/sdk, packages/util] fix(core): make packed SDK boot on workerd (#44703)
+- 84275c6e9d [packages/cli, packages/util] fix(cli): restore print-logs flag for `--standalone` runs (#44112)
+- 7b47589225 [packages/core/src/session, packages/core/test/session-stats.test.ts] refactor(core): optimize stats tool summary (#44690)
+- 50a8539e4b [nix] chore: update nix node_modules hashes
+- 23c3a1461c [packages/merman, packages/tui] fix(merman): harden responsive diagram layouts (#44714)
+- aa8c1f6dac [packages/tui] fix(tui): scope MCP dialog to location
+- e2a7600a2a [packages/tui] tui: preserve close target after tab removal (#44720)
+- 3e82b1a9fd [packages/tui] fix(tui): provide location context in MCP tests (#44734)
+- f4cb9d06c8 [packages/tui] fix(tui): keep remotely closed tabs closed (#44715)
+- 6a687398eb [packages/ai, packages/core/test/fixtures] feat(ai): gate Chat Completions body fields by provider (#44710)
+- 0164c1c8bc [packages/ai] fix(ai): remove obsolete reasoning summary aliases (#44733)
+- 43d4968356 [packages/app] fix(app): focus terminal after opening panel (#44737)
+- 4780248e84 [packages/ai] fix(ai): require thinking signature with provider-aware fallback (#44713)
+- 5d9b53b2c7 [packages/ai] fix(ai): honor Responses parallel tool control (#44744)
+- 575bbd6ea1 [packages/www] fix(www): update docs section navigation (#44753)
+- 563943c52e [packages/www] feat(www): restore native API reference
+- c19186ee54 [packages/plugin, packages/sdk, packages/www] feat(sdk): add Promise-first embedded host (#44746)
+- c936acd3fe [nix] chore: update nix node_modules hashes
+- de388dede4 [packages/app, packages/cli, packages/client, packages/core/src/command.ts, packages/core/src/config, packages/core/src/mcp, packages/core/src/plugin, packages/core/src/session.ts, packages/core/test/command.test.ts, packages/core/test/config, packages/core/test/plugin, packages/plugin, packages/protocol, packages/schema, packages/server, packages/tui] feat(command): execute plugin callbacks
+- 71f81dc0fe [packages/tui] fix(tui): simplify subagent continuation rows (#44763)
+- 162c3fcebd [packages/app] fix(app): hide revert for child sessions (#44774)
+- 2f740cec5d [packages/tui] fix(tui): highlight shell script files (#44772)
+- d8ce27fa29 [packages/function, turbo.json] fix(github): support immutable OIDC subjects (#44778)
+- a02b0a4729 [packages/client, packages/core/src/workspace.ts, packages/core/test/workspace.test.ts, packages/protocol, packages/schema, packages/sdk, packages/server] fix(core): make workspace destroy idempotent (#44769)
+- 7f5ea1889c [packages/core/test/config] test(core): provide command render services
+- 34bd7c220c [packages/app, packages/cli, packages/client, packages/core/src/plugin, packages/core/src/session.ts, packages/core/src/session, packages/core/test/plugin, packages/core/test/session-execution.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-run-coordinator.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-subagent.test.ts, packages/protocol, packages/server, packages/tui] feat(session): report interrupt result (#44766)
+- c1763e2b64 [packages/client, packages/protocol, packages/server, packages/www] fix(server): make text generation locationless (#44773)
+- 50c5218bca [packages/core/src/plugin, packages/server] fix(core): clarify integration auth errors (#44786)
+- 8be467de8d [packages/core/src/plugin, packages/core/test/config] fix(core): respect disabled Plan agent config (#44761)
+- 42d160f4a0 [packages/cli, packages/tui] test: stabilize asynchronous integration checks (#44787)
+- 22c63833d2 [packages/client, packages/core/src/workspace.ts, packages/core/test/workspace.test.ts, packages/protocol, packages/sdk, packages/server] feat(workspace): support caller-supplied IDs (#44771)
+- 0cdd711abf [packages/core/src/plugin, packages/www] docs: expand plugin guides
+- e11b3d08b6 [packages/core/src/plugin] docs: clarify plugin skill guidance
+- eda6d774bf [packages/ai] fix(ai): ignore unknown Gemini response parts (#44745)
+- ce16b7cc12 [packages/core/src/plugin, packages/www] docs: simplify plugin guide routes
+- 127113188e [packages/web/src/content] docs(github): correct action token configuration (#44795)
+- 778d5b675c [packages/www] docs: split client and sdk guides
+- e28471e0ad [packages/www] docs: rename build sidebar intro
+- 244ec6c8f7 [packages/core/src/tool, packages/core/test/tool-schema.test.ts] fix(core): validate JSON schema tool input (#44789)
+- a9042a58ab [packages/ai] feat(ai): add partial JSON parser (#44792)
+- 2e4b2c82f4 [packages/tui, packages/www] fix(tui): resolve plugin SDK imports at runtime (#44822)
+- 9fc85ae9db [packages/cli, packages/www] fix(cli): honor notification-only automatic updates (#44820)
+- 19d0009891 [packages/console] docs: clarify prompt data handling (#44854)
+- f03418afde [packages/www] docs: improve build and SDK customization guides
+- 9a90b94921 [packages/www] docs(sdk): align Effect and Cloudflare customization guides
+- 63c23c98de [packages/ai] feat(ai): parse partial tool input (#44830)
+- a02a2f5799 [packages/app, packages/ui/src/i18n] feat(app): queue and steer follow-up prompts (#44683)
+- 6bb5200464 [packages/ai] fix(ai): enforce chat finish reasons (#44743)
+- d78c13fce3 [packages/core/src/tool, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/tool-question.test.ts, packages/core/test/tool-schema.test.ts, packages/core/test/tool-search.test.ts] refactor(core): normalize tool input errors (#44818)
+- d0252f7179 [packages/ai] fix(ai): handle completed response function arguments (#44862)
+- 895eff09b0 [packages/ai] fix(ai): classify missing chat finish reasons as incomplete (#44864)
+- d6deb62379 [packages/app, packages/ui/src/styles] fix(app): default typography to Inter and IBM Plex Mono (#44876)
+- 1144ef6c5d [packages/www] feat(www): serve cached markdown documentation
+- 1b30098e8d [packages/ai, packages/core/test/model-resolver.test.ts] fix(ai): default responses to encrypted reasoning (#44863)
+- f2ff93a5b7 [packages/www] fix(www): use official favicon
+- 442bc92a21 [packages/www] feat(docs): add markdown copy button to page headings
+- f327adb0f2 [packages/core/src/tool, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/tool-schema.test.ts, packages/schema] fix(core): support Zod tool schemas (#44861)
+- e9b5e055f5 [packages/www] fix(docs): refine header links and copy feedback
+- 683f5fdee0 [packages/tui] fix(tui): inherit model for new sessions (#44879)
+- 28c1806950 [packages/core/src/plugin, packages/core/test/config, packages/core/test/github-copilot, packages/core/test/models.test.ts, packages/core/test/plugin] fix(core): route Copilot fallback models through AI SDK (#44882)
+- 0a78b11222 [packages/ai] fix(ai): ignore unknown Anthropic stream variants (#44817)
+- d4cdb99e4c [packages/desktop] fix(desktop): suppress resize observer loop warnings (#44883)
+- 42867d3bbc [packages/ai] fix(ai): recover incomplete streamed tool arguments (#44875)
+- e589969398 [packages/core/src/config, packages/core/src/pty.ts, packages/core/src/shell.ts, packages/core/src/shell, packages/core/src/tool, packages/core/test/config, packages/core/test/shell.test.ts, packages/core/test/tool-shell.test.ts] fix(core): resolve compatible shells for commands (#44485)
+- 5ad0f0dc5a [packages/app, packages/session-ui] fix(app): prevent timeline row identity collisions (#44878)
+- 1f7ae3f638 [packages/app] fix(app): animate composer delivery controls (#44886)
+- ce8a489aaa [packages/ai] fix(ai): respect prompt cache opt-out (#44891)
+- 8c126e98da [.github] fix(ci): check PR body for linked issue on non-default branches (#43964)
+- 190f189fbe [packages/app] fix(app): route notification clicks through tabs (#44897)
+- 691cb456ae [bun.lock, bunfig.toml, packages/desktop] feat(desktop): add development component picker (#44922)
+- bcd1769521 [nix] chore: update nix node_modules hashes
+- 5963a30621 [packages/ui/src/context] fix(ui): restore stacked dialog focus (#44941)
+- e3aa13c7d0 [packages/app] fix(app): show pending states when switching servers (#44947)
+- 5c25c38961 [packages/tui] fix(tui): paste into active custom answers (#44849)
+- 4fb8a6038a [packages/app, packages/client, packages/core/src/git.ts, packages/core/src/vcs.ts, packages/core/src/vcs, packages/core/src/worktree.ts, packages/core/src/worktree, packages/core/test/vcs.test.ts, packages/core/test/worktree.test.ts, packages/protocol, packages/schema, packages/server] feat(app): select worktree base branch (#44906)
+- 7601ab9fc4 [packages/app] fix(desktop): hide sessions during removal (#44913)
+- 9c1787617c [packages/client, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/vcs.ts, packages/core/src/vcs, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/core/test/vcs.test.ts, packages/plugin, packages/server, packages/www] feat(plugin): add vcs provider api (#44979)
+- ff59a22ff4 [packages/ai] fix(ai): reconcile completed response output items (#44893)
+- db5a10dad1 [packages/app] fix(app): hide close buttons on cramped inactive tabs (#44995)
+- ed582d1bdb [packages/app, packages/client, packages/core/src/project.ts, packages/core/src/project, packages/core/src/worktree.ts, packages/core/test/effect, packages/core/test/lib, packages/core/test/location.test.ts, packages/core/test/project.test.ts, packages/core/test/worktree.test.ts, packages/protocol, packages/schema, packages/server] feat(core): run worktree setup scripts (#44455)
+- 3deac93d27 [packages/ai] fix(ai): sanitize outbound provider request surrogates (#44880)
+- 0ab2d783e8 [packages/core/src/plugin, packages/core/src/vcs.ts, packages/core/src/vcs, packages/core/test/vcs.test.ts] refactor(core): move git vcs into internal plugin (#44992)
+- b71291c05a [packages/core/src/plugin, packages/core/src/vcs.ts, packages/core/src/vcs, packages/core/test/vcs-hg.test.ts] refactor(core): move mercurial vcs into internal plugin (#44993)
+- cce86ac166 [packages/ai] fix(ai): fail unknown Bedrock stream exceptions (#45004)
+- 004b647311 [packages/cli, packages/client, packages/core/src/persistent-pty.ts, packages/core/src/persistent-pty, packages/core/test/persistent-pty-daemon.test.ts, packages/protocol, packages/schema, packages/server] feat(server): add persistent PTY daemon API (#44969)
+- 7f51da509b [packages/ai] fix(ai): preserve terminal reasoning metadata (#44997)
+- d177f29dba [packages/tui] fix(tui): keep autocomplete selection visible (#44983)
+- e5308a988f [bun.lock, packages/core/src/worktree.ts, packages/merman, packages/plugin, packages/server, packages/tui] feat(merman): refine diagram styling (#44815)
+- 578f8d637a [] fix(server): pin shared Effect platform runtime (#45016)
+- 96cff7bb7a [packages/app] fix(app): clarify context usage label (#45012)
+- fbb3730fdd [nix] chore: update nix node_modules hashes
+- c46b76b58e [packages/ai] fix(ai): route response events by output index (#45013)
+- 938a82226a [packages/tui] test(tui): synchronize tab close frame before pointer moves (#45017)
+- 6c32ba81e2 [.github] test: skip unaffected app e2e tests (#45030)
+- c94a4913c0 [packages/ai] fix(ai): preserve unencrypted reasoning history (#45032)
+- 0fd719067d [packages/client, packages/core/src/permission.ts, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/tool, packages/core/test/lib, packages/core/test/permission.test.ts, packages/core/test/plugin, packages/core/test/tool-shell.test.ts, packages/plugin, packages/schema, packages/www] feat(plugin): add permission review hooks (#45003)
+- 88242e21a8 [packages/tui] fix(tui): stop completed exploration groups from spinning
+- 1f45962c84 [packages/core/src/session, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts, packages/server, packages/tui] fix(tui): support inline session rename and title regeneration (#45023)
+- bc1f67e518 [packages/cli, packages/core, packages/core/src/persistent-pty, packages/www] feat(cli): embed persistent PTY service binaries (#44970)
+- 1ca82d154c [packages/ai] fix(ai): omit empty chat assistant messages (#45046)
+- a5829431b0 [packages/ai, packages/client, packages/core/test/model-resolver.test.ts, packages/schema] fix(ai): bridge tool results for mistral family models (#45051)
+- e1afdaac52 [packages/core/src/session, packages/core/test/session-model-transport.test.ts] fix(core): fall back on oversized websocket requests v2 (#43100)
+- 82947af8e3 [packages/core/src/aisdk.ts, packages/core/test/aisdk.test.ts] fix(core): ignore SSE comment heartbeats (#43626)
+- 263a442a6c [packages/ai] fix(ai): normalize chat tool call ids (#45056)
+- d562f6df1e [packages/core/src/database, packages/core/test/database-migration.test.ts] fix(core): recover legacy database migration history (#45062)
+- 543a4f4912 [.github] fix(ci): preserve required e2e matrix checks (#45065)
+- db7837814c [packages/client, packages/core/src/project.ts, packages/core/test/project.test.ts, packages/schema] fix(project): refresh renamed projects across live clients (#45043)
+- d4803ffe38 [packages/cli, packages/tui, packages/www] feat(cli): publish generated CLI configuration schema (#45070)
+- d2100a51f1 [packages/cli] feat(cli): restore debug paths command (#45063)
+- eb1ac54d73 [packages/client, packages/core/src/bus.ts, packages/core/src/config.ts, packages/core/src/credential.ts, packages/core/src/integration.ts, packages/core/src/mcp, packages/core/src/plugin, packages/core/test/bus.test.ts, packages/core/test/config, packages/core/test/credential.test.ts, packages/core/test/fixture, packages/core/test/generate.test.ts, packages/core/test/integration.test.ts, packages/core/test/mcp.test.ts, packages/core/test/model-resolver.test.ts, packages/core/test/plugin, packages/protocol, packages/schema, packages/server, packages/tui] feat(tui): support multiple integration accounts (#45072)
+- 0ae3aac317 [packages/ai] fix(ai): replay responses history independently of storage (#45050)
+- 66a790c624 [packages/www] chore(www): regenerate documentation artifacts (#45077)
+- 61dd296161 [packages/www] fix(www): generate CLI schema without tracking it (#45080)
+- b79cad5ec8 [packages/core/src/session, packages/core/test/session-runner.test.ts, packages/www, specs] fix(core): respect automatic compaction opt-out on overflow (#45036)
+- c2a3b813a0 [packages/ai, packages/client, packages/core/test/model-resolver.test.ts, packages/schema] fix(ai): require reasoning fields for deepseek assistants (#45075)
+- 2e7f06a155 [packages/ai] fix(ai): preserve Vertex Anthropic tool continuations (#43498)
+- 0a84625618 [packages/ai] fix(ai): accept responses calls without item ids (#45081)
+- 24605d048f [packages/ai, packages/core/test/aisdk-native.test.ts, packages/core/test/model-resolver.test.ts] fix(ai): send responses instructions at top level (#45085)
+- 3726e3254d [packages/ai] fix(ai): enable Vertex Anthropic prompt caching (#45088)
+- 7f9e5e91ab [packages/tui] feat(tui): add experimental session preview tabs (#45021)
+- 297a3328c6 [packages/client, packages/core/src/integration.ts, packages/core/src/mcp, packages/core/test/integration.test.ts, packages/schema, packages/tui] feat(tui): group MCP integrations in connection dialog
+- 7f2b052db6 [packages/core/src/database, packages/core/test/database-drizzle.test.ts] refactor(core): remove unused Drizzle migration framework
+- f08c234890 [packages/ai] fix(ai): ignore SSE retry directives without ending streams (#45093)
+- 6cd1ffac50 [bun.lock] chore: synchronize bun lockfile
+- 6c97be6974 [bun.lock, packages/ai, packages/core, packages/core/src/aisdk-native.ts, packages/core/src/model-resolver.ts, packages/core/src/plugin, packages/core/src/provider.ts, packages/core/test/aisdk-native.test.ts, packages/core/test/model-resolver.test.ts, packages/core/test/plugin, packages/core/test/provider.test.ts] feat(ai): add native Cerebras and Together AI providers (#45098)
+- 690ad8e8bd [packages/core, packages/core/script/test.ts, packages/core/test/fixture, packages/core/test/preload.test.ts, packages/core/test/session-remove.test.ts] test(core): isolate host configuration and credentials (#44845)
+- 73d7b1d4c1 [packages/merman, packages/tui] fix(tui): preserve interrupted Mermaid diagrams (#45102)
+- 27e0de6b23 [nix] chore: update nix node_modules hashes
+- c4dcf72e13 [packages/tui] fix(tui): detect clipped transcript bottom (#45100)
+- 5a54eb4afc [packages/app, packages/session-ui] fix(app): stream running shell tool output (#45106)
+- 03fb5c6c67 [packages/app] fix(app): prevent clipped virtual timeline rows (#45115)
+- 97ba700fac [packages/tui] fix(tui): preserve prompt metadata visibility across sessions (#45116)
+- ab4621e437 [bun.lock, packages/sdk, packages/util] fix(sdk): keep packaged Effect runtime coherent (#45122)
+- e211b6f30e [.github, turbo.json] test: run only affected unit suites (#45034)
+- 4b71ae6a0d [packages/cli, packages/core/test/npm.test.ts, packages/util, packages/www] feat(core): support git plugin packages (#45110)
+- 3c73ce1dc7 [packages/client, packages/core/src/session.ts, packages/core/src/session, packages/core/src/skill.ts, packages/core/src/skill, packages/core/src/tool, packages/core/test/session-compaction.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-runner-message.test.ts, packages/core/test/session-skill.test.ts, packages/core/test/skill.test.ts, packages/core/test/skill, packages/core/test/tool-skill.test.ts, packages/protocol, packages/schema, packages/tui, packages/www] fix(core): materialize mentioned skills on prompts (#44840)
+- 64e930628d [.github] fix(ci): compare affected packages against actual PR base (#45130)
+- d53456da3b [nix] chore: update nix node_modules hashes
+- 695c043e6b [packages/core/src/plugin, packages/core/test/npm.test.ts, packages/util, packages/www] feat(core): refresh unpinned plugins on startup (#45118)
+- cb863b8ea5 [packages/tui] fix(tui): dismiss the active interaction with ctrl-c (#45111)
+- 185c3e5136 [packages/app] fix(app): show project logos throughout settings (#45134)
+- f3c390b89e [bun.lock, packages/ai, packages/core, packages/core/src/aisdk-native.ts, packages/core/src/model-resolver.ts, packages/core/src/plugin, packages/core/src/provider.ts, packages/core/test/aisdk-native.test.ts, packages/core/test/model-resolver.test.ts, packages/core/test/plugin, packages/core/test/provider.test.ts] feat(ai): add native DeepInfra provider (#45108)
+- 5add6a8e19 [packages/ai] fix(ai): preserve provider-defined responses item ids (#45094)
+- 9361117504 [packages/client, packages/core/src/project.ts, packages/core/src/session, packages/core/test/project.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-generate.test.ts, packages/schema] feat(core): add directory projects (#45107)
+- 474c3588c1 [packages/tui] fix(tui): use unicode ellipses in interface text (#45143)
+- a78d3c5438 [packages/ai] fix(ai): recover Anthropic request_too_large as overflow (#45144)
+- d01ac2069a [nix] chore: update nix node_modules hashes
+- 9a91e21a76 [packages/app] fix(app): preserve workspace choices across draft tabs (#45149)
+- 437df1164c [packages/core/src/plugin, packages/core/test/plugin, packages/plugin] feat(plugin): expose session move
+- b0bd0bc394 [packages/app] fix(app): align project settings server sections (#45163)
+- d12dbd12a9 [packages/app] fix(app): prevent duplicate rows when editing queued prompts (#45169)l
+- 667722897e [packages/app] fix(app): identify session worktrees from project inventory (#45153)
+- 7e27e81bc7 [packages/app] fix(app): preserve timeline measurements when moving sessions (#45145)
+- ea582fc133 [packages/app, packages/session-ui, packages/ui/src/i18n, packages/ui/src/icons] feat(app): stack collapsed tool calls (#45176)
+- 16d731bd67 [packages/app] feat(app): render settings as a fullscreen surface (#45190)
+- 0f7a76eff0 [packages/ai] fix(ai): keep bedrock mantle responses on http (#45197)
+- 4eaf533cd0 [packages/client, packages/core/src/config, packages/core/src/location-mutation.ts, packages/core/src/location.ts, packages/core/src/plugin, packages/core/src/project.ts, packages/core/src/project, packages/core/src/vcs.ts, packages/core/test/project.test.ts, packages/plugin, packages/schema] feat(plugin): add declarative vcs repository markers (#45192)
+- 24ac05868c [packages/app, packages/desktop] fix(desktop): align and theme Windows caption controls (#45208)
+- 5d7c2ccfc0 [packages/app] feat(app): add experimental vertical session tabs (#45210)
+- ab95695b24 [packages/app, packages/session-ui, packages/ui/src/i18n] fix(app): combine loaded skill and instruction file entries (#45217)
+- d572a5756c [bun.lock, bunfig.toml, packages/cli, packages/core, packages/core/script/build.ts, packages/core/src/persistent-pty] feat(cli): embed persistent PTY binaries from npm packages (#45248)
+- afc26c72c0 [nix] chore: update nix node_modules hashes
+- 874538d702 [packages/desktop] fix(desktop): restrict macOS app entitlements (#45258)
+- e82aa92e64 [packages/client, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-message-update.test.ts, packages/protocol, packages/schema, packages/server] fix(session): support assistant message content updates (#45015)
+- 91028a690b [packages/client, packages/core/src/session, packages/core/test/session-projector.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/schema, packages/tui] feat(tui): show LLM token throughput
+- 9cca8dd6e0 [bun.lock, packages/cli, packages/client, packages/core, packages/tui] feat(tui): add persistent session terminals (#44971)
+- 21980a4448 [packages/tui] fix(tui): restore terminal settings and move pane toggle to sessions (#45271)
+- 1e864dd8c6 [nix] chore: update nix node_modules hashes
+- 6c6871fd2a [packages/app] fix(app): include files in mention search (#45281)
+- 37a6ba893e [packages/ai] chore(ai): format package with prettier (#45280)
+- 3d7ba38965 [packages/tui] feat(tui): investigate errors in a new session
+- ab2d251155 [packages/server] fix(server): unblock persistent terminal input in Bun builds (#45287)
+- cbef698861 [packages/core/src/plugin.ts, packages/core/src/state.ts, packages/core/test/plugin.test.ts, packages/core/test/state.test.ts, packages/sdk] fix(core): suppress state updates during location teardown
+- f4a9b93013 [bun.lock, packages/ai, packages/core, packages/core/src/aisdk-native.ts, packages/core/src/model-resolver.ts, packages/core/src/plugin, packages/core/src/provider.ts, packages/core/test/aisdk-native.test.ts, packages/core/test/model-resolver.test.ts, packages/core/test/plugin, packages/core/test/provider.test.ts] feat(ai): add native Groq provider with provider-specific options (#45288)
+- fedf017e25 [packages/tui] fix(tui): clarify code mode tool call rendering
+- cf98ca55c9 [packages/core/src/tool.ts, packages/core/test/session-runner-tool-registry.test.ts] fix(core): allow non-letter tool name prefixes (#45317)
+- 2602dcd0a7 [packages/core/src/session, packages/core/test/session-execution.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-step.test.ts, packages/tui] refactor(core): encapsulate physical attempt execution (#45294)
+- 962a6ca0e7 [packages/sdk] fix(sdk): identify workspace dependencies by version specifier (#45309)
+- ab6a01d135 [packages/ui/src/navigation] fix(ui): remove solid menu group label line height (#45331)
+- a841d6d046 [packages/ai] fix(ai): accept empty Responses stream IDs and null items (#45330)
+- 0772b67b7a [packages/app, packages/cli] fix(app): prevent stale service worker startup failures (#45344)
+- 018b4c40f3 [bun.lock, packages/cli, packages/core] fix(pty): upgrade opencode-pty to 0.1.10 (#45352)
+- ded8a492d1 [packages/core/src/job.ts, packages/core/src/plugin, packages/core/src/session, packages/core/src/shell.ts, packages/core/src/tool, packages/core/test/job.test.ts, packages/core/test/npm.test.ts, packages/core/test/session-execution.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-shell.test.ts, packages/tui, packages/www] fix(core): recover background jobs after restart
+- 9bd69fe847 [nix] chore: update nix node_modules hashes
+- 1aa4046f02 [bun.lock, packages/app, packages/client, packages/session-ui, packages/storybook, turbo.json] test(app): isolate component coverage with storybook (#45142)
+- 8b6a2450d5 [packages/core/src/plugin, packages/core/src/tool.ts, packages/core/src/tool, packages/core/test/mcp.test.ts, packages/core/test/plugin.test.ts, packages/core/test/session-runner-tool-registry.test.ts] fix(core): isolate invalid tool registrations (#45325)
+- 6600d59635 [nix] chore: update nix node_modules hashes
+- cf347cd5e4 [packages/core/src/session, packages/core/test/session-runner.test.ts] refactor(core): advance sessions before running steps (#45358)
+- f7913a04d2 [packages/cli] fix(cli): stop PTY daemon on explicit service restart (#45373)
+- 80653a0a1a [packages/tui] fix(tui): preserve resolved server directory (#45354)
+- 33909f48d7 [packages/core/src/database, packages/core/test/database-migration.test.ts] fix(core): label migrated credentials by auth type (#45369)
+- 94bd9f6c8b [packages/ai, packages/core/test/model-resolver.test.ts] fix(ai): isolate native provider metadata ownership (#45155)
+- 009eca8b5b [packages/core/test/tool-webfetch.test.ts] test(core): shrink webfetch stress fixtures (#45375)
+- dd4ee94682 [packages/ai] refactor(ai): remove derived HTTP request ID (#45376)
+- 6c392355dd [bun.lock, packages/latex, packages/tui, turbo.json] feat(tui): render LaTeX as Unicode math (#45339)
+- d48a5d16ff [packages/core/src/mcp, packages/core/src/plugin, packages/core/test/mcp.test.ts, packages/core/test/plugin] fix(core): avoid nested MCP code mode (#45377)
+- 9d46941e70 [nix] chore: update nix node_modules hashes
+- 74a0b2d0ad [.changeset, packages/core/src/shell, packages/core/test/permission.test.ts, packages/core/test/shell-parse-compatibility.test.ts, packages/core/test/shell-parse-parity.test.ts, packages/core/test/shell-parse-syntax.test.ts, packages/core/test/shell-parse.test.ts, packages/core/test/shell-scan, packages/core/test/tool-shell.test.ts, packages/www] feat(core): make the portable shell scanner authoritative
+- 6170221e21 [bun.lock, packages/cli, packages/core] fix(pty): upgrade opencode-pty to 0.1.11 (#45380)
+- 524e39db02 [nix] chore: update nix node_modules hashes
+- df6317d23c [packages/tui] refactor(tui): simplify terminal selection state (#45387)
+- 5b25ee8430 [packages/tui] style(tui): brighten embedded terminal palette (#45393)
+- 767115cd69 [packages/ai, packages/core/test/aisdk-native.test.ts] fix(ai): default native Mantle to Responses (#45394)
+- 954cdc7bc8 [packages/app, packages/desktop] fix(desktop): restore compact Windows titlebar spacing (#45397)
+- 5ac4156eb2 [packages/core/src/session, packages/core/test/session-runner-message.test.ts] fix(core): preserve reasoning across model switches (#45401)
+- 6b0613ac6f [packages/tui] fix(tui): restore session focus during permission prompts (#45391)
+- 3184427c03 [packages/core/src/plugin, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/plugin, packages/www] feat(plugin): expose the current location in plugin context (#45403)
+- 53d171781a [packages/app, packages/session-ui] fix(app): reduce catalog retention and status animation work (#45406)
+- b5cb5e2a55 [packages/core/src/plugin, packages/core/test/mcp.test.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/plugin, packages/www] refactor(plugin): manage MCP servers through transforms (#45408)
+- 4ac19d744a [packages/cli, packages/theme, packages/tui, packages/www] feat(tui): make session tab status explicit (#45347)
+- d68031bc0d [.changeset, packages/core/src/git.ts, packages/core/test/git.test.ts, packages/core/test/session-revert.test.ts] fix(core): preserve renamed files when undoing changes (#45383)
+- c3378f2d34 [bun.lock, packages/cli, packages/core] fix(pty): upgrade opencode-pty to 0.1.12 (#45420)
+- b20e4971db [.github, packages/app] test(app): run CI e2e against production builds (#45422)
+- 83b81b39f1 [packages/app, packages/session-ui] fix(app): remove worktree user message accent (#45250)
+- 66f326ddec [packages/cli, packages/tui, packages/www] fix(tui): restore default Kitty keyboard reporting (#45423)
+- 71706577c4 [nix] chore: update nix node_modules hashes
+- 7507f19a00 [packages/app] fix(app): prevent settings loading flicker (#45427)
+- 51065122d8 [packages/app] fix(app): keep project extensions inside settings (#45432)
+- 40cbea3c19 [packages/core/src/plugin, packages/core/src/tool.ts, packages/core/src/tool, packages/core/test/lib, packages/core/test/mcp.test.ts, packages/core/test/plugin, packages/core/test/session-runner-tool-registry.test.ts, packages/plugin, packages/www] refactor(core): use shared state for tool registry (#45414)
+- 48d4e52143 [packages/app] fix(app): keep pending steers after assistant work (#45435)
+- 2bcb67a71e [packages/core/src/tool.ts, packages/core/src/tool, packages/core/test/mcp.test.ts, packages/core/test/plugin, packages/core/test/session-runner-tool-registry.test.ts, packages/plugin, packages/www] feat(plugin): add tool updates and removal (#45436)
+- 8d7caa178b [packages/core/src/bus.ts, packages/core/test/bus-session-routing.test.ts, packages/core/test/location-layer.test.ts] fix(core): route session events to location subscribers (#45411)
+- 2ca55b479d [packages/app, packages/session-ui] fix(app): reduce tab switch rendering work (#45428)
+- 1c4f8c40a8 [packages/core/src/tool.ts, packages/core/test/plugin, packages/core/test/session-runner-tool-registry.test.ts, packages/plugin, packages/www] feat(plugin): add tool draft reads (#45443)
+- 1e7c60adce [packages/sdk, packages/server] fix(server): wait for plugins before text generation (#45447)
+- 10786cb60c [packages/core/src/session, packages/core/test/config, packages/core/test/location-layer.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-title.test.ts] refactor(core): consolidate runner capability reads (#45448)
+- 5cc81a497c [packages/app, packages/session-ui] fix(app): keep active tools in existing groups (#45462)
+- 1c66cd7832 [packages/tui] fix(tui): clarify tool grouping setting (#45470)
+- fcc6568fcb [packages/core/src/tool, packages/core/test/tool-shell.test.ts] feat(core): adjust bg shell completion msg (include output file) (#45461)
+- e2d6c4bd4a [packages/app, packages/session-ui] fix(app): merge adjacent patches inside used groups (#45477)
+- 990f7ee000 [packages/app, packages/session-ui] fix(app): keep timeline notices on one line (#45479)
+- ff5b5d00f9 [packages/app, packages/session-ui] fix(app): preserve tool disclosures when groups update (#45474)
+- e288e0fc4d [packages/core/src/session, packages/core/src/tool.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/core/test/session-runner-tool-registry.test.ts, packages/plugin] feat(plugin): allow tool call repair before lookup (#45453)
+- fa1ab5f8e1 [packages/app, packages/session-ui] fix(app): restore worktree message accent for further trial (#45486)
+- 7000607fd0 [packages/app, packages/session-ui] fix(app): stop shimmer when background shells finish (#45494)
+- 8252897a33 [.github, packages/app] fix(app): precache complete builds before serving cached HTML (#45495)
+- 26ee104829 [packages/app] fix(app): prevent renderer OOM on multiline paste (#45497)
+- 2af02d0ad7 [packages/app] fix(app): use worktree inventory for session accents (#45506)
+- 23506b5fb4 [packages/app] fix(app): scope MCP picker toggles to workspace (#45509)
+- 7036294543 [packages/app, packages/session-ui, packages/ui/src/i18n] fix(app): align thinking states and reasoning settings (#45515)
+- 53a4829672 [packages/app] fix(app): restore fullscreen settings version footer (#45419)
+- ed95fdaa27 [packages/app] fix(app): show MCP connection failures as toasts (#45522)
+- b1374978c9 [packages/app] fix(app): prevent Safari shell content from collapsing
+- 42422a1e03 [packages/app] fix(app): show sessions while worktrees are created (#45529)
+- 803ead32e7 [packages/app] feat(app): use channel-specific favicon and PWA icons (#45543)
+- 46aa25f236 [packages/core/src/session, packages/core/test/plugin-hooks.test.ts, packages/core/test/plugin, packages/core/test/session-model-request.test.ts, packages/core/test/session-runner.test.ts, packages/plugin, packages/www] feat(plugin): expose model generation options to session hooks (#45268)
+- 23f0ee53cf [packages/core/src/location-services.ts, packages/core/src/session.ts, packages/core/src/session, packages/core/test/fixture, packages/core/test/plugin-session.types.ts, packages/core/test/session-create.test.ts, packages/core/test/session-prompt-hooks.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-skill.test.ts, packages/plugin, packages/www] feat(plugin): intercept user prompts before admission (#45550)
+- 8e726dc7d8 [packages/client, packages/core/src/session, packages/protocol, packages/server] fix(core): preserve imported session parents (#45566)
+- c05d481ec6 [packages/client, packages/core/src/persistent-pty, packages/core/src/shell, packages/core/test/shell.test.ts, packages/schema, packages/server, packages/tui] fix(pty): use server shell and session cwd for terminals (#45552)
+- ef9b9fb6bf [packages/client] test(client): scope service subprocess fixtures per test (#45471)
+- b0b5bf6749 [packages/tui] feat(tui): jump to background tool starts (#45554)
+- 89cb5146d4 [packages/cli] test(cli): scope temporary directories to test lifetimes (#45467)
+- 83ff4253f5 [packages/core/test/lib, packages/core/test/session-create.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-shell.test.ts, packages/tui] test: share session message expectations (#45454)
+- df7dae3706 [packages/core/test/plugin, packages/plugin] refactor(plugin): reuse tool executor conversion (#45572)
+- 5fb3040505 [packages/core/test/skill-discovery.test.ts] test(core): scope skill discovery fixtures (#45464)
+- 5253603583 [.changeset, packages/core/src/config, packages/core/test/config] fix(core): preserve downloaded skill directory IDs (#45455)
+- c33dc8808b [.changeset, packages/core/src/model-resolver.ts, packages/core/test/model-resolver.test.ts] refactor(core): rename model package predicate (#45457)
+- 8d1d1ee982 [.changeset, packages/core/src/tool] refactor(core): align model content helper names (#45458)
+- 6dbb5f5008 [.changeset, packages/core/src/git.ts, packages/core/test/git.test.ts, packages/core/test/snapshot.test.ts] fix(core): reuse ignore checks during index refresh (#45459)
+- 2b8a3e7ee0 [bun.lock, packages/cli, packages/client, packages/core, packages/core/src/persistent-pty, packages/core/test/persistent-pty-daemon.test.ts, packages/protocol, packages/schema, packages/server] fix(pty): own daemon lifetime and hand off restarts (#45551)
+- 367cf59612 [packages/core/src/tool, packages/core/test/tool-webfetch.test.ts] refactor(core): simplify WebFetch error narrowing (#45582)
+- 2142de87dd [packages/core/test/session-model-transport.test.ts] test(core): make websocket overflow fixture deterministic (#45586)
+- 8a3e9890d2 [packages/core/src/effect] chore(core): narrow websocket platform import (#45585)
+- f1521000ec [nix] chore: update nix node_modules hashes
+- 497a24c17d [packages/ai, packages/core/src/aisdk.ts, packages/core/src/session, packages/core/test/aisdk.test.ts, packages/core/test/session-error.test.ts, packages/core/test/session-execution.test.ts, packages/core/test/session-model-transport.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts] refactor(ai): consolidate provider error diagnostics (#45381)
+- 95c3c3f962 [packages/core/src/mcp, packages/core/test/mcp.test.ts] fix(mcp): retry initial 404 without injected codemode (#45563)
+- fafcea42e6 [packages/core/src/tool] refactor(core): share patch write path (#45588)
+- d3694a5383 [packages/core/src/tool] refactor(core): share read media types (#45597)
+- a609174969 [packages/core/src/location-mutation.ts, packages/core/src/shell, packages/core/src/tool, packages/core/test/location-mutation.test.ts, packages/core/test/shell-parse.test.ts] feat(core): expand tildes in tool path resolution (#45605)
+- 4112698e72 [packages/core/src/session] refactor(core): simplify session runner control flow (#45614)
+- b738ef970d [packages/core/test/repository-cache.test.ts, packages/core/test/session-prompt-hooks.test.ts] test(core): stabilize Windows live I/O fixtures (#45595)
+- 705606face [packages/core/src/formatter] refactor(core): reuse formatter executable helper (#45615)
+- 284b222489 [packages/core/src/tool, packages/core/test/tool-read-filesystem.test.ts] refactor(core): reuse read newline locator (#45616)
+- 0c77f6ed5b [packages/core/src/permission.ts] refactor(core): remove unreachable permission branch (#45617)
+- 73b575468e [packages/server] test(server): simplify scoped endpoint fixtures (#45466)
+- 5a67fcc17e [packages/httpapi-codegen] test(httpapi-codegen): share emitted-module fixtures (#45463)
+- 52c04508a2 [packages/core/test/lib, packages/core/test/tool-websearch.test.ts, packages/core/test/websearch.test.ts] test(core): share controlled websearch test layer (#45465)
+- 1455995ac7 [.changeset, packages/core/src/config, packages/core/src/location-services.ts, packages/core/src/mcp, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/tool, packages/core/test/config, packages/core/test/fixture, packages/core/test/location-layer.test.ts, packages/core/test/mcp-instructions.test.ts, packages/core/test/mcp-oauth.test.ts, packages/core/test/mcp.test.ts, packages/core/test/plugin, packages/server] refactor(core): use word casing for MCP namespaces (#45618)
+- 60d5f83ffd [packages/ai] test(ai): reuse executor HTTP fixtures (#45468)
+- 16a0996bd4 [packages/ui/src/icons] fix(ui): replace error icon with updated svg (#45604)
+- 84a012a0e9 [packages/app, packages/session-ui] fix(app): show grouped tool counts inline (#45603)
+- 39416a0d95 [packages/ai] test(ai): align test runners with API boundaries (#45469)
+- f607ca4c72 [.changeset, packages/theme, packages/tui] fix(tui): unify attention indicators with unread accent (#45741)
+- 96d84626f8 [.changeset, packages/app, packages/core/src/project.ts, packages/core/src/project, packages/core/src/worktree.ts, packages/core/test/project.test.ts, packages/core/test/session-create.test.ts, packages/core/test/worktree.test.ts, packages/tui] fix(core): keep project labels stable across clones (#45735)
+- 8381153418 [packages/tui] fix(tui): respect selection copy modes (#45758)
+- 5d4ce14dc4 [packages/core/src/session] fix(core): skip tracing streamed LLM deltas (#45761)
+- 98e3fa9d0d [packages/core/test/session-revert.test.ts] test(core): budget real startup in session revert test (#45762)
+- 7d007670a0 [packages/core/test/lib, packages/core/test/session-instructions.test.ts, packages/core/test/session-runner.test.ts] refactor(core): simplify duplicate test layers (#45444)
+- ace4249711 [packages/core/test/session-runner.test.ts] refactor(core): name session runner test services (#45445)
+- 0440bd96be [packages/core/test/instructions, packages/core/test/session-instructions.test.ts] refactor(core): simplify Effect test setup (#45446)
+- ba85531931 [packages/core/test/session-run-coordinator.test.ts] refactor(core): remove redundant coordinator test scopes (#45451)
+- 091396742e [packages/core/test/file-mutation.test.ts, packages/core/test/fixture, packages/core/test/tool-edit.test.ts, packages/core/test/tool-patch.test.ts, packages/core/test/tool-write.test.ts] refactor(core): isolate tool test fixture state (#45452)
+- 3288a12528 [packages/ai] fix(ai): safely replay unsigned Bedrock reasoning (#45765)
+- 991a0d05b5 [packages/core/src/v1] refactor(core): remove identity schema pipes (#45624)
+- 7fe8bf5b24 [packages/core/src/config.ts] refactor(core): remove duplicate config failure (#45625)
+- 454ed81556 [packages/desktop] fix(desktop): minify production bundles (#45770)
+- 0a7baaaed5 [packages/core/src/config] refactor(core): reuse shared record guard (#45643)
+- a067c45cb6 [packages/schema] test(schema): target config color contract (#45626)
+- bfb00cbb75 [packages/core/src/github-copilot] refactor(core): remove unused chat state (#45664)
+- 569a39c4ba [packages/core/src/github-copilot] refactor(core): preserve Copilot handler inference (#45668)
+- 38e4c97aa9 [packages/core/src/filesystem] refactor(core): import filesystem search schemas directly (#45684)
+- fa7a1ca39e [.oxlintrc.json] chore: remove duplicate oxlint options (#45719)
+- a438d34fcd [script] chore: lint identity pipe callbacks (#45771)
+- bdf2e84812 [packages/core/src/plugin, packages/core/test/plugin, packages/www] feat(core): support Azure CLI authentication (#45086)
+- d432823515 [bun.lock, package.json, packages/session-ui] fix(deps): upgrade diff to 8.0.4 (#45772)
+- 6bbf2e34e7 [packages/core/src/plugin] refactor(core): parse MCP prompt arguments once (#45646)
+- b4bd14864a [packages/core/src/github-copilot] refactor(core): remove unused responses state (#45659)
+- 792f84b59d [packages/core/src/tool.ts] refactor(core): reuse execute visibility predicate (#45699)
+- 4f6c4ddf1c [packages/core/test/session-execution.test.ts] test(core): guarantee execution scope cleanup (#45740)
+- f0d5b5e073 [packages/core/src/github-copilot] refactor(core): remove unused response stream state (#45742)
+- b20748f821 [packages/cli] fix(cli): prevent repeated updates and npm cache growth (#45091)
+- 498436f225 [bun.lock, bunfig.toml, nix, packages/desktop] chore(desktop): upgrade Electron to 42.10.1 (#45775)
+- 81e099a441 [packages/core/script/benchmark-location.ts] fix(core): preserve benchmark directory argument (#45634)
+- 74f5317489 [packages/tui] docs(tui): complete session tabs story guidance (#45712)
+- 35231b408e [packages/core/src/mcp] refactor(core): use keyed MCP credential reads (#45708)
+- 02550b36c7 [packages/util] refactor(util): narrow layer visitor options (#45734)
+- 62d9aa9838 [packages/core/src/integration.ts] refactor(core): delegate credential activation (#45692)
+- 84fa689686 [packages/app] fix(desktop): preserve lazy Sentry loading (#45776)
+- 4681c734b2 [bun.lock, packages/desktop] fix(desktop): bundle selected main-process dependencies (#45774)
+- 59e7b32c92 [packages/core/src/instance.ts, packages/core/src/location-service-map.ts, packages/core/src/location-services.ts] refactor(core): extract instance module from location services (#45705)
+- 7477e21b02 [bun.lock, package.json, packages/session-ui, packages/ui] fix(session-ui): upgrade DOMPurify and restore Mermaid rendering (#45773)
+- a2dcf2dff0 [.changeset, packages/core/src/session, packages/core/test/session-execution.test.ts] fix(core): wake sessions for recovered shell outcomes (#45781)
+- 89ca9fc641 [packages/core/src/plugin, packages/core/test/config] fix(core): complete supervisor flush when plugin activation fails (#45783)
+- 4cecfe8e79 [bun.lock, packages/desktop] chore(desktop): remove stale native packaging (#45786)
+- 8f350df392 [bun.lock, packages/app, packages/desktop, packages/session-ui, packages/ui] chore(deps): remove unused frontend dependencies (#45779)
+- a03a1dd854 [bun.lock, package.json, packages/plugin] chore: upgrade opentui to 0.5.9 (#45785)
+- 7b6b0f2717 [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): cap provider retry-after delays at fifteen minutes (#45787)
+- d5be4cf888 [packages/core/src/v1, packages/core/test/config, packages/schema] fix(core): share native model defaults with v1 config migration (#45760)
+- c0fa9aff72 [packages/app, packages/session-ui] fix(app): render local Markdown images through the server (#45780)
+- aecea54e95 [nix] chore: update nix node_modules hashes
+- 6881cffc41 [bun.lock, package.json, packages/app, packages/desktop, packages/storybook] chore(deps): refresh Vite and Electron Builder tooling (#45790)
+- 216af25ecc [nix] chore: update nix node_modules hashes
+- 132ec56fda [bun.lock, package.json, packages/app, packages/session-ui, packages/ui, packages/web] chore(ui): refresh Kobalte and Solid primitives (#45794)
+- 0ce3214844 [bun.lock, infra, package.json, packages/app] chore(deps): upgrade Sentry and verify reporting (#45796)
+- 7111e71528 [packages/core/src/location-mutation.ts, packages/core/test/location-mutation.test.ts, packages/core/test/tool-patch.test.ts, packages/www] fix(core): treat project paths as internal (#45799)
+- 078522e534 [nix] chore: update nix node_modules hashes
+- b92b84f33d [bun.lock, bunfig.toml, package.json, packages/session-ui, packages/ui/src/context] chore(deps): refresh markdown dependencies (#45793)
+- 2389111bf6 [nix] chore: update nix node_modules hashes
+- 88988b8c12 [packages/core/src/config.ts, packages/core/test/config] fix(core): preserve typed config test-layer errors (#45778)
+- c5113ee74a [packages/desktop] chore(desktop): trim external dependency archives (#45804)
+- 8ab08f7fc9 [packages/core/src/location-mutation.ts, packages/core/src/session.ts] refactor(core): remove infallible layer conversion (#45672)
+- 35d681afab [packages/core/test/shared-schema.test.ts, packages/core/test/skill.test.ts] test(core): make test sentinels effective (#45706)
+- 43c8690c14 [.changeset, packages/core/src/schema.ts] docs(core): correct newtype decoding guidance (#45736)
+- d34dd6c14a [packages/core/src/pty] refactor(core): type native PTY import explicitly (#45710)
+- e6d656dec1 [packages/core/src/persistent-pty] refactor(core): clarify PTY binary validation (#45715)
+- e0bad10065 [packages/core/test/filesystem] test(core): exercise fsutil passthroughs (#45667)
+- 762291b2a8 [packages/client, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-create.test.ts, packages/protocol, packages/schema, packages/server] feat(core): durable session metadata at creation (#45805)
+- 04c9e01dad [packages/core/src/filesystem, packages/core/src/ripgrep, packages/util] refactor: normalize filesystem boundary imports (#45730)
+- 11aab207f0 [packages/core/test/config, packages/core/test/plugin, packages/core/test/session-tool-progress.test.ts] test(core): remove dead test setup (#45669)
+- fd77a721ac [packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner-tool-registry.test.ts, packages/core/test/session-tool-progress.test.ts, packages/core/test/tool-registry.test.ts] test(core): align session test vocabulary (#45670)
+- 0c75b7b3c7 [packages/core/src/instance.ts, packages/core/src/location-services.ts, packages/core/src/plugin, packages/core/test/instance-plugins.test.ts] feat(core): per-instance plugin input (#45732)
+- 09b0edd662 [packages/core/src/plugin.ts] refactor(core): compare plugin generations directly (#45728)
+- 1faba03cfe [packages/core/src/location-mutation.ts, packages/core/src/tool, packages/core/test/location-mutation.test.ts] fix(core): normalize Windows tool paths (#45806)
+- 2ce126e2df [packages/core/test/session-runner.test.ts] test(core): simplify runner scenario fixtures (#45440)
+- cbc3e63869 [packages/core/src/skill] refactor(core): simplify skill discovery validation (#45729)
+- 17aa942541 [packages/core/src/codemode, packages/core/src/tool.ts, packages/core/src/tool] refactor(core): reuse tool name normalization (#45644)
+- 9cab8b45b2 [packages/core/src/session] refactor(core): remove unreachable transport state (#45628)
+- 9d673d7fb3 [.changeset, packages/core/src/plugin, packages/core/test/plugin] docs(core): align built-in prompt guidance (#45642)
+- b0db52da6f [packages/tui] refactor(tui): remove inert diff viewer setup (#45687)
+- ade8175ad8 [packages/core/src/workspace.ts, packages/core/src/workspace] refactor(core): use environment driver namespace (#45707)
+- dd2674e9c4 [packages/core/src/plugin] refactor(core): reuse Mercurial diff preparation (#45652)
+- d84d1421ae [packages/core/test/ripgrep.test.ts, packages/core/test/tool-output.test.ts, packages/core/test/tool-search.test.ts, packages/core/test/tool-shell.test.ts] test(core): bind acquired test services (#45711)
+- 8fa672ed71 [packages/www] docs: document diagnostic profile signals
+- ac55c05c30 [.changeset, packages/core/src/session, packages/core/test/session-compaction.test.ts] fix(core): correct compaction history direction (#45698)
+- e63779d9e1 [.changeset, packages/core/src/plugin, packages/core/test/plugin] fix(core): keep vertex settings serializable (#45704)
+- 64ef85159d [.changeset, packages/core/src/aisdk.ts, packages/core/test/aisdk.test.ts] fix(core): preserve assistant text metadata (#45650)
+- 0123fed65d [.changeset, packages/core/src/github-copilot, packages/core/test/github-copilot] fix(core): preserve Responses tool strictness (#45663)
+- 87f21a301d [.changeset, packages/core/src/plugin, packages/core/test/plugin.test.ts] fix(core): forward plugin interrupt options (#45632)
+- 6fad330efc [bun.lock, package.json, packages/app, packages/desktop, patches] chore(deps): upgrade Solid and Router (#45808)
+- 0b82fe60ea [packages/core/src/generate.ts] refactor(core): consolidate model error mapping (#45722)
+- afe9e579d6 [packages/core/src/session, packages/core/test/instruction-state.test.ts] refactor(core): simplify instruction preview blobs (#45702)
+- becf5bf482 [packages/core/src/worktree.ts, packages/core/test/worktree.test.ts] refactor(core): retain changed worktrees directly (#45709)
+- 2cca1ae860 [packages/core/src/form.ts, packages/core/src/project.ts, packages/core/test/form.test.ts] refactor(core): use nonthrowing URL parsing (#45726)
+- 6bf342a861 [packages/core/src/tool] refactor(core): consolidate HTML inline handling (#45649)
+- 07facd2086 [packages/core/test/effect, packages/util] refactor(util): share process stop policy (#45725)
+- a258b17fac [packages/core/test/tool-question.test.ts, packages/core/test/tool-skill.test.ts] test(core): use partial service mocks (#45703)
+- 048aec32e7 [packages/core/src/plugin] refactor(core): share local provider settings fold (#45645)
+- a065ad4ba7 [packages/core/src/config.ts, packages/core/src/config, packages/core/src/instance.ts, packages/core/src/instruction-discovery.ts, packages/core/src/location.ts, packages/core/src/plugin, packages/core/src/project.ts, packages/core/src/project, packages/core/test/config, packages/core/test/instance-vanilla.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts] feat(core): vanilla instance discovery option (#45752)
+- 3c9e5adefa [nix] chore: update nix node_modules hashes
+- 1d3308d904 [packages/core/test/bus.test.ts, packages/core/test/permission.test.ts, packages/core/test/session-runner.test.ts] test(core): refresh test vocabulary (#45714)
+- 38bffc9db1 [bun.lock, package.json, packages/client, packages/desktop, packages/http-recorder] chore(deps): upgrade Effect to rc.112 (#45819)
+- 56f2559798 [packages/codemode, packages/core/src/codemode, packages/core/test/plugin] fix(codemode): report original tool errors (#45820)
+- 95725d121a [.changeset] chore: remove unused changesets (#45827)
+- a5193634d0 [packages/core/test/database-drizzle.test.ts, packages/core/test/effect, packages/core/test/fixture, packages/core/test/instructions, packages/core/test/integration.test.ts, packages/core/test/lib] test(core): use direct test imports (#45683)
+- d2c307ab30 [packages/core/test/bus.test.ts, packages/core/test/config, packages/core/test/event-logger.test.ts, packages/core/test/fixture, packages/core/test/instruction-discovery.test.ts, packages/core/test/mcp.test.ts, packages/core/test/permission.test.ts, packages/core/test/reference.test.ts, packages/core/test/repository-cache.test.ts, packages/core/test/ripgrep.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-instructions.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-wait.test.ts, packages/core/test/shared-schema.test.ts, packages/core/test/tool-registry.test.ts] test(core): remove unused test imports (#45674)
+- 4685ba8d3e [nix] chore: update nix node_modules hashes
+- 074413a96d [packages/ai] fix(ai): normalize response item boundaries (#45789)
+- 92b9eebab2 [packages/tui, packages/www] feat(tui): streamline diff review workflow (#45817)
+- bb390f435c [packages/session-ui] fix(session-ui): enable word diffs in unified view (#45833)
+- 55674b858b [packages/ai, packages/core/src/session, packages/core/test/session-runner-tool-events.test.ts] fix(ai): make final snapshots authoritative for text and reasoning (#45831)
+- 5cbafc57c0 [packages/ai, packages/core/src/session, packages/core/test/aisdk.test.ts, packages/core/test/session-error.test.ts] refactor(ai): default unrecognized provider failures to retry (#45825)
+- bdf019a9ac [packages/ai] fix(ai): detect DashScope input length overflow errors (#45834)
+- 18e22cd82e [packages/ai] refactor(ai): simplify response stream state (#45835)
+- 5743537945 [packages/core/test/fixture, packages/core/test/session-move.test.ts, packages/core/test/session-remove.test.ts, packages/core/test/session-revert.test.ts, packages/core/test/session-view.test.ts] test(core): use effectful temp fixtures (#45637)
+- e12e04f482 [packages/core/src/tool, packages/core/test/tool-shell.test.ts] fix(core): strengthen background shell guidance (#45843)
+- d2ee536c16 [packages/core/src/aisdk.ts, packages/core/test/aisdk.test.ts] fix(core): classify AISDK network failures as transport errors (#45840)
+- 85d8b07f09 [packages/ai] fix(ai): ignore late converse tool deltas (#45847)
+- 11ca603490 [packages/ai] fix(ai): finish chat streams at done sentinel (#45850)
+- 1c8e557eb4 [packages/cli] Revert "fix(cli): prevent repeated updates and npm cache growth" (#45865)
+- ca47949475 [packages/client, packages/core/src/persistent-pty, packages/core/src/plugin, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/plugin, packages/protocol, packages/schema, packages/server] feat(plugin): expose experimental terminal reads (#45792)
+- 0d42e76006 [packages/ai, packages/core/test/generate.test.ts, packages/core/test/session-step.test.ts, packages/sdk] feat(ai): add first-class TestLLM controls (#45828)
+- 201536f265 [packages/ai, packages/httpapi-codegen, packages/server] test: repair stale V2 baseline coverage (#45826)
+- e142a783f7 [packages/tui] refactor(tui): extract reusable pane resize logic (#45939)
+- a808a02f05 [packages/core/src/config.ts, packages/core/src/config, packages/core/test/config, packages/core/test/filesystem, packages/core/test/mcp.test.ts] refactor(core): separate config file editing (#45818)
+- b9cb4fc36a [packages/core/src/session, packages/core/test/prompt-cache-diagnostics.test.ts, packages/core/test/session-runner.test.ts] chore(core): retire prompt-cache diagnostics (#45965)
+- 936c73b54d [packages/core/src/session, packages/core/test/session-runner.test.ts, packages/core/test/session-step.test.ts] refactor(core): simplify tool settlement (#45967)
+- e8fa7daed5 [packages/client] fix(client): preserve live activity during hydration (#45975)
+- 1f77f4a4ed [packages/core/src/session] refactor(core): inline auxiliary model operations (#45974)
+- 503e680672 [packages/core/test/session-instructions.test.ts] test(core): preserve session layer inference (#45629)
+- d71cc3be77 [packages/core/test/fixture, packages/core/test/util] test(core): guarantee lock fixture cleanup (#45636)
+- fc27061838 [packages/core/src/tool] refactor(core): remove tool context aliases (#45639)
+- 9a227d186f [packages/core/src/mcp, packages/core/test/mcp-oauth.test.ts] fix(core): remove unreachable MCP authorization path (#45633)
+- 484f5faf8d [packages/plugin] docs(plugin): update current API examples (#45627)
+- 39daec9bec [packages/core/src/session.ts, packages/core/src/session] refactor(core): narrow session internals (#45638)
+- f1fd6ba3c0 [packages/core/test/location-layer.test.ts, packages/core/test/mcp.test.ts] test(core): await registry readiness barriers (#45630)
+- 1eff84615c [packages/ai, packages/core/test/session-runner.test.ts] fix(ai): keep chat reasoning in one lifecycle (#45864)
+- e7918e25fd [packages/core/src/filesystem, packages/core/src/job.ts, packages/core/src/mcp, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/session, packages/core/src/shell.ts, packages/core/test/git.test.ts, packages/core/test/worktree.test.ts] refactor(core): remove ineffective typed recovery (#45631)
+- 8f1eff50aa [packages/core/src/snapshot.ts] refactor(core): deepen snapshot comparison helper (#45653)
+- 9d33d83bb4 [packages/core/src/aisdk-native.ts, packages/core/src/plugin] refactor(core): reuse native option projection (#45647)
+- f367c202d9 [packages/core/src/config] refactor(core): remove unused command dependency (#45623)
+- e50c89834e [packages/core/src/plugin] refactor(core): reuse plugin response wrapper (#45648)
+- 374d317412 [packages/core/test/config, packages/core/test/fixture, packages/core/test/plugin] test(core): simplify provider test setup (#45635)
+- 9bc2165e5c [packages/core/src/shell] refactor(core): reuse lazy shell parser initialization (#45651)
+- c601d3b021 [packages/core/src/plugin] refactor(core): share provider factory loading (#45654)
+- ac3cd1b183 [packages/core/test/github-copilot, packages/core/test/plugin] test(core): simplify provider smoke tests (#45656)
+- d28b6e9ac2 [packages/core/test/pty, packages/core/test/tool-schema.test.ts] test(core): construct valid tool contexts (#45657)
+- e4bc8b765b [packages/core/src/mcp, packages/core/test/fixture, packages/core/test/mcp.test.ts] refactor(core): reuse MCP prompt helpers (#45660)
+- fe188f8722 [.changeset, packages/core/src/tool, packages/core/test/tool-read.test.ts] fix(core): normalize directory page headings (#45641)
+- 8e25e83e5a [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): continue retryable failures after durable output (#45861)
+- 6da20f0efe [packages/protocol, packages/www] chore(protocol): refresh committed OpenAPI baseline (#45969)
+- 0d6232ffef [packages/core/test/fixture, packages/core/test/git.test.ts, packages/core/test/repository-cache.test.ts, packages/core/test/worktree.test.ts] test(core): share git test fixtures (#45640)
+- cd3b12c579 [packages/tui] feat(tui): resize terminal panes (#45979)
+- 732f949a65 [packages/client, packages/tui] fix(tui): admit compaction requests optimistically (#45973)
+- f6992059be [packages/app, packages/core/src/tool, packages/core/test/session-execution.test.ts, packages/core/test/tool-shell.test.ts, packages/tui] fix(core): isolate shell jobs by shell ID (#45985)
+- 196893cfeb [packages/core/src/config, packages/core/test/config] refactor(core): remove unused config editor (#45991)
+- 07f27c4eca [packages/core/src/database, packages/core/src/util] refactor(core): simplify migration narrowing (#45677)
+- 1ce3c7e580 [packages/client, packages/tui] fix(tui): stop flashing when jumping to session start
+- d15034264b [packages/core/test/session-projector.test.ts, packages/core/test/session-title.test.ts] test(core): reuse session projection fixtures (#45661)
+- 42a3fec594 [packages/core/src/database, packages/core/src/file-mutation.ts, packages/core/src/project.ts, packages/core/src/session, packages/core/src/tool] docs(core): clarify runtime ownership (#45671)
+- da57b27277 [packages/core/src/bus.ts] refactor(core): flatten durable commit validation (#45662)
+- 0bb6cf37be [packages/tui] fix(tui): animate automatic session renames (#45957)
+- f7d6b00c1e [packages/core/test/bus-session-routing.test.ts, packages/core/test/bus.test.ts, packages/core/test/effect, packages/core/test/integration.test.ts, packages/core/test/worktree.test.ts] test(core): use collected arrays directly (#45665)
+- ba0755d933 [packages/core/src/image, packages/core/src/persistent-pty, packages/core/src/session] refactor(core): reuse platform contract types (#45666)
+- 5c908ebba5 [packages/core/src/config, packages/core/test/config] refactor(core): simplify reference config precedence (#45673)
+- 2379ab3d51 [packages/core/src/environment, packages/core/test/lib] fix(core): defer memory filesystem observation (#45675)
+- 5634ef1bb6 [packages/core/src/session, packages/core/test/session-compaction.test.ts] refactor(core): simplify manual compaction (#45678)
+- 134cdda333 [packages/core/src/aisdk.ts, packages/core/test/aisdk.test.ts] fix(core): normalize SDK file data (#45679)
+- facd7ff452 [packages/core/src/database] refactor(core): simplify V1 migration effects (#45685)
+- 0362ef48ff [packages/core/test/session-model-transport.test.ts] test(core): isolate transport metrics (#45688)
+- 3151660fbb [packages/core/src/shell.ts] refactor(core): name shell records as commands (#45693)
+- 31af9858fd [packages/core/test/session-prompt.test.ts] test(core): assert pending prompt identity (#45680)
+- 52ec62bef0 [packages/core/src/plugin, packages/www] docs: correct config discovery boundary (#45681)
+- 4a0256d374 [packages/core/test/filesystem] test(core): use effect search harness (#45682)
+- 3badee1a3c [packages/core/test/config] test(core): simplify config test setup (#45689)
+- 6062e30cb9 [packages/core/test/process, packages/core/test/tool-execute.test.ts] test(core): assert typed failures directly (#45690)
+- 000d0882c3 [packages/core/src/database, packages/core/src/github-copilot] docs(core): record adapter fork boundaries (#45691)
+- ebdfcf4866 [packages/tui] test(tui): remove brittle animation sampling (#46003)
+- 426e5c6389 [packages/tui] fix(tui): open recent picker before server reads (#45977)
+- 0593a6b8eb [packages/core/src/plugin, packages/core/test/plugin] fix(core): isolate models seed replay (#45686)
+- 3625942952 [packages/core/src/mcp, packages/core/src/tool, packages/core/test/mcp.test.ts, packages/www] feat(core): pass session context to MCP tools (#46008)
+- aea3e7c1d2 [packages/core/src/plugin, packages/core/test/config, packages/core/test/npm.test.ts, packages/core/test/plugin, packages/util, packages/www] fix(core): refresh plugins in background (#45993)
+- 964245bc2a [packages/core/test/session-create.test.ts] test(core): isolate project adoption fixture (#46009)
+- ce005ce002 [packages/core/src/bus.ts, packages/core/src/ripgrep.ts, packages/core/src/session] refactor(core): remove unused result plumbing (#45695)
+- d354c3d640 [packages/client, packages/console, packages/core/src/location-services.ts, packages/core/test/location-layer.test.ts, packages/protocol, packages/server] fix(server): avoid loading locations for pending reads (#45994)
+- a35f96f427 [packages/core/src/github-copilot, packages/core/test/github-copilot] fix(core): preserve late opaque reasoning (#45694)
+- 80323a4deb [packages/core/test/catalog.test.ts, packages/core/test/effect, packages/core/test/location-filesystem.test.ts, packages/core/test/location-layer.test.ts, packages/core/test/location-mutation.test.ts, packages/core/test/repository-cache.test.ts] test(core): name acquired test services (#45696)
+- ee42eb3ca3 [packages/core/src/plugin, packages/core/test/plugin] fix(core): render built-in command arguments (#45697)
+- fe788b7842 [packages/core/src/database, packages/core/test/database-drizzle.test.ts] fix(core): use runtime update columns (#45700)
+- 67845091ba [packages/core/test/process, packages/util] fix(util): share streamed stderr consumption (#45716)
+- 0a718be0d9 [packages/plugin] refactor(plugin): normalize web search API type (#45717)
+- 9538c2171f [packages/core/src/config, packages/core/src/v1, packages/core/test/config] refactor(core): derive config recognition fields (#45701)
+- e409567428 [packages/core/src/config.ts, packages/core/src/config, packages/core/src/integration.ts, packages/core/src/wellknown.ts] refactor(core): express operation policies as transforms (#45713)
+- b1d7dd82fc [packages/core/src/session, packages/util] refactor(core): use nonempty array guards (#45718)
+- d837ffe70f [packages/core/src/session, packages/core/test/session-runner.test.ts, packages/core/test/session-step.test.ts, packages/plugin, packages/www] feat(plugin): add session retry hook (#45999)
+- b0c8a8c827 [packages/core/test/util, packages/util] fix(util): refresh flock heartbeat time (#45720)
+- 5990679ebd [packages/core/src/database, packages/core/test/database-drizzle.test.ts, packages/core/test/process, packages/util] refactor: use typed error mapping operators (#45727)
+- edef6a4b15 [packages/core/src/git.ts] refactor(core): flatten git runner arguments (#45731)
+- 6e1f783aec [packages/core/src/pty.ts] refactor(core): expose pty layer directly (#45733)
+- bd379e13cb [packages/core/src/session] refactor(core): remove unused instruction import (#45747)
+- d82a0b28a9 [AGENTS.md] docs: clarify release workflow (#46025)
+- d0baff184b [packages/core/src/session, packages/core/test/session-runner-tool-events.test.ts] fix(core): make provider publication cancellation-safe (#46026)
+- 9e39a4fbdf [packages/core/test/config] test(core): simplify skill test setup (#45721)
+- 8a24a01bff [packages/core/test/session-runner.test.ts] test(core): repair runner fixture claims (#45737)
+- 803b7718b8 [packages/core/src/instructions, packages/core/src/permission, packages/core/src/plugin, packages/core/src/pty, packages/core/src/session, packages/core/src/skill.ts, packages/util] refactor(core): import canonical schema contracts (#45746)
+- 87525e00b9 [packages/core/test/session-runner.test.ts] test(core): synchronize retry tests on scheduled events (#46027)
+- f61858e683 [packages/ai] fix(ai): avoid filtered tool calls (#46029)
+- 2751813454 [packages/core/test/plugin] test(core): simplify provider test fixtures (#45743)
+- 0b32bdf1e5 [packages/core/test/session-create.test.ts, packages/core/test/session-message-update.test.ts, packages/core/test/session-prompt.test.ts] test(core): use disposable session fixtures (#45745)
+- f2fb191f53 [packages/core/test/plugin] test(core): inject vertex auth transport (#45751)
+- f779b2748a [packages/core/test/session-runner.test.ts] test(core): align runner service style (#45753)
+- 51d53f45c1 [.gitattributes, packages/httpapi-codegen, packages/server, packages/session-ui, turbo.json] test(ci): register omitted V2 unit suites (#45970)
+- 1da25727b2 [packages/core/src/database] refactor(core): remove unused insert state (#45738)
+- 5b39f5184f [packages/core/test/fixture, packages/core/test/plugin] test(core): share selector sentinels (#45748)
+- 82b6e0e316 [packages/codemode, script] chore: enforce mapError simplifications (#46028)
+- 8e7190f795 [packages/ai] fix(ai): respect completed response item text (#45854)
+- cf014bf2c1 [packages/ai] fix(ai): avoid truncated tool calls (#46040)
+- 1c9c5305a6 [packages/ai] fix(ai): classify retryable server failures (#46038)
+- a5f8869b35 [packages/ai] fix(ai): reject unknown chat finishes (#46036)
+- 6809be2d0a [packages/core/src/permission.ts, packages/core/test/permission.test.ts] fix(core): reuse permission policy for pending approvals (#46050)
+- fa5ccac707 [packages/core/src/session, packages/core/src/tool, packages/core/test/session-execution.test.ts, packages/core/test/tool-subagent.test.ts] refactor(core): share subagent completion delivery (#46054)
+- 095ed63ea0 [packages/app] fix(app): keep workspace submit buttons neutral (#46052)
+- c0d0f5f4bc [packages/cli, packages/server, packages/www] feat(cli): configure server CORS origins (#45544)
+- 6b7a1d419c [packages/core/src/github-copilot, packages/core/test/github-copilot] fix(core): preserve Responses tool identities (#45658)
+- ad9117b107 [packages/client, packages/core/src/session.ts, packages/core/src/session, packages/core/src/shell.ts, packages/core/src/shell, packages/core/src/tool, packages/core/test/session-compaction.test.ts, packages/core/test/session-execution.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-runner-message.test.ts, packages/core/test/session-shell.test.ts, packages/core/test/tool-shell.test.ts, packages/session-ui, packages/tui, packages/ui/src/i18n] fix(session): run user shells immediately in the background
+- e3bda5e2d0 [packages/client, packages/core/src/plugin, packages/core/src/vcs.ts, packages/core/test/plugin, packages/core/test/vcs-hg.test.ts, packages/core/test/vcs.test.ts, packages/plugin, packages/protocol, packages/schema, packages/server, packages/tui, packages/www] feat(tui): add branch review scopes
+- 51a082cea3 [packages/core/src/shell.ts] fix(core): release exited shell execution state (#46058)
+- 4ab31867c4 [packages/app, packages/session-ui, packages/ui/src/context, packages/ui/src/overlays, patches] fix(app): reduce session-switch latency (#46044)
+- a38cbd42aa [packages/core/src/tool, packages/core/test/tool-shell.test.ts] refactor(core): isolate shell tool preparation
+- 0116a98371 [packages/tui] refactor(tui): share app lifecycle test fixture
+- 6e954f75ee [packages/core/src/instance.ts, packages/core/src/project.ts, packages/core/src/session.ts, packages/core/src/session, packages/core/test/fixture, packages/core/test/lib, packages/core/test/session-compact.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-execution.test.ts, packages/core/test/session-instructions.test.ts, packages/core/test/session-log.test.ts, packages/core/test/session-message-update.test.ts, packages/core/test/session-move.test.ts, packages/core/test/session-owned.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-remove.test.ts, packages/core/test/session-revert.test.ts, packages/core/test/session-run-coordinator.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-shell.test.ts, packages/core/test/session-skill.test.ts, packages/core/test/session-view.test.ts, packages/core/test/session-wait.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-subagent.test.ts, packages/server, specs] refactor(core): isolate Session admission and controls (#46019)
+- 6cfffeb031 [packages/core/src/image, packages/core/test/tool-read.test.ts] refactor(core): avoid encoding rejected image candidates (#46073)
+- 7852cecd72 [nix] chore: update nix node_modules hashes
+- cf2c3a536d [packages/core/src/models-dev.ts, packages/core/test/models.test.ts] refactor(core): reuse catalog response digest (#46071)
+- 849824efd2 [packages/core/src/config, packages/core/test/mcp.test.ts] refactor(core): merge defaults for selected MCP servers (#46072)
+- 3ee2e482ce [packages/app] fix(app): preserve Windows panel top outlines (#46090)
+- 106629aa11 [.github, infra, packages/app, sst.config.ts] feat(infra): deploy beta web app with SST (#46086)
+- 171947787c [packages/tui] test(tui): wait for diff base search focus (#46083)
+- 8ba434b597 [packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-projector.test.ts, packages/core/test/session-store.test.ts, packages/core/test/shared-schema.test.ts] refactor(core): move projected Session reads into Store (#46075)
+- e70d667a9f [packages/ai] fix(ai): preserve Anthropic finish across usage deltas (#46171)
+- 4df3029536 [bun.lock, packages/desktop] fix(desktop): scope library validation exception to CLI (#46212)
+- c2ef80a287 [packages/ai] fix(ai): fail malformed converse output (#46193)
+- 5cd2c22b27 [nix] chore: update nix node_modules hashes
+- b12d43698e [packages/app] fix(app): recover sessions with unavailable locations (#46215)
+- b1e3a7b222 [packages/ai] fix(ai): preserve forced reasoning signature (#46218)
+- 4a977b2b31 [packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-owned.test.ts, packages/core/test/session-skill.test.ts] refactor(core): bind standalone skill activation to Session (#46077)
+- bf50194f99 [packages/ai] fix(ai): reject truncated bedrock frames (#46281)
+- d323b34826 [packages/ai, packages/core/src/aisdk-native.ts, packages/core/src/model-resolver.ts, packages/core/src/provider.ts, packages/core/test/aisdk-native.test.ts, packages/core/test/generate.test.ts, packages/core/test/model-resolver.test.ts, packages/core/test/provider.test.ts] feat(ai): add native Mistral provider (#46278)
+- c746ea3210 [packages/ai] fix(ai): use unique Gemini block ids (#46279)
+- f77647ad12 [packages/ai] fix(ai): accumulate bedrock redacted content (#46283)
+- 68c1207b52 [packages/ai] fix(ai): close Gemini text before tools (#46286)
+- 583a1a2b6f [packages/ai] fix(ai): omit empty Anthropic system blocks (#46289)
+- ef50e0b6d8 [packages/ai] fix(ai): omit empty Bedrock system blocks (#46294)
+- 2ddf257c6f [packages/ai] fix(ai): filter empty Anthropic messages (#46291)
+- 1a3aee39de [packages/ai] fix(ai): sanitize empty Bedrock tool input keys (#46296)
+- 485bdc9c4e [packages/ai] fix(ai): omit empty Responses user messages (#46297)
+- 4afd8e81be [packages/ai] fix(ai): deduplicate request tools (#46306)
+- 6a2c3e91c7 [AGENTS.md, bun.lock, packages/app, packages/cli, packages/client, packages/core/src/config, packages/core/src/instance.ts, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/rpc.ts, packages/core/test/config, packages/core/test/location-layer.test.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/core/test/rpc.test.ts, packages/plugin, packages/protocol, packages/schema, packages/server, packages/tui, packages/www] feat(plugin): add typed rpc and custom events (#46105)
+- 52cbe7b3ee [nix] chore: update nix node_modules hashes
+- 19625400c1 [packages/ai] fix(ai): normalize tool result history (#46309)
+- 24e826d06b [packages/ai] fix(ai): validate Bedrock media data (#46333)
+- a1925de0c1 [packages/core/src/session, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner.test.ts, packages/session-ui] fix(core): flush trailing stream chunks while providers pause (#46326)
+- 8890294bf0 [packages/app] fix(desktop): preserve Windows editing shortcuts (#46336)
+- d484f070d1 [packages/core/src/tool, packages/core/test/tool-read.test.ts] fix(core): recover reads with non-breaking spaces (#45807)
+- 50e77f66fd [packages/app] fix(app): keep composer select all scoped to the editor (#46338)
+- 3c6b85acf7 [packages/app] fix(app): reveal pasted composer content with custom scrollbar (#46339)
+- 5ec29e7a87 [packages/app, packages/desktop] refactor(desktop): use password-only server authentication (#45958)
+- 174d263890 [packages/app] fix(app): save session titles on blur and add tab context menu (#46113)
+- 90fb6562ce [packages/core/src/mcp, packages/core/src/shell.ts, packages/core/test/effect, packages/core/test/fixture, packages/core/test/mcp.test.ts, packages/core/test/tool-shell.test.ts, packages/util] fix(shell): bound post-exit pipe draining on all platforms (#46085)
+- 0dad76e618 [packages/app, packages/ui/src/navigation] fix(ui): prevent menu items from shrinking (#46353)
+- 9c39e75ce2 [packages/tui] fix(tui): surface subagent permissions and questions (#44976)
+- b2c7246134 [packages/core/src/reference.ts, packages/core/src/repository-cache.ts, packages/core/src/session, packages/core/test/fixture, packages/core/test/repository-cache.test.ts, packages/core/test/session-owned.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-skill.test.ts, packages/www] fix(core): refresh git references on daily activity (#45575)
+- e56ceed32b [packages/tui] Revert "fix(tui): surface subagent permissions and questions" (#46376)
+- 33536da231 [packages/core/src/session, packages/core/test/session-compact.test.ts] fix(core): commit undo before compaction (#46383)
+- 3a797bf6e4 [packages/ai] fix(ai): validate canonical tool results (#46062)
+- 5a4914c670 [bun.lock, packages/app] feat(app): refine mobile shell home and settings (#46388)
+- 7197fdfb4e [nix] chore: update nix node_modules hashes
+- ac77cc46b8 [packages/client, packages/server, packages/tui] fix(client): isolate shared event consumers (#46393)
+- 711a0a2da2 [packages/app, packages/session-ui] feat(app): add mobile session panels and detail drawers (#46389)
+- 1b3eb1138e [packages/tui] fix(tui): queue autocompleted commands (#46414)
+- 6b1ed3918a [packages/app, packages/session-ui, packages/ui/src/data-display] feat(app): refine mobile diff review and wrapping preferences (#46390)
+- 56e773831c [packages/ai] fix(ai): validate cache tail counts (#46067)
+- 1afb7c614e [packages/app] fix(app): raise active composer surface (#46401)
+- eb083cce63 [packages/server] fix(server): detach PTYs when sockets close (#46068)
+- 30721b8b5d [packages/server] fix(server): await providers before catalog reads (#46066)
+- 8be3ce8b6c [packages/util] refactor(util): reuse BOM-stripped text (#46078)
+- e9f7331516 [packages/core/src/tool, packages/core/test/tool-webfetch.test.ts] refactor(core): reuse Markdown chunk byte counts (#46079)
+- 327dc809c5 [packages/core/src/formatter.ts, packages/core/test/formatter.test.ts] refactor(core): reuse formatter file extension (#46080)
+- 5894e46688 [packages/app, packages/session-ui, packages/ui/src/styles] fix(app): improve touch controls and standalone PWA relaunch (#46391)
+- d609752891 [packages/codemode] refactor(codemode): avoid merging root definitions twice (#46081)
+- 6a38cacc1d [packages/www] docs: improve plugin guide readability (#46342)
+- e15dd8ecd3 [packages/ai] fix(ai): require Bedrock message stop for finish (#46065)
+- 43819dc376 [packages/app] fix(app): restore maskable pwa icons (#46434)
+- 1ced747051 [packages/ai] fix(ai): handle message-less Gemini errors (#46069)
+- 9517ff1054 [packages/core/src/session.ts, packages/core/test/session-move.test.ts] fix(core): preserve active session continuation when moving
+- afd7492018 [packages/tui] fix(tui): reduce cached transcript remount work (#46145)
+- ec0dcb3da9 [packages/core/src/plugin, packages/www] docs: improve build documentation discovery
+- fcce2d7cc9 [packages/tui] test(tui): await dialog text selection (#46143)
+- 197d28e033 [packages/tui] fix(tui): pin sidebar headings without scrollbar flashes (#46449)
+- 36ac35a7c8 [packages/cli, packages/core/src/effect, packages/core/src/instance.ts, packages/core/src/persistent-pty, packages/core/test/agent.test.ts, packages/core/test/bus-session-routing.test.ts, packages/core/test/bus.test.ts, packages/core/test/catalog.test.ts, packages/core/test/codemode.test.ts, packages/core/test/codemode, packages/core/test/config, packages/core/test/effect, packages/core/test/file-mutation.test.ts, packages/core/test/filesystem, packages/core/test/fixture, packages/core/test/formatter.test.ts, packages/core/test/instance-plugins.test.ts, packages/core/test/instance-vanilla.test.ts, packages/core/test/instruction-discovery.test.ts, packages/core/test/instruction-state.test.ts, packages/core/test/instructions, packages/core/test/integration.test.ts, packages/core/test/location-filesystem.test.ts, packages/core/test/location-layer.test.ts, packages/core/test/location-mutation.test.ts, packages/core/test/location.test.ts, packages/core/test/mcp-instructions.test.ts, packages/core/test/mcp.test.ts, packages/core/test/models.test.ts, packages/core/test/npm.test.ts, packages/core/test/permission.test.ts, packages/core/test/plugin-hooks.test.ts, packages/core/test/plugin, packages/core/test/pty, packages/core/test/reference-instructions.test.ts, packages/core/test/reference.test.ts, packages/core/test/repository-cache.test.ts, packages/core/test/ripgrep.test.ts, packages/core/test/rpc.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-instructions.test.ts, packages/core/test/session-log.test.ts, packages/core/test/session-message-update.test.ts, packages/core/test/session-model-request.test.ts, packages/core/test/session-move.test.ts, packages/core/test/session-owned.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-prompt-hooks.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-remove.test.ts, packages/core/test/session-revert.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-shell.test.ts, packages/core/test/session-skill.test.ts, packages/core/test/session-step.test.ts, packages/core/test/session-store.test.ts, packages/core/test/session-title.test.ts, packages/core/test/session-tool-progress.test.ts, packages/core/test/session-view.test.ts, packages/core/test/session-wait.test.ts, packages/core/test/shell-cleanup.test.ts, packages/core/test/skill-discovery.test.ts, packages/core/test/skill, packages/core/test/snapshot.test.ts, packages/core/test/tool-edit.test.ts, packages/core/test/tool-output.test.ts, packages/core/test/tool-patch.test.ts, packages/core/test/tool-question.test.ts, packages/core/test/tool-read.test.ts, packages/core/test/tool-registry.test.ts, packages/core/test/tool-search.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-skill.test.ts, packages/core/test/tool-subagent.test.ts, packages/core/test/tool-webfetch.test.ts, packages/core/test/tool-websearch.test.ts, packages/core/test/tool-write.test.ts, packages/core/test/util, packages/core/test/vcs-hg.test.ts, packages/core/test/vcs.test.ts, packages/core/test/workspace.test.ts, packages/sdk, packages/server, packages/simulation, packages/util] refactor(util): make layer graphs opaque and composable
+- 3e9b009642 [packages/core/src/instance.ts, packages/core/src/instance, packages/core/src/plugin, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-execution.test.ts, packages/core/test/session-owned.test.ts, packages/core/test/session-remove.test.ts, packages/server] feat(core): add session-aware instance selection (#46442)
+- 1f04baa684 [packages/core/test/session-execution.test.ts, packages/server] test: migrate fixture layer replacements (#46458)
+- 5d4cc4a804 [packages/tui] feat(tui): hide internal plugins by default
+- c17c104827 [packages/tui] fix(tui): toggle internal plugin controls
+- a68fe8a97d [packages/tui] fix(tui): toggle plugin on dialog submit
+- 5df9cecf03 [packages/tui] fix(tui): remove plugin current marker
+- 566ca864a0 [packages/core/test/patch.test.ts, packages/util] refactor(util): reuse private patch buffers (#46459)
+- fac875dba0 [package.json, packages/cli, packages/tui] mini v2 v2 (#46410)
+- 49dd2cea34 [packages/ai] refactor(ai): clarify responses adapters (#46469)
+- d68f425c17 [packages/cli] feat(cli): port the upgrade command to v2 (#46183)
+- d04257eeb4 [packages/codemode] feat(codemode): add inline namespace metadata (#46464)
+- 9553187ba6 [packages/core/test/tool-patch.test.ts, packages/util] fix(core): allow patch file-to-directory replacements (#46476)
+- db768c4886 [packages/app] refactor(app): share mobile drawer primitive (#46453)
+- e7d42f83e6 [packages/core/src/model.ts, packages/core/test/model.test.ts] refactor(core): slice model references at the first slash (#46467)
+- b31defc0a5 [packages/util] refactor(util): slice the final filename segment (#46466)
+- c0220ddd8b [packages/codemode] refactor(codemode): reject unresolved intersections before rendering (#46468)
+- 57a9decefe [packages/codemode] refactor(codemode): simplify input conflict detection (#46465)
+- cc0cc59700 [packages/ai] fix(ai): preserve done-only response messages (#46064)
+- 5b2276666f [packages/tui] test(tui): stop Windows image preview test crashes (#46479)
+- a6b49b3f74 [packages/core/test/effect, packages/util] fix(shell): preserve output from fast-exiting commands
+- 01eda4c178 [packages/codemode] refactor(codemode): name only supported operations (#46082)
+- 663c2dc1ce [packages/app] fix(app): raise composer only in dark mode (#46503)
+- 6dd1733bbf [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): preserve continuation across chained moves
+- 54b00ec5fe [packages/tui] test(tui): capture flushed Mini scrollback output (#46505)
+- b0402f5a34 [packages/session-ui] fix(session-ui): reduce inline code height (#46500)
+- dffd95ce7c [packages/codemode] fix(codemode): reject Object.assign cycles (#46076)
+- 8fda87614f [packages/codemode, packages/core/test/codemode] feat(codemode): document numeric string and array constraints (#46510)
+- a20cbc394e [packages/session-ui] feat(session-ui): preview images in read tool results (#46513)
+- a40a87276a [packages/tui] fix(tui): pin diff highlights query (#46518)
+- 6a99898ef7 [packages/core/src/codemode, packages/core/src/tool.ts, packages/core/src/tool, packages/core/test/codemode.test.ts, packages/core/test/codemode, packages/core/test/lib, packages/core/test/mcp.test.ts, packages/core/test/plugin, packages/core/test/session-generate.test.ts, packages/core/test/tool-execute.test.ts, packages/core/test/tool-registry.test.ts, packages/plugin, packages/schema, packages/www] feat(core): register tool namespaces (#46487)
+- df05945042 [package.json] chore(ci): align Bun with the release runtime (#46524)
+- 5d73a5789f [bun.lock, packages/app, packages/cli, packages/client, packages/core/src/location-mutation.ts, packages/core/src/location.ts, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/project.ts, packages/core/src/project, packages/core/src/vcs.ts, packages/core/test/config, packages/core/test/fixture, packages/core/test/location-layer.test.ts, packages/core/test/npm.test.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/core/test/project.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-skill.test.ts, packages/plugin, packages/protocol, packages/schema, packages/server, packages/tui, packages/util, packages/www] feat(plugin): support live package updates
+- 815d4ab9b4 [packages/tui] fix(tui): scope connect dialog to location
+- 1137861188 [nix] chore: update nix node_modules hashes
+- 23fde448ec [packages/cli] test(cli): isolate Bun define cache (#46536)
+- 4a3e25beab [packages/codemode, packages/core/test/codemode] feat(codemode): compact schema constraint comments (#46521)
+- 71779ae5de [packages/app] fix(app): scope pane visibility to tabs (#46508)
+- d46ed9e9db [packages/app, packages/session-ui, packages/ui/src/styles, packages/ui/src/theme] Session message style (#46538)
+- 02440f6715 [packages/codemode] feat(codemode): label item and value schema comments (#46542)
+- 000b42d204 [packages/core/src/codemode, packages/core/test/codemode.test.ts, packages/core/test/codemode, packages/core/test/lib, packages/core/test/mcp.test.ts, packages/core/test/plugin, packages/core/test/session-generate.test.ts, packages/core/test/tool-registry.test.ts] refactor(core): nest code mode catalog (#46541)
+- a6f75d483a [packages/app] fix(app): follow file tree order in review navigation (#46557)
+- 94caa36fd4 [packages/server] test(server): wait for plugin readiness (#46567)
+- aadc0c1b4b [packages/core/test/mcp-oauth.test.ts, packages/core/test/npm.test.ts, packages/util] fix: stabilize cross-platform unit tests (#46569)
+- 77eac47493 [packages/client, packages/core/src/aisdk.ts, packages/core/src/catalog.ts, packages/core/src/config, packages/core/src/model-resolver.ts, packages/core/src/plugin, packages/core/test/aisdk.test.ts, packages/core/test/config, packages/core/test/model-resolver.test.ts, packages/core/test/plugin, packages/protocol, packages/schema, packages/www] feat(core): support canonical provider config (#46134)
+- e297da82ae [packages/tui] fix(tui): mini defer prompt echo until delivery (#46578)
+- cff1d0fe01 [packages/core/src/plugin, packages/core/test/plugin] fix(core): preserve legacy Console reasoning variants (#46586)
+- 831f8f6cd1 [packages/ai] fix(ai): reconcile final response calls by call id (#46084)
+- a9c27209bb [packages/tui] fix(tui): open rename dialog from tab menu (#46603)
+- f330f3e02b [packages/cli, packages/client, packages/core/src/plugin, packages/core/test/plugin, packages/protocol, packages/server, packages/www] feat(cli): check and update plugins with flat inventory
+- d4b4dd17cc [packages/core/src/filesystem, packages/core/src/plugin, packages/core/src/session.ts, packages/core/src/session, packages/core/test/config, packages/core/test/filesystem, packages/core/test/fixture, packages/core/test/formatter.test.ts, packages/core/test/instance-plugins.test.ts, packages/core/test/instance-vanilla.test.ts, packages/core/test/location-layer.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-owned.test.ts, packages/core/test/session-prompt-hooks.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-revert.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-skill.test.ts, packages/core/test/session-title.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-subagent.test.ts, packages/sdk, packages/server, packages/simulation] refactor(core): rename plugin flush to awaitActivation
+- 30f998c5b9 [packages/tui] feat(tui): make session preview tabs the default (#46497)
+- c596a8f11d [packages/plugin, packages/tui] fix(tui): simplify narrow interrupt footer (#46533)
+- 367ee47d7e [packages/tui] fix(tui): tone down patch failure details (#46470)
+- 7730cec123 [packages/client, packages/tui] fix(tui): limit cached non-tab session families
+- 43d09b9d75 [packages/server] fix(server): await plugin activation when checking updates
+- 0465328297 [packages/tui] test(tui): use real session id in home fixture (#46618)
+- ce6247bd2f [packages/core/src/session, packages/core/test/config, packages/core/test/session-compaction.test.ts, packages/core/test/session-runner.test.ts] fix(core): estimate context growth before compaction (#46543)
+- 818804e181 [bun.lock] chore: refresh bun lockfile
+- 7856515140 [packages/cli, packages/core/src/session, packages/schema, packages/tui, packages/util] feat(tui): add shareable stats poster (#46563)
+- 9f01e2b548 [packages/client, packages/core/src/plugin, packages/core/test/config, packages/core/test/plugin, packages/protocol, packages/schema, packages/tui] fix(plugin): make load failures easier to diagnose (#46594)
+- 316f7925d3 [packages/client] refactor(client): centralize service handoff in stop (#46637)
+- 91cdb182f0 [packages/tui] test(tui): remove flaky jump-to-latest test (#46640)
+- e2e82f18e2 [AGENTS.md] docs: clarify branch targeting guidance (#46645)
+- fd73a85de4 [packages/core/src/plugin, packages/core/test/plugin, packages/www] remove azure discovery (#46672)
+- c806503694 [packages/www] fix generated docs (#46678)
+- e76e90b71e [packages/app, packages/cli, packages/client, packages/core/src/effect, packages/core/src/filesystem, packages/core/src/instance.ts, packages/core/src/instance, packages/core/src/location-services.ts, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/reference.ts, packages/core/src/repository-cache.ts, packages/core/src/session.ts, packages/core/src/session, packages/core/src/tool, packages/core/test/config, packages/core/test/filesystem, packages/core/test/fixture, packages/core/test/formatter.test.ts, packages/core/test/instance-plugins.test.ts, packages/core/test/instance-vanilla.test.ts, packages/core/test/location-layer.test.ts, packages/core/test/permission.test.ts, packages/core/test/plugin-hooks.test.ts, packages/core/test/plugin-session.types.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/core/test/rpc.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-execution.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-model-request.test.ts, packages/core/test/session-owned.test.ts, packages/core/test/session-prompt-hooks.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-remove.test.ts, packages/core/test/session-revert.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-skill.test.ts, packages/core/test/session-title.test.ts, packages/core/test/tool-registry.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-subagent.test.ts, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/simulation, packages/tui] refactor(core): decouple plugins from config loading (#46639)
+- 5ee7f19875 [packages/app] refactor(app): drive persisted state with Effect Schema (#46558)
+- 7f2645a8f4 [packages/core/test/npm.test.ts, packages/core/test/shell-retention.test.ts, packages/core/test/tool-shell.test.ts] test(core): make Windows-flaky shell and npm tests deterministic
+- f92a725dfd [packages/tui] fix(tui): scroll session while terminal is focused (#46697)
+- c8f81c8b83 [nix] chore: update nix node_modules hashes
+- 2de99a2885 [packages/app] fix(app): apply safe-area sizing to iOS home-screen apps (#46703)
+- 48927df2ff [packages/app] fix(app): separate location identity from sync failures (#46695)
+- 49f9a60087 [packages/app] feat(app): support drafting during worktree creation (#46694)
+- 95d788f8eb [packages/cli] fix(cli): wait for consistent ACP model choices (#46613)
+- 01093db365 [packages/cli, packages/client, packages/core/src/plugin, packages/protocol, packages/schema, packages/server, packages/tui, packages/www] feat(plugin): update plugins from the TUI dialog (#46699)
+- 74eda7f950 [packages/client, packages/httpapi-codegen] chore(client): sort generated error statuses (#46708)
+- 46c33630b7 [packages/cli, packages/server] fix(server): authenticate only API requests (#46702)
+- d117a33982 [packages/app] feat(app): show working when timeline progress is hidden (#46711)
+- 4d0eb97ddf [packages/core/src/location-service-map.ts, packages/core/src/location-services.ts, packages/sdk, packages/server] feat(sdk): configure session-selected instances (#46496)
+- 0b771030ed [packages/desktop, turbo.json] fix(desktop): grant Windows sandbox access during installation (#46696)
+- ddda404d99 [.github, nix, packages/desktop] fix(desktop): bundle the CLI in production releases (#46705)
+- e0c7712f20 [packages/app] fix(app): keep background hint visible for at least one second (#46715)
+- 34e40cc4bc [packages/app] fix(app): keep new local sessions in the selected directory (#46713)
+- 519cd8c771 [packages/core/src/filesystem.ts, packages/core/src/ripgrep.ts, packages/core/src/tool] feat(core): add grep matching options (#46716)
+- e561431f7c [packages/core/src/plugin, packages/core/test/plugin, packages/sdk] fix(core): report duplicate plugin IDs as inventory failures (#46718)
+- a978a1e010 [bun.lock, package.json, packages/plugin] chore(tui): upgrade OpenTUI to 0.5.10
+- e327f93711 [packages/core/src/plugin, packages/core/test/plugin] fix(core): copy models.dev snapshot without structuredClone (#46710)
+- 335e4ca56f [nix] chore: update nix node_modules hashes
+- 8d4ef01621 [packages/core/src/filesystem.ts, packages/core/src/tool] feat(core): add hidden glob option (#46724)
+- b467432ba4 [packages/app] feat(app): reorganize session navigation controls (#46731)
+- 3cfec5ab34 [packages/tui] refactor(tui): sum cached and total tokens across all steps in turn summary (#46590)
+- b4447e6be8 [packages/app] fix(app): contain composer horizontal overflow (#46740)
+- fbcc2d9855 [packages/app] fix(app): refine open file tab (#46736)
+- 8f97a0986a [packages/app] fix(app): shrink new session tab (#46737)
+- 6e87cd66bf [packages/ui/src/icons] fix(ui): update summary panel icon (#46738)
+- 8fc93e6ee4 [packages/core/src/plugin, packages/core/src/session, packages/core/test/agent.test.ts, packages/core/test/config, packages/core/test/session-compaction.test.ts, packages/core/test/session-runner.test.ts, packages/www] fix(core): preserve session context during compaction (#46751)
+- 7188e22bdc [packages/session-ui, packages/ui/src/data-display] fix(ui): use ghost comment cancel button (#46743)
+- 745a1c0ee6 [packages/app, packages/ui/src/data-display] fix(ui): show active comment options (#46747)
+- 2c3f94f0ba [packages/app] fix(app): align add context shortcuts (#46739)
+- 8525035bbe [packages/session-ui] fix(session-ui): tighten compact disclosure spacing (#46752)
+- 8068c5e48c [packages/core/src/plugin, packages/core/src/session, packages/core/test/fixtures, packages/core/test/plugin, packages/core/test/session-runner.test.ts] tweak: gpt model system prompting (#46753)
+- fa6fb71a83 [packages/app] fix(app): show subagent tab activity (#46746)
+- 6d6e2a9f68 [packages/app] fix(app): rename workspaces to worktrees (#46744)
+- 9391ee8efc [packages/app] fix(app): avoid redundant composer encodes (#46730)
+- fa4f8a66c2 [packages/app] fix(app): reuse hydrated composer history blobs (#46761)
+- dfe3052bb6 [packages/app] fix(app): stop transcript and inbox prefetch from inactive tabs (#46762)
+- 499e22bf52 [packages/app] fix(app): reuse terminal cells during serialization (#46763)
+- 90501dd6e3 [packages/app, packages/session-ui] fix(app): count timeline tool types (#46749)
+- 311e32da93 [packages/app, packages/session-ui, packages/tui, packages/ui/src/i18n] fix(app): use Unicode ellipses in UI text (#46748)
+- 1bd1f72bcf [bun.lock, packages/app, packages/session-ui] fix(session-ui): cancel abandoned completed Markdown parse jobs (#46764)
+- 48c8a308b9 [bun.lock, package.json, packages/desktop, patches] fix(desktop): stabilize bundled dev and process exit (#46523)
+- c2a7616beb [nix] chore: update nix node_modules hashes
+- eead95e712 [packages/desktop] fix(desktop): publish native menu zoom changes (#46773)
+- 91a4c7bc32 [packages/app] feat(app): hide project names in tabs by default (#46778)
+- e3c2e635a9 [packages/session-ui] fix(session-ui): reuse cached diff highlighting across remounts (#46769)
+- 651cdd257a [packages/app, packages/session-ui] fix(session-ui): skip redundant diffs when grouping patch files (#46768)
+- 6ea388a206 [packages/session-ui] fix(session-ui): render large diffs as plain text in the worker pool (#46772)
+- 998086d6fb [packages/app] fix(app): bound the Home session index to retained rows (#46786)
+- 44a3bf2520 [packages/app, packages/session-ui] perf(session-ui): skip timeline row rebuild on text deltas (#46774)
+- d57e210f84 [packages/tui] fix(tui): place provider before cost in footer (#46808)
+- fe4ea1d693 [packages/tui] feat(tui): enable session terminal panes by default (#46797)
+- 74fbe199af [packages/cli, packages/client, packages/protocol, packages/server, packages/www] fix(cli): await plugin activation before caching ACP catalog (#46682)
+- 45e2035c0b [packages/ai] refactor(ai): separate conversation and generation lowering (#46428)
+- c35be481b3 [packages/ai] fix(ai): preserve responses image detail (#46429)
+- 6051a1f987 [packages/ai, packages/core/src/aisdk.ts, packages/core/src/session, packages/core/test/aisdk.test.ts, packages/core/test/session-compaction-transport.test.ts] feat(ai): support typed provider-side compaction (#46431)
+- 268ca2f63d [packages/tui] fix(tui): keep terminal panes off by default on Windows (#46821)
+- 429387d158 [packages/core/src/agent.ts, packages/core/src/catalog.ts, packages/core/src/command.ts, packages/core/src/filesystem, packages/core/src/instruction-discovery.ts, packages/core/src/integration.ts, packages/core/src/mcp, packages/core/src/model-resolver.ts, packages/core/src/plugin.ts, packages/core/src/reference.ts, packages/core/src/skill.ts, packages/core/src/state.ts, packages/core/src/tool.ts, packages/core/src/vcs.ts, packages/core/src/websearch.ts, packages/core/test/catalog.test.ts, packages/core/test/filesystem, packages/core/test/integration.test.ts, packages/core/test/mcp.test.ts, packages/core/test/plugin.test.ts, packages/core/test/reference.test.ts, packages/core/test/state-replay.test.ts, packages/core/test/state.test.ts, packages/core/test/tool-registry.test.ts, packages/core/test/vcs.test.ts, packages/plugin, packages/www] fix(core): rebuild registry state on read (#46825)
+- 79c789be89 [packages/core/src/plugin, packages/core/test/session-runner.test.ts] fix(core): place model prompt before project instructions (#46829)
+- ec4a5cbe25 [packages/core/test/project.test.ts] test(core): remove flaky mercurial project test (#46835)
+- 955fcad647 [packages/tui] fix(tui): remove link from background subagent completion notice (#46838)
+- 33dd4e3ba8 [packages/cli, packages/client, packages/core/src/config, packages/core/src/v1, packages/core/test/config, packages/protocol, packages/schema, packages/server, packages/tui, packages/www] feat(cli): apply managed updates when idle and wire up ui (#46485)
+- 36095decd7 [packages/core/src/plugin.ts, packages/core/test/plugin.test.ts] fix(core): preserve unchanged plugin prefix (#46857)
+- 473c292521 [packages/core/src/config.ts, packages/core/test/config] fix(core): discover project config once under symlinked paths (#46841)
+- d4fe3758c4 [packages/core/src/agent.ts, packages/core/src/catalog.ts, packages/core/src/command.ts, packages/core/src/filesystem, packages/core/src/instruction-discovery.ts, packages/core/src/integration.ts, packages/core/src/mcp, packages/core/src/reference.ts, packages/core/src/skill.ts, packages/core/src/state.ts, packages/core/src/tool.ts, packages/core/src/vcs.ts, packages/core/src/websearch.ts, packages/core/test/state-replay.test.ts, packages/core/test/state.test.ts] refactor(core): pass the rebuilt value to State notify (#46837)
+- 7aabfd3554 [packages/core/src/filesystem] test(core): route test watcher updates to matching watches (#46840)
+- a7b8174917 [packages/core/src/plugin, packages/core/test/fixtures] fix(core): replace GPT autonomy section with scope guidance (#46864)
+- bbc44310dc [packages/core/src/database, packages/core/test/database-migration.test.ts] fix(core): scope the migration lock to each database (#46866)
+- b45882ec87 [packages/core/src/config, packages/core/src/state.ts, packages/core/src/tool, packages/core/test/agent.test.ts, packages/core/test/catalog.test.ts, packages/core/test/lib, packages/core/test/mcp.test.ts, packages/core/test/state.test.ts, packages/core/test/tool-registry.test.ts, packages/core/test/vcs.test.ts, packages/core/test/websearch.test.ts] fix(core): notify reloads immediately and debounce at bursty sources (#46843)
+- d37122350b [packages/tui] fix(tui): make prompt metadata responsive (#46801)
+- 4b6e879ba8 [packages/core/src/config, packages/core/test/config] fix(core): subscribe before debouncing config plugin updates (#46874)
+- 318a82f784 [packages/sdk] feat(sdk): resolve instance configuration from provided services (#46875)
+- 4772b6a3e8 [packages/core/src/agent.ts, packages/core/src/catalog.ts, packages/core/src/command.ts, packages/core/src/config, packages/core/src/filesystem, packages/core/src/formatter.ts, packages/core/src/image.ts, packages/core/src/instruction-discovery.ts, packages/core/src/integration.ts, packages/core/src/mcp, packages/core/src/plugin, packages/core/src/reference.ts, packages/core/src/session, packages/core/src/shell, packages/core/src/skill.ts, packages/core/src/snapshot.ts, packages/core/src/state.ts, packages/core/src/tool-output.ts, packages/core/src/tool.ts, packages/core/src/tool, packages/core/src/vcs.ts, packages/core/src/websearch.ts, packages/core/src/wellknown, packages/core/test/catalog.test.ts, packages/core/test/codemode.test.ts, packages/core/test/codemode, packages/core/test/command.test.ts, packages/core/test/config, packages/core/test/filesystem, packages/core/test/formatter.test.ts, packages/core/test/instruction-discovery.test.ts, packages/core/test/mcp.test.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/core/test/pty, packages/core/test/reference.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/skill.test.ts, packages/core/test/snapshot.test.ts, packages/core/test/state-replay.test.ts, packages/core/test/state.test.ts, packages/core/test/tool-output.test.ts, packages/core/test/tool-read.test.ts, packages/core/test/tool-registry.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-subagent.test.ts, packages/core/test/tool-websearch.test.ts, packages/core/test/vcs.test.ts, packages/core/test/websearch.test.ts, packages/plugin, packages/sdk, packages/server, packages/www] refactor: rename State drafts to editors (#46876)
+- af332a2363 [packages/cli] chore(cli): enable bytecode compilation
+- fc051e49ee [packages/core/src/plugin, packages/core/src/tool] feat(core): add pinned session move tool (#46862)
+- 2ae235078a [packages/tui, packages/www] feat(tui): check for plugin updates from the plugins dialog (#46884)
+- e0c0d5691d [packages/core/src/filesystem, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/session, packages/core/test/fixture, packages/core/test/session-activation.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-owned.test.ts, packages/core/test/session-shell.test.ts, packages/core/test/session-skill.test.ts, packages/server] fix(core): wait for plugin activation before session entry points (#46878)
+- 44e0b35303 [packages/core/src/session] fix(core): narrow compaction additional context guidance (#46889)
+- db09cc842e [packages/core/test/npm.test.ts, packages/util] fix(util): stage npm installs under the cache directory's real path (#46887)
+- ed3259a9b7 [bun.lock, package.json, packages/cli, packages/core/src/config, packages/core/src/plugin, packages/core/src/provider.ts, packages/core/test/npm.test.ts, packages/core/test/plugin, packages/plugin, packages/tui, packages/util] refactor(plugin): centralize host resolution (#46901)
+- 3dc187bf3f [packages/client] refactor(client): share location resource reads (#46831)
+- 85e2b0a23a [nix] chore: update nix node_modules hashes
+- b605f355ca [packages/core, packages/core/script/benchmark-location-memory.ts, packages/core/src/plugin, packages/core/test/plugin] fix(core): share the models.dev snapshot across Locations (#46784)
+- a085bf62a4 [.github, packages/updates] feat(updates): log requests to the shared data lake
+- dbd47702b2 [packages/core/src/plugin, packages/core/test/plugin] fix(core): tell plan agent to discuss plans instead of writing files by default (#46905)
+- 51250e4346 [packages/updates] feat(updates): include client IP in request events
+- 46515df4a3 [packages/updates] refactor(updates): use useragent event field
+- 57c02cd04b [packages/client, packages/codemode, packages/core/src/plugin.ts, packages/schema, packages/tui] fix(tui): refresh plugin dialog after updates (#46911)
+- 68a40e2d21 [package.json, script] chore: remove package reservation script
+- 4643cacb4a [packages/cli] fix(cli): retry Windows service smoke cleanup
+- f269025416 [packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/test/plugin.test.ts, packages/core/test/plugin] fix(core): keep plugin activation stable across failures and refreshes (#46899)
+- 969055918f [packages/cli] feat(cli): use endpoint-provided update packages (#46910)
+- dea1f9cb7b [packages/core/test/plugin] fix(core): update plugin reload npm fixture (#46918)
+- 0da51e9274 [script] fix(updates): retry transient artifact publication failures
+- 0b1dbaf621 [packages/client] refactor(client): edit streamed message targets directly (#46924)
+- 21bbcc33a1 [packages/app, packages/desktop] fix(app): restore uniform new session tab width (#46919)
+- 4beaffbda9 [packages/app] fix(app): show review diffs for non-git VCS backends (#46684)
+- 5e38101fba [packages/client, packages/tui] refactor(client): derive session inputs from pending items (#46926)
+- b257d476c9 [packages/core/src/session, packages/core/src/tool-output.ts, packages/core/src/tool.ts, packages/core/test/config, packages/core/test/session-step.test.ts, packages/core/test/tool-output.test.ts, packages/core/test/tool-registry.test.ts] refactor(core): preserve normalized tool results (#46927)
+- f34b74b1dc [packages/core/test/fixture, packages/core/test/formatter.test.ts, packages/core/test/instance-vanilla.test.ts, packages/core/test/lib, packages/core/test/location-layer.test.ts, packages/core/test/network-guard.test.ts, packages/core/test/plugin, packages/core/test/preload.ts, packages/core/test/session-activation.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-move.test.ts, packages/core/test/session-remove.test.ts, packages/core/test/session-revert.test.ts, packages/core/test/session-shell.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-subagent.test.ts, packages/server] test(core): refuse network in the test harness (#46908)
+- 1e4e9c5d85 [packages/cli] fix(cli): disable bytecode until Bun 1.4.1 (#46933)
+- e402600d92 [packages/core/test/plugin] test(core): keep supervisor reload tests offline (#46939)
+- c992716523 [packages/core/src/plugin, packages/core/test/plugin, packages/server] fix(core): activate the initial plugin generation without the reload debounce (#46922)
+- 27f838f249 [packages/app, packages/client] fix(client): refresh references for the updated location (#46935)
+- 1c77b1c920 [packages/core/src/repository-cache.ts, packages/core/test/repository-cache.test.ts] refactor(core): remove unused repository cache success timestamp (#46942)
+- d9c85d8d95 [packages/ai] refactor(ai): resolve responses item ids once at the stream boundary (#46885)
+- 5f1d74fd3f [packages/plugin] fix(plugin): export Promise ToolEditor
+- 050398f51f [packages/core/src/catalog.ts, packages/core/test/catalog.test.ts] fix(core): preserve provider identity in catalog updates
+- 8565cb52a1 [packages/ai] chore(ai): clean up responses item id comments (#46951)
+- 22de01e84f [packages/session-ui] fix(app): animate subagent card chevron (#46893)
+- 962c26bdf2 [packages/core/src/plugin, packages/core/src/skill.ts, packages/core/test/skill.test.ts, packages/plugin, packages/www] feat(plugin): add skill editor lookup
+- 2b87169cc1 [packages/tui] feat(tui): polish plugin dialog sizing, actions, and local footer
+- efefd90443 [packages/core/src/plugin, packages/core/src/reference.ts, packages/core/test/reference.test.ts, packages/plugin, packages/www] feat(plugin): add reference editor lookup
+- 88e4ab5735 [packages/app, packages/session-ui, packages/ui/src/forms, packages/ui/src/i18n] feat(app): add timeline detail presets and placement controls (#46717)
+- 4680a4aa6f [packages/core/src/filesystem, packages/core/test/filesystem] refactor(core): reconcile current watcher policy (#46949)
+- 0089ac9b02 [packages/cli] fix(cli): align artifact user agent format
+- cf298f3409 [packages/cli] fix(cli): use artifact as client identity
+- bf6ec61a74 [packages/app] fix(app): remove background running indicator (#46972)
+- 4f6060ad94 [packages/app, packages/ui/src/typography] feat(app): route settings and refine shell styling (#46984)
+- 48f246695e [packages/app, packages/ui/src/icons] fix(app): align new session icon (#46983)
+- cfe9f13963 [packages/ui/src/i18n] fix(ui): capitalize notices in used group (#46992)
+- b42555cf01 [packages/app, packages/client, packages/core/src/filesystem.ts, packages/core/test/location-filesystem.test.ts, packages/protocol, packages/server, packages/tui] fix: reuse current location for directory browsing (#46970)
+- 9acdb0be18 [packages/app, packages/session-ui, packages/ui/src/i18n] fix(session-ui): use standard Used labels for thoughts (#46995)
+- ae7d9f029d [packages/app, packages/session-ui] fix(session-ui): preserve configured groups on tool failure (#46998)
+- 4cfca7ab68 [bun.lock, package.json, packages/app, packages/client, patches] fix(app): restore terminal application mouse handling (#45140)
+- d7009156a6 [nix] chore: update nix node_modules hashes
+- d2bec894bf [packages/app] fix(app): identify desktop in Console device auth (#47001)
+- 24f6cb51c8 [packages/core/src/config.ts, packages/core/src/config, packages/core/src/filesystem, packages/core/test/config, packages/core/test/filesystem] fix(core): watch new config files and directories (#46925)
+- 887f319769 [packages/app] fix(desktop): restore compact Windows channel badge (#47016)
+- 59b29de409 [packages/core/src/config.ts, packages/core/src/config, packages/core/test/config] fix(core): detect new ecosystem config roots (#47026)
+- 0f6393dab1 [packages/app, packages/core/src/session, packages/core/test/session-create.test.ts, packages/desktop] feat(app): add desktop session import (#46416)
+- 5d8a01dedc [packages/tui] feat(tui): add copy session ID command (#47064)
+- c7263309d4 [packages/app, packages/desktop] fix(desktop): wait for session export (#46435)
+- 4fcb59e4c7 [packages/app, packages/session-ui, packages/ui/src/actions, packages/ui/src/forms, packages/ui/src/i18n, packages/ui/src/icons] feat(desktop): polish session activity controls (#47033)
+- b3b08c9a04 [packages/app, packages/session-ui, packages/ui/script/colors.txt, packages/ui/src/styles, packages/ui/src/theme] feat(desktop): update blue accent styling (#47009)
+- de365ecbaa [packages/app] feat(desktop): reflect saved project colors (#46787)
+- f98a6286da [packages/ai] refactor(ai): drop responses replay tombstones (#46965)
+- 5716f8ba60 [packages/ai, packages/core/src/aisdk.ts, packages/core/src/session, packages/core/test/aisdk.test.ts, packages/core/test/session-error.test.ts] feat(ai): add UnsupportedOperation error for route capability mismatches (#46960)
+- 206f51547c [packages/core/src/plugin, packages/core/test/plugin] fix(core): reject GitHub Copilot login without chat entitlement (#46959)
+- a04d72bb39 [packages/sdk] fix(sdk): bind embedded transport at request time (#46971)
+- f94eefaa50 [packages/tui] fix(tui): preserve markdown blocks on plugin toggles (#47084)
+- 0ae3bf743f [packages/tui] fix(tui): show execution failures in the viewed session (#46968)
+- 309f4534fa [packages/app] test(app): align timeline assertions with activity controls (#47089)
+- c370a1bdd0 [packages/app] refactor(app): remove redundant project setter wrappers (#47085)
+- f40ecefdef [packages/core/src/plugin.ts, packages/core/src/state.ts, packages/core/test/plugin-failure.test.ts, packages/core/test/plugin.test.ts, packages/core/test/state-group.test.ts] feat(core): disable plugins after transform failures (#47083)
+- ac874a6e90 [packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-move.test.ts] fix(core): recover idle moves through the selected instance (#46955)
+- 610d7e952a [packages/client] refactor(client): remove redundant location spreads (#47086)
+- 6e63b970f3 [packages/client, packages/core/src/session, packages/core/test/session-create.test.ts, packages/core/test/session-runner.test.ts, packages/schema] feat(core): persist compaction model and provider state (#46962)
+- 7819e7f503 [packages/client, packages/core/src/config, packages/core/src/session, packages/core/src/tool, packages/core/src/v1, packages/core/test/config, packages/protocol, packages/schema, packages/www] fix(core): run command subagents in the background (#47081)
+- 36da0d5c77 [packages/core/src/location-services.ts, packages/core/test/location-layer.test.ts] fix(core): retry failed location initialization (#46957)
+- a222401f19 [packages/core/src/rpc.ts, packages/core/test/rpc-handler-errors.test.ts, packages/server] fix(core): normalize RPC handler failures (#46946)
+- 2dcfc89fab [packages/tui] feat(tui): announce server plugin failures (#47103)
+- 282c84d79f [packages/core/src/session, packages/core/test/session-step.test.ts] refactor(core): remove redundant step closeout flags (#46937)
+- 97303c39dd [packages/core/src/shell, packages/core/test/shell-scan, packages/core/test/tool-shell.test.ts] fix(core): expand portable shell scanner compatibility (#47110)
+- 961b8ccb86 [packages/core/src/session, packages/core/test/session-model-transport.test.ts] refactor(core): remove unobservable websocket states (#47117)
+- dad7688739 [packages/core/src/job.ts, packages/core/test/job.test.ts] refactor(core): reuse job scope as generation identity (#47121)
+- 43bd2a516b [packages/cli, packages/client, packages/core/src/config, packages/core/src/v1, packages/core/test/config, packages/protocol, packages/schema, packages/server, packages/tui, packages/www] refactor(cli): move update checks to TUI clients (#46963)
+- b2fb2c5e36 [packages/core/src/github-copilot, packages/core/src/plugin, packages/core/test/github-copilot, packages/core/test/plugin] chore(core): bump GitHub Copilot API version to 2026-08-01 (#47108)
+- 5a9931280e [packages/core/src/modal, packages/core/src/plugin, packages/core/test/modal] feat(core): add Modal live model backfill plugin (#47136)
+- 2084c52952 [packages/core/src/codemode, packages/core/test/codemode] fix(core): clarify code mode tool scope
+- 1ae2cf3567 [packages/app, packages/session-ui, packages/ui/src/navigation] feat(desktop): polish menus, file tabs, and empty states (#47095)
+- 4272bb83e0 [packages/cli] feat(cli): support command aliases with update alias for upgrade
+- fa6e7e179d [packages/desktop] fix(desktop): render before telemetry (#47102)
+- f06bf47e72 [packages/app] fix(app): preserve slash commands when creating worktrees (#47155)
+- 2fda2c8141 [packages/app, packages/ui/src/icons] feat(app): give experimental settings a dedicated page (#46973)
+- 0ec1587948 [packages/app, packages/cli, packages/ui/src/icons] feat(app): add about settings page (#45782)
+- 7ba5f3e5b2 [packages/core/src/pty, packages/core/test/fixture, packages/core/test/pty] fix(core): restore Ctrl+C in Windows terminals (#47163)
+- 09157609b7 [packages/app, packages/ui/src/icons] feat(app): add session project menu and polish header (#46977)
+- 6575215ddf [packages/app, packages/client, packages/desktop] fix(desktop): keep command palette responsive and scoped (#47164)
+- b0a13b810e [packages/app] fix(app): allow new session shortcut from settings (#47123)
+- 17e5c5fbf1 [packages/app] feat(app): show vertical sidebar shortcut hints (#47122)
+- 0808ebc3c5 [packages/app] fix(app): refine build indicators in tab navigation (#47112)
+- 726107729e [packages/core/test/codemode] test(core): align Code Mode catalog scope assertions (#47169)
+- c76e602ba4 [packages/app] fix(app): keep session tab labels stable during creation (#47099)
+- 6af46cc8a9 [packages/app] feat(app): add settings to vertical tabs (#47119)
+- e536b9627e [packages/tui, packages/www, script] feat(tui): inspect live shell output (#47134)
+- d431fedce5 [packages/core/test/preload.test.ts, packages/core/test/preload.ts] test(core): disable npm audits in the test preload (#47170)
+- f84d927e07 [packages/ai] refactor(ai): drop reasoning items when they finish (#47100)
+- ac71a55294 [packages/app, packages/ui/src/actions] fix(app): keep right panel controls aligned (#46996)
+- c9df4ba80d [packages/core/test/npm.test.ts, packages/util] fix(util): skip unused audits during package installs (#47176)
+- c9d240704d [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): settle abandoned compactions before resuming sessions (#47178)
+- 4bf5269c4c [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): retry transient compaction failures (#47159)
+- 4f8dea674a [packages/ai] refactor(ai): drop converse tool deltas without an open block (#47182)
+- ecaa914b79 [packages/app] fix(app): align Windows app icon in title bar (#47189)
+- 331f4ecd2f [packages/app] fix(app): contain preferences scroll overflow (#47190)
+- b3733e9517 [packages/app] fix(app): add bottom padding to settings pages (#47191)
+- cb852434b1 [packages/tui] fix(tui): preserve selection under a stationary pointer (#47138)
+- 19833ad1fd [packages/protocol, packages/simulation] feat(simulation): expose and record real mouse input (#47194)
+- a1cb005799 [packages/app] fix(app): remove timeline settings advanced divider (#47196)
+- 8889447f5a [packages/core/src/session] fix(core): scope compaction Completed section to finished work (#47203)
+- c5dca2df37 [packages/core/src/tool] feat(core): suggest moving sessions into task worktrees (#47202)
+- ffac1c5b11 [packages/core/src/plugin, packages/core/test/plugin] fix(core): classify GitHub Copilot requests on every route (#47160)
+- c907d2ba27 [packages/tui] fix(tui): preserve model release ordering in search (#47183)
+- 46458f0753 [packages/core/src/plugin, packages/core/src/session, packages/core/test/plugin, packages/core/test/session-model-request-hooks.test.ts, packages/plugin, packages/www] feat(core): tag session http hooks with request kind (#47214)
+- 89478b36f1 [packages/core/src/session, packages/core/test/plugin, packages/core/test/session-model-request-hooks.test.ts, packages/plugin, packages/www] refactor(plugin): rename session request kind "session" to "primary" (#47221)
+- 32f89748af [packages/ai, packages/core/src/aisdk.ts, packages/core/src/tool, packages/core/test/tool-schema.test.ts] feat(ai): add tool namespaces (#46548)
+- 8352addf6c [packages/console] fix(console): preserve usage reset boundaries (#44729)
+- 2375e81bd6 [packages/app] fix(app): match optimistic session heading to tab label (#47244)
+- 211cd73f1a [packages/app, packages/desktop, packages/ui/src/i18n] feat(desktop): update composer dropzone (#42312)
+- e8481973ce [packages/app] refactor(app): make session composer ownership explicit (#47254)
+- b09a74591c [packages/session-ui, packages/ui/src/i18n] fix(app): omit notices from Used summary (#47245)
+- 3a08d95907 [packages/app] fix(app): preserve thinking trigger visibility invariant (#47256)
+- ed877cfebc [packages/app] fix(app): expose skills in slash commands (#47247)
+- 632b65854c [packages/app] fix(app): adjust sidebar and settings spacing (#47263)
+- b52b79d28f [packages/session-ui] fix(app): align file tool disclosures with Patch (#47269)
+- fa6dd9df8f [.github, bun.lock, package.json, packages/cli, packages/containers, packages/core/script/build.ts, packages/core/src/util, packages/sdk, packages/stats] chore: upgrade Bun to 1.4.1 and re-enable bytecode (#47271)
+- e26cbb935e [nix] chore: update nix node_modules hashes
+- acb462a173 [packages/client, packages/tui] fix(tui): restore agent and model selection parity (#47260)
+- 689a354a43 [packages/ai, packages/core/test/session-model-transport-live.test.ts] fix(ai): preserve websocket replay baselines (#47291)
+- 0b3c45c948 [packages/ai, packages/core/test/lib, packages/core/test/session-checkpoint-transport.test.ts] feat(ai): add streamed compaction triggers (#47082)
+- bd54dc508f [packages/app] feat(desktop): add dropzone to new sessions (#47303)
+- 218a0dde97 [packages/tui] fix(tui): clear stale error styling on resumed subagents (#47295)
+- a26a978051 [packages/ai] fix(ai): tolerate out-of-band responses notifications (#47316)
+- bff58fc387 [packages/tui] feat(tui): show retry countdown (#47145)
+- 0e143437c8 [packages/cli, packages/client, packages/core/src/config, packages/core/src/v1, packages/core/test/config, packages/protocol, packages/schema, packages/server, packages/tui, packages/www] feat(cli): restore automatic update policy (#47161)
+- b78c2ea7b4 [packages/tui] fix(tui): undo pending prompts and active sessions (#47343)
+- 7ca047b2b9 [AGENTS.md, packages/core/src/session, packages/core/test/session-runner.test.ts, packages/tui, packages/www] fix(core): prioritize compaction over pending steers (#47340)
+- c3342ca812 [] chore: empty commit
+- 90cd910f52 [packages/tui] feat(tui): add shared interactivity context (#47144)
+- 8ff1ef1a62 [packages/tui] fix(tui): anchor diff file menus to the screen (#47147)
+- 51d69b26a0 [packages/tui] refactor(tui): support reactive theme contexts (#47148)
+- 3290a39667 [packages/cli, packages/tui] feat(tui): add manual update dialog (#47364)
+- f268956c75 [packages/tui] fix(tui): preview always-allow patterns without extra confirmation (#47369)
+- 6d791dfe67 [packages/plugin, packages/tui, packages/www] feat(tui): add plugin-owned session panels (#47150)
+- 0991e8b5a5 [packages/cli, packages/tui, packages/www] fix(tui): clarify update notifications (#47372)
+- 16601775f1 [packages/app, packages/client, packages/core/src/worktree.ts, packages/core/test/worktree.test.ts, packages/protocol, packages/schema, packages/www] fix(app): align desktop worktree location with TUI (#47370)
+- 7a050a19a1 [packages/app] fix(app): apply worktree message color during preparation (#47379)
+- b274224af1 [packages/app] fix(app): keep pending worktree composer styling consistent (#47377)
+- c30285c148 [bun.lock, packages/app, packages/client, packages/core/src/config, packages/core/src/instance.ts, packages/core/src/plugin, packages/core/src/worktree.ts, packages/core/src/worktree, packages/core/test/plugin, packages/core/test/shared-schema.test.ts, packages/core/test/worktree.test.ts, packages/plugin, packages/protocol, packages/schema, packages/server, packages/tui, packages/www] feat(worktree): support configurable plugin strategies (#47358)
+- ac76382211 [nix] chore: update nix node_modules hashes
+- 0da55f1cef [packages/app, packages/storybook] fix(app): list OpenCode Go before Zen (#47386)
+- 541937d124 [packages/core/src/codemode, packages/core/test/codemode, packages/core/test/tool-execute.test.ts] fix(core): clarify how to call search in Code Mode guidance (#47360)
+- baab05727d [packages/core/src/plugin, packages/core/test/plugin] fix(core): compare Codex GPT versions by major and minor (#47404)
+- 23f3f8b6ca [packages/tui] fix(tui): reference update command (#47415)
+- 41cb354c3e [packages/app] fix(app): preserve vertical navigation label and icon widths (#47418)
+- 86ba09c6e0 [packages/app] fix(app): increase vertical tabs minimum width (#47424)
+- 8d1a9799f4 [packages/tui] fix(tui): remove completion notice links (#47426)
+- c72b535dee [packages/tui] fix(tui): reload local plugin dependency graphs (#47388)
+- 21adcb4969 [infra, packages/console] fix(console): route enterprise forms to Chatwoot (#47437)
+- 30d1049942 [packages/app] fix(app): load worktree inventory on demand and cap concurrent server requests (#47441)
+- 52685d4517 [packages/tui] fix(tui): simplify home update notices
+- a6fd1f8b22 [.github, bun.lock, package.json, packages/containers, packages/stats] chore: bump Bun to 1.4.2 (#47446)
+- 7de1e86b5d [nix] chore: update nix node_modules hashes
+- 4306c07b34 [packages/core/src/plugin, packages/core/src/session, packages/core/test/fixtures, packages/core/test/plugin, packages/core/test/session-runner.test.ts] feat(core): update GPT prompts and remove legacy Anthropic prompt (#47447)
+- 5045b3ce18 [packages/app, packages/ui/src/data-display] fix(ui): keep file accordion borders visible when scaled (#47461)
+- 7ad705225e [packages/tui] fix(tui): avoid disconnection error on terminal exit (#47272)
+- 2960c61f9c [packages/tui] fix(tui): preserve parent scroll position across subagents (#47464)
+- 7a4ad68af6 [packages/core/src/mcp, packages/core/test/mcp.test.ts] fix(mcp): retry initialization without codemode on HTTP 400 (#47507)
+- 8da7526616 [packages/core/src/plugin, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/plugin, packages/tui] fix(core): reload local plugin helpers without restarting
+- aa48433fa0 [packages/core/src/plugin, packages/core/test/plugin] fix(core): send session ID with Copilot requests (#47213)
+- c4f2926ffb [bun.lock, package.json, packages/ai] feat(ai): resolve Bedrock credentials through the AWS default chain (#47436)
+- cd504dc66a [nix] chore: update nix node_modules hashes
+- 35dbdfe287 [packages/app] fix(app): simplify vertical tabs footer
+- 6559dcb01b [packages/cli, packages/tui] fix(tui): list OpenCode Go before Zen
+- 371e344ba6 [packages/app] fix(app): widen new-session prompt beyond logo
+- 93b3725b14 [packages/app] fix(app): move project icon setting to experimental
+- a66e6cd55e [bun.lock, packages/core, packages/core/src/aisdk-native.ts, packages/core/src/plugin, packages/core/test/aisdk-native.test.ts, packages/core/test/plugin] feat(core): discover Bedrock credentials in the provider plugin (#47548)
+- f7d0f69e6c [packages/app, packages/ui/src/typography] feat(app): add subtle new-session logo shimmer
+- 1cf576ab55 [packages/desktop] fix(desktop): keep server CORS headers so preflights cache (#47560)
+- 49a5baa059 [nix] chore: update nix node_modules hashes
+- 41b66bc560 [packages/app] fix(app): scroll overflowing composer controls
+- 0674ddf043 [packages/client] fix(client): coalesce catalog refetches from event bursts (#47561)
+- 768e3d45a2 [packages/app, packages/ui/script/colors.txt, packages/ui/src/actions, packages/ui/src/styles, packages/ui/src/theme] fix(ui): lighten dark contrast icon buttons
+- cf212a4235 [packages/app] fix(app): time out requests the server never answers (#47572)
+- 33ef66746b [packages/app, packages/ui/src/forms] feat(desktop): add third-party web search consent
+- 99651b2d50 [packages/app] fix(app): refresh queued inputs when the connection returns (#47573)
+- 2823b886d7 [packages/core/src/plugin, packages/core/test/plugin, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts] feat(core): add independent GPT and Claude tool optimization (#47559)
+- 1be3b32a47 [packages/client, packages/httpapi-codegen] fix(client): detect stalled event streams and resync on foreground (#47571)
+- ec46439ef5 [packages/app] feat(desktop): simplify move to background action
+- bfcb388dd7 [packages/app] feat(app): pulse the status dot while the event stream reconnects (#47574)
+- cf1923c238 [packages/core/src/plugin, packages/core/test/plugin] fix(core): disable default GPT and Claude search filtering (#47586)
+- e64b2bc137 [packages/app, packages/session-ui, packages/ui/src/components, packages/ui/src/styles] feat(app): add horizontal file sidebar scrolling + right click menu
+- 8ea99ef9ad [packages/tui] fix(tui): dismiss update notification only on skip
+- 370b9965d3 [packages/app] feat(app): cmd+F to search session with highlighting
+- 31ee07e3ae [packages/app] fix(app): pace directory re-sync after reconnect (#47565)
+- 63a1074c6c [packages/app] fix(app): keep slow git reads from filling the request queue (#47564)
+- b2cecc6350 [packages/desktop] fix(desktop): add sidecar credentials from the main process (#47588)
+- fe506f201d [packages/www] docs: explain supporting v1 and v2 plugins
+- 2a895b9e03 [packages/client, packages/core/src/location-activity.ts, packages/core/src/session, packages/core/test/location-activity.test.ts, packages/schema] fix(core): interrupt sessions before inactivity eviction (#47629)
+- 58f949d2d0 [packages/core/src/credential.ts, packages/core/src/mcp, packages/core/src/util] fix(core): log MCP OAuth and credential lifecycle (#47636)
+- 33f48f36c9 [packages/www] docs(www): add Console documentation (#47638)
+- e3c89654d1 [packages/core/src/plugin, packages/core/src/tool, packages/core/src/websearch.ts, packages/core/test/lib, packages/core/test/plugin, packages/core/test/tool-websearch.test.ts, packages/core/test/websearch.test.ts, packages/protocol, packages/schema, packages/tui, packages/www] feat(core): keep web search providers sticky per session (#47334)
+- beca5e8926 [packages/client, packages/core/src/project.ts, packages/protocol, packages/schema] feat(project): allow updating canonical directory (#47642)
+- a02415a3eb [packages/ai] fix(ai): restrict Bedrock cache checkpoints to Claude (#47660)
+- 0d70595338 [packages/desktop] fix(desktop): export tail of oversized logs in debug bundle (#47672)
+- 13286e883e [packages/ai] fix(ai): raise typed errors for failed finishes (#47688)
+- 873d437c12 [packages/desktop] fix(desktop): emit preload as .cjs so it loads under --no-sandbox (#47691)
+- f334377c5b [packages/util] fix(util): bound opencode.log by trimming its head in place (#47676)
+- a5ebf5bf2f [packages/www] fix(www): regenerate OpenAPI documents (#47693)
+- ecb3c88601 [packages/app] fix(app): give worktree creation a setup-length request deadline (#47694)
+- 69b30acfd4 [bun.lock, package.json] chore: stop trusting tree-sitter install scripts (#47696)
+- 5e3100a46a [bun.lock, packages/desktop] fix(desktop): persist renderer state in SQLite instead of electron-store (#47695)
+- d0d3504780 [nix] chore: update nix node_modules hashes
+- f16acb1c95 [packages/app, packages/storybook, packages/ui/src/actions, packages/ui/src/icons, packages/ui/src/overlays] feat(desktop): improve worktree ui (#47310)
+- dc46ecfc55 [packages/app, packages/desktop] perf(app): cache storage namespaces and batch writes in the renderer (#47704)
+- 44513bd0b0 [packages/app, packages/desktop] perf(app): serialize persisted stores on a schedule instead of per setter call (#47705)
+- 5ff8a3f5fa [packages/ui/src/data-display] fix(ui): align unread avatar badges with the corner (#47718)
+- 0ff9ccb227 [packages/www] docs(go): document client session compatibility
+- 733f138dae [packages/app] fix(app): remove bottom safe area while keyboard is open (#47712)
+- 7ef9cb68d1 [packages/www] Revert "docs(go): document client session compatibility"
+- 5d971e5272 [packages/app, packages/desktop] perf(app): externalize large draft text into content-addressed chunks (#47706)
+- 243e81041e [packages/app, packages/ui/src/icons] feat(app): refine timeline detail settings (#47226)
+- 42bccc301e [packages/ai, packages/core/src/aisdk-native.ts, packages/core/src/model-resolver.ts, packages/core/src/provider.ts, packages/core/test/model-resolver.test.ts, packages/core/test/provider.test.ts] refactor(ai): give named providers dedicated modules (#47726)
+- 3cf197a309 [packages/ai, packages/core/src/aisdk-native.ts, packages/core/test/model-resolver.test.ts] fix(core): remove compatible-provider remapping (#47732)
+- d86c3041c9 [packages/app] fix(app): keep new session open while the worktree list loads (#47734)
+- 5b83c15fb5 [packages/core/src/plugin] fix(core): route MCP skill authentication through the UI (#47738)
+- 17f362e0fe [packages/desktop] fix(desktop): brand macOS dev app as OpenCode Dev (#47744)
+- 3ebc4b01b9 [bun.lock, packages/core, packages/core/src/plugin, packages/plugin-browser, packages/sdk, script] feat(browser): add a public-API browser plugin (#46531)
+- 00067d23a0 [nix] chore: update nix node_modules hashes
+- 1a2b985777 [packages/core/src/plugin, packages/core/test/plugin] refactor(core): remove legacy Console variant normalization (#47760)
+- 8a1a6b8fb4 [bun.lock, packages/app, packages/desktop, packages/session-ui, packages/ui/src/i18n, packages/ui/src/icons] feat(desktop): add browser tabs and Chromium diagnostics (#44838)
+- b51fdb331c [packages/cli, packages/protocol] fix: delete sessions with missing directories and report api errors (#47774)
+- fc4f319676 [nix] chore: update nix node_modules hashes
+- 89f1943d2d [packages/app] fix(app): restore the review panel landmark label (#47781)
+- f094a10645 [packages/plugin] fix(plugin): expose dialog option footer (#47780)
+- 2bf6a9813a [packages/tui] fix(tui): honor falsy dialog current values (#47782)
+- 0732cdd8e1 [packages/client, packages/core/src/session, packages/core/test/session-provider-context.test.ts, packages/core/test/session-runner.test.ts, packages/protocol, packages/schema, packages/www] feat(core): persist provider compaction context (#47322)
+- 1382cebe10 [packages/client, packages/core/src/catalog.ts, packages/core/src/config, packages/core/src/generate.ts, packages/core/src/model-resolver.ts, packages/core/src/plugin, packages/core/src/session, packages/core/test/config, packages/core/test/plugin, packages/core/test/session-native-compaction.test.ts, packages/protocol, packages/schema, packages/session-ui, packages/tui, packages/ui/src/i18n, packages/www] feat(core): support explicit provider compaction (#47323)
+- 5c3f2ddf8c [packages/cli, packages/core/src/config, packages/core/src/file-access.ts, packages/core/src/file-mutation.ts, packages/core/src/instance.ts, packages/core/src/location-mutation.ts, packages/core/src/plugin, packages/core/src/tool, packages/core/test/file-access-path.test.ts, packages/core/test/file-access.test.ts, packages/core/test/file-mutation.test.ts, packages/core/test/location-mutation.test.ts, packages/core/test/session-instructions.test.ts, packages/core/test/tool-edit.test.ts, packages/core/test/tool-patch.test.ts, packages/core/test/tool-read.test.ts, packages/core/test/tool-search.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-write.test.ts, packages/tui] refactor(core): unify filesystem access policy (#47630)
+- 898692af26 [packages/client, packages/core/src/session, packages/core/test/config, packages/core/test/session-compaction.test.ts, packages/core/test/session-native-compaction.test.ts, packages/core/test/session-runner.test.ts, packages/protocol, packages/schema, packages/www] feat(core): schedule provider compaction automatically (#47324)
+- 1827832775 [packages/core/src/session, packages/core/test/session-native-compaction.test.ts, packages/www] fix(core): retry transient provider compaction failures (#47806)
+- 596dca4dee [packages/cli] feat(cli): add session list and delete commands (#47812)
+- 1d391908f4 [packages/core/src/mcp, packages/core/test/mcp-oauth.test.ts] feat(core): identify to MCP authorization servers with a client metadata document (#47743)
+- 9c65a69937 [packages/core/src/v1, packages/core/test/config, packages/web/src/content] fix(core): support granular webfetch permissions (#46611)
+- 582a2108ce [packages/tui] fix(tui): finish reasoning rows on end event (#47813)
+- fcddc84225 [packages/codemode, packages/core/test/session-generate.test.ts] fix(codemode): render empty tools as () and accept zero args (#47833)
+- 5c50edb9bb [packages/core/src/tool] feat(core): expose session rename tool (#47837)
+- 6af8515f69 [packages/ai] feat(ai): add MiniMax provider (#47827)
+- b32d8c3e58 [packages/console, packages/stats] chore(app): update GitHub star count (#47844)
+- 72433f2ed8 [packages/ai] feat(ai): add Meta provider (#47826)
+- e15fb426ec [bun.lock, packages/app, packages/core, packages/core/src/plugin, packages/desktop, packages/plugin-browser] fix(browser): publish plugin under opencode scope
+- ef34ada9fb [packages/core/src/plugin, packages/core/test/plugin] feat(core): add DigitalOcean OAuth and router discovery (#47137)
+- c05d07cd73 [bun.lock, packages/cli, packages/updates] feat(updates): gate releases on minimum client versions
+- a3bbcd5c73 [packages/cli, packages/updates] fix(updates): respect the default CLI user agent
+- 4aba093c98 [packages/updates] fix(updates): scope minimum checks to the caller channel
+- 16aca14bc7 [nix] chore: update nix node_modules hashes
+- a5312e169b [.changeset, .github, .opencode, AGENTS.md, bun.lock, bunfig.toml, install, nix, package.json, packages/ai, packages/app, packages/cli, packages/client, packages/codemode, packages/console, packages/core, packages/core/script/benchmark-location-memory.ts, packages/core/script/benchmark-location.ts, packages/core/script/publish.ts, packages/core/src/agent.ts, packages/core/src/aisdk-native.ts, packages/core/src/aisdk.ts, packages/core/src/app.ts, packages/core/src/bus.ts, packages/core/src/catalog.ts, packages/core/src/codemode, packages/core/src/command.ts, packages/core/src/config.ts, packages/core/src/config, packages/core/src/credential.ts, packages/core/src/database, packages/core/src/effect, packages/core/src/environment, packages/core/src/event-logger.ts, packages/core/src/event, packages/core/src/file-access.ts, packages/core/src/file-mutation.ts, packages/core/src/file-retention.ts, packages/core/src/file.ts, packages/core/src/filesystem.ts, packages/core/src/filesystem, packages/core/src/form.ts, packages/core/src/formatter.ts, packages/core/src/formatter, packages/core/src/generate.ts, packages/core/src/git.ts, packages/core/src/github-copilot, packages/core/src/id, packages/core/src/image.ts, packages/core/src/instance.ts, packages/core/src/instance, packages/core/src/instruction-discovery.ts, packages/core/src/instructions, packages/core/src/integration.ts, packages/core/src/integration, packages/core/src/job.ts, packages/core/src/kv.ts, packages/core/src/location-activity.ts, packages/core/src/location-service-map.ts, packages/core/src/location-services.ts, packages/core/src/location.ts, packages/core/src/mcp, packages/core/src/modal, packages/core/src/model-resolver.ts, packages/core/src/model.ts, packages/core/src/models-dev.ts, packages/core/src/permission.ts, packages/core/src/permission, packages/core/src/persistent-pty, packages/core/src/plugin.ts, packages/core/src/plugin, packages/core/src/project.ts, packages/core/src/project, packages/core/src/provider.ts, packages/core/src/pty.ts, packages/core/src/pty, packages/core/src/reference.ts, packages/core/src/reference, packages/core/src/repository-cache.ts, packages/core/src/ripgrep.ts, packages/core/src/ripgrep, packages/core/src/rpc.ts, packages/core/src/schema.ts, packages/core/src/session.ts, packages/core/src/session, packages/core/src/shell.ts, packages/core/src/shell, packages/core/src/skill.ts, packages/core/src/skill, packages/core/src/snapshot.ts, packages/core/src/tool-output.ts, packages/core/src/tool.ts, packages/core/src/tool, packages/core/src/util, packages/core/src/v1, packages/core/src/vcs.ts, packages/core/src/websearch.ts, packages/core/src/wellknown.ts, packages/core/src/wellknown, packages/core/src/workspace.ts, packages/core/src/workspace, packages/core/src/worktree.ts, packages/core/src/worktree, packages/core/test/agent.test.ts, packages/core/test/aisdk-native.test.ts, packages/core/test/aisdk.test.ts, packages/core/test/app.test.ts, packages/core/test/bus-session-routing.test.ts, packages/core/test/bus.test.ts, packages/core/test/catalog.test.ts, packages/core/test/codemode.test.ts, packages/core/test/codemode, packages/core/test/command.test.ts, packages/core/test/config, packages/core/test/credential.test.ts, packages/core/test/database-drizzle.test.ts, packages/core/test/database-migration.test.ts, packages/core/test/effect-app-node-platform.test.ts, packages/core/test/effect, packages/core/test/environment.test.ts, packages/core/test/event-logger.test.ts, packages/core/test/file-access-path.test.ts, packages/core/test/file-access.test.ts, packages/core/test/file-mutation.test.ts, packages/core/test/filesystem, packages/core/test/fixture, packages/core/test/form.test.ts, packages/core/test/formatter.test.ts, packages/core/test/generate.test.ts, packages/core/test/git.test.ts, packages/core/test/github-copilot, packages/core/test/instance-vanilla.test.ts, packages/core/test/instruction-discovery.test.ts, packages/core/test/instruction-state.test.ts, packages/core/test/instructions, packages/core/test/integration.test.ts, packages/core/test/job.test.ts, packages/core/test/kv.test.ts, packages/core/test/lib, packages/core/test/location-activity.test.ts, packages/core/test/location-filesystem.test.ts, packages/core/test/location-layer.test.ts, packages/core/test/location.test.ts, packages/core/test/logging.test.ts, packages/core/test/mcp-instructions.test.ts, packages/core/test/mcp-oauth.test.ts, packages/core/test/mcp.test.ts, packages/core/test/modal, packages/core/test/model-resolver.test.ts, packages/core/test/model.test.ts, packages/core/test/models.test.ts, packages/core/test/network-guard.test.ts, packages/core/test/npm-config.test.ts, packages/core/test/npm.test.ts, packages/core/test/patch.test.ts, packages/core/test/permission.test.ts, packages/core/test/plugin-failure.test.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/core/test/preload.test.ts, packages/core/test/process, packages/core/test/project.test.ts, packages/core/test/provider.test.ts, packages/core/test/pty, packages/core/test/reference-instructions.test.ts, packages/core/test/reference.test.ts, packages/core/test/repository-cache.test.ts, packages/core/test/repository.test.ts, packages/core/test/ripgrep.test.ts, packages/core/test/rpc-handler-errors.test.ts, packages/core/test/session-activation.test.ts, packages/core/test/session-checkpoint-transport.test.ts, packages/core/test/session-compact.test.ts, packages/core/test/session-compaction-transport.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-create.test.ts, packages/core/test/session-environment.test.ts, packages/core/test/session-error.test.ts, packages/core/test/session-execution.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-instructions.test.ts, packages/core/test/session-log.test.ts, packages/core/test/session-message-update.test.ts, packages/core/test/session-model-request-hooks.test.ts, packages/core/test/session-model-request.test.ts, packages/core/test/session-model-transport-live.test.ts, packages/core/test/session-model-transport.test.ts, packages/core/test/session-move.test.ts, packages/core/test/session-native-compaction.test.ts, packages/core/test/session-owned.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-prompt.test.ts, packages/core/test/session-provider-context.test.ts, packages/core/test/session-remove.test.ts, packages/core/test/session-revert.test.ts, packages/core/test/session-run-coordinator.test.ts, packages/core/test/session-runner-message.test.ts, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-shell.test.ts, packages/core/test/session-skill.test.ts, packages/core/test/session-sql.types.ts, packages/core/test/session-stats.test.ts, packages/core/test/session-step.test.ts, packages/core/test/session-store.test.ts, packages/core/test/session-system-prompt.test.ts, packages/core/test/session-title.test.ts, packages/core/test/session-tool-progress.test.ts, packages/core/test/session-view.test.ts, packages/core/test/session-wait.test.ts, packages/core/test/shared-schema.test.ts, packages/core/test/shell-cleanup.test.ts, packages/core/test/shell-parse.test.ts, packages/core/test/shell-retention.test.ts, packages/core/test/shell.test.ts, packages/core/test/skill-discovery.test.ts, packages/core/test/skill.test.ts, packages/core/test/skill, packages/core/test/snapshot.test.ts, packages/core/test/sqlite-workerd.test.ts, packages/core/test/state-group.test.ts, packages/core/test/state-replay.test.ts, packages/core/test/state.test.ts, packages/core/test/tool-edit.test.ts, packages/core/test/tool-execute.test.ts, packages/core/test/tool-output.test.ts, packages/core/test/tool-patch.test.ts, packages/core/test/tool-question.test.ts, packages/core/test/tool-read-filesystem.test.ts, packages/core/test/tool-read.test.ts, packages/core/test/tool-registry.test.ts, packages/core/test/tool-schema.test.ts, packages/core/test/tool-search.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-skill.test.ts, packages/core/test/tool-subagent.test.ts, packages/core/test/tool-webfetch.test.ts, packages/core/test/tool-websearch.test.ts, packages/core/test/tool-write.test.ts, packages/core/test/util, packages/core/test/v1-migration.test.ts, packages/core/test/vcs-hg.test.ts, packages/core/test/vcs.test.ts, packages/core/test/websearch.test.ts, packages/core/test/wellknown.test.ts, packages/core/test/workspace.test.ts, packages/core/test/worktree.test.ts, packages/desktop, packages/enterprise, packages/function, packages/http-recorder, packages/httpapi-codegen, packages/latex, packages/merman, packages/plugin-browser, packages/plugin, packages/posts, packages/protocol, packages/schema, packages/script, packages/sdk, packages/server, packages/session-ui, packages/simulation, packages/stats, packages/storybook, packages/theme, packages/tui, packages/ui, packages/ui/script/publish.ts, packages/ui/src/actions, packages/ui/src/components, packages/ui/src/data-display, packages/ui/src/feedback, packages/ui/src/forms, packages/ui/src/navigation, packages/ui/src/overlays, packages/updates, packages/util, packages/web, packages/www, script, turbo.json] refactor(packages): migrate to the opencode npm scope (#47852)
+- ad31bff969 [script] docs: remove internal scope migration checklist
+- cc8c2f8810 [nix] chore: update nix node_modules hashes
+- a68d6f904d [packages/cli, script] feat(cli): publish beta releases to AUR (#47855)
+- 74ca560c75 [packages/cli, script] feat(cli): publish stable releases to opencode-bin on AUR (#47856)
+- 6263a35b3f [packages/cli] fix(cli): install only opencode for stable AUR releases (#47857)
+- 567f8b9743 [install, packages/cli, packages/updates, script] feat(updates): serve updates under opencode.ai/update (#47858)
+- be41bc4e7d [packages/app] fix(app): keep tab progress visible on hover (#47835)
+- a55dc8c84a [.github, bun.lock, nix, package.json, packages/cli, packages/core/src/plugin, packages/updates, packages/www, script, services] feat(services): organize hosted services and add public files
+- 0ab661a9cc [nix] chore: update nix node_modules hashes
+- d1d1c6f890 [.github, bun.lock, packages/cli, packages/desktop, script, services] feat(release): publish package binaries through Cloudflare
+- c1c6ab593d [nix] chore: update nix node_modules hashes
+- 2ac698d65a [packages/ai] feat(ai): add Moonshot provider (#47851)
+- a912a6ee4f [packages/core/src/tool] fix(core): clarify shell background parameter guidance (#47865)
+- 1f77408ff2 [packages/tui] feat(tui): navigate projects and worktrees
+- b3f36c0967 [packages/ai] feat(ai): add Z.AI language models (#47866)
+- e8177238f6 [packages/core/src/plugin, packages/core/test/plugin] feat(core): support native Snowflake Cortex authentication (#47156)
+- 50e17b7f95 [packages/desktop] fix(desktop): use OpenCode-hosted update releases
+- 4d74854e8c [packages/core/src/plugin, packages/core/test/plugin] trim redundant opencode instruction (#47878)
+- 5165d6008c [packages/ai] fix(ai): default newer Claude models to drop invalid thinking (#47884)
+- cab8e39ad5 [packages/app] fix(app): use HTTP-safe attachment and mutation IDs (#47887)
+- 64684b118f [packages/app] fix(app): focus auto-created terminals (#47890)
+- 90dd682e66 [bun.lock, infra, packages/app, packages/cli] feat(app): configure initial servers and add QR pairing (#47799)
+- 2bf9bec897 [nix] chore: update nix node_modules hashes
+- c3f1bdaf97 [packages/app] fix(app): cap worktree picker height (#47899)
+- 22a534a0bb [packages/desktop] fix(desktop): skip differential updates when the cache is stale (#47925)
+- 09c318094c [packages/app] fix(app): bound terminal snapshot serialization on teardown (#47924)
+- ea2c0184ce [packages/app] fix(app): release attachment blobs when no draft references them (#47922)
+- a3d5923aca [packages/session-ui] fix(session-ui): stop refetching missing shell output (#47926)
+- 50c552f763 [packages/tui] tui: add tool filtering option to Markdown exports (#47929)
+- 4fef8edbe8 [packages/tui, services] mini: add clear-screen command (#47928)
+- 2eea36e731 [packages/tui] mini: add more minimal output presets. (#47931)
+- 7487999e06 [packages/tui] tabs: add compact session tab rail (#47938)
+- f9bc2233dd [packages/app] fix(app): align desktop agent and model switching (#47286)
+- ded9c7e505 [bun.lock, package.json, packages/cli] feat(cli): add Vite-powered TUI development entrypoint (#47950)
+- c2a1649dd4 [nix] chore: update nix node_modules hashes
+- 9e42e5cc4c [packages/core/src/plugin] feat(core): refresh console provider config periodically (#47980)
+- be58ca806c [packages/cli] fix(cli): recover dev hot reloads and preserve routes (#47979)
+- 8a5709324f [packages/core/src/config, packages/core/test/worktree.test.ts, packages/schema, services] fix(worktree): resolve configured paths relative to project (#47990)
+- cc6bff39a0 [packages/tui] feat(tui): manage worktrees and explicitly move sessions (#47984)
+- 375bf4908f [services] feat(updates): configure per-channel gradual rollouts
+- 4432956490 [packages/core/src/worktree.ts, packages/plugin, services] fix(worktree): accept the strategy's returned directory (#47997)
+- ccbc018072 [packages/tui] fix(tui): honor configured worktree strategy (#47991)
+- e655fed6c3 [services] fix(updates): reject retired next channel
+- e791afdfa3 [packages/core/src/plugin, packages/core/test/plugin] feat(core): add console web search (#47293)
+- 8b09f6415a [packages/codemode] refactor(codemode): export runtime value classes as Values (#48000)
+- 0c1bf08ca6 [packages/core/src/plugin, packages/core/test/plugin] feat(core): add Poe browser OAuth (#47883)
+- 1ead17547b [packages/core/src/plugin, packages/core/test/plugin] fix(core): name hosted provider opencode web search (#48001)
+- 78915a0f17 [.github, bun.lock, services] refactor(update): rename updates service to update
+- 510b771946 [nix] chore: update nix node_modules hashes
+- 83288921f6 [packages/core/src/aisdk-native.ts, packages/core/test/aisdk-native.test.ts] fix(core): map Bedrock OpenAI reasoning effort for inference-profile model IDs (#48006)
+- 546b9fb3c1 [packages/codemode] refactor(codemode): consolidate duplicated interpreter helpers (#48009)
+- a322d7f98f [services] fix(update): bind migrated singular D1 database
+- 11aee1b49f [packages/httpapi-codegen] fix(codegen): preserve equivalent suffixed type references (#48024)
+- 5c30292daa [services] fix(update): restore next channel compatibility alias
+- 883d16d2ad [packages/session-ui] fix(session-ui): emphasize mentions and soften at prefixes (#48029)
+- f3128fa241 [packages/app, packages/ui/src/actions] fix(ui): unify composer submit button styles (#48032)
+- 8c5eca5bb2 [packages/app, packages/session-ui, packages/ui/src/i18n] fix(session-ui): show one count before used (#48038)
+- 79a6a90862 [packages/core/test/plugin.test.ts, packages/plugin] fix(plugin): normalize promise API inputs (#48039)
+- d24f8b0810 [packages/core/src/tool, packages/core/test/tool-shell.test.ts] fix(core): discourage polling background shell commands (#48041)
+- 37b6fbc5bf [packages/app] fix(app): move vertical tab update button to footer (#48030)
+- cc501650c6 [packages/cli] refactor(cli): remove console command (#48040)
+- 18b05e86fb [packages/app] feat(app): add browser shortcut to new-tab menu (#48044)
+- 594635b5ae [packages/cli] feat(cli): add auth account switching and targeted logout (#48050)
+- 6ee2ed7510 [packages/client, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-message-update.test.ts, packages/core/test/session-owned.test.ts, packages/protocol, packages/schema, packages/server, services] refactor(session): remove message content mutation API (#48043)
+- d39290fbb9 [packages/app, packages/cli, packages/desktop, packages/storybook, packages/ui/src/icons] feat(desktop): add SSH server connections (#47753)
+- f1ce69d2ce [packages/app, packages/session-ui] fix(app): link background subagents to their sessions (#47455)
+- d11f5916ee [packages/app] test(app): remove subagent link coverage (#48052)
+- b43e1c682b [] test(app): remove subagent link coverage (#48053)
+- dbd9b18f3d [packages/cli] refactor(cli): move import and export under session (#48055)
+- 74b0fa9d1f [packages/cli, services] feat(cli): add V2 uninstall command (#48056)
+- 08e28fb915 [packages/codemode] refactor(codemode): name the data boundary and prepare tools once (#48021)
+- 0da0772bc0 [packages/codemode] refactor(codemode): use acorn's typed AST in the interpreter (#48060)
+- f02c5f8648 [packages/app] fix(app): follow rendered model order with arrow keys (#47912)
+- 1623ac3ba9 [packages/cli] test(cli): update auth account coverage (#48066)
+- b7aea8b0ef [packages/session-ui] fix(session-ui): fade in streamed inline code (#44899)
+- 148042ab81 [packages/core/src/session, packages/core/test/session-compaction.test.ts, packages/core/test/session-runner.test.ts] fix(core): trim compaction summary prompt (#48058)
+- e628143448 [packages/core/src/session] fix(core): drop retained-tail reference from compaction rules (#48074)
+- c1f4beaf40 [packages/ai] feat(ai): add Alibaba inference provider (#47874)
+- 1fe06bb4ed [packages/codemode] refactor(codemode): define built-in globals as host functions and namespaces (#48072)
+- fcafe82cdc [packages/core/src/plugin, packages/core/test/plugin] fix(core): hide Bedrock bare IDs that require inference profiles (#48078)
+- 2dea1f3d0e [packages/app, packages/core/src/location-services.ts, packages/core/src/rpc.ts, packages/core/test/browser-idle.test.ts, packages/desktop] fix(browser): suspend and restore idle desktop tabs (#48080)
+- d55d941f3c [packages/app, packages/desktop] fix(app): restore selected review pane tab per session (#48079)
+- c0aa963c13 [packages/codemode] refactor(codemode): split the interpreter into a per-execution Runtime and per-call Frame (#48082)
+- ab2366de2e [packages/app] fix(app): improve queued message previews (#48091)
+- b3f765c17d [packages/app] fix(app): reorder and rename browser experiment (#48087)
+- ef88566d61 [packages/app] fix(app): smooth right panel transitions (#48086)
+- f4dd76913f [packages/session-ui] fix(session-ui): simplify file search styling (#48063)
+- 8b92833624 [packages/app] fix(app): constrain worktree dropdown spacing (#48062)
+- 9128e847bd [packages/app, packages/desktop, packages/ui/src/icons] fix(app): refine browser toolbar and empty state (#48061)
+- cebd25022f [packages/core/src/plugin, packages/core/test/plugin] fix(core): honor device token organization (#46570)
+- d461154a8d [packages/app, packages/session-ui, packages/ui/src/i18n] fix(session-ui): lead tool summaries with Used (#48102)
+- 3c4c7b41be [packages/core/src/session, packages/core/test/session-model-transport-live.test.ts, packages/core/test/session-model-transport.test.ts] fix(core): close websocket after provider error frame (#47973)
+- 65152b7936 [packages/client, packages/core/src/session, packages/core/test/session-compaction.test.ts, packages/core/test/session-native-compaction.test.ts, packages/schema, packages/session-ui, packages/tui, packages/ui/src/i18n] feat(core): carry compaction usage on the compaction message (#47974)
+- 51c926c3ac [packages/core/src/tool, packages/core/test/fixture, packages/core/test/tool-html-markdown-budget.test.ts] fix(core): terminate exhausted Markdown code budgets (#47408)
+- 9c8fb89979 [packages/core/src/tool, packages/core/test/tool-webfetch.test.ts] fix(core): preserve inline code boundary backticks (#47410)
+- 1dcc6551d9 [packages/core/src/config, packages/core/test/config] fix(core): preserve literal command arguments
+- c6977a836f [packages/core/src/tool, packages/core/test/tool-read-filesystem.test.ts] fix(core): preserve trailing blank lines in read pages
+- 4ea368e09e [packages/core/src/ripgrep.ts, packages/core/test/ripgrep.test.ts, packages/core/test/tool-search.test.ts] fix(core): exclude hidden glob matches before limiting results
+- f1eed8bf11 [packages/core/src/config, packages/core/test/config] fix(core): preserve legacy markdown agent variants
+- d52380024d [packages/core/src/plugin, packages/core/test/plugin] fix(core): drop gpt-5.4 models from the Codex allowlist (#48141)
+- bdc143c1d5 [packages/ai, packages/client, packages/core/src/catalog.ts, packages/core/src/config, packages/core/src/model-resolver.ts, packages/core/src/session, packages/core/test/config, packages/core/test/generate.test.ts, packages/core/test/plugin, packages/core/test/session-error.test.ts, packages/core/test/session-model-transport.test.ts, packages/schema, services] feat(core): enable the responses websocket by default (#48140)
+- e10408b219 [packages/cli] fix(cli): ignore upgrade cleanup failures (#48178)
+- c0cb1c7a91 [packages/tui] fix(tui): limit shell list commands to one line (#48184)
+- be2582f316 [packages/plugin, packages/tui, services] feat(plugin): decompose tab controls (#48129)
+- ba1448325a [packages/core/src/plugin, packages/core/test/plugin] fix(core): exclude invalid Bedrock entries from models.dev imports (#48081)
+- 95503c1773 [packages/core/src/aisdk-native.ts, packages/core/test/aisdk-native.test.ts] fix(core): send reasoning.effort for GPT-5.6+ on Bedrock Converse (#48195)
+- 297019e321 [packages/codemode] fix(codemode): report non-constructible new callees as TypeError (#48083)
+- 85dff53a1f [packages/codemode] fix(codemode): label supported and unsupported syntax in the hint (#48200)
+- c7dd0c8278 [packages/tui] fix(tui): match upgrade alias to update command (#48204)
+- 9ae6b21f6a [packages/core/src/session, packages/core/test/config, packages/core/test/plugin, packages/core/test/session-compaction.test.ts, packages/core/test/session-model-request-hooks.test.ts, packages/core/test/session-native-compaction.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts, packages/plugin, packages/sdk, packages/server, services] feat(plugin): add session title hook and request options bag (#47663)
+- 7f2510c5ca [packages/codemode] fix(codemode): name the received value in data diagnostics and document intentional gaps (#48211)
+- 7fb79388a4 [packages/cli, services] feat(cli): select individual debug paths (#48216)
+- c45e425e12 [packages/server, packages/tui] fix(server): require authentication for frontend requests (#48217)
+- 1bd85d926b [packages/ai] fix(ai): mark replayed assistant messages completed (#48221)
+- 7ed5223d5e [packages/session-ui] fix(session-ui): align retry icon with label (#47859)
+- a0a0e3271c [packages/core/src/model-resolver.ts, packages/core/src/plugin, packages/core/src/session, packages/core/test/generate.test.ts, packages/core/test/plugin, packages/schema, services] fix(core): make responses websockets opt-in (#48231)
+- 0bbf29fea6 [packages/ui/src/forms, packages/ui/src/navigation] feat(desktop): use base menu selection styling (#47786)
+- 50ed7c41ef [packages/codemode] refactor(codemode): treat prototype-named keys as ordinary data (#48218)
+- 571c3c4f00 [packages/app, packages/session-ui, packages/ui/src/i18n] feat(desktop): show compaction progress and outcomes (#48152)
+- bf4522ed46 [packages/app] fix(app): prevent settings project card clipping (#45366)
+- eb37a7ebc7 [packages/app, packages/session-ui] feat(desktop): polish branch search and session spacing (#48150)
+- 08ac1e168c [packages/app] fix(app): hide outgoing browser when switching sessions (#48243)
+- 0f67a15f3b [packages/app, packages/client, packages/session-ui, packages/ui/src/context] fix(app): reduce cold and warm session load work (#48223)
+- 30f8b2f4b6 [packages/client, packages/core/src/session, packages/protocol, packages/server, services] feat(api): filter session messages by type (#48228)
+- f91c6d8b25 [packages/ai] fix(ai): retain streamed output for empty completion checkpoints (#48249)
+- bdb66747e7 [packages/codemode] feat(codemode): resolve constructor to the owning built-in (#48233)
+- 20aff6d9f6 [packages/app] fix(app): keep workspace tab views alive (#48255)
+- 3edbc88225 [packages/core/src/plugin, packages/core/src/session, packages/core/test/session-compaction.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-native-compaction.test.ts, packages/core/test/session-runner.test.ts, packages/plugin, packages/server, services] feat(plugin): add session compaction and generate hooks (#48212)
+- ac7f3c5ece [packages/ai, packages/core/src/aisdk-native.ts, packages/core/test/aisdk-native.test.ts, packages/core/test/model-resolver.test.ts] fix(core): route Mantle GPT-OSS models through Chat (#48251)
+- 43fb543e3b [packages/core/src/github-copilot] fix(core): request summarized adaptive thinking (#48271)
+- 5ec7dd968c [packages/codemode] fix(codemode): coerce enumeration sources like JS ToObject (#48257)
+- 1417976257 [packages/core/src/session, packages/core/test/session-compaction.test.ts, services] fix(core): run compaction hooks before appending the summary prompt (#48276)
+- 1452aadc87 [packages/codemode] feat(codemode): add substr, well-formed, and Date string methods (#48275)
+- 8475783700 [packages/tui] fix(tui): ignore parked synthetic inbox for tab busy (#48273)
+- e22cd0a585 [packages/codemode, packages/core/src/codemode] refactor(codemode): collapse repeated loop, promise, and Object shapes (#48283)
+- 98a36fb1a4 [packages/codemode] feat(codemode): hoist var to function scope (#48284)
+- 08ff21179c [packages/codemode] fix(codemode): hoist switch-case functions and memoize var names (#48287)
+- f3ef84556a [packages/codemode] feat(codemode): add atob, btoa, and crypto.randomUUID (#48290)
+- 2695607fbc [packages/app] fix(app): stabilize optimistic prompt position (#46723)
+- 2e8ed86658 [packages/app, packages/session-ui] fix(app): move compaction status below summary (#48262)
+- bb8194395a [packages/app] feat(desktop): respect follow-up behavior for slash commands (#48169)
+- 573d76933f [packages/ai, packages/core/src/plugin, packages/core/test/plugin, services] fix(ai): make xAI Responses websockets work and enable them (#48318)
+- eb357f17cf [packages/tui] fix(tui): strip NUL characters before clipboard writes (#48337)
+- 9e153ce7b3 [packages/core/test/session-runner.test.ts, packages/schema] fix(core): raise instruction entry limit (#48350)
+- f6333546f8 [packages/tui] fix(tui): disambiguate plugin actions (#48354)
+- 45a2ed9a97 [packages/client, packages/core/src/database, packages/core/src/permission.ts, packages/core/src/plugin, packages/core/src/session.ts, packages/core/src/session, packages/core/test/permission.test.ts, packages/core/test/plugin, packages/core/test/session-create.test.ts, packages/plugin, packages/protocol, packages/schema, packages/server, services] feat(core): per-session permission rules (#48351)
+- cfa5ba700e [packages/stats] fix(stats): canonicalize DeepSeek Flash usage (#48373)
+- 929374cdfd [packages/core/src/tool, packages/core/test/mcp.test.ts] feat(core): parse JSON text results from MCP tools without an output schema (#48357)
+- 8f4d706647 [packages/cli, services] feat(cli): add command docs and simplify session list
+- 0c1dfa9186 [packages/tui] refactor(tui): extract shared session rendering primitives (#48393)
+- 872e38055e [packages/ai] fix(ai): normalize flat Responses stream errors (#48376)
+- d4ceffe787 [services] docs: refresh v2 guides
+- d4bf78b348 [services] docs: add websearch guides
+- 9b1891fb7e [services] docs(cli): expand provider connections
+- 181428a2f3 [packages/codemode] fix(codemode): use Bun's wording for the missing atob/btoa argument (#48381)
+- 1c723c56fa [packages/tui] feat(tui): add recursive grouping tree (#48394)
+- 70afbac80c [services] docs(www): add core CLI theme concepts (#48426)
+- 4d12e01824 [packages/tui] refactor(tui): project production subgroups through tree engine (#48399)
+- 15c525dcfb [packages/merman] fix(merman): support & node groups in flowchart statements (#48425)
+- f0b5da1c11 [packages/ai] feat(ai): type provider configuration errors (#48440)
+- 3368e049d2 [] fix(app): refine home row hover actions (#47270)
+- 0c0a431c9f [] fix(ui): make comment cancel action ghost (#46742)
+- 9dd7149e75 [packages/core/src/plugin, packages/core/test/plugin] feat(core): append comment guidance to Anthropic system prompt (#48444)
+- 4261fe749d [packages/app, packages/desktop] fix(desktop): repair SSH server updates (#48442)
+- 71317ec7c9 [packages/core/src/generate.ts, packages/core/src/model-resolver.ts, packages/core/src/session, packages/core/test/model-resolver.test.ts, packages/core/test/session-error.test.ts] fix(core): report provider initialization failures (#48433)
+- c2348f8f69 [packages/app, packages/desktop] fix(app): coordinate notifications across windows (#44613)
+- 010cd6131e [packages/app, packages/session-ui] fix(app): merge adjacent file-changing tools (#44977)
+- 0ce1383030 [packages/app] fix(app): preserve file search results while loading (#43832)
+- 6bb4b35399 [packages/app] fix(app): preserve loopback server host (#44296)
+- 4e97b78d98 [services] docs: fix v2 plugin system example (#48452)
+- e0deffa083 [services] docs(plugin): fix Effect system part example (#48492)
+- 2df00955cb [packages/cli] fix(cli): preserve ACP reasoning boundaries and effort selections (#48493)
+- 4c34ee5eab [packages/codemode] test(codemode): run test262 files verbatim from a local checkout (#48446)
+- 923bda07a2 [packages/ai] feat(ai): always send interleaved thinking beta for Anthropic (#48521)
+- 6e8ff0c2b7 [packages/core/src/plugin, packages/core/test/plugin] refactor(core): remove dead AISDK hooks (#48523)
+- 10ae321bf3 [packages/codemode] refactor(codemode): give programs their own objects and arrays (#48527)
+- a555f24ded [packages/ai, packages/core/src/aisdk-native.ts, packages/core/src/model-resolver.ts, packages/core/src/provider.ts, packages/core/test/aisdk-native.test.ts, packages/core/test/model-resolver.test.ts, packages/core/test/provider.test.ts] refactor: flatten provider settings across core and the AI package (#48429)
+- bb564f96a3 [.github, AGENTS.md, install, package.json, packages/app, packages/cli, packages/core/src/plugin, packages/desktop, packages/tui, packages/web/src/content, services] feat(cli): rename command to opencode
+- 8f2b13e864 [packages/tui] fix(tui): display slash command aliases (#48544)
+- 68b862da49 [packages/codemode] refactor(codemode): make functions program objects with name and length (#48541)
+- 654f411a5b [.github, bun.lock, package.json, packages/ai, packages/app, packages/cli, packages/client, packages/codemode, packages/console, packages/core, packages/desktop, packages/enterprise, packages/function, packages/http-recorder, packages/httpapi-codegen, packages/latex, packages/merman, packages/plugin-browser, packages/plugin, packages/protocol, packages/schema, packages/script, packages/sdk, packages/server, packages/session-ui, packages/simulation, packages/stats, packages/theme, packages/tui, packages/ui, packages/util, packages/web, script, sdks, services] feat(release): isolate v2 stable publishing (#48546)
+- 312651f68e [packages/cli, packages/tui, services] feat(tui): configure session permission handling (#48545)
+- c55ee2a815 [.github] fix(release): sign v2 Windows CLI (#48566)
+- 4994a7d694 [.github] fix(release): sign primary Windows CLI (#48567)
+- 770420bdad [.github, packages/cli] fix(release): omit node CLI from latest (#48568)
+- 63f7ceecbe [packages/cli] fix(release): use V2 Docker artifact paths (#48571)
+- 5319f063d6 [services] docs: use stable V2 packages (#48576)
+- b08ad82518 [install, packages/cli] fix(cli): clarify opencode2 rename guidance
+- 0f26ad8787 [install, packages/cli] fix(cli): keep opencode2 as a working alias
+- b0b85cbb77 [packages/ai] fix(ai): omit empty Bedrock tool descriptions (#48582)
+- 0d8e64112f [packages/tui] fix(tui): defer named-theme palette detection (#48570)
+- b2e6e764a8 [packages/codemode] refactor(codemode): give errors a real prototype chain and JS error types (#48559)
+- 60fb97d59e [packages/desktop] fix(desktop): preserve keyboard focus during browser navigation (#48593)
+- 41e5d1b6b6 [packages/session-ui] fix(session-ui): keep divider notices out of used groups (#48594)
+- 877b04f0b9 [packages/app, packages/client, packages/core/src/config.ts, packages/core/src/shell, packages/protocol, packages/schema, packages/server, packages/ui/src/icons] feat(desktop): redesign settings navigation and project editing (#47983)
+- 2253d4c31d [bun.lock, package.json, packages/ai, packages/app, packages/cli, packages/client, packages/codemode, packages/console, packages/core, packages/desktop, packages/enterprise, packages/function, packages/http-recorder, packages/httpapi-codegen, packages/latex, packages/merman, packages/plugin-browser, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/session-ui, packages/simulation, packages/stats, packages/theme, packages/tui, packages/ui, packages/util, packages/web, sdks, services] sync release versions for v2.0.1
+- 5d1841e0aa [packages/app] feat(desktop): redesign settings with search (#48174)
+- 27027777d2 [services] docs: expand V1 plugin migration guide
+- bbf4cd4975 [packages/app, packages/ui/src/forms, packages/ui/src/icons, packages/ui/src/styles, packages/ui/src/theme] fix(desktop): polish settings search (#48210)
+- d6c22b3bf5 [packages/app, packages/ui/src/icons] feat(desktop): consolidate status into session summary (#48103)
+- 625c469854 [packages/app, packages/client, packages/core/src/filesystem.ts, packages/protocol, packages/server, services] fix(server): return 404 for missing files (#44089)
+- c4fe0f676a [bun.lock, packages/app] fix(app): polyfill startup APIs for older Safari (#48621)
+- 9f3ba44c4a [packages/app] fix(app): keep summaries clear of the session timeline (#48449)
+- 3f579f53f4 [packages/core/src/plugin, packages/core/test/plugin] feat(core): add TinyFish web search (#48561)
+- 6add96698e [packages/codemode] refactor(codemode): move built-ins onto real prototypes with native function objects (#48608)
+- 0a21042523 [packages/ai, packages/core/src/tool.ts, packages/core/test/session-runner.test.ts, packages/core/test/tool-registry.test.ts] fix(tools): clarify unavailable tool errors (#48620)
+- cf4f1fb45e [packages/tui] fix(tui): remove preview session tabs
+- c7868ce0e6 [nix] chore: update nix node_modules hashes
+- 4143084250 [packages/app, packages/ui/src/icons] feat(app): polish summary panels and config actions (#48445)
+- 7c5a4d01aa [bun.lock, package.json, packages/ai, packages/app, packages/cli, packages/client, packages/codemode, packages/console, packages/core, packages/desktop, packages/enterprise, packages/function, packages/http-recorder, packages/httpapi-codegen, packages/latex, packages/merman, packages/plugin-browser, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/session-ui, packages/simulation, packages/stats, packages/theme, packages/tui, packages/ui, packages/util, packages/web, sdks, services] sync release versions for v2.0.2
+- 81523d4a84 [packages/app, packages/ui/src/components, patches] fix(app): stabilize mobile timeline touch scrolling (#48600)
+- 0643a5638e [nix] chore: update nix node_modules hashes
+- 3dde11c392 [packages/tui] chore(tui): log stalled plugin startup
+- 21dac524f3 [packages/tui] fix(tui): defer palette probe until first frame
+- e47b9b5453 [packages/tui] fix(tui): cache system theme palette
+- 61d812fcd6 [packages/tui] fix(tui): refresh system palette after paint
+- 2816d1c849 [packages/client, packages/core/src/git.ts, packages/core/src/session.ts, packages/core/src/session, packages/core/src/snapshot.ts, packages/core/test/git.test.ts, packages/core/test/session-diff.test.ts, packages/core/test/session-execution.test.ts, packages/protocol, packages/schema, packages/server, packages/session-ui, packages/tui, services] feat(session): add turn diff route (#47821)
+- dbc63955b0 [packages/tui] refactor(tui): simplify theme palette lifecycle
+- c82340a97b [packages/tui] fix(tui): probe palette only for system theme
+- 9c8a4ea4ff [packages/cli] fix(cli): replace update preflight renderer
+- c5aa7d7e34 [bun.lock, package.json, packages/ai, packages/app, packages/cli, packages/client, packages/codemode, packages/console, packages/core, packages/desktop, packages/enterprise, packages/function, packages/http-recorder, packages/httpapi-codegen, packages/latex, packages/merman, packages/plugin-browser, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/session-ui, packages/simulation, packages/stats, packages/theme, packages/tui, packages/ui, packages/util, packages/web, sdks, services] sync release versions for v2.0.3
+- c43cfccc4e [packages/core/src/tool, packages/core/test/lib, packages/core/test/tool-patch.test.ts] fix(core): shape compaction and generate requests with built-in context hooks (#48749)
+- fb3c10ca66 [packages/ai] fix(ai): sanitize replayed Bedrock tool names (#48750)
+- 7a31b5c0f7 [packages/ai] fix(ai): normalize Bedrock document labels (#48756)
+- 195158c34c [packages/ai] fix(ai): normalize Bedrock Mistral tool IDs (#48843)
+- 42ff564913 [V2_HTTP_API_AUDIT.md, packages/app, packages/client, packages/codemode, packages/protocol, packages/server, packages/tui, packages/web/src/content, services] refactor(protocol): remove current project endpoint
+- e16c56fe8b [V2_HTTP_API_AUDIT.md, packages/cli, packages/codemode, packages/protocol, services] refactor(protocol): remove v2 operation prefixes
+- 13453f2da8 [V2_HTTP_API_AUDIT.md, packages/app, packages/cli, packages/client, packages/codemode, packages/core/src/plugin, packages/desktop, packages/protocol, packages/sdk, packages/server, packages/tui, services] refactor(protocol): consolidate server status
+- b901cb28af [packages/ai] fix(ai): omit OpenAI tool choice when tools are empty (#48857)
+- 1eeaaab7a6 [.github, .husky, .oxlintrc.json, AGENTS.md, package.json, packages/ai, packages/app, packages/cli, packages/codemode, packages/core/src/config, packages/core/src/plugin, packages/core/src/rpc.ts, packages/desktop, packages/http-recorder, packages/httpapi-codegen, packages/plugin, packages/session-ui, packages/simulation, packages/tui] refactor: restrict reflective access (#48860)
+- 487e1bd76e [V2_HTTP_API_AUDIT.md, packages/app, packages/cli, packages/client, packages/codemode, packages/plugin-browser, packages/protocol, packages/schema, packages/sdk, packages/server, packages/tui, services] refactor(protocol): remove workspace API
+- 5ab0167288 [V2_HTTP_API_AUDIT.md, packages/client, packages/core/src/project.ts, packages/core/test/project.test.ts, packages/protocol, packages/schema, services] refactor(schema): remove project initialized time
+- ce56111a4c [V2_HTTP_API_AUDIT.md, packages/client, packages/protocol, packages/schema, packages/tui, services] refactor(protocol): simplify response locations
+- 8905af5074 [V2_HTTP_API_AUDIT.md, packages/cli, packages/client, packages/protocol, packages/server, packages/tui, services] refactor(protocol): remove plugin activation wait
+- 199aabe9e2 [V2_HTTP_API_AUDIT.md, packages/app, packages/cli, packages/client, packages/core/src/config, packages/core/src/plugin, packages/core/src/skill.ts, packages/core/test/config, packages/core/test/plugin, packages/core/test/session-owned.test.ts, packages/core/test/session-skill.test.ts, packages/core/test/skill.test.ts, packages/core/test/skill, packages/core/test/tool-skill.test.ts, packages/protocol, packages/schema, packages/tui, services] refactor(protocol): simplify skill and reference contracts
+- 7784b3ee0d [V2_HTTP_API_AUDIT.md, packages/client, packages/core/src/config.ts, packages/core/src/config, packages/core/src/plugin, packages/core/test/config, packages/protocol, packages/schema, services] refactor(core): isolate compatibility skills
+- c2cf497e19 [V2_HTTP_API_AUDIT.md, packages/app, packages/client, packages/core/src/config.ts, packages/protocol, packages/schema, packages/server, services] refactor(config): remove preferences API
+- 763cac8080 [V2_HTTP_API_AUDIT.md, packages/app, packages/client, packages/core/src/config.ts, packages/protocol, packages/schema, packages/server, services] feat(config): add experimental updates
+- 82f713421f [packages/client] fix(client): replace servers missing status endpoint
+- aeed4b6375 [V2_HTTP_API_AUDIT.md, packages/client, packages/core/src/plugin, packages/protocol, packages/server, services] fix(protocol): return missing integration error
+- 5d3019e5a1 [packages/codemode] refactor(codemode): materialize interpreter failures once and locate them at the call boundary (#48770)
+- a71bb4d38c [packages/session-ui, packages/ui/src/i18n] fix(app): match notice updates to used label styling (#48895)
+- 476432de1e [packages/core/src/git.ts, packages/core/src/plugin, packages/core/src/util, packages/core/test/util] fix(core): restore Windows Git fast path (#48879)
+- 48875190ef [packages/codemode] feat(codemode): fail runaway recursion with a RangeError at 10000 nested calls (#48891)
+- 48c9a0a8de [.gitignore, bun.lock, package.json, script] feat(release): add interactive review
+- cd3a64b225 [packages/app, packages/sdk] test: align status and shell expectations (#48906)
+- 052be04466 [packages/cli, packages/core/test/config, packages/core/test/snapshot.test.ts, packages/server, packages/tui] test: align coverage with v2 refactors (#48900)
+- 4418df5d62 [packages/app] test(app): align worker status URL (#48911)
+- 1e697962bd [.github] fix: restore required typecheck status (#48913)
+- e9bb6d490b [packages/tui] refactor(tui): remove terminal pane setting
+- 40f4778296 [V2_HTTP_API_AUDIT.md, packages/app, packages/cli, packages/client, packages/core/src/integration.ts, packages/core/src/session.ts, packages/core/test/plugin, packages/core/test/session-create.test.ts, packages/core/test/session-diff.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-skill.test.ts, packages/protocol, packages/schema, packages/sdk, packages/server, packages/tui, services] refactor(protocol): refine audited endpoints
+- 93a37958a7 [packages/app, packages/session-ui] fix(session-ui): remove sticky patch header gap (#48909)
+- 223b0271e6 [packages/app, packages/cli, packages/tui] test: align platform and endpoint expectations (#48916)
+- 07225172df [packages/ai] fix(ai): serialize undefined historical tool input (#48863)
+- 752d980770 [packages/ai] fix(ai): map Vertex service tier to header (#48886)
+- 1d4d9b5fa5 [packages/ai] fix(ai): preserve OpenAI Chat image URLs (#48862)
+- 0a3dc16961 [packages/app] fix(app): shorten context usage label (#48927)
+- 3045156fa6 [packages/codemode] fix(codemode): strip __proto__ keys at host object boundaries (#48926)
+- ce380fba29 [nix] fix(nix): install opencode and keep opencode2 alias (#48662)
+- 6e43875123 [nix] fix(nix): enable Wayland clipboard images (#48928)
+- cbe8823671 [bun.lock, package.json, packages/client, packages/core, packages/core/src/mcp, packages/core/src/tool, packages/core/test/config, packages/core/test/fixture, packages/core/test/mcp-instructions.test.ts, packages/core/test/mcp-oauth.test.ts, packages/core/test/mcp.test.ts, packages/schema, patches, services] feat(core): rework MCP client for SDK v2 and the 2026-07-28 revision (#48937)
+- 8fc49da6eb [nix] chore: update nix node_modules hashes
+- 41df55ac15 [packages/client, packages/core/src/mcp, packages/core/test/mcp-oauth.test.ts, packages/core/test/mcp.test.ts, packages/schema, packages/tui] feat(core): carry the reason on MCP needs_auth status (#48939)
+- 0ee9f61e3d [packages/tui] fix(tui): allow toggling several MCP servers at once (#48940)
+- f1149efee7 [artifacts, packages/app, packages/session-ui] fix(session-ui): group file tool diffs (#48932)
+- 55e1b3eb17 [packages/plugin, packages/tui, services] feat(tui): add inline home footer slot (#48798)
+- dac296f963 [packages/ai, packages/core/src/aisdk.ts, packages/core/src/session, packages/core/test/session-runner-message.test.ts, packages/core/test/session-runner.test.ts] feat: preserve prompt cache across effort switches (#48513)
+- f64ce6aad4 [packages/tui] fix(tui): preserve form drafts across tabs (#48952)
+- c62d2e8336 [packages/app, packages/client, packages/core/script/benchmark-location-memory.ts, packages/core/src/catalog.ts, packages/core/src/config, packages/core/src/event-logger.ts, packages/core/src/github-copilot, packages/core/src/instance.ts, packages/core/src/integration.ts, packages/core/src/integration, packages/core/src/modal, packages/core/src/model-resolver.ts, packages/core/src/model.ts, packages/core/src/models-dev.ts, packages/core/src/plugin, packages/core/src/provider.ts, packages/core/src/session, packages/core/src/state.ts, packages/core/test/catalog.test.ts, packages/core/test/config, packages/core/test/event-logger.test.ts, packages/core/test/generate.test.ts, packages/core/test/location-layer.test.ts, packages/core/test/mcp.test.ts, packages/core/test/model-plugins.test.ts, packages/core/test/model-resolver.test.ts, packages/core/test/plugin, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts, packages/plugin, packages/schema, packages/server, packages/tui, services] refactor(core): split provider and model registries (#48901)
+- 94804423f4 [packages/core/src/session, packages/core/test/session-stats.test.ts] fix(core): match versioned usage event type in stats (#48997)
+- 8378f6caa9 [packages/core/test/git.test.ts] test(core): avoid stdin race in check-ignore flake test (#48995)
+- fee337c462 [packages/tui] refactor(tui): anchor turn token usage on idle markers (#49001)
+- 8cf4e6b9b4 [V2_HTTP_API_AUDIT.md, packages/app, packages/cli, packages/client, packages/core/src/plugin, packages/core/src/session, packages/core/test/session-owned.test.ts, packages/core/test/session-skill.test.ts, packages/protocol, packages/server, packages/tui, services] refactor(protocol): simplify session actions
+- 60b88daddf [packages/tui] fix(tui): show latest shell output
+- 3468a092c9 [packages/codemode] feat(codemode): expose host classes and functions through extensions (#48941)
+- 6bc60caab9 [V2_HTTP_API_AUDIT.md, packages/app, packages/client, packages/core/src/plugin, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-execution.test.ts, packages/core/test/session-owned.test.ts, packages/core/test/session-prompt.test.ts, packages/protocol, packages/server, packages/tui, services] refactor(session): rename interrupt resume option
+- 75f046212f [V2_HTTP_API_AUDIT.md, packages/client, packages/protocol, packages/server, services] refactor(protocol): mark transient session controls
+- 76594882b4 [packages/codemode] fix(codemode): bound what one built-in can build with string, array, and promise caps (#49019)
+- 4fa6ca00e5 [packages/session-ui] fix(session-ui): label web search providers dynamically (#49045)
+- 2b855fccb2 [packages/codemode] test(codemode): drop the slow split and matchAll cap cases (#49051)
+- cdee29a821 [packages/tui] test(tui): update mini transport contract expectations (#49058)
+- 648d01eec7 [V2_HTTP_API_AUDIT.md, packages/app, packages/cli, packages/client, packages/core/src/session, packages/core/test/config, packages/core/test/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/tui, services] refactor(protocol): normalize session resources
+- a54f2c12a8 [packages/codemode] test(codemode): follow the experimental instruction route rename (#49067)
+- 00a2fc97f7 [packages/codemode] feat(codemode): cross Set, RegExp, and URLSearchParams to the host in a useful form (#49065)
+- 2226afaea5 [bun.lock, packages/ai, packages/core, packages/core/src/aisdk-native.ts, packages/core/src/config, packages/core/src/github-copilot, packages/core/src/modal, packages/core/src/model-resolver.ts, packages/core/src/model.ts, packages/core/src/models-dev.ts, packages/core/src/plugin, packages/core/src/provider.ts, packages/core/src/variant.ts, packages/core/test/aisdk-native.test.ts, packages/core/test/aisdk.test.ts, packages/core/test/catalog.test.ts, packages/core/test/config, packages/core/test/github-copilot, packages/core/test/location-layer.test.ts, packages/core/test/modal, packages/core/test/model-resolver.test.ts, packages/core/test/models.test.ts, packages/core/test/plugin, packages/core/test/provider-mistral.test.ts, packages/core/test/session-error.test.ts, packages/core/test/variant.test.ts] refactor(core): refactor model resolving logic, fix missing variant logic (#48943)
+- 2463612418 [packages/ai] test(ai): update Cloudflare gateway recordings (#49075)
+- 7dcafbfa0b [packages/tui] feat(tui): add effort variant alias (#49078)
+- f02b21a69a [nix] chore: update nix node_modules hashes
+- 90ac6f9724 [packages/app] test(app): match renamed command field (#49077)
+- 23402629c5 [packages/app] fix(app): drop 'Plus' prefix from queued attachment label (#49080)
+- 98f2a87304 [packages/app] fix(app): restore queued attachments to the composer when editing (#49081)
+- 081eef3b80 [packages/app, packages/client, packages/core/src/config, packages/core/src/instance.ts, packages/core/src/plugin, packages/core/src/worktree.ts, packages/core/src/worktree, packages/core/test/plugin, packages/core/test/worktree.test.ts, packages/protocol, packages/schema, packages/sdk, packages/server, packages/tui, services] feat(core): make worktree APIs project-based (#48867)
+- 4fc5ba1358 [packages/cli] test(cli): match renamed command payload key (#49101)
+- c31ac3c919 [packages/app, packages/desktop] fix(desktop): migrate mac beta to stable installer (#48724)
+- 6a30741c45 [packages/ai] fix(ai): classify content policy errors by provider codes (#49099)
+- 1aaa8060d1 [packages/client] fix(client): preserve inbox events during snapshot reads (#49106)
+- a73eaae6c0 [packages/tui] test(tui): wait for variant filter focus before typing (#49107)
+- 9ae714d49d [packages/codemode] feat(codemode): add Uint8Array, drop the Program prefix, and give built-ins one context (#49076)
+- 30243ddff9 [packages/ai, packages/http-recorder] fix(ai): always send type message on Responses input messages (#49110)
+- 0f22b86670 [packages/ai, packages/client, packages/core/src/config, packages/core/src/model-resolver.ts, packages/core/src/model.ts, packages/core/src/plugin, packages/core/src/session, packages/core/test/config, packages/core/test/generate.test.ts, packages/core/test/plugin, packages/protocol, packages/schema, services] refactor(core): replace websocket flags with a single transport preference (#48423)
+- 0b15abbf9a [packages/codemode] refactor(codemode): make the host boundary JSON.stringify plus a short table (#49128)
+- 27aaa9ce0e [packages/ai, packages/core/src/plugin, packages/core/test/session-runner-recorded.test.ts, packages/schema] feat(ai): allowlist prompt_cache_key sending per provider (#49121)
+- d0a902815d [packages/ai, packages/core/src/plugin, packages/core/src/session, packages/core/test/plugin, packages/core/test/session-model-request-hooks.test.ts, packages/core/test/session-model-transport.test.ts, packages/plugin, services] feat(plugin): add experimental WebSocket handshake hook (#49131)
+- a4aaf18855 [services] docs(www): refine typography and background (#49191)
+- d54fc305db [packages/core/src/plugin, packages/core/src/session, packages/core/test/fixtures, packages/core/test/plugin, packages/core/test/session-runner-recorded.test.ts, packages/core/test/session-runner.test.ts] feat(core): append model identity to system prompts via plugin (#49129)
+- 3c3ef00b32 [services] docs(www): use variable IBM Plex Mono and refine body text (#49200)
+- b76e56eca3 [services] docs(www): adjust text and background colors (#49202)
+- c921067eb8 [packages/client, packages/tui] fix(client): regenerate model compatibility type (#49204)
+- d9dfc5c1d6 [packages/codemode] refactor(codemode): extensions are host functions only (#49196)
+- 6c9115eb75 [services] docs(www): restore regular body font weight (#49219)
+- e31ad14c1d [packages/core/src/integration.ts, packages/core/test/integration.test.ts] fix(core): surface authorization cause in error message (#49214)
+- b693c222da [bun.lock, packages/client, packages/core, packages/core/src/mcp, packages/core/test/mcp-oauth.test.ts, packages/protocol, packages/schema, services] feat(core): configure MCP OAuth authorization server metadata (#49126)
+- 4cd6093e31 [packages/codemode] fix(codemode): keep one RegExp lastIndex (#49220)
+- fc731d6013 [nix] chore: update nix node_modules hashes
+- 70fe186df4 [packages/app, packages/cli] test(app): wait for summary readiness (#49217)
+- 01443d5e00 [packages/core/src/job.ts, packages/core/test/job.test.ts] fix(core): preserve job failure details (#49226)
+- aaed6eaa45 [packages/tui] fix(tui): clarify collapsed shell output (#49232)
+- 7e2ca5fe26 [packages/plugin, packages/tui] fix(tui): retry installed plugin dependencies (#49187)
+- 24dff6929d [packages/session-ui] feat(app): preview timeline images in attachment overlay (#49111)
+- b629b458f7 [packages/app] fix(app): match session title placeholder to tab label (#48735)
+- 12e53ee6d4 [V2_HTTP_API_AUDIT.md, packages/app, packages/cli, packages/client, packages/core/src/permission, packages/core/src/plugin, packages/core/test/permission.test.ts, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/tui, services] refactor(protocol): simplify interactive resources
+- 547d60183d [V2_HTTP_API_AUDIT.md, packages/app, packages/cli, packages/client, packages/core/src/plugin, packages/core/src/tool, packages/plugin, packages/protocol, packages/sdk, packages/server, packages/tui, services] refactor(session): consolidate mutable properties
+- 1b6a07dda3 [V2_HTTP_API_AUDIT.md, packages/client, packages/core/src/session, packages/core/test/plugin, packages/schema] refactor(session): simplify permissions event
+- 02b12aa60e [] test(core): align plugin host fixture with session update and permission domains (#49243)
+- fa3721fad6 [packages/codemode] fix(codemode): treat tools.search as the built-in search (#49249)
+- b1f6d21ef3 [V2_HTTP_API_AUDIT.md, packages/app, packages/client, packages/core/src/plugin, packages/core/src/shell.ts, packages/core/src/vcs.ts, packages/core/test/plugin, packages/plugin, packages/protocol, packages/schema, packages/server, packages/tui, services] refactor(protocol): refine vcs and shell APIs
+- 67a6d52015 [packages/cli] chore(cli): reduce compiled runtime memory
+- 1a3bd3458c [packages/cli] test(cli): align ACP fixture contracts (#49251)
+- c987590c5f [V2_HTTP_API_AUDIT.md, packages/client, packages/protocol, packages/server, services] refactor(protocol): mark stateless generation experimental
+- f7444aba27 [script] fix(release): anchor review to stable tag
+- 978bc53eba [V2_HTTP_API_AUDIT.md] docs: complete v2 HTTP API audit
+- 796c423df5 [packages/tui] fix(tui): remove web search integration category
+- 370b9d484a [packages/tui] test(tui): update descendant form expectation (#49246)
+- 73bbeb7ce1 [packages/tui] fix(tui): deduplicate plugin targets (#49112)
+- 12201ee507 [packages/cli] fix(cli): load web assets on demand
+- 9b091ebd37 [packages/app] feat(desktop): cycle new session location (#49171)
+- fc49b16584 [install] fix(install): use latest release channel (#49261)
+- a062f4e803 [packages/core/test/vcs-hg.test.ts, packages/core/test/vcs.test.ts] test(core): expect the vcs provider in info results (#49264)
+- 9bf5faa978 [packages/core/src/model.ts, packages/core/src/provider.ts, packages/core/test/catalog.test.ts] fix(core): reuse model catalog across credential changes (#49255)
+- c57733a647 [packages/codemode, packages/core/src/codemode] refactor(codemode): before/after hooks for tool and extension calls (#49242)
+- 3c1f87d2d4 [packages/tui] fix(tui): limit shell command previews
+- 194a006932 [packages/core/src/codemode, packages/core/test/tool-execute.test.ts] feat(core): expose fetch to code mode scripts (#49235)
+- 7c3c50bac2 [bun.lock, package.json, packages/ai, packages/app, packages/cli, packages/client, packages/codemode, packages/console, packages/core, packages/desktop, packages/enterprise, packages/function, packages/http-recorder, packages/httpapi-codegen, packages/latex, packages/merman, packages/plugin-browser, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/session-ui, packages/simulation, packages/stats, packages/theme, packages/tui, packages/ui, packages/util, packages/web, sdks, services] sync release versions for v2.0.4
+- 6ee156e0b9 [packages/core/src/mcp, packages/core/test/mcp-oauth.test.ts] fix(core): keep the configured MCP URL as the OAuth resource (#49241)
+- 5379a2dfe0 [packages/codemode, packages/core/src/tool.ts] fix(codemode): reuse tool discovery catalogs
+- 005522786f [packages/app] fix(app): enable debug tools toggle on local channel (#49278)
+- 9add9384be [packages/core/src/codemode] refactor(core): list which extension calls show under execute (#49281)
+- 0537fd47c7 [packages/tui] feat(tui): open execute call details dialog on click (#49259)
+- 7d7962b2fa [packages/core/src/plugin, packages/core/src/tool, packages/core/test/fixtures, packages/core/test/plugin, packages/core/test/session-runner.test.ts, packages/core/test/tool-opencode.test.ts, packages/core/test/tool-subagent.test.ts] feat(core): let subagents pick a model and expose models tool (#49194)
+- 5eaed68c2b [packages/core/src/plugin] fix(core): refresh Console config every minute (#49233)
+- eb052f70b4 [packages/tui] fix: mini reconnect (#49301)
+- ba753b383f [packages/core/src/session, packages/core/test/session-error.test.ts, packages/core/test/session-runner.test.ts] fix(core): retry acknowledged websocket read failures (#49183)
+- cda2bc5100 [packages/core/test/plugin] test(core): match the one minute Console config refresh interval (#49327)
+- 8806d34ed4 [packages/tui, services] feat(tui): make notification and sound alerts independent toggles
+- 276f2eef3e [packages/stats] fix(stats): hide Union Alpha provider (#49355)
+- 4d73b40e59 [bun.lock, package.json, packages/ai, packages/app, packages/cli, packages/client, packages/codemode, packages/console, packages/core, packages/desktop, packages/enterprise, packages/function, packages/http-recorder, packages/httpapi-codegen, packages/latex, packages/merman, packages/plugin-browser, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/session-ui, packages/simulation, packages/stats, packages/theme, packages/tui, packages/ui, packages/util, packages/web, sdks, services] sync release versions for v2.0.5
+- 2cdd938152 [packages/ai, packages/core/src/plugin, packages/core/test/config] fix: honor provider transport overrides and preserve errors (#49350)
+- 606ec4fa38 [packages/core/src/session, packages/core/test/session-execution.test.ts] fix(core): keep recovered shell notices from waking idle sessions (#49378)
+- 79d657b8fe [] fix(core): keep recovered shell notices from waking idle sessions (#49378)
+- 04c296310e [packages/core/src/plugin] fix(core): skip session warming for subagents (#49387)
+- 9073c522ef [packages/core/src/session, packages/core/test/session-model-request-hooks.test.ts, packages/core/test/session-model-transport.test.ts, packages/plugin, services] feat(plugin): add experimental WebSocket send and receive hooks (#49136)
+- bcd43760df [packages/cli, packages/core/src/plugin, services] feat(cli): support inline config content (#49399)
+- 7df0935ada [packages/tui] fix(tui): apply model selection on blank submit (#49374)
+- 7689c3654e [packages/tui] fix(tui): hide error hint when MCP Enter starts sign-in (#49403)
+- 7390832f13 [packages/client, packages/core/src/form.ts, packages/core/src/instance.ts, packages/core/src/location-lifecycle.ts, packages/core/src/location-service-map.ts, packages/core/src/location-services.ts, packages/core/src/permission.ts, packages/core/src/session, packages/core/test/lib, packages/core/test/plugin, packages/core/test/session-step.test.ts, packages/protocol, packages/schema, packages/server, packages/tui] feat(tui): reload all locations
+- d797722187 [packages/codemode] feat(codemode): carry cause and own data across the error boundary (#49390)
+- 4a27842fe6 [packages/ai, packages/core/test/aisdk.test.ts] fix(ai): classify gateway account limits as quota and keep 4xx non-retryable (#49195)
+- acfacede2d [packages/app] fix(app): preserve native clipboard paste (#49424)
+- f6604cd367 [packages/app, packages/desktop, packages/ui/src/typography] feat(desktop): add animated first-launch loading screen (#49408)
+- 5a9448acbb [packages/app, packages/util] fix(app): retry transport errors wrapped by the client (#49426)
+- c8cc984aa0 [packages/app] feat(app): improve project settings and actions (#49423)
+- b642c1d9ea [packages/core/src/plugin, services] docs: add CLI settings reference
+- ab3566ab82 [V2_HTTP_API_AUDIT.md, packages/app, packages/cli, packages/client, packages/codemode, packages/core/src/plugin, packages/desktop, packages/protocol, packages/sdk, packages/server, packages/tui, services] feat(server): expose server info endpoint
+- 8520617ca8 [packages/core/src/session, packages/core/test/session-runner.test.ts] fix(core): retry provider failures for about 84s with 10s gap cap (#49441)
+- fca4a8fa3b [packages/tui] feat(tui): show explicit subagent model (#49388)
+- b81be469c8 [packages/client] fix(client): preserve state during location reload
+- f28d1b44e3 [packages/core/src/mcp] fix(core): serialize MCP endpoint startup
+- a5b3802ca3 [packages/app] fix(app): keep compact tab icons visible (#49460)
+- 73e7b7bc79 [packages/app] fix(app): derive directory names from listed paths (#49122)
+- 1685e70c4b [packages/cli, packages/client, packages/core/src/filesystem.ts, packages/httpapi-codegen, packages/protocol, packages/schema, packages/server] feat(server): add fs.write endpoint (#49466)
+- f04c3fd82b [packages/app, packages/desktop, packages/session-ui] feat(app): attach any file and deliver unsupported ones by path (#49467)
+- dfceca8de7 [packages/app, packages/desktop] fix(app): refine start-screen logo (#49475)
+- c303a11725 [packages/app] fix(app): mute session tab hover and active backgrounds (#49465)
+- 5a02ec776e [packages/app] fix(app): use muted worktree icon in session timeline (#49459)
+- 430886142b [packages/app] fix(app): center start screen beside summary panels (#49429)
+- ac0dd75c6a [packages/app] fix(app): hide browser when the right panel closes (#49425)
+- 54f2356166 [packages/app] fix(app): remove Anthropic Pro and Max copy (#49369)
+- 130232feb6 [packages/ui/src/theme] chore(desktop): update bundled themes (#48713)
+- 0675975f98 [packages/desktop] feat(desktop): remove pointer cursor from non-link elements (#49323)
+- 040d2ffb48 [bun.lock, package.json, packages/ai, packages/app, packages/cli, packages/client, packages/codemode, packages/console, packages/core, packages/desktop, packages/enterprise, packages/function, packages/http-recorder, packages/httpapi-codegen, packages/latex, packages/merman, packages/plugin-browser, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/session-ui, packages/simulation, packages/stats, packages/theme, packages/tui, packages/ui, packages/util, packages/web, sdks, services] sync release versions for v2.0.6
+- 7e1d28b549 [packages/cli, packages/client, packages/core/src/plugin, packages/core/test/plugin, packages/schema, packages/server, packages/tui] feat(cli): support custom Console logins (#49542)
+- 657f700f5d [packages/desktop] feat(desktop): disable security code autofill (#49531)
+- 254ace8594 [services] docs: add CLI settings reference
+- b52f241294 [packages/protocol, packages/tui] feat(location): reload configuration
+- 0018f08832 [packages/cli, packages/protocol, services] feat(cli): add reload command
+- 2f97e1324f [services] fix(www): restore OpenTUI Mono docs font
+- 4b25739e93 [services] docs(cli): drop command-name leads in command descriptions
+- b4ac938c3d [services] docs: improve installation guide
+- 23418b3885 [services] docs: reorder sidebar navigation
+- 2a132d6f50 [packages/cli, packages/client, packages/core/src/session, packages/core/test/session-create.test.ts, packages/core/test/session-diff.test.ts, packages/core/test/session-generate.test.ts, packages/core/test/session-owned.test.ts, packages/core/test/session-projector.test.ts, packages/core/test/session-revert.test.ts, packages/core/test/session-runner-tool-events.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/session-title.test.ts, packages/core/test/session-tool-progress.test.ts, packages/core/test/tool-shell.test.ts, packages/core/test/tool-subagent.test.ts, packages/schema, packages/server, packages/tui] fix(tui): include provider latency in TPS
+- a72f988c90 [packages/tui] fix(tui): switch vertical tabs sooner (#49440)
+- 0ee5ef6c43 [packages/tui] fix(tui): keep spinner glyph from shrinking beside long labels (#49395)
+- e32de90d88 [packages/app] fix(app): prevent settings project cache reload loop (#49564)
+- 19781a4447 [packages/cli] fix(acp): propagate request cancellation and close sessions cleanly (#49563)
+- cae475df37 [packages/cli] sync
+- a0571a8b14 [packages/tui] fix(tui): keep upgrade as a search keyword (#49567)
+- fa126d68e8 [packages/core/src/config, packages/schema] feat(core): enforce permission policies
+- 37ff501cc6 [packages/cli] fix(cli): keep updates client-owned (#49577)
+- 0fa881efd0 [bun.lock, package.json, packages/ai, packages/app, packages/cli, packages/client, packages/codemode, packages/console, packages/core, packages/desktop, packages/enterprise, packages/function, packages/http-recorder, packages/httpapi-codegen, packages/latex, packages/merman, packages/plugin-browser, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/session-ui, packages/simulation, packages/stats, packages/theme, packages/tui, packages/ui, packages/util, packages/web, sdks, services] sync release versions for v2.0.7
+- 3555cef1c8 [packages/client] chore(client): regenerate policy types (#49613)
+- a2594ddefb [packages/tui] fix(tui): sync model preferences across clients (#49611)
+- fe0d9579a7 [packages/tui] fix(tui): preserve block tool spacing
+- 3e3a4ae46b [packages/tui, services] feat(tui): add /btw side question command (#49646)
+- b278ef6b82 [packages/core/test/session-runner.test.ts, packages/tui] fix(tui): include reasoning tokens in throughput (#48689)
+- 0ac458b3b3 [packages/theme, packages/tui] refactor(theme): rename surface tokens to raised (#49655)
+- b2e3569add [packages/codemode] test(codemode): isolate OpenAPI fixtures (#49667)
+- 469e1c035e [packages/app, packages/ui/src/feedback, packages/ui/src/i18n] feat(app): stream large attachments to the server with progress (#49647)
+- 3355c93efd [packages/app] fix(app): create local sessions in project root (#49668)
+- 2d0ce64111 [packages/client] fix(client): reconcile stale tools at settlement (#49672)
+- 10cac9ab5d [packages/cli, packages/tui] fix(tui): show update installation progress (#49676)
+- 735556eab8 [packages/tui] fix(tui): open completed subagent sessions (#49675)
+- d4303a9ca5 [packages/app] feat(app): show provider metrics in debug bar (#49674)
+- 90112f52db [packages/app, packages/core/src/session, packages/core/test/session-prompt.test.ts] fix(app): deliver text and oversized attachments by path (#49682)
+- 4f32bfca57 [packages/desktop] fix(desktop): copy IPC payloads out of the shared msgpack buffer (#49696)
+- 609044ef0a [packages/app] feat(app): scan pairing QR code from add server dialog (#49699)
+- 0a6111291e [bun.lock, packages/desktop] refactor(desktop): send IPC messages by structured clone (#49701)
+- 5c09d051e5 [nix] chore: update nix node_modules hashes
+- c076066c33 [bun.lock, package.json, packages/ai, packages/app, packages/cli, packages/client, packages/codemode, packages/console, packages/core, packages/desktop, packages/enterprise, packages/function, packages/http-recorder, packages/httpapi-codegen, packages/latex, packages/merman, packages/plugin-browser, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/session-ui, packages/simulation, packages/stats, packages/theme, packages/tui, packages/ui, packages/util, packages/web, sdks, services] sync release versions for v2.0.8
+- 47f66de8dd [packages/app] perf(app): load draft image bytes on demand (#49703)
+- db80806651 [AGENTS.md, packages/core/src/plugin, packages/core/src/session, packages/core/test/session-native-compaction.test.ts, packages/core/test/session-runner.test.ts] refactor(core): move native compaction mechanisms into a plugin (#49575)
+- c8e654410d [packages/ai] refactor(ai): decode Anthropic and Gemini provider options with one schema (#49760)
+- f5d40d6f30 [packages/ai] fix(ai): keep valid Responses provider options when a sibling is malformed (#49769)
+- c2067d59af [packages/tui] fix(tui): simplify btw dialog sizing
+- 278db3023f [packages/core/src/job.ts] fix(core): bound consumed job results (#47030)
+- 9e1fa80fb7 [packages/tui] refactor(tui): simplify scrollbox sizing
+- 219ecada68 [packages/client, packages/core/src/aisdk.ts, packages/core/src/config, packages/core/src/model-resolver.ts, packages/core/src/model.ts, packages/core/src/plugin, packages/core/src/provider.ts, packages/core/src/session, packages/core/test/aisdk.test.ts, packages/core/test/config, packages/core/test/plugin, packages/core/test/provider.test.ts, packages/core/test/session-compaction.test.ts, packages/core/test/session-native-compaction.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/shared-schema.test.ts, packages/protocol, packages/schema, services] refactor(core): move provider policies into settings (#49666)
+- 437cdc03a9 [packages/core/src/plugin, packages/core/test/plugin] feat(core): repair malformed tool arguments before validation (#45002)
+- d1e828c217 [packages/cli, packages/theme, packages/tui, services] refactor(theme): replace theme contexts with a dialog surface (#49661)
+- d81604714f [packages/theme, packages/tui] feat(theme): resolve state precedence (#49813)
+- 810e79a6d4 [packages/theme, packages/tui, services] refactor(theme): align hue direction with mode (#49820)
+- cab11795e5 [packages/tui] fix(tui): pass markdown renderer into /btw answer dialog (#49804)
+- b1860465cd [packages/theme, packages/tui, services] refactor(theme): split base and mode overrides (#49826)
+- ffe4d1522c [packages/theme] refactor(theme): derive V1 hue angles from swatches (#49839)
+- dae1e8abbd [services] docs(www): finalize background color (#49203)
+- c720ca20ed [packages/cli, packages/latex, packages/merman, packages/theme, packages/tui, services] refactor(theme): rename default tokens to base (#49837)
+- fca4701688 [packages/ai] fix(ai): allow future Anthropic option values (#49835)
+- ec19dc09c7 [packages/client, packages/core/src/filesystem, packages/core/test/filesystem, packages/sdk, packages/server] fix(sdk): support Node package imports (#49810)
+- 168aba6183 [packages/theme, packages/tui, services] feat(theme): register native V2 opencode theme (#49846)
+- 36083c9520 [services] docs(www): document theme format and workflow (#49855)
+- 5464aa4a74 [packages/core/src/plugin, packages/core/src/session, packages/core/test/plugin] feat(core): add autonomous goal command (#45379)
+- 681338c533 [packages/theme, packages/tui, services] refactor(theme): detect theme format by fields (#49853)
+- 4ee9bf0213 [packages/core/src/plugin, packages/core/src/session, packages/core/test/plugin] revert(core): remove autonomous goal command (#49866)
+- 98c6b41573 [packages/desktop] chore(desktop): add a packaged startup benchmark (#49758)
+- 988a66ca4f [packages/desktop] perf(desktop): ship the bundled CLI version instead of spawning for it (#49762)
+- 485a027c1a [packages/desktop] perf(desktop): load the browser pane on first use (#49774)
+- 4facc03371 [bun.lock, packages/desktop] perf(desktop): remember window bounds without electron-window-state (#49792)
+- f6353a48b5 [bun.lock, packages/desktop] perf(desktop): replace electron-store with a plain JSON settings store (#49791)
+- 0f9504d6c5 [packages/core/src/plugin, packages/core/src/tool.ts, packages/core/test/lib, packages/core/test/plugin, packages/core/test/tool-registry.test.ts, packages/plugin, services] feat(plugin): add list to the tool domain (#49838)
+- ea52d18ec5 [nix] chore: update nix node_modules hashes
+- ec8d95f1f2 [packages/protocol, packages/simulation] fix(simulation): include images in UI captures (#49868)
+- 5b565e8923 [packages/desktop] perf(desktop): create windows before the background service connects (#49763)
+- e755fce13d [packages/desktop] perf(desktop): leave declarations and source maps out of the asar (#49772)
+- dfde4628e3 [packages/desktop] perf(desktop): only persist the background colour when it changes (#49770)
+- dd95e3f2ed [packages/desktop] perf(desktop): collect orphaned draft blobs after the window is up (#49797)
+- 971f4e558e [packages/desktop] perf(desktop): load node-pty when an interactive WSL install starts (#49789)
+- 3693f56374 [packages/desktop] perf(desktop): enable the V8 code cache for the renderer scheme (#49767)
+- c3bf8864b9 [packages/ui/src/components] perf(ui): let the resize observer take the first scrollbar measurement (#49778)
+- c2b171d7c4 [packages/client] perf(client): poll for a starting service every 25 ms (#49780)
+- e1e2efe8ec [packages/desktop] perf(desktop): show the first window the moment Electron is ready (#49869)
+- b38d72e174 [services] docs: link v1 docs from header
+- e9201ce933 [packages/core/src/plugin, packages/core/test/plugin] fix(core): retain console config after refresh errors (#49873)
+- 3361953fe1 [packages/core/src/skill, packages/core/test/skill] fix(core): explain user-invoked skills in skill guidance (#49871)
+- 7b7a67080e [packages/web, packages/web/src/components] feat(web): add v2 announcement banner to legacy docs
+- 871db0025e [packages/plugin-browser] fix(browser): describe tabs.open focus as an explicit opt-out (#49877)
+- 9843d13c29 [packages/desktop] chore(desktop): record startup marks for the benchmark (#49872)
+- 1c90e8f01c [bun.lock, packages/app] perf(app): drop luxon for the three date operations that used it (#49876)
+- dd71cdbd84 [packages/app, packages/ui/src/feedback] fix(app): stop retaining failed sends in history and oversized toast text (#49717)
+- 8bfb247854 [nix] chore: update nix node_modules hashes
+- cbd911368e [packages/client, packages/core/src/aisdk.ts, packages/core/src/model-resolver.ts, packages/core/src/model.ts, packages/core/src/plugin, packages/core/src/provider.ts, packages/core/test/aisdk.test.ts, packages/core/test/catalog.test.ts, packages/core/test/config, packages/core/test/plugin, packages/core/test/provider.test.ts, packages/protocol, packages/schema, services] refactor(schema): separate provider and model settings (#49850)
+- 004583d598 [bun.lock, packages/codemode] refactor(codemode): remove TypeScript stripping (#49870)
+- 01a6ed8d97 [nix] chore: update nix node_modules hashes
+- 7125f5f8b5 [packages/desktop] chore(desktop): measure the startup bench from the screen (#49894)
+- 56816621f8 [packages/tui] fix(tui): restore foreground hue step for tab status colors (#49899)
+- e50d845451 [packages/desktop] fix(desktop): run WSL commands with --exec so inline scripts are not pre-expanded (#49902)
+- 45a13af0ee [bun.lock, package.json, packages/ai, packages/app, packages/cli, packages/client, packages/codemode, packages/console, packages/core, packages/desktop, packages/enterprise, packages/function, packages/http-recorder, packages/httpapi-codegen, packages/latex, packages/merman, packages/plugin-browser, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/session-ui, packages/simulation, packages/stats, packages/theme, packages/tui, packages/ui, packages/util, packages/web, sdks, services] sync release versions for v2.0.9
+- 417f6d234d [packages/tui] fix(tui): restore running and unread status hue aliases (#49907)
+- c42f1c9232 [packages/web, packages/web/src/components] Revert "feat(web): add v2 announcement banner to legacy docs"
+- 839aa25c3e [packages/cli] feat(cli): publish Homebrew formula
+- 5848ee0d24 [packages/app, packages/session-ui] fix(app): restore attachment classification (#49932)
+- b447627f5f [packages/app] fix(app): keep shortcuts search field focused while typing (#49779)
+- 4b00dd2713 [packages/plugin, packages/tui] feat(tui): session-scoped plugin toasts (#49962)
+- 7020944359 [packages/app] fix(app): restore mobile tab interactions (#49964)
+- cb6d95b7ef [bun.lock, package.json, packages/ai, packages/app, packages/cli, packages/client, packages/codemode, packages/console, packages/core, packages/desktop, packages/enterprise, packages/function, packages/http-recorder, packages/httpapi-codegen, packages/latex, packages/merman, packages/plugin-browser, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/session-ui, packages/simulation, packages/stats, packages/theme, packages/tui, packages/ui, packages/util, packages/web, sdks, services] sync release versions for v2.0.10
+- 7e70f7e1ab [packages/tui] feat(tui): label mention autocomplete options (#48551)
+- 558bd54c9b [packages/tui] fix(tui): use muted autocomplete label text (#50008)
+- 14b3c2ea4b [packages/cli, services] feat(cli): support Vite+ installations (#49624)
+- 4ad5001be2 [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot (#50009)
+- cc3ce20ab4 [packages/codemode] feat(codemode): add the Headers built-in (#49280)
+- 728b2b6052 [packages/core/src/mcp, packages/core/src/session, packages/core/src/skill.ts, packages/core/src/skill, packages/core/test/mcp-instructions.test.ts, packages/core/test/session-runner.test.ts, packages/core/test/skill.test.ts, packages/core/test/skill] fix(core): honor session permissions in skill and MCP discovery (#50015)
+- b073b052d3 [packages/ai, packages/core/src/session, packages/core/test/session-model-transport.test.ts] fix(ai): remove bounded websocket inbound queues (#50026)
+- 65c93b69ed [packages/ai] fix(ai): never fail decoding on Responses error frames (#49402)
+- b81e10a461 [packages/core/src/plugin, packages/core/test/plugin] fix(core): re-read models.dev catalog after subscribing to Refreshed (#50012)
+- dfa44e94e8 [packages/tui] fix(tui): use focused action token for question form border (#50037)
+- f30d06ea34 [packages/core/src/session, packages/core/test/session-model-transport.test.ts] fix(core): pin the session to http after repeated websocket stream losses (#50031)
+- fef2fad76f [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- f153255942 [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- 6f2b0e7833 [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- eb0e26b974 [packages/codemode] feat(codemode): return live iterators from keys, values, and entries (#50061)
+- 1f36a7aff8 [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- 3049b1e684 [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- 55bc7fd403 [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- a1956a7522 [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- cdcbb0047e [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- 7fc3f68007 [packages/desktop] perf(desktop): boot the renderer alongside the main bundle (#50108)
+- af592fb779 [packages/desktop] perf(desktop): serve the renderer's first assets before evaluating the main bundle (#50109)
+- 7e88f6bb18 [packages/desktop] perf(desktop): bundle the renderer's initial module graph as one chunk (#50110)
+- 1d8cf4564b [packages/desktop] perf(desktop): move startup work that the first window does not need off its path (#50111)
+- 0530c8e512 [packages/desktop] perf(desktop): talk to the main process without the Effect runtime in the renderer (#50112)
+- 5fdfcc7a80 [packages/desktop] perf(desktop): hand the window its persisted stores before the first render (#50113)
+- 717f81ce08 [packages/desktop] chore(desktop): attribute renderer CPU profiles to source files (#50114)
+- 25f35dcfb8 [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- da2ce02596 [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- 1f73b4806b [packages/app, packages/desktop, packages/plugin-browser, packages/ui/src/navigation] fix(desktop): polish browser panel states and navigation (#49432)
+- fecacc9e68 [packages/app] fix(app): match vertical nav tab states (#49619)
+- 1464545665 [packages/app] fix(app): center timeline beside summary (#49620)
+- ba342ce227 [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- 991b727eb8 [bun.lock, package.json, packages/ai, packages/app, packages/cli, packages/client, packages/codemode, packages/console, packages/core, packages/desktop, packages/enterprise, packages/function, packages/http-recorder, packages/httpapi-codegen, packages/latex, packages/merman, packages/plugin-browser, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/session-ui, packages/simulation, packages/stats, packages/theme, packages/tui, packages/ui, packages/util, packages/web, sdks, services] sync release versions for v2.0.11
+- 702a73d91a [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- 64ce8771c0 [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- cc502f7e5f [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- 03bcdd580d [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- 1ca8f63a79 [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- 66f10ab7bf [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- 62dc1f7696 [packages/codemode] feat(codemode): add toLocaleString, Error.isError, and Map.getOrInsert (#50098)
+- 1f8ab95695 [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- 7ffd75faf6 [packages/core/src/variant.ts, packages/core/test/plugin, packages/core/test/variant.test.ts] fix(core): restore anthropic budget variants (#50182)
+- 6238af397e [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- e3a3fa7108 [packages/core/test/plugin, packages/plugin, services] fix(plugin): forward Promise tool cancellation (#50190)
+- c555559ac1 [packages/core/test/plugin, packages/plugin, services] refactor(plugin): name tool execution context (#50195)
+- 58fcad77a8 [packages/tui] feat(tui): copy session ID from tab menu (#50181)
+- 788eb0fa29 [packages/cli] fix(cli): report fatal startup causes on stderr (#50240)
+- cbdd1f66da [packages/codemode] fix(codemode): locate failures in the submitted source (#50197)
+- 7f51fbd878 [packages/codemode] feat(codemode): rank whole-word path matches above substring matches in search (#50275)
+- 14148a0ea4 [packages/app] fix(app): restore server status spacing (#50273)
+- 8aebed170a [packages/app] fix(app): show empty review state for projects without VCS (#50265)
+- 60ed84ecd1 [packages/app, packages/desktop, packages/plugin-browser, packages/session-ui] feat(app): open agent-referenced files as rich artifact tabs (#49882)
+- ab60f08c69 [packages/app] fix(app): open Review pane for browser focus in background sessions (#50284)
+- 6f655dcbab [bun.lock, package.json, packages/ai, packages/app, packages/cli, packages/client, packages/codemode, packages/console, packages/core, packages/desktop, packages/enterprise, packages/function, packages/http-recorder, packages/httpapi-codegen, packages/latex, packages/merman, packages/plugin-browser, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/session-ui, packages/simulation, packages/stats, packages/theme, packages/tui, packages/ui, packages/util, packages/web, sdks, services] sync release versions for v2.0.12
+- 932c12ad1d [bun.lock, packages/app, packages/desktop] chore(desktop): upgrade Electron to 44.4.3 (#50327)
+- 46ebde65e9 [nix] chore: update nix node_modules hashes
+- 4d94777d4d [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- 2f0c861af0 [packages/cli] fix(cli): show actionable upgrade errors (#50346)
+- 1316576720 [packages/codemode] refactor(codemode): type program values and let built-ins answer for themselves (#50191)
+- 4b9a3d80fc [packages/core/src/config, packages/core/src/managed-policy.ts, packages/core/src/plugin, packages/core/test/config, packages/core/test/plugin, services, specs] feat(core): enforce Console-managed policies (#49729)
+- f90beeb9b8 [packages/core/src/codemode, packages/core/test/codemode] fix(core): say plainly that catalog tools and search only work inside execute (#50384)
+- 6f76c31ca7 [packages/tui] tui: resize /btw dialog to terminal (#50392)
+- 3f0118022b [packages/codemode] feat(codemode): add Promise.withResolvers, print errors in console, name values in iterable errors (#50389)
+- b8aa08f260 [packages/tui] fix(tui): complete Mini exit aliases (#50388)
+- 97e833a297 [packages/codemode] feat(codemode): add Iterator helpers and Iterator.from (#50410)
+- 4c944a86d7 [packages/core/src/codemode, packages/core/test/codemode] fix(core): tell the model search is synchronous (#50417)
+- cd39063622 [packages/core/test/browser-idle.test.ts] test(core): stabilize browser idle attachment (#50418)
+- 990463aa9f [packages/tui] refactor(tui): favor dark theme base (#50412)
+- 4cc9b90f27 [packages/codemode] fix(codemode): add Promise.try and surface a failing iterator close on generator return (#50419)
+- 096ac95773 [packages/codemode, packages/core/test/codemode.test.ts, packages/core/test/codemode] fix(codemode): drop the parameter name from rendered signatures (#50435)
+- d62049aab4 [packages/tui] fix(tui): set renderer listener budget to 15 (#50442)
+- 97457ec7a3 [packages/codemode] feat(codemode): accept tools.-prefixed namespaces in search (#50438)
+- f488aa3f79 [packages/tui] fix(tui): persist MCP sidebar state (#50447)
+- 02566f6219 [packages/codemode] fix(codemode): live Map/Set forEach, generator prototypes, repeated function declarations, delete on non-references (#50450)
+- 1e1cd042ea [packages/codemode] feat(codemode): name the closest tool in unknown-tool errors (#50455)
+- 1814dd9799 [.github, packages/cli] test: stabilize Windows CI without longer timeouts (#50454)
+- 5b9dc35eec [packages/cli, packages/tui, script, services] feat(tui): add automatic tabs mode (#50456)
+- 9d531435b4 [packages/desktop] fix(desktop): stop signing macOS DMGs (#50469)
+- 643c4c3500 [packages/console, packages/ui/src/i18n, packages/web/src/content, services] fix: remove first-month Go pricing (#50473)
+- 532f25d0d4 [packages/tui] feat(tui): restore sidebar onboarding (#50475)
+- 651529d64e [packages/codemode] fix(codemode): coerce any value to a property key (#50479)
+- 60673aaef3 [packages/core/src/aisdk.ts, packages/core/src/plugin, packages/core/test/aisdk.test.ts] fix(core): run session HTTP hooks on the AI SDK route (#50487)
+- 6f8c5ae0aa [packages/codemode] fix(codemode): bind generator parameters at the call, not the first next() (#50489)
+- 94b9133910 [packages/core/src/session, packages/core/test/session-compaction.test.ts, packages/core/test/session-runner.test.ts] fix(core): share child prompt cache affinity (#50495)
+- ba61ac6730 [packages/ai] fix(ai): preserve Vertex function call ids (#50504)
+- 9fdcb8da41 [packages/codemode] fix(codemode): coerce built-in arguments as in JS instead of requiring numbers and strings (#50492)
+- 07d48e1ffb [packages/ai] feat(ai): add experimental evaluation API (#50506)
+- 4b381ac6a1 [packages/tui] fix(tui): clear the active session tab (#50524)
+- 19e1357a06 [packages/core/test/mcp-oauth.test.ts, patches] fix(core): stop forcing a consent prompt on MCP OAuth login (#50519)
+- ceace24a3e [nix] chore: update nix node_modules hashes
+- dcfe1ec7bd [packages/app] feat(app): add /btw side question panel (#49750)
+- 080b7671de [bun.lock, packages/app, packages/cli, packages/desktop, packages/server] feat(desktop): add local device pairing (#49291)
+- 9c18abce47 [nix] chore: update nix node_modules hashes
+- fbacf6a126 [packages/app, packages/cli, packages/client, packages/core/src/integration.ts, packages/core/src/plugin, packages/core/test/integration.test.ts, packages/core/test/plugin.test.ts, packages/core/test/plugin, packages/protocol, packages/schema, packages/tui, packages/ui/src/components, services] feat(app): sign in to OpenCode Go and Console through the browser (#50267)
+- be4e5a6d06 [bun.lock, package.json, packages/ai, packages/app, packages/cli, packages/client, packages/codemode, packages/console, packages/core, packages/desktop, packages/enterprise, packages/function, packages/http-recorder, packages/httpapi-codegen, packages/latex, packages/merman, packages/plugin-browser, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/session-ui, packages/simulation, packages/stats, packages/theme, packages/tui, packages/ui, packages/util, packages/web, sdks, services] sync release versions for v2.0.13
+- 956de96d8b [services] docs(console): add API reference for inference, BYOK, usage, and budgets (#50582)
+- 8e62ad7adc [packages/desktop] fix(desktop): omit undefined fields from renderer IPC payloads (#50599)
+- 2f06f9d58b [packages/tui] fix(tui): keep worktrees out of projects (#50612)
+- e0ddc47aa4 [packages/core/src/models-dev] chore(core): refresh bundled models.dev snapshot
+- 8864eb507e [bun.lock, package.json, packages/ai, packages/app, packages/cli, packages/client, packages/codemode, packages/console, packages/core, packages/desktop, packages/enterprise, packages/function, packages/http-recorder, packages/httpapi-codegen, packages/latex, packages/merman, packages/plugin-browser, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/session-ui, packages/simulation, packages/stats, packages/theme, packages/tui, packages/ui, packages/util, packages/web, sdks, services] sync release versions for v2.0.14
+- 18eeb3201d [packages/tui] refactor(tui): break composer import cycle (#50637)
+- 788f0affcb [packages/app, packages/cli, services] feat(cli): pair with direct server links (#49971)
+- 067a528b1d [packages/ai] refactor(ai): rename evaluation action to run (#50529)
+- 10aa949f43 [packages/client, packages/httpapi-codegen] fix(client): preserve base URL path prefix in promise client (#50428)
+- ad1a4a6539 [packages/core/src/shell.ts, packages/core/src/shell, packages/core/src/tool, packages/core/test/session-execution.test.ts, packages/core/test/session-shell.test.ts, packages/core/test/tool-shell.test.ts] fix(core): simplify shell output notices (#50676)
+- 3584eca0eb [packages/tui] fix(tui): show canonical projects in open dialog (#50674)
+- f2bdee6726 [packages/ai] feat(ai): add gateway evaluation providers (#50665)
+- 60c78ed8ab [packages/ai, packages/core/src/aisdk.ts, packages/core/src/session, packages/core/test/aisdk.test.ts, packages/core/test/session-model-request.test.ts, packages/core/test/session-provider-context.test.ts, packages/core/test/session-runner-message.test.ts] feat(ai): add media foundation with Media assets and Image rewrite (#49181)
+- 51d2b66760 [packages/app] fix(app): hide cached panel divider (#50437)
+- cdccde7408 [packages/theme, packages/tui] refactor(tui): derive bright terminal palette (#50433)
+- 54fbf6d14d [packages/tui] fix(tui): remove redundant update command description (#50687)
+- bf6788b94c [packages/codemode] test(codemode): extend promise limit timeout (#50693)
+- 7af65eff37 [packages/app] test(app): remove flaky workspace focus test (#50691)
+- 94df7a812d [packages/app] test(app): remove flaky touch movement test (#50692)
+- ad756ef09b [packages/tui] test(tui): wait for workspace filter focus (#50709)
+- d2bbefbac8 [.github] fix(ci): avoid stale Bun dependency caches (#49845)
+- eea247598b [services] docs(www): sync Console model and Go guides
+- 126294a322 [] docs(www): merge Console documentation updates
+- 8683406690 [packages/theme, packages/tui] feat(theme): support dynamic hue names (#50728)
+- 5c53cfc342 [packages/client, packages/core/src/session.ts, packages/core/src/session, packages/core/test/session-create.test.ts, packages/protocol, packages/schema, packages/server] feat(session): allow metadata updates (#50025)
+- 38c320ea4c [packages/cli] fix(acp): forward provider retry status to clients (#50752)
+- 3a2203eaac [bun.lock, package.json, packages/core/test/npm.test.ts, patches] fix(core): install git plugins from branch subdirectories (#50754)
+- 1746672c42 [nix] chore: update nix node_modules hashes
+- fe0d1682ca [packages/tui] fix(tui): show latest step in turn token summary (#50765)
+- ddeb19790a [packages/ai] fix(ai): replay Kimi reasoning details without the streaming index (#50383)
+- 3bf8a5a8cf [packages/app] fix(app): keep Console sign-in visible when a Zen API key is stored (#50763)
+- cf4b4c2312 [packages/tui] fix(tui): export complete session transcript (#50733)
+- 43f1dad8e1 [packages/core/src/util, packages/core/test/util] fix(core): log error messages for MCP OAuth and credential failures (#50767)
+- 2e4abeb25d [packages/tui] fix(tui): show API error messages in toasts (#50778)
+- 740072694d [packages/cli, packages/tui] fix: show API error messages in remaining CLI and TUI paths (#50783)
+- f0381e5da3 [packages/core/src/aisdk.ts, packages/core/test/aisdk.test.ts] fix(core): normalize AI SDK fragment boundaries (#50685)
+- bab26d63ea [packages/codemode] docs(codemode): correct the interpreter support matrix (#50789)
+- 53179daefa [packages/app, packages/client, packages/core, packages/core/src/database, packages/core/src/location-lifecycle.ts, packages/core/src/project.ts, packages/core/src/project, packages/core/test/effect, packages/core/test/lib, packages/core/test/location.test.ts, packages/core/test/project.test.ts, packages/protocol, packages/schema, packages/tui, services] feat(core): order projects by recent activity (#50790)
+- 8656838a5b [packages/ai] fix(ai): ignore bare null SSE frames (#50793)
+- 17abc5906b [packages/codemode] feat(codemode): add tagged templates and String.raw (#50791)
+- d56ce74373 [packages/app, packages/client, packages/httpapi-codegen] fix(client): throw declared API errors as Error instances (#50788)
+- d5d4461e67 [bun.lock, packages/core] chore: bump gitlab-ai-provider to 6.16.0 (#50318)
+- 150dc69e4b [nix] chore: update nix node_modules hashes
+- 68b28bdb98 [packages/codemode] fix(codemode): coerce match/search patterns, allow any for...in target, bind the last duplicate parameter (#50802)
+- 8ce629be22 [packages/cli] fix(cli): keep Windows upgrades and uninstalls from fighting the running binary (#50819)
+- 6f3639d82e [bun.lock, package.json, packages/ai, packages/app, packages/cli, packages/client, packages/codemode, packages/console, packages/core, packages/desktop, packages/enterprise, packages/function, packages/http-recorder, packages/httpapi-codegen, packages/latex, packages/merman, packages/plugin-browser, packages/plugin, packages/protocol, packages/schema, packages/sdk, packages/server, packages/session-ui, packages/simulation, packages/stats, packages/theme, packages/tui, packages/ui, packages/util, packages/web, sdks, services] release: v2.0.15

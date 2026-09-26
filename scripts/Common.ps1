@@ -92,20 +92,51 @@ function Get-PinnedOpenCodeVersion {
 
   $packagePath = Join-Path $Config.OpenChamberRoot 'package.json'
   $package = Get-Content -LiteralPath $packagePath -Raw | ConvertFrom-Json
-  $version = $package.dependencies.'@opencode-ai/sdk'
+  $version = $package.dependencies.'@opencode/client'
   if ($version -notmatch '^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$') {
-    throw "OpenChamber does not pin a valid @opencode-ai/sdk version: $version"
+    throw "OpenChamber does not pin a valid @opencode/client version: $version"
   }
+  foreach ($consumer in $Config.OpenChamberSdkConsumers) {
+    $manifest = Get-Content -LiteralPath (Join-Path $consumer 'package.json') -Raw | ConvertFrom-Json -AsHashtable
+    foreach ($name in @('@opencode/client', '@opencode/schema')) {
+      if ($manifest.dependencies.ContainsKey($name) -and $manifest.dependencies[$name] -ne $version) {
+        throw "SDK pin mismatch in ${consumer}: $name must be $version"
+      }
+    }
+  }
+  $electron = Get-Content -LiteralPath (Join-Path $Config.OpenChamberRoot 'packages/electron/package.json') -Raw | ConvertFrom-Json
+  if ($electron.opencodeCli.version -ne $version) { throw 'Bundled OpenCode CLI and client versions must match.' }
   return $version
 }
 
-function Get-ResolvedOpenCodeSdkPath {
-  param([Parameter(Mandatory)] [string] $Consumer)
+function Remove-LocalSdkConsumerLinks {
+  param([Parameter(Mandatory)] [hashtable] $Config)
 
-  $output = & node --input-type=module -e "console.log(import.meta.resolve('@opencode-ai/sdk/v2'))" 2>&1
+  $root = [IO.Path]::GetFullPath($Config.OpenCodeSdkLinkRoot).TrimEnd([IO.Path]::DirectorySeparatorChar)
+  $comparison = if ($IsWindows) { [StringComparison]::OrdinalIgnoreCase } else { [StringComparison]::Ordinal }
+  foreach ($consumer in $Config.OpenChamberSdkConsumers) {
+    foreach ($name in @('@opencode/client', '@opencode/schema', '@opencode/protocol', '@opencode-ai/sdk')) {
+      $path = Join-Path $consumer "node_modules/$name"
+      $item = Get-Item -LiteralPath $path -Force -ErrorAction SilentlyContinue
+      if (-not $item -or -not ($item.Attributes -band [IO.FileAttributes]::ReparsePoint) -or -not $item.LinkTarget) { continue }
+      $target = [IO.Path]::GetFullPath($item.LinkTarget, $item.Parent.FullName)
+      if ($target.Equals($root, $comparison) -or $target.StartsWith("$root$([IO.Path]::DirectorySeparatorChar)", $comparison)) {
+        Remove-Item -LiteralPath $path -Force
+      }
+    }
+  }
+}
+
+function Get-ResolvedOpenCodeSdkPath {
+  param(
+    [Parameter(Mandatory)] [string] $Consumer,
+    [Parameter(Mandatory)] [string] $Import
+  )
+
+  $output = & node --input-type=module -e 'console.log(import.meta.resolve(process.argv[1]))' $Import 2>&1
   $exitCode = $LASTEXITCODE
   if ($exitCode -ne 0) {
-    throw "Unable to resolve @opencode-ai/sdk/v2 from ${Consumer}: $($output | Out-String)"
+    throw "Unable to resolve $Import from ${Consumer}: $($output | Out-String)"
   }
   $uri = [Uri](($output | Out-String).Trim())
   return [IO.Path]::GetFullPath($uri.LocalPath)
@@ -131,12 +162,21 @@ function Test-LocalOpenCodeSdkLinked {
   $separator = [IO.Path]::DirectorySeparatorChar
   $expected = [IO.Path]::GetFullPath($Config.OpenCodeSdkLinkRoot).TrimEnd($separator)
   $comparison = if ($IsWindows) { [StringComparison]::OrdinalIgnoreCase } else { [StringComparison]::Ordinal }
-  foreach ($consumer in $Config.OpenChamberSdkConsumers) {
-    $resolved = Invoke-InDirectory -Path $consumer -ScriptBlock {
-      Get-ResolvedOpenCodeSdkPath -Consumer $consumer
-    }
-    if (-not $resolved.StartsWith("$expected$separator", $comparison)) {
-      return $false
+  $packages = @(
+    @{ Name = 'client'; Import = '@opencode/client' },
+    @{ Name = 'schema'; Import = '@opencode/schema' },
+    @{ Name = 'protocol'; Import = '@opencode/protocol/api' }
+  )
+  $origins = @($Config.OpenChamberSdkConsumers) + @($packages | ForEach-Object { Join-Path $expected "packages/$($_.Name)" })
+  foreach ($consumer in $origins) {
+    foreach ($package in $packages) {
+      $resolved = Invoke-InDirectory -Path $consumer -ScriptBlock {
+        Get-ResolvedOpenCodeSdkPath -Consumer $consumer -Import $package.Import
+      }
+      $packageRoot = [IO.Path]::GetFullPath((Join-Path $expected "packages/$($package.Name)/dist")).TrimEnd($separator)
+      if (-not $resolved.StartsWith("$packageRoot$separator", $comparison) -or -not (Test-Path -LiteralPath $resolved -PathType Leaf)) {
+        return $false
+      }
     }
   }
   return $true
@@ -146,6 +186,6 @@ function Assert-LocalOpenCodeSdkLinked {
   param([Parameter(Mandatory)] [hashtable] $Config)
 
   if (-not (Test-LocalOpenCodeSdkLinked -Config $Config)) {
-    throw 'The local @opencode-ai/sdk is not linked into every OpenChamber consumer. Run Sync-OpenCodeSdk.ps1 first.'
+    throw 'The local client/schema/protocol SDK graph is not linked into every OpenChamber consumer. Run Sync-OpenCodeSdk.ps1 first.'
   }
 }

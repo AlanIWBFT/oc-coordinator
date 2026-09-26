@@ -34,28 +34,30 @@ Do not add custom runtime-root variables or paths. Existing OpenCode and OpenCha
 1. Use the normally installed release package for Stable work and conduct the development conversation from it, rooted at `E:\OpenChamber\coordinator`.
 2. Read both repository instruction trees and inspect the actual API implementation before planning changes.
 3. Modify the OpenCode contract/server implementation under the OpenCode repository rules.
-4. Regenerate the current OpenCode client contract and legacy JavaScript SDK.
-5. Link the generated local `@opencode-ai/sdk` into every OpenChamber consumer with `scripts\Sync-OpenCodeSdk.ps1`.
+4. Regenerate the current OpenCode client contract and build its client/schema/protocol package graph.
+5. Link the generated local `@opencode/client`, `@opencode/schema`, and `@opencode/protocol` graph into every OpenChamber consumer with `scripts\Sync-OpenCodeSdk.ps1`.
 6. Modify OpenChamber against that local SDK and run focused checks in both repositories. A local CLI with the official SDK is not a valid coupled-API test.
 7. Run `dotnet .\scripts\ForkCoordinator.cs -- build-candidate`. It stages a local OpenCode CLI in the unpacked Candidate app without OpenCode's unused embedded Web UI.
 8. Run `scripts\Start-OpenChamberCandidate.ps1`, validate Candidate in Sandboxie, then report the result. There is no promotion step.
 
 ## SDK Contract
 
-OpenChamber consumes the legacy package at `E:\OpenChamber\opencode\packages\sdk\js`. Public OpenCode API changes require both:
+OpenChamber consumes `@opencode/client` and `@opencode/schema`; the local SDK graph also includes the client's `@opencode/protocol` dependency. Public OpenCode API changes require:
 
 - `bun run --cwd E:\OpenChamber\opencode\packages\client generate`
-- `bun run --cwd E:\OpenChamber\opencode\packages\sdk\js build`
+- `bun run --cwd E:\OpenChamber\opencode\packages\schema build`
+- `bun run --cwd E:\OpenChamber\opencode\packages\protocol build`
+- `bun run --cwd E:\OpenChamber\opencode\packages\client build`
 
-The SDK package version must match OpenChamber's pinned root `@opencode-ai/sdk` version. The local SDK link must cover the OpenChamber root and the `packages/ui`, `packages/web`, and `packages/vscode` workspaces. Do not edit generated SDK output by hand.
+All three SDK package versions must match OpenChamber's pinned root `@opencode/client` version and its schema/bundled CLI pins. Local links must cover the OpenChamber root and the `packages/ui`, `packages/web`, and `packages/vscode` workspaces, including the staged packages' internal dependency resolution. Do not edit generated SDK output by hand.
 
-The SDK build uses TypeScript composite output. The coordinator removes only the generated `tsconfig.tsbuildinfo` cache before rebuilding so a prior partial `dist` cannot be mistaken for complete output.
+Use each package's build script to produce fresh `dist` output. SDK manifest transformation lives in the C# file-based app `scripts/Stage-OpenCodeSdk.cs`; preserve peer dependency metadata and resolve workspace/catalog versions rather than installing source packages into consumers.
 
-SDK linking is all-or-restore: build output is staged as a publish-shaped package with `dist` exports under `E:\OpenChamber\coordinator\generated\opencode-sdk`, each installed consumer SDK path is replaced with an NTFS junction to that package, and failure before all consumers resolve locally triggers one root frozen-lockfile reinstall. Never link the SDK source package directly because consumers would compile its TypeScript under incompatible tsconfigs. Never run `bun link` independently inside a workspace package because its `workspace:*` dependencies cannot be resolved as a standalone install root. Type-check failure after complete junction installation intentionally leaves the local SDK active so OpenChamber can be adapted against the new contract.
+SDK linking is all-or-restore: publish-shaped client/schema/protocol packages with `dist` exports are staged under `E:\OpenChamber\coordinator\generated\opencode-sdk\packages`. Install the staged workspace's dependencies at its final path so junctions do not refer to a renamed temporary directory. Each installed consumer SDK path is replaced with an NTFS junction; failure before all consumers resolve locally removes owned links and triggers one root frozen-lockfile reinstall. Never link SDK source packages directly because consumers would compile their TypeScript under incompatible tsconfigs. Never run `bun link` independently inside a workspace package. Type-check failure after complete junction installation intentionally leaves the local SDK active so OpenChamber can be adapted against the new contract.
 
 ## Candidate Build
 
-Candidate and installable-package builds bundle the CLI from `E:\OpenChamber\opencode` with `OPENCODE_CHANNEL=dev`. The Windows bundle is a GUI-subsystem executable used only as an OpenChamber child with redirected standard handles; packaged validation must reject a console-subsystem artifact. It stages the verified executable directly in the unpacked Electron app; it never copies an application or CLI into a slot. The OpenCode build clears its own `dist` before compiling, so the staged Candidate app, not `packages\opencode\dist`, is the runnable artifact.
+Candidate and installable-package builds bundle the CLI from `E:\OpenChamber\opencode` with `OPENCODE_CHANNEL=dev`. The Windows bundle is a GUI-subsystem executable used only as an OpenChamber child with redirected standard handles; packaged validation must reject a console-subsystem artifact. It stages the verified executable directly in the unpacked Electron app; it never copies an application or CLI into a slot. The OpenCode build clears its own `dist` before compiling, so the staged Candidate app, not `packages\cli\dist`, is the runnable artifact. Native helper preparation belongs to Core (Recycle Bin) and Util (Windows process broker). Managed shutdown uses official `serve --stdio` and stdin EOF, without a private capability marker.
 
 Before any Electron packaging build, the coordinator uses `vswhere` to discover a complete Visual Studio 2022 instance with `Microsoft.VisualStudio.Component.VC.Tools.x86.x64`, then runs its Developer Shell by installation path for the target architecture. Do not hard-code an installation directory or instance ID.
 

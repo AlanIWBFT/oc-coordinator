@@ -15,6 +15,7 @@ if (-not $IsLinux -or [Runtime.InteropServices.RuntimeInformation]::ProcessArchi
 $bunVersion = (& bun --version | Out-String).Trim()
 if ($LASTEXITCODE -ne 0 -or $bunVersion -notmatch '^1\.4\.') { throw "Linux builds require Bun 1.4.x, got: $bunVersion" }
 foreach ($tool in @('node', 'rsync')) { Get-Command $tool -ErrorAction Stop | Out-Null }
+if (-not $PrepareOnly) { Get-Command dotnet -ErrorAction Stop | Out-Null }
 $SourceRoot = [IO.Path]::GetFullPath($SourceRoot)
 $BuildRoot = [IO.Path]::GetFullPath($BuildRoot)
 if ($BuildRoot.StartsWith("$SourceRoot/", [StringComparison]::Ordinal) -or $BuildRoot -eq $SourceRoot) {
@@ -43,7 +44,6 @@ $config = @{
   OpenChamberRoot = "$BuildRoot/openchamber"
   OpenCodeRoot = "$BuildRoot/opencode"
   OpenCodeClientRoot = "$BuildRoot/opencode/packages/client"
-  OpenCodeSdkRoot = "$BuildRoot/opencode/packages/sdk/js"
   OpenCodeSdkLinkRoot = "$BuildRoot/generated/opencode-sdk"
   OpenChamberSdkConsumers = @("$BuildRoot/openchamber", "$BuildRoot/openchamber/packages/ui", "$BuildRoot/openchamber/packages/web", "$BuildRoot/openchamber/packages/vscode")
 }
@@ -60,6 +60,7 @@ Invoke-WithProcessEnvironment -Variables @{
   }
   if ($PrepareOnly) { return }
   & (Join-Path $PSScriptRoot 'Sync-OpenCodeSdk.ps1') -Config $config
+  Invoke-NativeCommand bun @('run', '--cwd', (Join-Path $config.OpenChamberRoot 'packages/sdk'), 'build')
   $electron = Join-Path $config.OpenChamberRoot 'packages/electron'
   foreach ($step in @('build:web-assets', 'prepare:opencode-cli', 'verify:opencode-cli', 'bundle:main', 'rebuild:native')) {
     Invoke-NativeCommand bun @('run', '--cwd', $electron, $step)
@@ -68,7 +69,5 @@ Invoke-WithProcessEnvironment -Variables @{
     Invoke-NativeCommand node @('scripts/package.mjs', '--linux', 'AppImage', '--x64', '--publish=never')
   }
   Invoke-NativeCommand bun @('run', '--cwd', $electron, 'verify:linux-appimage')
-  $marker = Join-Path $electron 'dist/linux-unpacked/resources/opencode-cli/openchamber-shutdown-protocol.capability'
-  if (-not (Test-Path -LiteralPath $marker -PathType Leaf)) { throw 'Packaged local CLI is missing its shutdown capability.' }
   "Linux Candidate artifacts: $electron/dist"
 }

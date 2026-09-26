@@ -1,0 +1,370 @@
+7d1f0b44ad9f7515005552dad2ea43d16bdc1fde
+.github/workflows/test.yml
+bun.lock
+package.json
+packages/ai/src/providers/openai-options.ts
+packages/ai/src/route/transport/http.ts
+packages/cli/script/ensure-windows-process-broker.ts
+packages/cli/script/ensure-windows-recycle.ts
+packages/cli/script/target-selection.ts
+packages/cli/src/agent/prompt/compaction.zh.txt
+packages/cli/src/bootstrap.ts
+packages/cli/src/session/openai-native-compaction.ts
+packages/cli/src/session/question-context.ts
+packages/cli/src/windows-process-broker/process-broker.cs
+packages/cli/src/windows-recycle/.gitignore
+packages/cli/src/windows-recycle/LockDiagnostics.cs
+packages/cli/src/windows-recycle/OpenCode.Windows.RecycleBin.csproj
+packages/cli/src/windows-recycle/RecycleBin.cs
+packages/cli/test/cli/db/db-process.test.ts
+packages/cli/test/cli/smokes/database.test.ts
+packages/cli/test/script/build-target.test.ts
+packages/cli/test/session/question-context.test.ts
+packages/cli/test/tool/unified-exec.test.ts
+packages/cli/todo-card-reset-spec.md
+packages/codemode/src/tool-runtime.ts
+packages/codemode/src/tool.ts
+packages/core/src/database/database.ts
+packages/core/src/database/migration.ts
+packages/core/src/event.ts
+packages/core/src/filesystem/search.ts
+packages/core/src/pty.ts
+packages/core/src/ripgrep.ts
+packages/core/src/session/projector.ts
+packages/core/src/tool/exec-session.ts
+packages/core/src/tool/exec-session/output.ts
+packages/core/src/tool/plan-state.ts
+packages/core/src/tool/unified-exec.ts
+packages/core/src/v1/session.ts
+packages/core/test/database-migration.test.ts
+packages/core/test/event.test.ts
+packages/core/test/filesystem/search.test.ts
+packages/core/test/legacy-event-schema.test.ts
+packages/core/test/process/process.test.ts
+packages/core/test/session-projector.test.ts
+packages/core/test/session-runner-tool-events.test.ts
+packages/core/test/session-runner.test.ts
+packages/llm/src/protocols/openai-responses.ts
+packages/llm/src/protocols/utils/openai-options.ts
+packages/llm/src/route/client.ts
+packages/llm/src/route/executor.ts
+packages/llm/test/executor.test.ts
+packages/llm/test/provider/openai-responses.test.ts
+packages/opencode/README.md
+packages/opencode/package.json
+packages/opencode/script/build.ts
+packages/opencode/src/acp/event.ts
+packages/opencode/src/acp/tool.ts
+packages/opencode/src/agent/agent.ts
+packages/opencode/src/agent/prompt/explore.txt
+packages/opencode/src/cli/cmd/db.ts
+packages/opencode/src/cli/cmd/import.ts
+packages/opencode/src/cli/cmd/run/session-replay.ts
+packages/opencode/src/cli/cmd/run/subagent-data.ts
+packages/opencode/src/cli/cmd/serve.ts
+packages/opencode/src/cli/effect-cmd.ts
+packages/opencode/src/effect/app-runtime.ts
+packages/opencode/src/effect/runner.ts
+packages/opencode/src/effect/runtime-flags.ts
+packages/opencode/src/event-v2-bridge.ts
+packages/opencode/src/patch/index.ts
+packages/opencode/src/permission/index.ts
+packages/opencode/src/plugin/openai/README.md
+packages/opencode/src/plugin/openai/codex.ts
+packages/opencode/src/plugin/openai/ws-pool.ts
+packages/opencode/src/plugin/openai/ws.ts
+packages/opencode/src/provider/error.ts
+packages/opencode/src/provider/provider.ts
+packages/opencode/src/question/index.ts
+packages/opencode/src/server/routes/instance/httpapi/api.ts
+packages/opencode/src/server/routes/instance/httpapi/groups/global.ts
+packages/opencode/src/server/routes/instance/httpapi/groups/session.ts
+packages/opencode/src/server/routes/instance/httpapi/handlers/event.ts
+packages/opencode/src/server/routes/instance/httpapi/handlers/question.ts
+packages/opencode/src/server/routes/instance/httpapi/handlers/session.ts
+packages/opencode/src/session/compaction.ts
+packages/opencode/src/session/llm.ts
+packages/opencode/src/session/llm/ai-sdk.ts
+packages/opencode/src/session/llm/native-runtime.ts
+packages/opencode/src/session/message-v2.ts
+packages/opencode/src/session/processor.ts
+packages/opencode/src/session/prompt.ts
+packages/opencode/src/session/prompt/gpt.txt
+packages/opencode/src/session/retry.ts
+packages/opencode/src/session/revert.ts
+packages/opencode/src/session/run-state.ts
+packages/opencode/src/session/session.ts
+packages/opencode/src/session/status.ts
+packages/opencode/src/session/tools.ts
+packages/opencode/src/tool/apply_patch.ts
+packages/opencode/src/tool/code-mode.ts
+packages/opencode/src/tool/external-directory.ts
+packages/opencode/src/tool/glob.ts
+packages/opencode/src/tool/grep.ts
+packages/opencode/src/tool/plan.ts
+packages/opencode/src/tool/read.ts
+packages/opencode/src/tool/registry.ts
+packages/opencode/src/tool/shell.ts
+packages/opencode/src/tool/shell/prompt.ts
+packages/opencode/src/tool/shell/shell.txt
+packages/opencode/src/tool/tool.ts
+packages/opencode/test/acp/event.test.ts
+packages/opencode/test/acp/service-session.test.ts
+packages/opencode/test/agent/agent.test.ts
+packages/opencode/test/cli/import.test.ts
+packages/opencode/test/cli/run/runtime.test.ts
+packages/opencode/test/cli/run/session-replay.test.ts
+packages/opencode/test/cli/run/session.shared.test.ts
+packages/opencode/test/cli/run/stream.transport.test.ts
+packages/opencode/test/cli/run/subagent-data.test.ts
+packages/opencode/test/cli/run/variant.shared.test.ts
+packages/opencode/test/cli/serve/serve-process.test.ts
+packages/opencode/test/effect/runner.test.ts
+packages/opencode/test/effect/runtime-flags.test.ts
+packages/opencode/test/lib/cli-process.ts
+packages/opencode/test/patch/patch.test.ts
+packages/opencode/test/permission/next.test.ts
+packages/opencode/test/plugin/codex.test.ts
+packages/opencode/test/plugin/openai-ws.test.ts
+packages/opencode/test/provider/error.test.ts
+packages/opencode/test/question/question.test.ts
+packages/opencode/test/server/httpapi-control-plane.test.ts
+packages/opencode/test/server/httpapi-exercise/index.ts
+packages/opencode/test/server/httpapi-global.test.ts
+packages/opencode/test/server/httpapi-sdk.test.ts
+packages/opencode/test/server/httpapi-session.test.ts
+packages/opencode/test/server/session-actions.test.ts
+packages/opencode/test/server/session-list.test.ts
+packages/opencode/test/session/compaction.test.ts
+packages/opencode/test/session/llm-native.test.ts
+packages/opencode/test/session/llm.test.ts
+packages/opencode/test/session/message-v2.test.ts
+packages/opencode/test/session/messages-pagination.test.ts
+packages/opencode/test/session/processor-effect.test.ts
+packages/opencode/test/session/prompt.test.ts
+packages/opencode/test/session/retry.test.ts
+packages/opencode/test/session/revert-compact.test.ts
+packages/opencode/test/session/schema-decoding.test.ts
+packages/opencode/test/session/session.test.ts
+packages/opencode/test/session/tools.test.ts
+packages/opencode/test/tool/apply_patch.test.ts
+packages/opencode/test/tool/code-mode-integration.test.ts
+packages/opencode/test/tool/code-mode.test.ts
+packages/opencode/test/tool/external-directory.test.ts
+packages/opencode/test/tool/glob.test.ts
+packages/opencode/test/tool/grep.test.ts
+packages/opencode/test/tool/parameters.test.ts
+packages/opencode/test/tool/question.test.ts
+packages/opencode/test/tool/read.test.ts
+packages/opencode/test/tool/registry.test.ts
+packages/opencode/test/tool/shell.test.ts
+packages/protocol/src/groups/session.ts
+packages/schema/src/session-status-event.ts
+packages/schema/src/v1/session.ts
+packages/schema/test/compatibility.test.ts
+packages/sdk/js/src/v2/gen/sdk.gen.ts
+packages/sdk/js/src/v2/gen/types.gen.ts
+packages/tui/test/cli/cmd/tui/sync-live-hydration.test.tsx
+packages/util/src/cross-spawn-spawner.ts
+patches/@ai-sdk%2Fopenai@3.0.88.patch
+
+Auto-merging .github/workflows/test.yml
+CONFLICT (content): Merge conflict in .github/workflows/test.yml
+Auto-merging .gitignore
+Auto-merging bun.lock
+CONFLICT (content): Merge conflict in bun.lock
+Auto-merging package.json
+CONFLICT (content): Merge conflict in package.json
+Auto-merging packages/ai/src/protocols/shared.ts
+Auto-merging packages/ai/src/providers/openai-options.ts
+CONFLICT (content): Merge conflict in packages/ai/src/providers/openai-options.ts
+Auto-merging packages/ai/src/route/transport/http.ts
+CONFLICT (content): Merge conflict in packages/ai/src/route/transport/http.ts
+Auto-merging packages/ai/src/schema/events.ts
+CONFLICT (file location): packages/opencode/script/ensure-windows-process-broker.ts added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/cli/script/ensure-windows-process-broker.ts.
+CONFLICT (file location): packages/opencode/script/ensure-windows-recycle.ts added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/cli/script/ensure-windows-recycle.ts.
+CONFLICT (file location): packages/opencode/script/target-selection.ts added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/cli/script/target-selection.ts.
+CONFLICT (file location): packages/opencode/src/agent/prompt/compaction.zh.txt added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/cli/src/agent/prompt/compaction.zh.txt.
+CONFLICT (file location): packages/opencode/src/bootstrap.ts added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/cli/src/bootstrap.ts.
+CONFLICT (file location): packages/opencode/src/session/openai-native-compaction.ts added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/cli/src/session/openai-native-compaction.ts.
+CONFLICT (file location): packages/opencode/src/session/question-context.ts added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/cli/src/session/question-context.ts.
+CONFLICT (file location): packages/opencode/src/windows-process-broker/process-broker.cs added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/cli/src/windows-process-broker/process-broker.cs.
+CONFLICT (file location): packages/opencode/src/windows-recycle/.gitignore added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/cli/src/windows-recycle/.gitignore.
+CONFLICT (file location): packages/opencode/src/windows-recycle/LockDiagnostics.cs added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/cli/src/windows-recycle/LockDiagnostics.cs.
+CONFLICT (file location): packages/opencode/src/windows-recycle/OpenCode.Windows.RecycleBin.csproj added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/cli/src/windows-recycle/OpenCode.Windows.RecycleBin.csproj.
+CONFLICT (file location): packages/opencode/src/windows-recycle/RecycleBin.cs added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/cli/src/windows-recycle/RecycleBin.cs.
+Auto-merging packages/cli/test/acp/tool.test.ts
+CONFLICT (file location): packages/opencode/test/cli/db/db-process.test.ts added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/cli/test/cli/db/db-process.test.ts.
+CONFLICT (file location): packages/opencode/test/cli/smokes/database.test.ts added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/cli/test/cli/smokes/database.test.ts.
+CONFLICT (file location): packages/opencode/test/script/build-target.test.ts added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/cli/test/script/build-target.test.ts.
+CONFLICT (file location): packages/opencode/test/session/question-context.test.ts added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/cli/test/session/question-context.test.ts.
+CONFLICT (file location): packages/opencode/test/tool/unified-exec.test.ts added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/cli/test/tool/unified-exec.test.ts.
+CONFLICT (file location): packages/opencode/todo-card-reset-spec.md added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/cli/todo-card-reset-spec.md.
+Auto-merging packages/codemode/src/tool-runtime.ts
+CONFLICT (content): Merge conflict in packages/codemode/src/tool-runtime.ts
+Auto-merging packages/codemode/src/tool.ts
+CONFLICT (content): Merge conflict in packages/codemode/src/tool.ts
+Auto-merging packages/core/script/migration.ts
+Auto-merging packages/core/src/database/database.ts
+CONFLICT (content): Merge conflict in packages/core/src/database/database.ts
+Auto-merging packages/core/src/database/migration.ts
+CONFLICT (content): Merge conflict in packages/core/src/database/migration.ts
+CONFLICT (modify/delete): packages/core/src/event.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/core/src/event.ts left in tree.
+Auto-merging packages/core/src/filesystem/search.ts
+CONFLICT (content): Merge conflict in packages/core/src/filesystem/search.ts
+Auto-merging packages/core/src/plugin/system-prompt/gpt-astra.txt
+Auto-merging packages/core/src/pty.ts
+CONFLICT (content): Merge conflict in packages/core/src/pty.ts
+Auto-merging packages/core/src/ripgrep.ts
+CONFLICT (content): Merge conflict in packages/core/src/ripgrep.ts
+Auto-merging packages/core/src/session/projector.ts
+CONFLICT (content): Merge conflict in packages/core/src/session/projector.ts
+CONFLICT (file location): packages/opencode/src/tool/exec-session.ts added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/core/src/tool/exec-session.ts.
+CONFLICT (file location): packages/opencode/src/tool/exec-session/output.ts added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/core/src/tool/exec-session/output.ts.
+CONFLICT (file location): packages/opencode/src/tool/plan-state.ts added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/core/src/tool/plan-state.ts.
+CONFLICT (file location): packages/opencode/src/tool/unified-exec.ts added in HEAD inside a directory that was renamed in v2.0.15, suggesting it should perhaps be moved to packages/core/src/tool/unified-exec.ts.
+CONFLICT (modify/delete): packages/core/src/v1/session.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/core/src/v1/session.ts left in tree.
+Auto-merging packages/core/test/database-migration.test.ts
+CONFLICT (content): Merge conflict in packages/core/test/database-migration.test.ts
+CONFLICT (modify/delete): packages/core/test/event.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/core/test/event.test.ts left in tree.
+Auto-merging packages/core/test/filesystem/search.test.ts
+CONFLICT (content): Merge conflict in packages/core/test/filesystem/search.test.ts
+CONFLICT (modify/delete): packages/core/test/legacy-event-schema.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/core/test/legacy-event-schema.test.ts left in tree.
+Auto-merging packages/core/test/process/process.test.ts
+CONFLICT (content): Merge conflict in packages/core/test/process/process.test.ts
+Auto-merging packages/core/test/pty/pty-session.test.ts
+Auto-merging packages/core/test/session-projector.test.ts
+CONFLICT (content): Merge conflict in packages/core/test/session-projector.test.ts
+Auto-merging packages/core/test/session-runner-tool-events.test.ts
+CONFLICT (content): Merge conflict in packages/core/test/session-runner-tool-events.test.ts
+Auto-merging packages/core/test/session-runner.test.ts
+CONFLICT (content): Merge conflict in packages/core/test/session-runner.test.ts
+CONFLICT (modify/delete): packages/llm/src/protocols/openai-responses.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/llm/src/protocols/openai-responses.ts left in tree.
+CONFLICT (modify/delete): packages/llm/src/protocols/utils/openai-options.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/llm/src/protocols/utils/openai-options.ts left in tree.
+CONFLICT (modify/delete): packages/llm/src/route/client.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/llm/src/route/client.ts left in tree.
+CONFLICT (modify/delete): packages/llm/src/route/executor.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/llm/src/route/executor.ts left in tree.
+CONFLICT (modify/delete): packages/llm/test/executor.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/llm/test/executor.test.ts left in tree.
+CONFLICT (modify/delete): packages/llm/test/provider/openai-responses.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/llm/test/provider/openai-responses.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/README.md deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/README.md left in tree.
+CONFLICT (modify/delete): packages/opencode/package.json deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/package.json left in tree.
+CONFLICT (modify/delete): packages/opencode/script/build.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/script/build.ts left in tree.
+CONFLICT (directory rename split): Unclear where to rename packages/opencode/src to; it was renamed to multiple other directories, with no destination getting a majority of the files.
+CONFLICT (modify/delete): packages/opencode/src/acp/event.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/acp/event.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/acp/tool.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/acp/tool.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/agent/agent.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/agent/agent.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/agent/prompt/explore.txt deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/agent/prompt/explore.txt left in tree.
+CONFLICT (modify/delete): packages/opencode/src/cli/cmd/db.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/cli/cmd/db.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/cli/cmd/import.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/cli/cmd/import.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/cli/cmd/run/session-replay.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/cli/cmd/run/session-replay.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/cli/cmd/run/subagent-data.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/cli/cmd/run/subagent-data.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/cli/cmd/serve.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/cli/cmd/serve.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/cli/effect-cmd.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/cli/effect-cmd.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/effect/app-runtime.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/effect/app-runtime.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/effect/runner.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/effect/runner.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/effect/runtime-flags.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/effect/runtime-flags.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/event-v2-bridge.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/event-v2-bridge.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/patch/index.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/patch/index.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/permission/index.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/permission/index.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/plugin/openai/README.md deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/plugin/openai/README.md left in tree.
+CONFLICT (modify/delete): packages/opencode/src/plugin/openai/codex.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/plugin/openai/codex.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/plugin/openai/ws-pool.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/plugin/openai/ws-pool.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/plugin/openai/ws.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/plugin/openai/ws.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/provider/error.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/provider/error.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/provider/provider.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/provider/provider.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/question/index.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/question/index.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/server/routes/instance/httpapi/api.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/server/routes/instance/httpapi/api.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/server/routes/instance/httpapi/groups/global.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/server/routes/instance/httpapi/groups/global.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/server/routes/instance/httpapi/groups/session.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/server/routes/instance/httpapi/groups/session.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/server/routes/instance/httpapi/handlers/event.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/server/routes/instance/httpapi/handlers/event.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/server/routes/instance/httpapi/handlers/question.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/server/routes/instance/httpapi/handlers/question.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/server/routes/instance/httpapi/handlers/session.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/server/routes/instance/httpapi/handlers/session.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/session/compaction.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/session/compaction.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/session/llm.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/session/llm.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/session/llm/ai-sdk.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/session/llm/ai-sdk.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/session/llm/native-runtime.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/session/llm/native-runtime.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/session/message-v2.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/session/message-v2.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/session/processor.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/session/processor.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/session/prompt.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/session/prompt.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/session/prompt/gpt.txt deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/session/prompt/gpt.txt left in tree.
+CONFLICT (modify/delete): packages/opencode/src/session/retry.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/session/retry.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/session/revert.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/session/revert.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/session/run-state.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/session/run-state.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/session/session.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/session/session.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/session/status.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/session/status.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/session/tools.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/session/tools.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/tool/apply_patch.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/tool/apply_patch.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/tool/code-mode.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/tool/code-mode.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/tool/external-directory.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/tool/external-directory.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/tool/glob.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/tool/glob.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/tool/grep.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/tool/grep.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/tool/plan.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/tool/plan.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/tool/read.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/tool/read.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/tool/registry.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/tool/registry.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/tool/shell.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/tool/shell.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/tool/shell/prompt.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/tool/shell/prompt.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/src/tool/shell/shell.txt deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/tool/shell/shell.txt left in tree.
+CONFLICT (modify/delete): packages/opencode/src/tool/tool.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/src/tool/tool.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/acp/event.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/acp/event.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/acp/service-session.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/acp/service-session.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/agent/agent.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/agent/agent.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/cli/import.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/cli/import.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/cli/run/runtime.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/cli/run/runtime.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/cli/run/session-replay.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/cli/run/session-replay.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/cli/run/session.shared.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/cli/run/session.shared.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/cli/run/stream.transport.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/cli/run/stream.transport.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/cli/run/subagent-data.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/cli/run/subagent-data.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/cli/run/variant.shared.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/cli/run/variant.shared.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/cli/serve/serve-process.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/cli/serve/serve-process.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/effect/runner.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/effect/runner.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/effect/runtime-flags.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/effect/runtime-flags.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/lib/cli-process.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/lib/cli-process.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/patch/patch.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/patch/patch.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/permission/next.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/permission/next.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/plugin/codex.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/plugin/codex.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/plugin/openai-ws.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/plugin/openai-ws.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/provider/error.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/provider/error.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/question/question.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/question/question.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/server/httpapi-control-plane.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/server/httpapi-control-plane.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/server/httpapi-exercise/index.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/server/httpapi-exercise/index.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/server/httpapi-global.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/server/httpapi-global.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/server/httpapi-sdk.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/server/httpapi-sdk.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/server/httpapi-session.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/server/httpapi-session.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/server/session-actions.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/server/session-actions.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/server/session-list.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/server/session-list.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/session/compaction.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/session/compaction.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/session/llm-native.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/session/llm-native.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/session/llm.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/session/llm.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/session/message-v2.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/session/message-v2.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/session/messages-pagination.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/session/messages-pagination.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/session/processor-effect.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/session/processor-effect.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/session/prompt.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/session/prompt.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/session/retry.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/session/retry.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/session/revert-compact.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/session/revert-compact.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/session/schema-decoding.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/session/schema-decoding.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/session/session.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/session/session.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/session/tools.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/session/tools.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/tool/apply_patch.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/tool/apply_patch.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/tool/code-mode-integration.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/tool/code-mode-integration.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/tool/code-mode.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/tool/code-mode.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/tool/external-directory.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/tool/external-directory.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/tool/glob.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/tool/glob.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/tool/grep.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/tool/grep.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/tool/parameters.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/tool/parameters.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/tool/question.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/tool/question.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/tool/read.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/tool/read.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/tool/registry.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/tool/registry.test.ts left in tree.
+CONFLICT (modify/delete): packages/opencode/test/tool/shell.test.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/opencode/test/tool/shell.test.ts left in tree.
+Auto-merging packages/protocol/src/groups/session.ts
+CONFLICT (content): Merge conflict in packages/protocol/src/groups/session.ts
+Auto-merging packages/schema/src/session-status-event.ts
+CONFLICT (content): Merge conflict in packages/schema/src/session-status-event.ts
+Auto-merging packages/schema/src/v1/session.ts
+CONFLICT (content): Merge conflict in packages/schema/src/v1/session.ts
+Auto-merging packages/schema/test/compatibility.test.ts
+CONFLICT (content): Merge conflict in packages/schema/test/compatibility.test.ts
+CONFLICT (modify/delete): packages/sdk/js/src/v2/gen/sdk.gen.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/sdk/js/src/v2/gen/sdk.gen.ts left in tree.
+CONFLICT (modify/delete): packages/sdk/js/src/v2/gen/types.gen.ts deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/sdk/js/src/v2/gen/types.gen.ts left in tree.
+CONFLICT (modify/delete): packages/tui/test/cli/cmd/tui/sync-live-hydration.test.tsx deleted in v2.0.15 and modified in HEAD.  Version HEAD of packages/tui/test/cli/cmd/tui/sync-live-hydration.test.tsx left in tree.
+Auto-merging packages/util/src/cross-spawn-spawner.ts
+CONFLICT (content): Merge conflict in packages/util/src/cross-spawn-spawner.ts
+CONFLICT (modify/delete): patches/@ai-sdk%2Fopenai@3.0.88.patch deleted in v2.0.15 and modified in HEAD.  Version HEAD of patches/@ai-sdk%2Fopenai@3.0.88.patch left in tree.

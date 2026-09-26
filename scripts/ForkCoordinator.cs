@@ -64,12 +64,12 @@ static void BuildCandidate(CoordinatorConfig config, string coordinatorRoot)
         coordinatorRoot,
         environment
     );
+    Coordinator.Run(bunExecutable, ["run", "--cwd", Path.Combine(config.OpenChamberRoot, "packages", "sdk"), "build"], coordinatorRoot, environment);
     Coordinator.Run(bunExecutable, ["electron:build"], config.OpenChamberRoot, environment);
 
     var unpackedDirectory = GetUnpackedDirectory(config);
     var openChamberBinary = Path.Combine(unpackedDirectory, "OpenChamber.exe");
     var bundledOpenCode = Path.Combine(unpackedDirectory, "resources", "opencode-cli", "opencode.exe");
-    var shutdownProtocolMarker = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "openchamber-shutdown-protocol.capability");
     var recycleHelper = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "OpenCode.Windows.RecycleBin.dll");
     var processBroker = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "OpenCode.ProcessBroker.exe");
     var openChamberVersion = Coordinator.GetPinnedOpenChamberVersion(config);
@@ -78,7 +78,6 @@ static void BuildCandidate(CoordinatorConfig config, string coordinatorRoot)
         throw new InvalidOperationException("Packaged OpenChamber version does not match the current checkout.");
     Coordinator.AssertOpenCodeBinaryVersion(bundledOpenCode, openCodeVersion, coordinatorRoot);
     AssertWindowsGuiSubsystem(bundledOpenCode);
-    RequireFile(shutdownProtocolMarker);
     RequireFile(recycleHelper);
     AssertWindowsProcessBroker(processBroker, coordinatorRoot);
     Console.WriteLine($"Candidate app ready: {openChamberBinary} (OpenChamber {openChamberVersion}, OpenCode {openCodeVersion})");
@@ -98,9 +97,12 @@ static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot
 
     var openChamberVersion = Coordinator.GetPinnedOpenChamberVersion(config);
     var openCodeVersion = Coordinator.GetPinnedOpenCodeVersion(config);
-    var sdkVersion = Coordinator.ReadJsonString(Path.Combine(openCodeRoot, "packages", "sdk", "js", "package.json"), "version");
-    if (openCodeVersion != sdkVersion)
-        throw new InvalidOperationException($"OpenCode SDK version {sdkVersion} does not match OpenChamber pin {openCodeVersion}.");
+    foreach (var package in new[] { "client", "schema", "protocol" })
+    {
+        var sdkVersion = Coordinator.ReadJsonString(Path.Combine(openCodeRoot, "packages", package, "package.json"), "version");
+        if (openCodeVersion != sdkVersion)
+            throw new InvalidOperationException($"OpenCode {package} version {sdkVersion} does not match OpenChamber pin {openCodeVersion}.");
+    }
     var openChamberCommit = CurrentCommit(openChamberRoot, coordinatorRoot);
     var openCodeCommit = CurrentCommit(openCodeRoot, coordinatorRoot);
 
@@ -131,6 +133,7 @@ static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot
         Coordinator.Run(bunExecutable, ["run", "--cwd", openChamberRoot, "lint"], coordinatorRoot, environment);
         if (Directory.Exists(distRoot)) Directory.Delete(distRoot, recursive: true);
 
+        Coordinator.Run(bunExecutable, ["run", "--cwd", Path.Combine(openChamberRoot, "packages", "sdk"), "build"], coordinatorRoot, environment);
         Coordinator.Run(bunExecutable, ["run", "--cwd", electronRoot, "build:web-assets"], coordinatorRoot, environment);
         Coordinator.Run(bunExecutable, ["run", "--cwd", electronRoot, "prepare:opencode-cli"], coordinatorRoot, environment);
         Coordinator.Run(bunExecutable, ["run", "--cwd", electronRoot, "verify:opencode-cli"], coordinatorRoot, environment);
@@ -152,12 +155,10 @@ static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot
         RequireFile(updateManifestPath);
         var unpackedName = architecture == "x64" ? "win-unpacked" : "win-arm64-unpacked";
         var bundledOpenCode = Path.Combine(distRoot, unpackedName, "resources", "opencode-cli", "opencode.exe");
-        var shutdownProtocolMarker = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "openchamber-shutdown-protocol.capability");
         var recycleHelper = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "OpenCode.Windows.RecycleBin.dll");
         var processBroker = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "OpenCode.ProcessBroker.exe");
         Coordinator.AssertOpenCodeBinaryVersion(bundledOpenCode, openCodeVersion, coordinatorRoot);
         AssertWindowsGuiSubsystem(bundledOpenCode);
-        RequireFile(shutdownProtocolMarker);
         RequireFile(recycleHelper);
         AssertWindowsProcessBroker(processBroker, coordinatorRoot);
         AssertReleaseDatabasePath(bundledOpenCode, stagingDirectory, coordinatorRoot, "opencode-dev.db");
@@ -256,8 +257,8 @@ static void PrepareX64WindowsProcessBroker(
         [
             "run",
             "--cwd",
-            Path.Combine(config.OpenCodeRoot, "packages", "opencode"),
-            "prepare:windows-process-broker"
+            Path.Combine(config.OpenCodeRoot, "packages", "util"),
+            "build:windows-process-broker"
         ],
         coordinatorRoot,
         brokerEnvironment

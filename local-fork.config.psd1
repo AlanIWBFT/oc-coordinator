@@ -2,7 +2,6 @@
   OpenChamberRoot = 'E:\OpenChamber\openchamber'
   OpenCodeRoot = 'E:\OpenChamber\opencode'
   OpenCodeClientRoot = 'E:\OpenChamber\opencode\packages\client'
-  OpenCodeSdkRoot = 'E:\OpenChamber\opencode\packages\sdk\js'
   OpenCodeSdkLinkRoot = 'E:\OpenChamber\coordinator\generated\opencode-sdk'
   OpenChamberSdkConsumers = @(
     'E:\OpenChamber\openchamber'

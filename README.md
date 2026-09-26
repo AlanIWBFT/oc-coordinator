@@ -4,7 +4,7 @@ This directory coordinates coupled local-fork API development without modifying 
 
 ## Prerequisites
 
-Use PowerShell Core 7 or newer through `pwsh`, not Windows PowerShell 5.1 through `powershell.exe`. Windows packaging requires a complete Visual Studio 2022 instance with the VC++ x64/x86 tools and Windows SDK. The coordinator discovers it through `vswhere` and initializes its Developer Shell by the discovered installation path before native Electron modules rebuild.
+Use PowerShell Core 7 or newer through `pwsh`, not Windows PowerShell 5.1 through `powershell.exe`, and a .NET SDK supporting C# file-based apps for SDK staging and coordinator commands. Windows packaging requires a complete Visual Studio 2022 instance with the VC++ x64/x86 tools and Windows SDK. The coordinator discovers it through `vswhere` and initializes its Developer Shell by the discovered installation path before native Electron modules rebuild.
 
 Candidate isolation requires Sandboxie-Plus. The default launcher is `C:\Program Files\Sandboxie-Plus\Start.exe` and the default box is `OpenChamberCandidate`; both are configurable in `local-fork.config.psd1`.
 
@@ -16,7 +16,7 @@ Candidate isolation requires Sandboxie-Plus. The default launcher is `C:\Program
 - `E:\OpenChamber\openchamber\packages\electron\dist\win-unpacked`: x64 Candidate app built from the local checkout.
 - `E:\OpenChamber\openchamber\packages\electron\dist\win-arm64-unpacked`: ARM64 Candidate app built from the local checkout.
 - `E:\OpenChamber\release`: atomically prepared Windows release directories.
-- `E:\OpenChamber\coordinator\generated\opencode-sdk`: generated publish-shaped local SDK package used by junction consumers.
+- `E:\OpenChamber\coordinator\generated\opencode-sdk`: generated workspace containing publish-shaped local client/schema/protocol packages used by junction consumers.
 
 The installed release package is Stable. It is an ordinary user installation, not a coordinator-managed slot. The coordinator has no Stable, Rescue, external CLI copy, runtime-root tree, manifest, or promotion command.
 
@@ -24,13 +24,13 @@ The installed release package is Stable. It is an ordinary user installation, no
 
 ### Linux x86-64 Candidate
 
-Linux builds use Bun 1.4.x, Node.js 22 or newer, PowerShell Core 7, and rsync. The existing Windows Bun selection and repository `bun@1.3.14` declarations remain unchanged.
+Linux builds use Bun 1.4.x, Node.js 22 or newer, PowerShell Core 7, rsync, and a .NET SDK supporting C# file-based apps for SDK staging.
 
 ```powershell
 pwsh -NoProfile -File scripts/Build-LinuxCandidate.ps1
 ```
 
-The script synchronizes the current OpenCode and OpenChamber sources, including uncommitted edits, into `~/.local/state/openchamber-fork/build`. It excludes Windows dependencies and build output, installs Linux dependencies from the frozen lockfiles, regenerates both client contracts, and links the publish-shaped local SDK into all four consumers using symbolic links. It builds the local CLI with channel `dev`, packages with `--publish=never`, and verifies the final AppImage and native modules. It does not run git, upload, install, or launch the application. Use `-PrepareOnly` to stop after source synchronization and dependency installation. `-SourceRoot` and `-BuildRoot` select different source and managed build directories.
+The script synchronizes the current OpenCode and OpenChamber sources, including uncommitted edits, into `~/.local/state/openchamber-fork/build`. It excludes Windows dependencies and build output, installs Linux dependencies from the frozen lockfiles, regenerates the client contract, and links the publish-shaped client/schema/protocol graph into all four consumers using symbolic links. It builds the local CLI with channel `dev`, packages with `--publish=never`, and verifies the final AppImage and native modules. It does not run git, upload, install, or launch the application. Use `-PrepareOnly` to stop after source synchronization and dependency installation. `-SourceRoot` and `-BuildRoot` select different source and managed build directories.
 
 Artifacts are under `~/.local/state/openchamber-fork/build/openchamber/packages/electron/dist`, including `OpenChamber-<version>-linux-x86_64.AppImage`. The Windows source directories retain their own dependencies and artifacts. Linux uses the existing ordinary process-spawn and non-Windows filesystem paths; the Windows Process Broker and Recycle Bin helper are not ported.
 
@@ -104,14 +104,14 @@ Sandboxie resource rules and filesystem links may be configured manually to shar
 
 ## Manual Upstream Rebase
 
-Upstream rebases are decision-heavy maintenance and are always performed manually. No coordinator script fetches or rebases either repository. Rebase OpenChamber first, resolve its conflicts and semantic changes, then treat the exact root `@opencode-ai/sdk` dependency as the compatibility baseline for the OpenCode migration.
+Upstream rebases are decision-heavy maintenance and are always performed manually. No coordinator script fetches or rebases either repository. Select the OpenChamber target tag first and derive the OpenCode target from its exact client/schema and bundled CLI pins. Then migrate each repository in its explicit phase, rebasing onto the selected tags.
 
 Run `scripts\Get-UpstreamRebaseContext.ps1` to inspect local branches, worktree states, the OpenChamber target branch, the pinned SDK version, and the expected OpenCode release tag. The command is read-only and never fetches missing refs.
 
 ## Coupled Development
 
 1. Use the normally installed release package as Stable. Do not start the development conversation from Candidate.
-2. Make the OpenCode API change and regenerate the client contract and legacy JavaScript SDK.
+2. Make the OpenCode API change, regenerate the client contract, and build the local client/schema/protocol SDK packages.
 3. Run `scripts\Sync-OpenCodeSdk.ps1` to stage and junction-link the local SDK into every OpenChamber consumer.
 4. Adapt OpenChamber and run focused source checks.
 5. Run `dotnet .\scripts\ForkCoordinator.cs -- build-candidate`.
@@ -122,7 +122,9 @@ Run `scripts\Get-UpstreamRebaseContext.ps1` to inspect local branches, worktree 
 
 Windows `build-candidate` and `build-release` use `E:\OpenChamber\bun-v1.4.2-release\bun.exe` and verify its version before starting the build. The coordinator sets `PATH`, `npm_execpath`, and `OPENCHAMBER_OPENCODE_BUN_RUNTIME` so SDK generation, packaging, and bundled OpenCode compilation use that same runtime.
 
-`scripts\Sync-OpenCodeSdk.ps1` regenerates the OpenCode client outputs, builds the legacy `@opencode-ai/sdk`, stages a publish-shaped package under `generated\opencode-sdk`, installs its production dependencies, and replaces each consumer SDK with an NTFS junction. A partial staging or junction failure triggers a root frozen-lockfile reinstall. `scripts\Restore-OfficialOpenCodeSdk.ps1` removes the local link by restoring dependencies from the frozen lockfile.
+Candidate and release packaging also build OpenChamber's own `packages/sdk` before staging the application. The packaged backend resolves `@openchamber/sdk` through its `dist` exports, so dependency installation or the separate OpenCode SDK build cannot substitute for refreshing this package after source updates.
+
+`scripts\Sync-OpenCodeSdk.ps1` regenerates the OpenCode client and builds `@opencode/client`, `@opencode/schema`, and `@opencode/protocol`. `Stage-OpenCodeSdk.cs` creates publish-shaped manifests with `dist` exports, concrete dependency versions, and preserved peer metadata. The packages live under `generated\opencode-sdk\packages`; dependencies are installed at this final location so workspace junctions do not point into a renamed temporary directory. All four consumers and the staged packages' internal resolution paths must resolve to this local graph. A partial staging or junction failure removes owned links and performs one root frozen-lockfile reinstall. Type-check failures after successful linking leave the local SDK active for adaptation. `scripts\Restore-OfficialOpenCodeSdk.ps1` removes owned links and restores dependencies from the frozen lockfile.
 
 ## Release Packaging
 

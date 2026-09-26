@@ -1,0 +1,371 @@
+31e097e25448fb15712c9bf6e8c1b65f37e7105d
+packages/electron/README.md
+packages/electron/main.mjs
+packages/electron/scripts/electron-dev.mjs
+packages/electron/scripts/prepare-opencode-cli.mjs
+packages/electron/scripts/verify-opencode-cli.mjs
+packages/ui/src/components/chat/ChatContainer.tsx
+packages/ui/src/components/chat/ChatMessage.tsx
+packages/ui/src/components/chat/MessageList.tsx
+packages/ui/src/components/chat/QuestionCard.tsx
+packages/ui/src/components/chat/composer/ui/RevertedMessageDock.tsx
+packages/ui/src/components/chat/hooks/useTurnRecords.ts
+packages/ui/src/components/chat/lib/turns/liveActivitySummary.ts
+packages/ui/src/components/chat/lib/turns/projectTurnActivity.ts
+packages/ui/src/components/chat/lib/turns/projectTurnRecords.ts
+packages/ui/src/components/chat/lib/turns/streamingTailEntry.ts
+packages/ui/src/components/chat/message/MessageBody.tsx
+packages/ui/src/components/chat/message/parts/DOCUMENTATION.md
+packages/ui/src/components/chat/message/parts/ProgressiveGroup.tsx
+packages/ui/src/components/chat/message/parts/ToolPart.tsx
+packages/ui/src/components/chat/message/parts/taskToolModel.test.ts
+packages/ui/src/components/chat/message/parts/taskToolModel.ts
+packages/ui/src/components/chat/message/parts/toolPresentation.tsx
+packages/ui/src/components/chat/message/parts/toolRenderUtils.ts
+packages/ui/src/components/chat/message/renderCompare.ts
+packages/ui/src/hooks/useAssistantStatus.test.ts
+packages/ui/src/hooks/useAssistantStatus.ts
+packages/ui/src/hooks/useSessionActivity.ts
+packages/ui/src/lib/i18n/messages/de.ts
+packages/ui/src/lib/i18n/messages/es.ts
+packages/ui/src/lib/i18n/messages/fr.ts
+packages/ui/src/lib/i18n/messages/ko.ts
+packages/ui/src/lib/i18n/messages/pl.ts
+packages/ui/src/lib/i18n/messages/pt-BR.ts
+packages/ui/src/lib/i18n/messages/tr.ts
+packages/ui/src/lib/i18n/messages/uk.ts
+packages/ui/src/lib/i18n/messages/zh-CN.ts
+packages/ui/src/lib/i18n/messages/zh-TW.ts
+packages/ui/src/lib/multirun/DOCUMENTATION.md
+packages/ui/src/lib/multirun/fusion.test.ts
+packages/ui/src/lib/multirun/fusion.ts
+packages/ui/src/lib/opencode/client.status.test.ts
+packages/ui/src/lib/opencode/client.ts
+packages/ui/src/lib/opencode/session-status.ts
+packages/ui/src/lib/sessionEvents.ts
+packages/ui/src/lib/sessionGoalActions.ts
+packages/ui/src/lib/sessionTitle.test.ts
+packages/ui/src/lib/toolHelpers.ts
+packages/ui/src/sync/DOCUMENTATION.md
+packages/ui/src/sync/__tests__/event-pipeline.test.js
+packages/ui/src/sync/__tests__/event-reducer.test.ts
+packages/ui/src/sync/__tests__/materialization.test.ts
+packages/ui/src/sync/__tests__/session-status-snapshot.test.ts
+packages/ui/src/sync/__tests__/session-switch-resync.test.ts
+packages/ui/src/sync/bootstrap.test.ts
+packages/ui/src/sync/bootstrap.ts
+packages/ui/src/sync/directory-recovery-snapshots.test.ts
+packages/ui/src/sync/directory-recovery-snapshots.ts
+packages/ui/src/sync/event-pipeline.test.ts
+packages/ui/src/sync/event-pipeline.ts
+packages/ui/src/sync/event-reducer.ts
+packages/ui/src/sync/global-blocking-requests.test.ts
+packages/ui/src/sync/global-blocking-requests.ts
+packages/ui/src/sync/host-session-status-seed.test.ts
+packages/ui/src/sync/host-session-status-seed.ts
+packages/ui/src/sync/live-aggregate.ts
+packages/ui/src/sync/materialization.ts
+packages/ui/src/sync/message-ordering.test.ts
+packages/ui/src/sync/message-ordering.ts
+packages/ui/src/sync/optimistic.ts
+packages/ui/src/sync/reconnect-recovery.ts
+packages/ui/src/sync/session-actions.test.ts
+packages/ui/src/sync/session-actions.ts
+packages/ui/src/sync/session-cache.ts
+packages/ui/src/sync/session-message-loader.test.ts
+packages/ui/src/sync/session-message-loader.ts
+packages/ui/src/sync/session-retention.test.ts
+packages/ui/src/sync/sync-context.tsx
+packages/ui/src/sync/types.ts
+packages/ui/src/sync/use-sync.ts
+packages/ui/src/types/question.ts
+packages/web/server/index.d.ts
+packages/web/server/index.js
+packages/web/server/lib/agent-tool/DOCUMENTATION.md
+packages/web/server/lib/agent-tool/runtime.js
+packages/web/server/lib/agent-tool/runtime.test.js
+packages/web/server/lib/git/service.js
+packages/web/server/lib/github/pr-status.js
+packages/web/server/lib/github/pr-status.test.js
+packages/web/server/lib/guests/service.js
+packages/web/server/lib/openchamber-control/service.js
+packages/web/server/lib/opencode/DOCUMENTATION.md
+packages/web/server/lib/opencode/lifecycle.js
+packages/web/server/lib/opencode/shutdown-runtime.js
+packages/web/server/lib/opencode/shutdown-runtime.test.js
+packages/web/server/lib/permission-auto-accept/runtime.js
+packages/web/server/lib/session-goal/runtime.test.js
+packages/web/server/lib/tts/stt.js
+packages/web/server/lib/ui-auth/ui-passkeys.js
+packages/web/vite.config.ts
+
+Auto-merging bun.lock
+Auto-merging package.json
+Auto-merging packages/electron/README.md
+CONFLICT (content): Merge conflict in packages/electron/README.md
+Auto-merging packages/electron/main.mjs
+CONFLICT (content): Merge conflict in packages/electron/main.mjs
+Auto-merging packages/electron/package.json
+Auto-merging packages/electron/scripts/electron-dev.mjs
+CONFLICT (content): Merge conflict in packages/electron/scripts/electron-dev.mjs
+Auto-merging packages/electron/scripts/prepare-opencode-cli.mjs
+CONFLICT (content): Merge conflict in packages/electron/scripts/prepare-opencode-cli.mjs
+Auto-merging packages/electron/scripts/verify-opencode-cli.mjs
+CONFLICT (content): Merge conflict in packages/electron/scripts/verify-opencode-cli.mjs
+Auto-merging packages/ui/src/App.tsx
+Auto-merging packages/ui/src/components/chat/ChatContainer.tsx
+CONFLICT (content): Merge conflict in packages/ui/src/components/chat/ChatContainer.tsx
+Auto-merging packages/ui/src/components/chat/ChatInput.tsx
+Auto-merging packages/ui/src/components/chat/ChatMessage.tsx
+CONFLICT (content): Merge conflict in packages/ui/src/components/chat/ChatMessage.tsx
+Auto-merging packages/ui/src/components/chat/MessageList.tsx
+CONFLICT (content): Merge conflict in packages/ui/src/components/chat/MessageList.tsx
+Auto-merging packages/ui/src/components/chat/ModelControls.tsx
+CONFLICT (modify/delete): packages/ui/src/components/chat/QuestionCard.tsx deleted in v2.0.0 and modified in HEAD.  Version HEAD of packages/ui/src/components/chat/QuestionCard.tsx left in tree.
+Auto-merging packages/ui/src/components/chat/components/LiveTurnActivity.test.tsx
+Auto-merging packages/ui/src/components/chat/composer/ui/RevertedMessageDock.tsx
+CONFLICT (content): Merge conflict in packages/ui/src/components/chat/composer/ui/RevertedMessageDock.tsx
+Auto-merging packages/ui/src/components/chat/hooks/useTurnRecords.ts
+CONFLICT (content): Merge conflict in packages/ui/src/components/chat/hooks/useTurnRecords.ts
+Auto-merging packages/ui/src/components/chat/lib/turns/applyRetryOverlay.ts
+Auto-merging packages/ui/src/components/chat/lib/turns/liveActivity.test.ts
+Auto-merging packages/ui/src/components/chat/lib/turns/liveActivitySummary.ts
+CONFLICT (content): Merge conflict in packages/ui/src/components/chat/lib/turns/liveActivitySummary.ts
+Auto-merging packages/ui/src/components/chat/lib/turns/projectTurnActivity.ts
+CONFLICT (content): Merge conflict in packages/ui/src/components/chat/lib/turns/projectTurnActivity.ts
+Auto-merging packages/ui/src/components/chat/lib/turns/projectTurnRecords.test.ts
+Auto-merging packages/ui/src/components/chat/lib/turns/projectTurnRecords.ts
+CONFLICT (content): Merge conflict in packages/ui/src/components/chat/lib/turns/projectTurnRecords.ts
+Auto-merging packages/ui/src/components/chat/lib/turns/streamingTailEntry.test.ts
+Auto-merging packages/ui/src/components/chat/lib/turns/streamingTailEntry.ts
+CONFLICT (content): Merge conflict in packages/ui/src/components/chat/lib/turns/streamingTailEntry.ts
+Auto-merging packages/ui/src/components/chat/lib/turns/turnProjectionCache.test.ts
+Auto-merging packages/ui/src/components/chat/lib/turns/turnProjectionCache.ts
+Auto-merging packages/ui/src/components/chat/lib/turns/types.ts
+Auto-merging packages/ui/src/components/chat/message/MessageBody.tsx
+CONFLICT (content): Merge conflict in packages/ui/src/components/chat/message/MessageBody.tsx
+Auto-merging packages/ui/src/components/chat/message/parts/DOCUMENTATION.md
+CONFLICT (content): Merge conflict in packages/ui/src/components/chat/message/parts/DOCUMENTATION.md
+Auto-merging packages/ui/src/components/chat/message/parts/JustificationBlock.tsx
+Auto-merging packages/ui/src/components/chat/message/parts/ProgressiveGroup.tsx
+CONFLICT (content): Merge conflict in packages/ui/src/components/chat/message/parts/ProgressiveGroup.tsx
+Auto-merging packages/ui/src/components/chat/message/parts/ToolPart.guest.test.tsx
+Auto-merging packages/ui/src/components/chat/message/parts/ToolPart.tsx
+CONFLICT (content): Merge conflict in packages/ui/src/components/chat/message/parts/ToolPart.tsx
+Auto-merging packages/ui/src/components/chat/message/parts/taskToolModel.test.ts
+CONFLICT (content): Merge conflict in packages/ui/src/components/chat/message/parts/taskToolModel.test.ts
+Auto-merging packages/ui/src/components/chat/message/parts/taskToolModel.ts
+CONFLICT (content): Merge conflict in packages/ui/src/components/chat/message/parts/taskToolModel.ts
+Auto-merging packages/ui/src/components/chat/message/parts/toolPresentation.tsx
+CONFLICT (content): Merge conflict in packages/ui/src/components/chat/message/parts/toolPresentation.tsx
+Auto-merging packages/ui/src/components/chat/message/parts/toolRenderUtils.test.ts
+Auto-merging packages/ui/src/components/chat/message/parts/toolRenderUtils.ts
+CONFLICT (content): Merge conflict in packages/ui/src/components/chat/message/parts/toolRenderUtils.ts
+Auto-merging packages/ui/src/components/chat/message/renderCompare.ts
+CONFLICT (content): Merge conflict in packages/ui/src/components/chat/message/renderCompare.ts
+Auto-merging packages/ui/src/components/chat/message/toolRenderers.tsx
+Auto-merging packages/ui/src/components/chat/revertedMessageDockState.test.ts
+Auto-merging packages/ui/src/components/chat/revertedMessageDockState.ts
+Auto-merging packages/ui/src/components/layout/ContextPanel.tsx
+Auto-merging packages/ui/src/components/sections/openchamber/OpenChamberToolsSettings.tsx
+Auto-merging packages/ui/src/components/session/ForkSessionDialog.tsx
+Auto-merging packages/ui/src/components/session/sidebar/sessions/SessionNodeItem.tsx
+Auto-merging packages/ui/src/components/ui/CommandPalette.tsx
+Auto-merging packages/ui/src/components/views/DiffView.tsx
+Auto-merging packages/ui/src/hooks/useAssistantStatus.test.ts
+CONFLICT (content): Merge conflict in packages/ui/src/hooks/useAssistantStatus.test.ts
+Auto-merging packages/ui/src/hooks/useAssistantStatus.ts
+CONFLICT (content): Merge conflict in packages/ui/src/hooks/useAssistantStatus.ts
+Auto-merging packages/ui/src/hooks/useGlobalSessionsPolling.ts
+Auto-merging packages/ui/src/hooks/useSessionActivity.ts
+CONFLICT (content): Merge conflict in packages/ui/src/hooks/useSessionActivity.ts
+Auto-merging packages/ui/src/index.css
+Auto-merging packages/ui/src/lib/api/types.ts
+Auto-merging packages/ui/src/lib/i18n/messages/de.ts
+CONFLICT (content): Merge conflict in packages/ui/src/lib/i18n/messages/de.ts
+Auto-merging packages/ui/src/lib/i18n/messages/en.ts
+Auto-merging packages/ui/src/lib/i18n/messages/es.ts
+CONFLICT (content): Merge conflict in packages/ui/src/lib/i18n/messages/es.ts
+Auto-merging packages/ui/src/lib/i18n/messages/fr.ts
+CONFLICT (content): Merge conflict in packages/ui/src/lib/i18n/messages/fr.ts
+Auto-merging packages/ui/src/lib/i18n/messages/ja.ts
+Auto-merging packages/ui/src/lib/i18n/messages/ko.ts
+CONFLICT (content): Merge conflict in packages/ui/src/lib/i18n/messages/ko.ts
+Auto-merging packages/ui/src/lib/i18n/messages/pl.ts
+CONFLICT (content): Merge conflict in packages/ui/src/lib/i18n/messages/pl.ts
+Auto-merging packages/ui/src/lib/i18n/messages/pt-BR.ts
+CONFLICT (content): Merge conflict in packages/ui/src/lib/i18n/messages/pt-BR.ts
+Auto-merging packages/ui/src/lib/i18n/messages/tr.ts
+CONFLICT (content): Merge conflict in packages/ui/src/lib/i18n/messages/tr.ts
+Auto-merging packages/ui/src/lib/i18n/messages/uk.ts
+CONFLICT (content): Merge conflict in packages/ui/src/lib/i18n/messages/uk.ts
+Auto-merging packages/ui/src/lib/i18n/messages/zh-CN.ts
+CONFLICT (content): Merge conflict in packages/ui/src/lib/i18n/messages/zh-CN.ts
+Auto-merging packages/ui/src/lib/i18n/messages/zh-TW.ts
+CONFLICT (content): Merge conflict in packages/ui/src/lib/i18n/messages/zh-TW.ts
+Auto-merging packages/ui/src/lib/multirun/DOCUMENTATION.md
+CONFLICT (content): Merge conflict in packages/ui/src/lib/multirun/DOCUMENTATION.md
+Auto-merging packages/ui/src/lib/multirun/fusion.test.ts
+CONFLICT (content): Merge conflict in packages/ui/src/lib/multirun/fusion.test.ts
+Auto-merging packages/ui/src/lib/multirun/fusion.ts
+CONFLICT (content): Merge conflict in packages/ui/src/lib/multirun/fusion.ts
+Auto-merging packages/ui/src/lib/opencode/client.status.test.ts
+CONFLICT (content): Merge conflict in packages/ui/src/lib/opencode/client.status.test.ts
+Auto-merging packages/ui/src/lib/opencode/client.ts
+CONFLICT (content): Merge conflict in packages/ui/src/lib/opencode/client.ts
+Auto-merging packages/ui/src/lib/opencode/session-status.ts
+CONFLICT (content): Merge conflict in packages/ui/src/lib/opencode/session-status.ts
+Auto-merging packages/ui/src/lib/persistence.test.ts
+Auto-merging packages/ui/src/lib/sessionEvents.ts
+CONFLICT (content): Merge conflict in packages/ui/src/lib/sessionEvents.ts
+Auto-merging packages/ui/src/lib/sessionGoalActions.ts
+CONFLICT (content): Merge conflict in packages/ui/src/lib/sessionGoalActions.ts
+Auto-merging packages/ui/src/lib/sessionTitle.test.ts
+CONFLICT (content): Merge conflict in packages/ui/src/lib/sessionTitle.test.ts
+Auto-merging packages/ui/src/lib/toolHelpers.ts
+CONFLICT (content): Merge conflict in packages/ui/src/lib/toolHelpers.ts
+Auto-merging packages/ui/src/stores/DOCUMENTATION.md
+Auto-merging packages/ui/src/stores/useGitStore.ts
+Auto-merging packages/ui/src/stores/useUIStore.ts
+Auto-merging packages/ui/src/sync/DOCUMENTATION.md
+CONFLICT (content): Merge conflict in packages/ui/src/sync/DOCUMENTATION.md
+Auto-merging packages/ui/src/sync/__tests__/event-pipeline-online.test.js
+Auto-merging packages/ui/src/sync/__tests__/event-pipeline-permanent-error.test.js
+CONFLICT (modify/delete): packages/ui/src/sync/__tests__/event-pipeline.test.js deleted in v2.0.0 and modified in HEAD.  Version HEAD of packages/ui/src/sync/__tests__/event-pipeline.test.js left in tree.
+CONFLICT (modify/delete): packages/ui/src/sync/__tests__/event-reducer.test.ts deleted in v2.0.0 and modified in HEAD.  Version HEAD of packages/ui/src/sync/__tests__/event-reducer.test.ts left in tree.
+Auto-merging packages/ui/src/sync/__tests__/eviction.test.ts
+Auto-merging packages/ui/src/sync/__tests__/issue-2039.test.ts
+Auto-merging packages/ui/src/sync/__tests__/materialization.test.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/__tests__/materialization.test.ts
+Auto-merging packages/ui/src/sync/__tests__/session-status-snapshot.test.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/__tests__/session-status-snapshot.test.ts
+Auto-merging packages/ui/src/sync/__tests__/session-switch-resync.test.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/__tests__/session-switch-resync.test.ts
+Auto-merging packages/ui/src/sync/bootstrap.test.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/bootstrap.test.ts
+Auto-merging packages/ui/src/sync/bootstrap.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/bootstrap.ts
+Auto-merging packages/ui/src/sync/child-store.test.ts
+Auto-merging packages/ui/src/sync/child-store.ts
+Auto-merging packages/ui/src/sync/directory-recovery-snapshots.test.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/directory-recovery-snapshots.test.ts
+Auto-merging packages/ui/src/sync/directory-recovery-snapshots.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/directory-recovery-snapshots.ts
+Auto-merging packages/ui/src/sync/event-pipeline.test.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/event-pipeline.test.ts
+Auto-merging packages/ui/src/sync/event-pipeline.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/event-pipeline.ts
+Auto-merging packages/ui/src/sync/event-reducer.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/event-reducer.ts
+Auto-merging packages/ui/src/sync/global-blocking-requests.test.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/global-blocking-requests.test.ts
+Auto-merging packages/ui/src/sync/global-blocking-requests.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/global-blocking-requests.ts
+Auto-merging packages/ui/src/sync/host-session-status-seed.test.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/host-session-status-seed.test.ts
+Auto-merging packages/ui/src/sync/host-session-status-seed.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/host-session-status-seed.ts
+Auto-merging packages/ui/src/sync/live-aggregate-performance.test.ts
+Auto-merging packages/ui/src/sync/live-aggregate.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/live-aggregate.ts
+Auto-merging packages/ui/src/sync/materialization.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/materialization.ts
+CONFLICT (modify/delete): packages/ui/src/sync/message-ordering.test.ts deleted in HEAD and modified in v2.0.0.  Version v2.0.0 of packages/ui/src/sync/message-ordering.test.ts left in tree.
+CONFLICT (modify/delete): packages/ui/src/sync/message-ordering.ts deleted in HEAD and modified in v2.0.0.  Version v2.0.0 of packages/ui/src/sync/message-ordering.ts left in tree.
+Auto-merging packages/ui/src/sync/optimistic.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/optimistic.ts
+Auto-merging packages/ui/src/sync/reconnect-recovery.test.ts
+Auto-merging packages/ui/src/sync/reconnect-recovery.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/reconnect-recovery.ts
+Auto-merging packages/ui/src/sync/session-actions.test.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/session-actions.test.ts
+Auto-merging packages/ui/src/sync/session-actions.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/session-actions.ts
+Auto-merging packages/ui/src/sync/session-cache.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/session-cache.ts
+Auto-merging packages/ui/src/sync/session-message-loader.test.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/session-message-loader.test.ts
+Auto-merging packages/ui/src/sync/session-message-loader.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/session-message-loader.ts
+Auto-merging packages/ui/src/sync/session-message-records.test.ts
+Auto-merging packages/ui/src/sync/session-retention.test.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/session-retention.test.ts
+Auto-merging packages/ui/src/sync/session-ui-store.ts
+Auto-merging packages/ui/src/sync/sync-context.tsx
+CONFLICT (content): Merge conflict in packages/ui/src/sync/sync-context.tsx
+Auto-merging packages/ui/src/sync/types.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/types.ts
+Auto-merging packages/ui/src/sync/use-sync.test.ts
+Auto-merging packages/ui/src/sync/use-sync.ts
+CONFLICT (content): Merge conflict in packages/ui/src/sync/use-sync.ts
+Auto-merging packages/ui/src/sync/user-message-history.test.ts
+Auto-merging packages/ui/src/sync/user-message-history.ts
+CONFLICT (modify/delete): packages/ui/src/types/question.ts deleted in v2.0.0 and modified in HEAD.  Version HEAD of packages/ui/src/types/question.ts left in tree.
+Auto-merging packages/vscode/src/opencode.ts
+Auto-merging packages/web/index.html
+Auto-merging packages/web/server/index.d.ts
+CONFLICT (content): Merge conflict in packages/web/server/index.d.ts
+Auto-merging packages/web/server/index.js
+CONFLICT (content): Merge conflict in packages/web/server/index.js
+Auto-merging packages/web/server/lib/agent-tool/DOCUMENTATION.md
+CONFLICT (content): Merge conflict in packages/web/server/lib/agent-tool/DOCUMENTATION.md
+Auto-merging packages/web/server/lib/agent-tool/runtime.js
+CONFLICT (content): Merge conflict in packages/web/server/lib/agent-tool/runtime.js
+Auto-merging packages/web/server/lib/agent-tool/runtime.test.js
+CONFLICT (content): Merge conflict in packages/web/server/lib/agent-tool/runtime.test.js
+Auto-merging packages/web/server/lib/event-stream/DOCUMENTATION.md
+Auto-merging packages/web/server/lib/event-stream/global-hub.js
+Auto-merging packages/web/server/lib/event-stream/global-hub.test.js
+Auto-merging packages/web/server/lib/event-stream/index.js
+Auto-merging packages/web/server/lib/event-stream/upstream-reader.test.js
+Auto-merging packages/web/server/lib/git/service.js
+CONFLICT (content): Merge conflict in packages/web/server/lib/git/service.js
+Auto-merging packages/web/server/lib/github/DOCUMENTATION.md
+Auto-merging packages/web/server/lib/github/pr-status.js
+CONFLICT (content): Merge conflict in packages/web/server/lib/github/pr-status.js
+Auto-merging packages/web/server/lib/github/pr-status.test.js
+CONFLICT (content): Merge conflict in packages/web/server/lib/github/pr-status.test.js
+Auto-merging packages/web/server/lib/guests/DOCUMENTATION.md
+Auto-merging packages/web/server/lib/guests/service.js
+CONFLICT (content): Merge conflict in packages/web/server/lib/guests/service.js
+Auto-merging packages/web/server/lib/guests/service.test.js
+Auto-merging packages/web/server/lib/openchamber-control/DOCUMENTATION.md
+Auto-merging packages/web/server/lib/openchamber-control/actions.js
+Auto-merging packages/web/server/lib/openchamber-control/service.js
+CONFLICT (content): Merge conflict in packages/web/server/lib/openchamber-control/service.js
+Auto-merging packages/web/server/lib/openchamber-control/service.test.js
+Auto-merging packages/web/server/lib/opencode/DOCUMENTATION.md
+CONFLICT (content): Merge conflict in packages/web/server/lib/opencode/DOCUMENTATION.md
+Auto-merging packages/web/server/lib/opencode/env-runtime.js
+Auto-merging packages/web/server/lib/opencode/env-runtime.test.js
+Auto-merging packages/web/server/lib/opencode/lifecycle.js
+CONFLICT (content): Merge conflict in packages/web/server/lib/opencode/lifecycle.js
+Auto-merging packages/web/server/lib/opencode/lifecycle.test.js
+Auto-merging packages/web/server/lib/opencode/proxy.js
+Auto-merging packages/web/server/lib/opencode/session-runtime.js
+Auto-merging packages/web/server/lib/opencode/session-runtime.test.js
+Auto-merging packages/web/server/lib/opencode/settings-helpers.js
+Auto-merging packages/web/server/lib/opencode/settings-helpers.test.js
+Auto-merging packages/web/server/lib/opencode/shutdown-runtime.js
+CONFLICT (content): Merge conflict in packages/web/server/lib/opencode/shutdown-runtime.js
+Auto-merging packages/web/server/lib/opencode/shutdown-runtime.test.js
+CONFLICT (content): Merge conflict in packages/web/server/lib/opencode/shutdown-runtime.test.js
+Auto-merging packages/web/server/lib/permission-auto-accept/runtime.js
+CONFLICT (content): Merge conflict in packages/web/server/lib/permission-auto-accept/runtime.js
+Auto-merging packages/web/server/lib/permission-auto-accept/runtime.test.js
+Auto-merging packages/web/server/lib/scheduled-tasks/DOCUMENTATION.md
+Auto-merging packages/web/server/lib/scheduled-tasks/runtime.js
+Auto-merging packages/web/server/lib/scheduled-tasks/runtime.test.js
+Auto-merging packages/web/server/lib/session-goal/DOCUMENTATION.md
+Auto-merging packages/web/server/lib/session-goal/runtime.js
+Auto-merging packages/web/server/lib/session-goal/runtime.test.js
+CONFLICT (content): Merge conflict in packages/web/server/lib/session-goal/runtime.test.js
+Auto-merging packages/web/server/lib/session-knowledge/DOCUMENTATION.md
+Auto-merging packages/web/server/lib/tts/stt.js
+CONFLICT (content): Merge conflict in packages/web/server/lib/tts/stt.js
+Auto-merging packages/web/server/lib/ui-auth/ui-auth.test.js
+Auto-merging packages/web/server/lib/ui-auth/ui-passkeys.js
+CONFLICT (content): Merge conflict in packages/web/server/lib/ui-auth/ui-passkeys.js
+Auto-merging packages/web/server/opencode-proxy.test.js
+Auto-merging packages/web/vite.config.ts
+CONFLICT (content): Merge conflict in packages/web/vite.config.ts

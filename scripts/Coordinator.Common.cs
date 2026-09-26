@@ -48,7 +48,7 @@ internal static class Coordinator
         ReadJsonString(Path.Combine(config.OpenChamberRoot, "package.json"), "version");
 
     public static string GetPinnedOpenCodeVersion(CoordinatorConfig config) =>
-        ReadJsonString(Path.Combine(config.OpenChamberRoot, "package.json"), "dependencies", "@opencode-ai/sdk");
+        ReadJsonString(Path.Combine(config.OpenChamberRoot, "package.json"), "dependencies", "@opencode/client");
 
     public static string GetOpenChamberBinaryVersion(string binary)
     {
@@ -64,8 +64,9 @@ internal static class Coordinator
     {
         RequireFile(binary);
         var output = Capture(binary, ["--version"], workingDirectory).Trim();
-        return output.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault()
-            ?? throw new InvalidOperationException($"OpenCode binary returned an empty version: {binary}");
+        var match = Regex.Match(output, @"^(?:opencode\s+)?v?(\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?)$");
+        return match.Success ? match.Groups[1].Value
+            : throw new InvalidOperationException($"OpenCode binary returned an invalid version at {binary}: {output}");
     }
 
     public static void AssertOpenCodeBinaryVersion(string binary, string expected, string workingDirectory)

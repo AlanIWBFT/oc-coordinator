@@ -18,7 +18,7 @@ var commandArgs = args.Skip(1).ToArray();
 
 switch (command)
 {
-    case "build-candidate":
+    case "candidate-build":
         var candidateOptions = CandidateOptions.Parse(commandArgs);
         if (candidateOptions.ShowHelp)
         {
@@ -29,7 +29,7 @@ switch (command)
         BuildCandidate(Coordinator.LoadConfig(coordinatorRoot), coordinatorRoot);
         Console.WriteLine($"Build completed in {candidateBuildTimer.Elapsed:hh\\:mm\\:ss}.");
         break;
-    case "build-release":
+    case "release-build":
         var releaseOptions = ReleaseOptions.Parse(commandArgs);
         if (releaseOptions.ShowHelp)
         {
@@ -369,20 +369,20 @@ static void PrintHelp()
     Console.WriteLine("Usage: dotnet ForkCoordinator.cs -- <command> [options]");
     Console.WriteLine();
     Console.WriteLine("Commands:");
-    Console.WriteLine("  build-candidate");
-    Console.WriteLine("  build-release [--output-root PATH]");
+    Console.WriteLine("  candidate-build");
+    Console.WriteLine("  release-build [--output-root PATH]");
 }
 
 static void PrintCandidateHelp()
 {
-    Console.WriteLine("Usage: dotnet ForkCoordinator.cs -- build-candidate");
+    Console.WriteLine("Usage: dotnet ForkCoordinator.cs -- candidate-build");
     Console.WriteLine();
     Console.WriteLine("Builds the unpacked Candidate app from the local OpenChamber and OpenCode sources.");
 }
 
 static void PrintReleaseHelp()
 {
-    Console.WriteLine("Usage: dotnet ForkCoordinator.cs -- build-release [--output-root PATH]");
+    Console.WriteLine("Usage: dotnet ForkCoordinator.cs -- release-build [--output-root PATH]");
     Console.WriteLine();
     Console.WriteLine("Builds an installable Windows NSIS package without uploading or installing it.");
 }
@@ -403,7 +403,7 @@ sealed record CandidateOptions(bool ShowHelp)
                     showHelp = true;
                     break;
                 default:
-                    throw new ArgumentException($"Unknown build-candidate argument: {argument}");
+                    throw new ArgumentException($"Unknown candidate-build argument: {argument}");
             }
         }
         return new CandidateOptions(showHelp);
@@ -429,7 +429,7 @@ sealed record ReleaseOptions(string? OutputRoot, bool ShowHelp)
                     showHelp = true;
                     break;
                 default:
-                    throw new ArgumentException($"Unknown build-release argument: {arguments[index]}");
+                    throw new ArgumentException($"Unknown release-build argument: {arguments[index]}");
             }
         }
         return new ReleaseOptions(outputRoot, showHelp);

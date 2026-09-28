@@ -114,13 +114,13 @@ Run `scripts\Get-UpstreamRebaseContext.ps1` to inspect local branches, worktree 
 2. Make the OpenCode API change, regenerate the client contract, and build the local client/schema/protocol SDK packages.
 3. Run `scripts\Sync-OpenCodeSdk.ps1` to stage and junction-link the local SDK into every OpenChamber consumer.
 4. Adapt OpenChamber and run focused source checks.
-5. Run `dotnet .\scripts\ForkCoordinator.cs -- build-candidate`.
+5. Run `dotnet .\scripts\ForkCoordinator.cs -- candidate-build`.
 6. Run `scripts\Start-OpenChamberCandidate.ps1`.
 7. Validate the packaged Candidate inside Sandboxie. Discard or inspect its Sandboxie data as needed; do not promote it.
 
-`build-candidate` regenerates and links the SDK, builds the local OpenCode CLI with channel `dev` and without its unused embedded Web UI, packages OpenChamber, then verifies the versions of the unpacked `OpenChamber.exe` and bundled `opencode.exe`. The Windows bundled CLI uses the GUI PE subsystem because it is an internal non-interactive child with redirected standard handles; the packaged verifier rejects a console-subsystem artifact. Candidate runs that bundled CLI normally, without an external OpenCode server or an injected runtime profile. The launcher uses Sandboxie's `/wait` mode and returns after Candidate exits.
+`candidate-build` regenerates and links the SDK, builds the local OpenCode CLI with channel `dev` and without its unused embedded Web UI, packages OpenChamber, then verifies the versions of the unpacked `OpenChamber.exe` and bundled `opencode.exe`. The Windows bundled CLI uses the GUI PE subsystem because it is an internal non-interactive child with redirected standard handles; the packaged verifier rejects a console-subsystem artifact. Candidate runs that bundled CLI normally, without an external OpenCode server or an injected runtime profile. The launcher uses Sandboxie's `/wait` mode and returns after Candidate exits.
 
-Windows `build-candidate` and `build-release` use `E:\OpenChamber\bun-v1.4.2-release\bun.exe` and verify its version before starting the build. The coordinator sets `PATH`, `npm_execpath`, and `OPENCHAMBER_OPENCODE_BUN_RUNTIME` so SDK generation, packaging, and bundled OpenCode compilation use that same runtime.
+Windows `candidate-build` and `release-build` use `E:\OpenChamber\bun-v1.4.2-release\bun.exe` and verify its version before starting the build. The coordinator sets `PATH`, `npm_execpath`, and `OPENCHAMBER_OPENCODE_BUN_RUNTIME` so SDK generation, packaging, and bundled OpenCode compilation use that same runtime.
 
 Candidate and release packaging also build OpenChamber's own `packages/sdk` before staging the application. The packaged backend resolves `@openchamber/sdk` through its `dist` exports, so dependency installation or the separate OpenCode SDK build cannot substitute for refreshing this package after source updates.
 
@@ -131,14 +131,14 @@ Candidate and release packaging also build OpenChamber's own `packages/sdk` befo
 Installable packaging is separate from Candidate testing. It requires clean OpenChamber `local` and OpenCode `dev` worktrees and a matching SDK version. Run:
 
 ```powershell
-dotnet .\scripts\ForkCoordinator.cs -- build-release
+dotnet .\scripts\ForkCoordinator.cs -- release-build
 ```
 
 The builder regenerates and links the SDK, runs workspace type-check and lint, bundles OpenCode from local source with channel `dev` and the Windows GUI PE subsystem, packages with `--publish=never`, verifies the packaged CLI subsystem and `opencode-dev.db` default path, validates `latest.yml`, and atomically writes the installer, blockmap, update manifest, and `release.json` under `E:\OpenChamber\release`. It never uploads or installs a package. Install the validated package normally to update Stable.
 
 ## Windows GitHub Release
 
-GitHub Draft creation is a separate, explicit step after `build-release`. The dedicated script targets `AlanIWBFT/openchamber`, mirrors the title and release notes from the matching `openchamber/openchamber` release, and uses Markdig source spans to strip literal `@` markers from ordinary Markdown text that can contain GitHub user or team mentions. Markdig-recognized code, explicit Markdown links, and angle-bracket CommonMark autolinks are left untouched; common embedded forms such as email addresses and `git@github.com` are preserved; and the original Markdown is edited in place rather than rendered again. Release notes containing an `@` marker in a raw HTML block, in any Markdown paragraph that also contains inline raw HTML, in mathematics, in an HTML entity, or in a bare `scheme://` or standalone `www.` URL fail before Draft creation instead of being guessed at. The script uploads only the installer, blockmap, and architecture-appropriate Windows updater manifest from one immutable local release directory. `release.json` is used to revalidate the local files but is not uploaded.
+GitHub Draft creation is a separate, explicit step after `release-build`. The dedicated script targets `AlanIWBFT/openchamber`, mirrors the title and release notes from the matching `openchamber/openchamber` release, and uses Markdig source spans to strip literal `@` markers from ordinary Markdown text that can contain GitHub user or team mentions. Markdig-recognized code, explicit Markdown links, and angle-bracket CommonMark autolinks are left untouched; common embedded forms such as email addresses and `git@github.com` are preserved; and the original Markdown is edited in place rather than rendered again. Release notes containing an `@` marker in a raw HTML block, in any Markdown paragraph that also contains inline raw HTML, in mathematics, in an HTML entity, or in a bare `scheme://` or standalone `www.` URL fail before Draft creation instead of being guessed at. The script uploads only the installer, blockmap, and architecture-appropriate Windows updater manifest from one immutable local release directory. `release.json` is used to revalidate the local files but is not uploaded.
 
 Create or resume the Draft:
 

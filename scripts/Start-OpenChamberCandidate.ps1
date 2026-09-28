@@ -14,7 +14,7 @@ $unpackedName = if ($architecture -eq [Runtime.InteropServices.Architecture]::Ar
 }
 $binary = Join-Path $config.OpenChamberRoot "packages\electron\dist\$unpackedName\OpenChamber.exe"
 if (-not (Test-Path -LiteralPath $binary -PathType Leaf)) {
-  throw "Candidate app not found: $binary`nRun: dotnet .\scripts\ForkCoordinator.cs -- build-candidate"
+  throw "Candidate app not found: $binary`nRun: dotnet .\scripts\ForkCoordinator.cs -- candidate-build"
 }
 $sandboxie = $config.SandboxieStart
 if (-not (Test-Path -LiteralPath $sandboxie -PathType Leaf)) {

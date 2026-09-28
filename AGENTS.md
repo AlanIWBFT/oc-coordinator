@@ -37,7 +37,7 @@ Do not add custom runtime-root variables or paths. Existing OpenCode and OpenCha
 4. Regenerate the current OpenCode client contract and build its client/schema/protocol package graph.
 5. Link the generated local `@opencode/client`, `@opencode/schema`, and `@opencode/protocol` graph into every OpenChamber consumer with `scripts\Sync-OpenCodeSdk.ps1`.
 6. Modify OpenChamber against that local SDK and run focused checks in both repositories. A local CLI with the official SDK is not a valid coupled-API test.
-7. Run `dotnet .\scripts\ForkCoordinator.cs -- build-candidate`. It stages a local OpenCode CLI in the unpacked Candidate app without OpenCode's unused embedded Web UI.
+7. Run `dotnet .\scripts\ForkCoordinator.cs -- candidate-build`. It stages a local OpenCode CLI in the unpacked Candidate app without OpenCode's unused embedded Web UI.
 8. Run `scripts\Start-OpenChamberCandidate.ps1`, validate Candidate in Sandboxie, then report the result. There is no promotion step.
 
 ## SDK Contract

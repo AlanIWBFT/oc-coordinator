@@ -118,13 +118,28 @@ Run `scripts\Get-UpstreamRebaseContext.ps1` to inspect local branches, worktree 
 6. Run `scripts\Start-OpenChamberCandidate.ps1`.
 7. Validate the packaged Candidate inside Sandboxie. Discard or inspect its Sandboxie data as needed; do not promote it.
 
-`candidate-build` regenerates and links the SDK, builds the local OpenCode CLI with channel `dev` and without its unused embedded Web UI, packages OpenChamber, then verifies the versions of the unpacked `OpenChamber.exe` and bundled `opencode.exe`. The Windows bundled CLI uses the GUI PE subsystem because it is an internal non-interactive child with redirected standard handles; the packaged verifier rejects a console-subsystem artifact. Candidate runs that bundled CLI normally, without an external OpenCode server or an injected runtime profile. The launcher uses Sandboxie's `/wait` mode and returns after Candidate exits.
+`candidate-build` regenerates and links the SDK, builds the local OpenCode CLI with channel `dev` and without its unused embedded Web UI, and packages OpenChamber with `--dir --publish=never`. It produces the unpacked application without generating an NSIS installer. It then verifies the packaged CLI and the versions of the unpacked `OpenChamber.exe` and bundled `opencode.exe`. The Windows bundled CLI uses the GUI PE subsystem because it is an internal non-interactive child with redirected standard handles; the packaged verifier rejects a console-subsystem artifact. Candidate runs that bundled CLI normally, without an external OpenCode server or an injected runtime profile. The launcher uses Sandboxie's `/wait` mode and returns after Candidate exits.
 
 Windows `candidate-build` and `release-build` use `E:\OpenChamber\bun-v1.4.2-release\bun.exe` and verify its version before starting the build. The coordinator sets `PATH`, `npm_execpath`, and `OPENCHAMBER_OPENCODE_BUN_RUNTIME` so SDK generation, packaging, and bundled OpenCode compilation use that same runtime.
 
 Candidate and release packaging also build OpenChamber's own `packages/sdk` before staging the application. The packaged backend resolves `@openchamber/sdk` through its `dist` exports, so dependency installation or the separate OpenCode SDK build cannot substitute for refreshing this package after source updates.
 
-`scripts\Sync-OpenCodeSdk.ps1` regenerates the OpenCode client and builds `@opencode/client`, `@opencode/schema`, and `@opencode/protocol`. `Stage-OpenCodeSdk.cs` creates publish-shaped manifests with `dist` exports, concrete dependency versions, and preserved peer metadata. The packages live under `generated\opencode-sdk\packages`; dependencies are installed at this final location so workspace junctions do not point into a renamed temporary directory. All four consumers and the staged packages' internal resolution paths must resolve to this local graph. A partial staging or junction failure removes owned links and performs one root frozen-lockfile reinstall. Type-check failures after successful linking leave the local SDK active for adaptation. `scripts\Restore-OfficialOpenCodeSdk.ps1` removes owned links and restores dependencies from the frozen lockfile.
+### Parallel Windows builds
+
+Both coordinator commands finish SDK linking and the OpenChamber SDK build before starting independent branches for Web assets, the local CLI and its staged verification, Electron main, native modules, and package type-checks. Release also runs lint alongside those branches. Candidate checks UI, Web, and VS Code; release checks every workspace with a `type-check` script. Packaging starts only after every branch succeeds.
+
+`Build.Processes.cs` assigns each branch to a Windows Job Object at process creation. The first failure stops new commands, terminates the other branch jobs, and waits for their descendants to exit. Ctrl+C uses the same cancellation path. Successful branches also drain leftover compiler processes. The coordinator then cleans native header staging and releases its optional drive mapping. A per-checkout mutex prevents Candidate and release builds from writing the same output concurrently.
+
+Run the process ownership regression checks after compiling the test app:
+
+```powershell
+dotnet build scripts/Test-BuildProcesses.cs
+dotnet run --file scripts/Test-BuildProcesses.cs --no-build
+```
+
+The checks use short-lived fixture processes. They cover concurrent execution, argument and environment forwarding, failure cancellation, descendant cleanup, launch errors, and competing builds. They do not build or launch OpenChamber.
+
+`scripts\Sync-OpenCodeSdk.ps1` regenerates the OpenCode client, then builds `@opencode/client`, `@opencode/schema`, and `@opencode/protocol`. On Windows, `Build-OpenCodeSdk.cs` runs the three builds concurrently with job-based failure cancellation. Each package reads workspace source exports and writes its own `dist`. `Stage-OpenCodeSdk.cs` creates publish-shaped manifests with `dist` exports, concrete dependency versions, and preserved peer metadata. The packages live under `generated\opencode-sdk\packages`; dependencies are installed at this final location so workspace junctions do not point into a renamed temporary directory. All four consumers and the staged packages' internal resolution paths must resolve to this local graph, with one Node invocation per resolution origin. A partial staging or junction failure removes owned links and performs one root frozen-lockfile reinstall. Type-check failures after successful linking leave the local SDK active for adaptation. `scripts\Restore-OfficialOpenCodeSdk.ps1` removes owned links and restores dependencies from the frozen lockfile.
 
 ## Release Packaging
 

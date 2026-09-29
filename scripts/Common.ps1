@@ -127,19 +127,20 @@ function Remove-LocalSdkConsumerLinks {
   }
 }
 
-function Get-ResolvedOpenCodeSdkPath {
+function Get-ResolvedOpenCodeSdkPaths {
   param(
     [Parameter(Mandatory)] [string] $Consumer,
-    [Parameter(Mandatory)] [string] $Import
+    [Parameter(Mandatory)] [string[]] $Imports
   )
 
-  $output = & node --input-type=module -e 'console.log(import.meta.resolve(process.argv[1]))' $Import 2>&1
+  $output = & node --input-type=module -e 'console.log(JSON.stringify(process.argv.slice(1).map(value => import.meta.resolve(value))))' @Imports 2>&1
   $exitCode = $LASTEXITCODE
   if ($exitCode -ne 0) {
-    throw "Unable to resolve $Import from ${Consumer}: $($output | Out-String)"
+    throw "Unable to resolve SDK imports from ${Consumer}: $($output | Out-String)"
   }
-  $uri = [Uri](($output | Out-String).Trim())
-  return [IO.Path]::GetFullPath($uri.LocalPath)
+  foreach ($value in (($output | Out-String) | ConvertFrom-Json)) {
+    [IO.Path]::GetFullPath(([Uri]$value).LocalPath)
+  }
 }
 
 function Invoke-InDirectory {
@@ -169,10 +170,13 @@ function Test-LocalOpenCodeSdkLinked {
   )
   $origins = @($Config.OpenChamberSdkConsumers) + @($packages | ForEach-Object { Join-Path $expected "packages/$($_.Name)" })
   foreach ($consumer in $origins) {
-    foreach ($package in $packages) {
-      $resolved = Invoke-InDirectory -Path $consumer -ScriptBlock {
-        Get-ResolvedOpenCodeSdkPath -Consumer $consumer -Import $package.Import
-      }
+    $resolvedPaths = @(Invoke-InDirectory -Path $consumer -ScriptBlock {
+      Get-ResolvedOpenCodeSdkPaths -Consumer $consumer -Imports @($packages.Import)
+    })
+    if ($resolvedPaths.Count -ne $packages.Count) { return $false }
+    for ($index = 0; $index -lt $packages.Count; $index++) {
+      $package = $packages[$index]
+      $resolved = $resolvedPaths[$index]
       $packageRoot = [IO.Path]::GetFullPath((Join-Path $expected "packages/$($package.Name)/dist")).TrimEnd($separator)
       if (-not $resolved.StartsWith("$packageRoot$separator", $comparison) -or -not (Test-Path -LiteralPath $resolved -PathType Leaf)) {
         return $false

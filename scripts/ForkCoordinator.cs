@@ -1,6 +1,7 @@
 #!/usr/bin/env dotnet
 #:property PublishAot=false
 #:include Coordinator.Common.cs
+#:include Build.Processes.cs
 
 using System.Diagnostics;
 using System.Reflection.PortableExecutable;
@@ -50,6 +51,7 @@ switch (command)
 
 static void BuildCandidate(CoordinatorConfig config, string coordinatorRoot)
 {
+    using var buildLock = new BuildLock(config.OpenChamberRoot);
     var architecture = Coordinator.GetArchitecture();
     var bunExecutable = ResolveBuildBunExecutable(coordinatorRoot);
     var environment = BuildEnvironment(config, architecture);
@@ -60,12 +62,13 @@ static void BuildCandidate(CoordinatorConfig config, string coordinatorRoot)
     var electronRoot = Path.Combine(config.OpenChamberRoot, "packages", "electron");
     Coordinator.Run(
         "pwsh",
-        ["-NoProfile", "-File", Path.Combine(coordinatorRoot, "scripts", "Sync-OpenCodeSdk.ps1")],
+        ["-NoProfile", "-File", Path.Combine(coordinatorRoot, "scripts", "Sync-OpenCodeSdk.ps1"), "-SkipTypeCheck"],
         coordinatorRoot,
         environment
     );
-    Coordinator.Run(bunExecutable, ["run", "--cwd", Path.Combine(config.OpenChamberRoot, "packages", "sdk"), "build"], coordinatorRoot, environment);
-    Coordinator.Run(bunExecutable, ["electron:build"], config.OpenChamberRoot, environment);
+    BuildApplication(config, coordinatorRoot, bunExecutable, environment, release: false);
+    Coordinator.Run("node", [Path.Combine(electronRoot, "scripts", "package.mjs"), "--win", $"--{architecture}", "--dir", "--publish=never"], electronRoot, environment);
+    Coordinator.Run(bunExecutable, ["run", "--cwd", electronRoot, "verify:opencode-cli:packaged"], coordinatorRoot, environment);
 
     var unpackedDirectory = GetUnpackedDirectory(config);
     var openChamberBinary = Path.Combine(unpackedDirectory, "OpenChamber.exe");
@@ -85,6 +88,7 @@ static void BuildCandidate(CoordinatorConfig config, string coordinatorRoot)
 
 static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot, ReleaseOptions options)
 {
+    using var buildLock = new BuildLock(config.OpenChamberRoot);
     var openChamberRoot = Path.GetFullPath(config.OpenChamberRoot);
     var openCodeRoot = Path.GetFullPath(config.OpenCodeRoot);
     var electronRoot = Path.Combine(openChamberRoot, "packages", "electron");
@@ -129,16 +133,9 @@ static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot
         );
         EnsureWorktreeClean(openChamberRoot, coordinatorRoot);
         EnsureWorktreeClean(openCodeRoot, coordinatorRoot);
-        Coordinator.Run(bunExecutable, ["run", "--cwd", openChamberRoot, "type-check"], coordinatorRoot, environment);
-        Coordinator.Run(bunExecutable, ["run", "--cwd", openChamberRoot, "lint"], coordinatorRoot, environment);
         if (Directory.Exists(distRoot)) Directory.Delete(distRoot, recursive: true);
 
-        Coordinator.Run(bunExecutable, ["run", "--cwd", Path.Combine(openChamberRoot, "packages", "sdk"), "build"], coordinatorRoot, environment);
-        Coordinator.Run(bunExecutable, ["run", "--cwd", electronRoot, "build:web-assets"], coordinatorRoot, environment);
-        Coordinator.Run(bunExecutable, ["run", "--cwd", electronRoot, "prepare:opencode-cli"], coordinatorRoot, environment);
-        Coordinator.Run(bunExecutable, ["run", "--cwd", electronRoot, "verify:opencode-cli"], coordinatorRoot, environment);
-        Coordinator.Run(bunExecutable, ["run", "--cwd", electronRoot, "bundle:main"], coordinatorRoot, environment);
-        Coordinator.Run(bunExecutable, ["run", "--cwd", electronRoot, "rebuild:native"], coordinatorRoot, environment);
+        BuildApplication(config, coordinatorRoot, bunExecutable, environment, release: true);
         Coordinator.Run(
             "node",
             [Path.Combine(electronRoot, "scripts", "package.mjs"), "--win", $"--{architecture}", "--publish=never"],
@@ -222,6 +219,86 @@ static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot
         }
         if (Directory.Exists(stagingDirectory)) Directory.Delete(stagingDirectory, recursive: true);
         throw;
+    }
+}
+
+static void BuildApplication(CoordinatorConfig config, string coordinatorRoot, string bunExecutable, Dictionary<string, string?> environment, bool release)
+{
+    var root = config.OpenChamberRoot;
+    var electron = Path.Combine(root, "packages", "electron");
+    BuildCommand Script(string directory, string name) => new(bunExecutable, ["run", "--cwd", directory, name], coordinatorRoot);
+    // Refresh dist exports before backend imports and package-level checks can read them.
+    BuildProcesses.Run([new("OpenChamber SDK", Script(Path.Combine(root, "packages", "sdk"), "build"))], environment);
+    var branches = new List<BuildBranch>
+    {
+        new("Web assets", Script(electron, "build:web-assets")),
+        new("OpenCode CLI", Script(electron, "prepare:opencode-cli"), Script(electron, "verify:opencode-cli")),
+        new("Electron main", Script(electron, "bundle:main")),
+        new("Native modules", Script(electron, "rebuild:native")),
+    };
+    if (release)
+    {
+        // These checks emit no build outputs. Workspace dependency ordering only
+        // delays consumers which already resolve the fresh SDK or source aliases.
+        using var manifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "package.json")));
+        foreach (var pattern in manifest.RootElement.GetProperty("workspaces").EnumerateArray().Select(value => value.GetString()!))
+        {
+            var parent = Path.Combine(root, Path.GetDirectoryName(pattern)!);
+            if (!Directory.Exists(parent)) continue;
+            foreach (var directory in Directory.GetDirectories(parent, Path.GetFileName(pattern)).Order(StringComparer.OrdinalIgnoreCase))
+            {
+                var packagePath = Path.Combine(directory, "package.json");
+                if (!File.Exists(packagePath)) continue;
+                using var package = JsonDocument.Parse(File.ReadAllText(packagePath));
+                if (package.RootElement.TryGetProperty("scripts", out var scripts) && scripts.TryGetProperty("type-check", out _))
+                    branches.Add(new($"Type-check {Path.GetRelativePath(root, directory)}", Script(directory, "type-check")));
+            }
+        }
+        branches.Add(new("Lint", Script(root, "lint")));
+    }
+    else
+    {
+        foreach (var package in new[] { "ui", "web", "vscode" })
+            branches.Add(new($"Type-check {package}", Script(Path.Combine(root, "packages", package), "type-check")));
+    }
+
+    // Own the optional drive mapping outside the killable native branch so that
+    // cancellation cannot strand a subst drive or its temporary header packages.
+    string? drive = null;
+    Exception? buildFailure = null;
+    try
+    {
+        var rebuildPath = root;
+        var availableDrive = "ZYXWVUTSRQPONMLKJIHGFED".Select(letter => $"{letter}:").FirstOrDefault(value => !Directory.Exists(value + "\\"));
+        if (availableDrive is not null)
+        {
+            Coordinator.Run("subst.exe", [availableDrive, root], coordinatorRoot);
+            drive = availableDrive;
+            rebuildPath = drive + "\\";
+        }
+        else if (root.Any(char.IsWhiteSpace)) throw new InvalidOperationException("No free drive for native rebuild.");
+        var buildEnvironment = new Dictionary<string, string?>(environment, StringComparer.OrdinalIgnoreCase)
+        {
+            ["OPENCHAMBER_NATIVE_REBUILD_PATH"] = rebuildPath,
+        };
+        BuildProcesses.Run(branches, buildEnvironment);
+    }
+    catch (Exception error) { buildFailure = error; throw; }
+    finally
+    {
+        try
+        {
+            Coordinator.Run("node", [Path.Combine(electron, "scripts", "rebuild-native.mjs"), "--cleanup"], electron, environment);
+        }
+        catch (Exception error) when (buildFailure is not null) { Console.Error.WriteLine($"Native cleanup failed: {error.Message}"); }
+        finally
+        {
+            try
+            {
+                if (drive is not null) Coordinator.Run("subst.exe", [drive, "/d"], coordinatorRoot);
+            }
+            catch (Exception error) when (buildFailure is not null) { Console.Error.WriteLine($"Drive cleanup failed: {error.Message}"); }
+        }
     }
 }
 

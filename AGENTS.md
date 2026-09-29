@@ -40,6 +40,10 @@ Do not add custom runtime-root variables or paths. Existing OpenCode and OpenCha
 7. Run `dotnet .\scripts\ForkCoordinator.cs -- candidate-build`. It stages a local OpenCode CLI in the unpacked Candidate app without OpenCode's unused embedded Web UI.
 8. Run `scripts\Start-OpenChamberCandidate.ps1`, validate Candidate in Sandboxie, then report the result. There is no promotion step.
 
+## Upstream Upgrade Checks
+
+After each OpenChamber upstream upgrade, read `scripts.package` in `E:\OpenChamber\openchamber\packages\electron\package.json` and `scripts.type-check` in `E:\OpenChamber\openchamber\package.json`, including the implementations they invoke. Compare their stages and dependencies with `BuildApplication` in `scripts/ForkCoordinator.cs`: the coordinator bypasses these aggregate entrypoints to schedule work in parallel. Account for every added, removed, or reordered build/check step and update the coordinator's scheduling where needed before considering the upgrade complete. A successful local build alone does not establish that all upstream steps ran.
+
 ## SDK Contract
 
 OpenChamber consumes `@opencode/client` and `@opencode/schema`; the local SDK graph also includes the client's `@opencode/protocol` dependency. Public OpenCode API changes require:

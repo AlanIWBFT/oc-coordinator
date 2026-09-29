@@ -44,8 +44,14 @@ foreach ($name in $packages) {
 Invoke-NativeCommand -FilePath 'bun' -Arguments @(
   'run', '--cwd', $config.OpenCodeClientRoot, 'generate'
 )
-foreach ($name in $packages) {
-  Invoke-NativeCommand -FilePath 'bun' -Arguments @('run', '--cwd', (Join-Path $config.OpenCodeRoot "packages/$name"), 'build')
+if ($IsWindows) {
+  Invoke-NativeCommand -FilePath 'dotnet' -Arguments @(
+    (Join-Path $PSScriptRoot 'Build-OpenCodeSdk.cs'), '--', $config.OpenCodeRoot, (Get-Command bun -CommandType Application | Select-Object -First 1).Source
+  )
+} else {
+  foreach ($name in $packages) {
+    Invoke-NativeCommand -FilePath 'bun' -Arguments @('run', '--cwd', (Join-Path $config.OpenCodeRoot "packages/$name"), 'build')
+  }
 }
 
 $temporary = "$($config.OpenCodeSdkLinkRoot).next-$PID-$([guid]::NewGuid().ToString('N'))"

@@ -3,6 +3,7 @@
 #:package Markdig@1.3.2
 #:include Coordinator.Common.cs
 #:include ReleaseNotesSanitizer.cs
+#:include ReleaseAssetUploader.cs
 
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
@@ -212,7 +213,6 @@ static void CreateDraft(LocalRelease localRelease, RemoteContext remote, string 
             {
                 "release", "create", localRelease.Tag,
             };
-            arguments.AddRange(uploadAssets.Select(asset => asset.Path));
             arguments.AddRange([
                 "--repo", TargetRepository,
                 "--draft",
@@ -227,11 +227,7 @@ static void CreateDraft(LocalRelease localRelease, RemoteContext remote, string 
                 arguments.Add(localRelease.OpenChamberCommit);
             }
             RequireGh(arguments, workingDirectory, echoOutput: true);
-            targetRelease = WaitForTargetRelease(
-                localRelease.Tag,
-                workingDirectory,
-                release => release.Assets.Count == localRelease.Assets.Count
-            )
+            targetRelease = WaitForTargetRelease(localRelease.Tag, workingDirectory)
                 ?? throw new InvalidOperationException($"Draft release {localRelease.Tag} was not visible after creation.");
         }
 
@@ -240,6 +236,8 @@ static void CreateDraft(LocalRelease localRelease, RemoteContext remote, string 
         ValidateReleaseTarget(targetRelease, localRelease, tagCommit);
         ValidateAssets(targetRelease.Assets, localRelease.Assets, requireComplete: false);
 
+        using var uploadClient = new HttpClient(new HttpClientHandler { AllowAutoRedirect = false }) { Timeout = Timeout.InfiniteTimeSpan };
+        string? uploadToken = null;
         foreach (var asset in uploadAssets)
         {
             var existing = targetRelease.Assets.SingleOrDefault(candidate => candidate.Name == asset.Name);
@@ -248,7 +246,8 @@ static void CreateDraft(LocalRelease localRelease, RemoteContext remote, string 
                 Console.WriteLine($"Asset already verified, skipping: {asset.Name}");
                 continue;
             }
-            RequireGh(["release", "upload", localRelease.Tag, asset.Path, "--repo", TargetRepository], workingDirectory, echoOutput: true);
+            uploadToken ??= RequireGh(["auth", "token", "--hostname", "github.com"], workingDirectory).StandardOutput.Trim();
+            ReleaseAssetUploader.Upload(uploadClient, targetRelease.UploadUrl, asset.Path, asset.Name, uploadToken);
             targetRelease = WaitForTargetRelease(
                 localRelease.Tag,
                 workingDirectory,
@@ -256,6 +255,7 @@ static void CreateDraft(LocalRelease localRelease, RemoteContext remote, string 
             )
                 ?? throw new InvalidOperationException($"Draft release {localRelease.Tag} disappeared during upload.");
             ValidateAssets(targetRelease.Assets, localRelease.Assets, requireComplete: false);
+            Console.WriteLine($"Asset uploaded and verified: {asset.Name}");
         }
 
         targetRelease = WaitForTargetRelease(
@@ -531,6 +531,8 @@ sealed class GitHubRelease
     public string TargetCommitish { get; init; } = "";
     [JsonPropertyName("html_url")]
     public string HtmlUrl { get; init; } = "";
+    [JsonPropertyName("upload_url")]
+    public string UploadUrl { get; init; } = "";
     public string Name { get; init; } = "";
     public string Body { get; init; } = "";
     public bool Draft { get; init; }

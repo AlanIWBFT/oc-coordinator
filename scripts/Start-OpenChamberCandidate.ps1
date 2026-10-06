@@ -1,6 +1,10 @@
 #requires -Version 7.0
 #requires -PSEdition Core
 
+param(
+  [switch] $ClearSandbox
+)
+
 . (Join-Path $PSScriptRoot 'Common.ps1')
 
 $config = Get-LocalForkConfig
@@ -19,6 +23,16 @@ if (-not (Test-Path -LiteralPath $binary -PathType Leaf)) {
 $sandboxie = $config.SandboxieStart
 if (-not (Test-Path -LiteralPath $sandboxie -PathType Leaf)) {
   throw "Sandboxie Start.exe not found: $sandboxie"
+}
+
+if ($ClearSandbox) {
+  "Clearing Sandboxie box: $($config.CandidateSandbox)"
+  foreach ($command in @('/terminate', 'delete_sandbox')) {
+    $cleanup = Start-Process -FilePath $sandboxie -ArgumentList @("/box:$($config.CandidateSandbox)", $command) -UseNewEnvironment -Wait -PassThru
+    if ($cleanup.ExitCode -ne 0) {
+      throw "Sandboxie $command failed with exit code $($cleanup.ExitCode)."
+    }
+  }
 }
 
 "Starting sandboxed Candidate: $binary"

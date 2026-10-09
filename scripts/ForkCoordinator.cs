@@ -229,6 +229,9 @@ static void BuildApplication(CoordinatorConfig config, string coordinatorRoot, s
     BuildCommand Script(string directory, string name) => new(bunExecutable, ["run", "--cwd", directory, name], coordinatorRoot);
     // Refresh dist exports before backend imports and package-level checks can read them.
     BuildProcesses.Run([new("OpenChamber SDK", Script(Path.Combine(root, "packages", "sdk"), "build"))], environment);
+    // Web and VS Code reference the UI declarations emitted by tsc -b.
+    var ui = Path.Combine(root, "packages", "ui");
+    BuildProcesses.Run([new("Type-check ui", Script(ui, "type-check"))], environment);
     var branches = new List<BuildBranch>
     {
         new("Web assets", Script(electron, "build:web-assets")),
@@ -238,8 +241,7 @@ static void BuildApplication(CoordinatorConfig config, string coordinatorRoot, s
     };
     if (release)
     {
-        // These checks emit no build outputs. Workspace dependency ordering only
-        // delays consumers which already resolve the fresh SDK or source aliases.
+        // UI declarations are ready before the remaining workspace checks run.
         using var manifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "package.json")));
         foreach (var pattern in manifest.RootElement.GetProperty("workspaces").EnumerateArray().Select(value => value.GetString()!))
         {
@@ -247,6 +249,7 @@ static void BuildApplication(CoordinatorConfig config, string coordinatorRoot, s
             if (!Directory.Exists(parent)) continue;
             foreach (var directory in Directory.GetDirectories(parent, Path.GetFileName(pattern)).Order(StringComparer.OrdinalIgnoreCase))
             {
+                if (string.Equals(directory, ui, StringComparison.OrdinalIgnoreCase)) continue;
                 var packagePath = Path.Combine(directory, "package.json");
                 if (!File.Exists(packagePath)) continue;
                 using var package = JsonDocument.Parse(File.ReadAllText(packagePath));
@@ -258,7 +261,7 @@ static void BuildApplication(CoordinatorConfig config, string coordinatorRoot, s
     }
     else
     {
-        foreach (var package in new[] { "ui", "web", "vscode" })
+        foreach (var package in new[] { "web", "vscode" })
             branches.Add(new($"Type-check {package}", Script(Path.Combine(root, "packages", package), "type-check")));
     }
 

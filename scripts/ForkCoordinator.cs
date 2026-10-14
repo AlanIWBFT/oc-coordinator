@@ -161,7 +161,7 @@ static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot
         AssertReleaseDatabasePath(bundledOpenCode, stagingDirectory, coordinatorRoot, "opencode-dev.db");
         Coordinator.Run(
             "node",
-            [Path.Combine(electronRoot, "scripts", "verify-update-manifest.mjs"), updateManifestPath, installerPath, openChamberVersion],
+            [Path.Combine(electronRoot, "scripts", "verify-update-manifest.mjs"), updateManifestPath, openChamberVersion, installerPath],
             coordinatorRoot
         );
 

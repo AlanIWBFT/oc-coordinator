@@ -347,11 +347,11 @@ static void PrepareX64WindowsProcessBroker(
 
 static string ResolveBuildBunExecutable(string coordinatorRoot)
 {
-    var bunExecutable = Path.GetFullPath(Path.Combine(coordinatorRoot, "..", "bun-v1.4.2-release", "bun.exe"));
+    var bunExecutable = Path.GetFullPath(Path.Combine(coordinatorRoot, "..", "bun-v1.4.3-release", "bun.exe"));
     RequireFile(bunExecutable);
     var version = Coordinator.Capture(bunExecutable, ["--version"], coordinatorRoot).Trim();
-    if (version != "1.4.2")
-        throw new InvalidOperationException($"Expected Bun 1.4.2 at {bunExecutable}, got {version}.");
+    if (version != "1.4.3")
+        throw new InvalidOperationException($"Expected Bun 1.4.3 at {bunExecutable}, got {version}.");
     return bunExecutable;
 }
 

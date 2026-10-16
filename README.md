@@ -10,13 +10,13 @@ Candidate isolation requires Sandboxie-Plus. The default launcher is `C:\Program
 
 ## Layout
 
-- `E:\OpenChamber\openchamber`: local OpenChamber fork.
-- `E:\OpenChamber\opencode`: local OpenCode fork and source build input.
-- `E:\OpenChamber\bun-v1.4.3-release\bun.exe`: verified official Bun 1.4.3 runtime used by Windows Candidate and release builds.
-- `E:\OpenChamber\openchamber\packages\electron\dist\win-unpacked`: x64 Candidate app built from the local checkout.
-- `E:\OpenChamber\openchamber\packages\electron\dist\win-arm64-unpacked`: ARM64 Candidate app built from the local checkout.
-- `E:\OpenChamber\release`: atomically prepared Windows release directories.
-- `E:\OpenChamber\coordinator\generated\opencode-sdk`: generated workspace containing publish-shaped local client/schema/protocol packages used by junction consumers.
+- `D:\OpenChamber\openchamber`: local OpenChamber fork.
+- `D:\OpenChamber\opencode`: local OpenCode fork and source build input.
+- `D:\OpenChamber\bun-v1.4.3-release\bun.exe`: verified official Bun 1.4.3 runtime used by Windows Candidate and release builds.
+- `D:\OpenChamber\openchamber\packages\electron\dist\win-unpacked`: x64 Candidate app built from the local checkout.
+- `D:\OpenChamber\openchamber\packages\electron\dist\win-arm64-unpacked`: ARM64 Candidate app built from the local checkout.
+- `D:\OpenChamber\release`: atomically prepared Windows release directories.
+- `D:\OpenChamber\coordinator\generated\opencode-sdk`: generated workspace containing publish-shaped local client/schema/protocol packages used by junction consumers.
 
 The installed release package is Stable. It is an ordinary user installation, not a coordinator-managed slot. The coordinator has no Stable, Rescue, external CLI copy, runtime-root tree, manifest, or promotion command.
 
@@ -120,7 +120,7 @@ Run `scripts\Get-UpstreamRebaseContext.ps1` to inspect local branches, worktree 
 
 `candidate-build` regenerates and links the SDK, builds the local OpenCode CLI with channel `dev` and without its unused embedded Web UI, and packages OpenChamber with `--dir --publish=never`. It produces the unpacked application without generating an NSIS installer. It then verifies the packaged CLI and the versions of the unpacked `OpenChamber.exe` and bundled `opencode.exe`. The Windows bundled CLI uses the GUI PE subsystem because it is an internal non-interactive child with redirected standard handles; the packaged verifier rejects a console-subsystem artifact. Candidate runs that bundled CLI normally, without an external OpenCode server or an injected runtime profile. The launcher uses Sandboxie's `/wait` mode and returns after Candidate exits.
 
-Windows `candidate-build` and `release-build` use `E:\OpenChamber\bun-v1.4.3-release\bun.exe` and verify its version before starting the build. The coordinator sets `PATH`, `npm_execpath`, and `OPENCHAMBER_OPENCODE_BUN_RUNTIME` so SDK generation, packaging, and bundled OpenCode compilation use that same runtime.
+Windows `candidate-build` and `release-build` use `D:\OpenChamber\bun-v1.4.3-release\bun.exe` and verify its version before starting the build. The coordinator sets `PATH`, `npm_execpath`, and `OPENCHAMBER_OPENCODE_BUN_RUNTIME` so SDK generation, packaging, and bundled OpenCode compilation use that same runtime.
 
 Candidate and release packaging also build OpenChamber's own `packages/sdk` before staging the application. The packaged backend resolves `@openchamber/sdk` through its `dist` exports, so dependency installation or the separate OpenCode SDK build cannot substitute for refreshing this package after source updates.
 
@@ -149,7 +149,7 @@ Installable packaging is separate from Candidate testing. It requires clean Open
 dotnet .\scripts\ForkCoordinator.cs -- release-build
 ```
 
-The builder regenerates and links the SDK, runs workspace type-check and lint, bundles OpenCode from local source with channel `dev` and the Windows GUI PE subsystem, packages with `--publish=never`, verifies the packaged CLI subsystem and `opencode-dev.db` default path, validates `latest.yml`, and atomically writes the installer, blockmap, update manifest, and `release.json` under `E:\OpenChamber\release`. It never uploads or installs a package. Install the validated package normally to update Stable.
+The builder regenerates and links the SDK, runs workspace type-check and lint, bundles OpenCode from local source with channel `dev` and the Windows GUI PE subsystem, packages with `--publish=never`, verifies the packaged CLI subsystem and `opencode-dev.db` default path, validates `latest.yml`, and atomically writes the installer, blockmap, update manifest, and `release.json` under `D:\OpenChamber\release`. It never uploads or installs a package. Install the validated package normally to update Stable.
 
 ## Windows GitHub Release
 
@@ -158,7 +158,7 @@ GitHub Draft creation is a separate, explicit step after `release-build`. The de
 Create or resume the Draft:
 
 ```powershell
-dotnet .\scripts\Publish-OpenChamberRelease.cs -- E:\OpenChamber\release\OpenChamber-1.19.0-win-x64
+dotnet .\scripts\Publish-OpenChamberRelease.cs -- D:\OpenChamber\release\OpenChamber-1.19.0-win-x64
 ```
 
 Run the focused release-note sanitizer regression suite:

@@ -6,9 +6,9 @@ This workspace coordinates the local OpenCode and OpenChamber forks for coupled 
 
 ## Repositories
 
-- OpenCode: `E:\OpenChamber\opencode`
-- OpenChamber: `E:\OpenChamber\openchamber`
-- Coordination scripts: `E:\OpenChamber\coordinator`
+- OpenCode: `D:\OpenChamber\opencode`
+- OpenChamber: `D:\OpenChamber\openchamber`
+- Coordination scripts: `D:\OpenChamber\coordinator`
 - Official Codex source for reference: `D:\Codex`
 
 Treat the repositories as separate edit and validation boundaries. Before editing either repository, read its root `AGENTS.md`, then read every required nearest package README, `DOCUMENTATION.md`, and project skill. Apply changes to each repository only during its explicit phase.
@@ -31,7 +31,7 @@ Do not add custom runtime-root variables or paths. Existing OpenCode and OpenCha
 
 ## Default Coupled Workflow
 
-1. Use the normally installed release package for Stable work and conduct the development conversation from it, rooted at `E:\OpenChamber\coordinator`.
+1. Use the normally installed release package for Stable work and conduct the development conversation from it, rooted at `D:\OpenChamber\coordinator`.
 2. Read both repository instruction trees and inspect the actual API implementation before planning changes.
 3. Modify the OpenCode contract/server implementation under the OpenCode repository rules.
 4. Regenerate the current OpenCode client contract and build its client/schema/protocol package graph.
@@ -42,31 +42,31 @@ Do not add custom runtime-root variables or paths. Existing OpenCode and OpenCha
 
 ## Upstream Upgrade Checks
 
-After each OpenChamber upstream upgrade, read `scripts.package` in `E:\OpenChamber\openchamber\packages\electron\package.json` and `scripts.type-check` in `E:\OpenChamber\openchamber\package.json`, including the implementations they invoke. Compare their stages and dependencies with `BuildApplication` in `scripts/ForkCoordinator.cs`: the coordinator bypasses these aggregate entrypoints to schedule work in parallel. Account for every added, removed, or reordered build/check step and update the coordinator's scheduling where needed before considering the upgrade complete. A successful local build alone does not establish that all upstream steps ran.
+After each OpenChamber upstream upgrade, read `scripts.package` in `D:\OpenChamber\openchamber\packages\electron\package.json` and `scripts.type-check` in `D:\OpenChamber\openchamber\package.json`, including the implementations they invoke. Compare their stages and dependencies with `BuildApplication` in `scripts/ForkCoordinator.cs`: the coordinator bypasses these aggregate entrypoints to schedule work in parallel. Account for every added, removed, or reordered build/check step and update the coordinator's scheduling where needed before considering the upgrade complete. A successful local build alone does not establish that all upstream steps ran.
 
 ## SDK Contract
 
 OpenChamber consumes `@opencode/client` and `@opencode/schema`; the local SDK graph also includes the client's `@opencode/protocol` dependency. Public OpenCode API changes require:
 
-- `bun run --cwd E:\OpenChamber\opencode\packages\client generate`
-- `bun run --cwd E:\OpenChamber\opencode\packages\schema build`
-- `bun run --cwd E:\OpenChamber\opencode\packages\protocol build`
-- `bun run --cwd E:\OpenChamber\opencode\packages\client build`
+- `bun run --cwd D:\OpenChamber\opencode\packages\client generate`
+- `bun run --cwd D:\OpenChamber\opencode\packages\schema build`
+- `bun run --cwd D:\OpenChamber\opencode\packages\protocol build`
+- `bun run --cwd D:\OpenChamber\opencode\packages\client build`
 
 All three SDK package versions must match OpenChamber's pinned root `@opencode/client` version and its schema/bundled CLI pins. Local links must cover the OpenChamber root and the `packages/ui`, `packages/web`, and `packages/vscode` workspaces, including the staged packages' internal dependency resolution. Do not edit generated SDK output by hand.
 
 Use each package's build script to produce fresh `dist` output. SDK manifest transformation lives in the C# file-based app `scripts/Stage-OpenCodeSdk.cs`; preserve peer dependency metadata and resolve workspace/catalog versions rather than installing source packages into consumers.
 
-SDK linking is all-or-restore: publish-shaped client/schema/protocol packages with `dist` exports are staged under `E:\OpenChamber\coordinator\generated\opencode-sdk\packages`. Install the staged workspace's dependencies at its final path so junctions do not refer to a renamed temporary directory. Each installed consumer SDK path is replaced with an NTFS junction; failure before all consumers resolve locally removes owned links and triggers one root frozen-lockfile reinstall. Never link SDK source packages directly because consumers would compile their TypeScript under incompatible tsconfigs. Never run `bun link` independently inside a workspace package. Type-check failure after complete junction installation intentionally leaves the local SDK active so OpenChamber can be adapted against the new contract.
+SDK linking is all-or-restore: publish-shaped client/schema/protocol packages with `dist` exports are staged under `D:\OpenChamber\coordinator\generated\opencode-sdk\packages`. Install the staged workspace's dependencies at its final path so junctions do not refer to a renamed temporary directory. Each installed consumer SDK path is replaced with an NTFS junction; failure before all consumers resolve locally removes owned links and triggers one root frozen-lockfile reinstall. Never link SDK source packages directly because consumers would compile their TypeScript under incompatible tsconfigs. Never run `bun link` independently inside a workspace package. Type-check failure after complete junction installation intentionally leaves the local SDK active so OpenChamber can be adapted against the new contract.
 
 ## Candidate Build
 
-Candidate and installable-package builds bundle the CLI from `E:\OpenChamber\opencode` with `OPENCODE_CHANNEL=dev`. The Windows bundle is a GUI-subsystem executable used only as an OpenChamber child with redirected standard handles; packaged validation must reject a console-subsystem artifact. It stages the verified executable directly in the unpacked Electron app; it never copies an application or CLI into a slot. The OpenCode build clears its own `dist` before compiling, so the staged Candidate app, not `packages\cli\dist`, is the runnable artifact. Native helper preparation belongs to Core (Recycle Bin) and Util (Windows process broker). Managed shutdown uses official `serve --stdio` and stdin EOF, without a private capability marker.
+Candidate and installable-package builds bundle the CLI from `D:\OpenChamber\opencode` with `OPENCODE_CHANNEL=dev`. The Windows bundle is a GUI-subsystem executable used only as an OpenChamber child with redirected standard handles; packaged validation must reject a console-subsystem artifact. It stages the verified executable directly in the unpacked Electron app; it never copies an application or CLI into a slot. The OpenCode build clears its own `dist` before compiling, so the staged Candidate app, not `packages\cli\dist`, is the runnable artifact. Native helper preparation belongs to Core (Recycle Bin) and Util (Windows process broker). Managed shutdown uses official `serve --stdio` and stdin EOF, without a private capability marker.
 
 Before any Electron packaging build, the coordinator uses `vswhere` to discover a complete Visual Studio 2022 instance with `Microsoft.VisualStudio.Component.VC.Tools.x86.x64`, then runs its Developer Shell by installation path for the target architecture. Do not hard-code an installation directory or instance ID.
 
 ## Release Contract
 
-Installable packaging is a separate clean-source boundary owned by `scripts\ForkCoordinator.cs`. It requires clean `local` and `dev` worktrees at their current commits, rebuilds OpenCode with channel `dev`, verifies the packaged CLI's `opencode-dev.db` path, validates updater metadata, and stages immutable artifacts under `E:\OpenChamber\release`. It never uploads or installs a package. The user installs a validated package to update Stable.
+Installable packaging is a separate clean-source boundary owned by `scripts\ForkCoordinator.cs`. It requires clean `local` and `dev` worktrees at their current commits, rebuilds OpenCode with channel `dev`, verifies the packaged CLI's `opencode-dev.db` path, validates updater metadata, and stages immutable artifacts under `D:\OpenChamber\release`. It never uploads or installs a package. The user installs a validated package to update Stable.
 
 Use PowerShell Core 7 through `pwsh`. Scripts and manually edited text files on this machine use CRLF line endings.

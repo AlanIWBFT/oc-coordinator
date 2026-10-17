@@ -126,7 +126,7 @@ Candidate and release packaging also build OpenChamber's own `packages/sdk` befo
 
 ### Parallel Windows builds
 
-Both coordinator commands finish SDK linking and the OpenChamber SDK build before starting independent branches for Web assets, the local CLI and its staged verification, Electron main, native modules, and package type-checks. Release also runs lint alongside those branches. Candidate checks UI, Web, and VS Code; release checks every workspace with a `type-check` script. Packaging starts only after every branch succeeds.
+Both coordinator commands finish SDK linking and the OpenChamber SDK build before starting independent branches for Web assets, the local CLI and its staged verification, target-architecture ripgrep preparation, Electron main, native modules, and package type-checks. Ripgrep is staged by Electron's `prepare:ripgrep` script under `resources/ripgrep`, independently of the bundled CLI. Release also runs lint alongside those branches. Candidate checks UI, Web, and VS Code; release checks every workspace with a `type-check` script. Packaging starts only after every branch succeeds.
 
 `Build.Processes.cs` assigns each branch to a Windows Job Object at process creation. The first failure stops new commands, terminates the other branch jobs, and waits for their descendants to exit. Ctrl+C uses the same cancellation path. Successful branches also drain leftover compiler processes. The coordinator then cleans native header staging and releases its optional drive mapping. A per-checkout mutex prevents Candidate and release builds from writing the same output concurrently.
 

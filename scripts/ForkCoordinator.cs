@@ -236,6 +236,7 @@ static void BuildApplication(CoordinatorConfig config, string coordinatorRoot, s
     {
         new("Web assets", Script(electron, "build:web-assets")),
         new("OpenCode CLI", Script(electron, "prepare:opencode-cli"), Script(electron, "verify:opencode-cli")),
+        new("Ripgrep", Script(electron, "prepare:ripgrep")),
         new("Electron main", Script(electron, "bundle:main")),
         new("Native modules", Script(electron, "rebuild:native")),
     };

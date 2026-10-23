@@ -27,6 +27,8 @@ Commit messages for commits made in the OpenCode and OpenChamber repositories mu
 
 Sandboxie supplies Candidate's default write isolation through its copy-on-write sandbox. The sandbox directory is intentionally host-visible for inspection and disposal; it is not a virtual machine. A user may explicitly configure Sandboxie resource rules or filesystem links to share selected data. Treat that as deliberate sharing, not as the default runtime model.
 
+Before inspecting or cleaning Candidate's sandbox files, verify the configured box's `FileRootPath` in `C:\Windows\Sandboxie.ini` (`[OpenChamberCandidate]` for the normal box). Sandboxie owns the file-root location; do not assume `C:\Sandbox` or encode the root in coordinator scripts. The launcher's box name comes from `local-fork.config.psd1`.
+
 Do not add custom runtime-root variables or paths. Existing OpenCode and OpenChamber data-directory overrides remain normal product behavior. In particular, do not clear `OPENCODE_CONFIG*` or `OPENCHAMBER_DATA_DIR`: an explicit user setting expresses an intent to control or share that location.
 
 ## Default Coupled Workflow

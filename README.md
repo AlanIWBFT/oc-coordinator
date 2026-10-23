@@ -100,6 +100,8 @@ Follow-up: the early server dependency preload is a Windows-specific startup-spe
 
 Candidate starts from the unpacked Electron executable inside the configured Sandboxie box. Sandboxie redirects its writes to a copy-on-write sandbox, which keeps default Candidate state separate from the installed Stable application. The sandbox files remain visible to the host by design so they can be inspected or removed between tests. This is not a virtual machine or a security boundary against the host user.
 
+On this machine, `OpenChamberCandidate` uses `D:\OpenChamber\CandidateSandbox` as its file root. Sandboxie owns this setting: the authoritative value is `FileRootPath` in the `[OpenChamberCandidate]` section of `C:\Windows\Sandboxie.ini`. Verify the current value before locating isolated logs, databases, or files, or cleaning sandbox data; do not assume a default `C:\Sandbox` path. The directory may not exist before Sandboxie first creates data there. The launcher selects the box by name from `local-fork.config.psd1`, so moving its file root requires no launcher path change.
+
 Sandboxie resource rules and filesystem links may be configured manually to share selected host paths. That is an explicit user choice. OpenCode's ordinary `OPENCODE_CONFIG*` variables and OpenChamber's `OPENCHAMBER_DATA_DIR` remain supported product overrides and are intentionally inherited rather than scrubbed by the launcher.
 
 ## Manual Upstream Rebase

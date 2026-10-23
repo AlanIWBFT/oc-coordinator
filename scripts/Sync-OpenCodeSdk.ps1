@@ -88,11 +88,9 @@ try {
 }
 
 if (-not $SkipTypeCheck) {
-  foreach ($script in @('type-check:ui', 'type-check:web', 'vscode:type-check')) {
-    Invoke-NativeCommand -FilePath 'bun' -Arguments @(
-      'run', '--cwd', $config.OpenChamberRoot, $script
-    )
-  }
+  Invoke-NativeCommand -FilePath 'bun' -Arguments @(
+    'run', '--cwd', $config.OpenChamberRoot, 'type-check'
+  )
 }
 
 "Local @opencode client/schema/protocol $pinnedVersion are linked into all OpenChamber consumers."

@@ -227,11 +227,8 @@ static void BuildApplication(CoordinatorConfig config, string coordinatorRoot, s
     var root = config.OpenChamberRoot;
     var electron = Path.Combine(root, "packages", "electron");
     BuildCommand Script(string directory, string name) => new(bunExecutable, ["run", "--cwd", directory, name], coordinatorRoot);
-    // Refresh dist exports before backend imports and package-level checks can read them.
-    BuildProcesses.Run([new("OpenChamber SDK", Script(Path.Combine(root, "packages", "sdk"), "build"))], environment);
-    // Web and VS Code reference the UI declarations emitted by tsc -b.
-    var ui = Path.Combine(root, "packages", "ui");
-    BuildProcesses.Run([new("Type-check ui", Script(ui, "type-check"))], environment);
+    // build:web-assets owns SDK -> Web -> staging. Root checks use source mappings,
+    // and the main bundler keeps the backend external, so neither reads that SDK dist.
     var branches = new List<BuildBranch>
     {
         new("Web assets", Script(electron, "build:web-assets")),
@@ -239,31 +236,11 @@ static void BuildApplication(CoordinatorConfig config, string coordinatorRoot, s
         new("Ripgrep", Script(electron, "prepare:ripgrep")),
         new("Electron main", Script(electron, "bundle:main")),
         new("Native modules", Script(electron, "rebuild:native")),
+        new("Type-check", Script(root, "type-check")),
     };
     if (release)
     {
-        // UI declarations are ready before the remaining workspace checks run.
-        using var manifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "package.json")));
-        foreach (var pattern in manifest.RootElement.GetProperty("workspaces").EnumerateArray().Select(value => value.GetString()!))
-        {
-            var parent = Path.Combine(root, Path.GetDirectoryName(pattern)!);
-            if (!Directory.Exists(parent)) continue;
-            foreach (var directory in Directory.GetDirectories(parent, Path.GetFileName(pattern)).Order(StringComparer.OrdinalIgnoreCase))
-            {
-                if (string.Equals(directory, ui, StringComparison.OrdinalIgnoreCase)) continue;
-                var packagePath = Path.Combine(directory, "package.json");
-                if (!File.Exists(packagePath)) continue;
-                using var package = JsonDocument.Parse(File.ReadAllText(packagePath));
-                if (package.RootElement.TryGetProperty("scripts", out var scripts) && scripts.TryGetProperty("type-check", out _))
-                    branches.Add(new($"Type-check {Path.GetRelativePath(root, directory)}", Script(directory, "type-check")));
-            }
-        }
         branches.Add(new("Lint", Script(root, "lint")));
-    }
-    else
-    {
-        foreach (var package in new[] { "web", "vscode" })
-            branches.Add(new($"Type-check {package}", Script(Path.Combine(root, "packages", package), "type-check")));
     }
 
     // Own the optional drive mapping outside the killable native branch so that
@@ -348,17 +325,18 @@ static void PrepareX64WindowsProcessBroker(
 
 static string ResolveBuildBunExecutable(string coordinatorRoot)
 {
-    var bunExecutable = Path.GetFullPath(Path.Combine(coordinatorRoot, "..", "bun-v1.4.3-release", "bun.exe"));
+    var bunExecutable = Path.GetFullPath(Path.Combine(coordinatorRoot, "..", "bun-v1.4.4-release", "bun.exe"));
     RequireFile(bunExecutable);
     var version = Coordinator.Capture(bunExecutable, ["--version"], coordinatorRoot).Trim();
-    if (version != "1.4.3")
-        throw new InvalidOperationException($"Expected Bun 1.4.3 at {bunExecutable}, got {version}.");
+    if (version != "1.4.4")
+        throw new InvalidOperationException($"Expected Bun 1.4.4 at {bunExecutable}, got {version}.");
     return bunExecutable;
 }
 
 static void ConfigureBunBuildEnvironment(Dictionary<string, string?> environment, string bunExecutable)
 {
     environment["OPENCHAMBER_OPENCODE_BUN_RUNTIME"] = bunExecutable;
+    environment["BUN"] = bunExecutable;
     environment["npm_execpath"] = bunExecutable;
     var path = environment.TryGetValue("PATH", out var configuredPath)
         ? configuredPath

@@ -17,7 +17,7 @@ When implementing features or reviewing code, limit the scope to runtime, build,
 
 Do not run git or GitHub commands unless the user explicitly requests them. Never commit, rebase, push, promote a Candidate, or rewrite a branch as an implicit follow-up.
 
-Commit messages for commits made in the OpenCode and OpenChamber repositories must begin with `Local: `.
+Commit messages for commits made in the OpenCode and OpenChamber repositories must begin with `Local: `. Prepend this local-fork prefix to the format required by the target repository; for OpenCode, use `Local: type(scope): summary` (scope optional). This composition explicitly governs the upstream commit-format requirement for local-fork commits.
 
 ## Runtime Model
 

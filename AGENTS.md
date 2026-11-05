@@ -42,6 +42,10 @@ Do not add custom runtime-root variables or paths. Existing OpenCode and OpenCha
 7. Run `dotnet .\scripts\ForkCoordinator.cs -- candidate-build`. It stages a local OpenCode CLI in the unpacked Candidate app without OpenCode's unused embedded Web UI.
 8. Run `scripts\Start-OpenChamberCandidate.ps1`, validate Candidate in Sandboxie, then report the result. There is no promotion step.
 
+## Migration Review
+
+For migration work, you may dispatch at most one Astra subagent with the `xhigh` variant for a final review, only after the entire migration, including required validation, is complete. This permission does not authorize implementation delegation or intermediate reviews; all other subagent restrictions remain unchanged.
+
 ## Upstream Upgrade Checks
 
 After each OpenChamber upstream upgrade, read `scripts.package` in `D:\OpenChamber\openchamber\packages\electron\package.json` and `scripts.type-check` in `D:\OpenChamber\openchamber\package.json`, including the implementations they invoke. Compare their stages and dependencies with `BuildApplication` in `scripts/ForkCoordinator.cs`: the coordinator bypasses these aggregate entrypoints to schedule work in parallel. Account for every added, removed, or reordered build/check step and update the coordinator's scheduling where needed before considering the upgrade complete. A successful local build alone does not establish that all upstream steps ran.

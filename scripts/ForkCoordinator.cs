@@ -152,6 +152,7 @@ static void BuildReleasePackage(CoordinatorConfig config, string coordinatorRoot
         RequireFile(updateManifestPath);
         var unpackedName = architecture == "x64" ? "win-unpacked" : "win-arm64-unpacked";
         var bundledOpenCode = Path.Combine(distRoot, unpackedName, "resources", "opencode-cli", "opencode.exe");
+        RequireFile(Path.Combine(distRoot, unpackedName, "resources", "elevate.exe"));
         var recycleHelper = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "OpenCode.Windows.RecycleBin.dll");
         var processBroker = Path.Combine(Path.GetDirectoryName(bundledOpenCode)!, "OpenCode.ProcessBroker.exe");
         Coordinator.AssertOpenCodeBinaryVersion(bundledOpenCode, openCodeVersion, coordinatorRoot);
